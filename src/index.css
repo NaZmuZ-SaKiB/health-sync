@@ -118,6 +118,10 @@
 
 @layer base {
   * {
+    font-family: "Poppins", sans-serif;
+  }
+
+  * {
     @apply border-border outline-ring/50;
   }
   body {
@@ -125,6 +129,6 @@
   }
 
   .hs-container {
-    @apply max-w-[1400px] mx-auto;
+    @apply mx-auto max-w-[1400px];
   }
 }
