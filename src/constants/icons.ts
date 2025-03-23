@@ -1,15 +1,17 @@
 import CallIcon from "@/assets/icons/call-icon.svg";
-import mailIcon from "@/assets/icons/mail-icon.svg";
-import appointmentIcon from "@/assets/icons/appointment-icon.svg";
-import clockIcon from "@/assets/icons/clock-icon.svg";
-import stethoscopeIcon from "@/assets/icons/stethoscope-icon.svg";
-import accountIcon from "@/assets/icons/account-icon.svg";
+import MailIcon from "@/assets/icons/mail-icon.svg";
+import AppointmentIcon from "@/assets/icons/appointment-icon.svg";
+import ClockIcon from "@/assets/icons/clock-icon.svg";
+import StethoscopeIcon from "@/assets/icons/stethoscope-icon.svg";
+import AccountIcon from "@/assets/icons/account-icon.svg";
+import PulseLine from "@/assets/icons/pulse-line.png";
 
 export const Icons = {
   CallIcon,
-  mailIcon,
-  appointmentIcon,
-  clockIcon,
-  stethoscopeIcon,
-  accountIcon,
+  MailIcon,
+  AppointmentIcon,
+  ClockIcon,
+  StethoscopeIcon,
+  AccountIcon,
+  PulseLine,
 };
