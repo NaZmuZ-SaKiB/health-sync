@@ -1,9 +1,12 @@
+import MainHeader from "@/components/global/layout/MainHeader";
 import TopHeader from "@/components/global/layout/TopHeader";
 
 const Layout = () => {
   return (
-    <div className="hs-container min-h-svh">
+    <div className="min-h-svh">
       <TopHeader />
+      <MainHeader />
+      <div className="hs-container"></div>
     </div>
   );
 };
