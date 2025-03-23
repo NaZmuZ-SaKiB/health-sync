@@ -1,10 +1,9 @@
-import { Button } from "../../components/ui/button";
+import TopHeader from "@/components/global/layout/TopHeader";
 
 const Layout = () => {
   return (
     <div className="hs-container min-h-svh">
-      <h1>Layout</h1>
-      <Button>Click me!</Button>
+      <TopHeader />
     </div>
   );
 };
