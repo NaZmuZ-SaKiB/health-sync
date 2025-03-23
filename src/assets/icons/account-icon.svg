@@ -1,0 +1,11 @@
+<svg width="800" height="800" viewBox="60 20 520 560" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Head -->
+  <circle cx="320" cy="160" r="120" stroke="#031B4E" stroke-width="40"/>
+
+  <!-- Inner Dot -->
+  <circle cx="320" cy="160" r="30" fill="#00bde0"/>
+
+  <!-- Body Curve -->
+  <path d="M80 560C80 464 160 384 256 384H384C480 384 560 464 560 560" 
+        stroke="#031C4E" stroke-width="40" stroke-linecap="round"/>
+</svg>
