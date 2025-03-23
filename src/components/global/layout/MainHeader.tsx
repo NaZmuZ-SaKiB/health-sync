@@ -66,7 +66,7 @@ const MainHeader = () => {
 
           <div className="pl-6">
             <Link to={"/appointment"}>
-              <HSButton className="h-auto rounded-xl px-5 py-3 text-base hover:scale-105">
+              <HSButton className="h-auto rounded-2xl px-5 py-3 text-base hover:scale-105">
                 Appointment
               </HSButton>
             </Link>
