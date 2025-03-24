@@ -5,6 +5,7 @@ import ClockIcon from "@/assets/icons/clock-icon.svg";
 import StethoscopeIcon from "@/assets/icons/stethoscope-icon.svg";
 import AccountIcon from "@/assets/icons/account-icon.svg";
 import PulseLine from "@/assets/icons/pulse-line.png";
+import InnerRoundCorner from "@/assets/icons/inner-round-corner.svg";
 
 export const Icons = {
   CallIcon,
@@ -14,4 +15,5 @@ export const Icons = {
   StethoscopeIcon,
   AccountIcon,
   PulseLine,
+  InnerRoundCorner,
 };
