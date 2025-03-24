@@ -1,6 +1,8 @@
+import CircularProgress from "@/components/global/shared/CircularProgress";
 import HSButton from "@/components/global/shared/HSButton";
 import { Icons, Images } from "@/constants";
-import { MoveRight, Star } from "lucide-react";
+import { MoveRight, MoveUpRight, Star } from "lucide-react";
+import { Link } from "react-router";
 
 const HeroSection = () => {
   return (
@@ -103,7 +105,7 @@ const HeroSection = () => {
             </div>
 
             {/* Review  */}
-            <div className="absolute -right-20 bottom-36 z-10 w-72 rounded-2xl bg-white p-4 shadow-2xl">
+            <div className="floating-up-down absolute -right-20 bottom-36 z-10 w-72 rounded-3xl bg-white p-4 shadow-2xl">
               <div className="flex gap-3">
                 <img
                   className="rounded-full"
@@ -113,7 +115,7 @@ const HeroSection = () => {
                   alt="dummy prifile 3"
                 />
                 <div>
-                  <p className="font-semibold">Thomas Welch</p>
+                  <p className="font-semibold text-slate-700">Thomas Welch</p>
                   <div className="flex">
                     <Star className="size-5 fill-yellow-500 text-transparent" />
                     <Star className="size-5 fill-yellow-500 text-transparent" />
@@ -127,6 +129,41 @@ const HeroSection = () => {
                 "Dr. Chloe is very kind. She took the time to listen and explain
                 clearly. I felt truly cared for throughout my visit.""
               </p>
+            </div>
+
+            {/* Review Percentage  */}
+            <div
+              className="floating-up-down floating-up-down-delay absolute top-[20%] left-0 z-10 w-52 rounded-3xl bg-white p-4 shadow-2xl shadow-slate-300/60"
+              style={{ animationDelay: "2s" }}
+            >
+              <CircularProgress
+                percentage={82}
+                radius={80}
+                textClass="text-4xl"
+                stroke={5}
+              />
+
+              <div className="flex items-center justify-between gap-2">
+                <div className="font-semibold text-slate-700">
+                  Reviews Above 3 stars
+                </div>
+                <Link
+                  to={"/#"}
+                  className="border-primary/30 text-primary hover:bg-primary grid place-items-center rounded-full border p-3 duration-300 hover:text-slate-50"
+                >
+                  <MoveUpRight className="size-5" />
+                </Link>
+              </div>
+            </div>
+
+            {/* Heart Icon  */}
+            <div
+              className="floating-up-down absolute top-[30%] -right-10 z-10 grid aspect-square w-24 place-items-center rounded-3xl bg-white p-4 shadow-2xl shadow-slate-300/60"
+              style={{
+                animationDelay: "1.5s",
+              }}
+            >
+              <img src={Images.Heart} alt="Heart" />
             </div>
           </div>
         </div>
