@@ -132,3 +132,25 @@
     @apply mx-auto max-w-[1400px];
   }
 }
+
+@keyframes floatUpDown {
+  0% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px); /* Goes up slightly */
+  }
+  60% {
+    transform: translateY(
+      -10px
+    ); /* Stay up for 200ms (approx in animation %) */
+  }
+  100% {
+    transform: translateY(0); /* Back to original position */
+  }
+}
+
+.floating-up-down {
+  position: absolute;
+  animation: floatUpDown 5s ease-in-out infinite;
+}
