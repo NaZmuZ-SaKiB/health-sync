@@ -1,6 +1,6 @@
 import HSButton from "@/components/global/shared/HSButton";
 import { Icons, Images } from "@/constants";
-import { MoveRight } from "lucide-react";
+import { MoveRight, Star } from "lucide-react";
 
 const HeroSection = () => {
   return (
@@ -61,7 +61,7 @@ const HeroSection = () => {
             />
 
             {/* Patients  */}
-            <div className="floating-up-left-right-down absolute bottom-32 z-10 flex items-center gap-2 rounded-full bg-white p-3.5">
+            <div className="floating-up-left-right-down absolute bottom-36 -left-10 z-10 flex items-center gap-2 rounded-full bg-white p-3.5">
               <div className="flex items-center">
                 <img
                   className="rounded-full border-2 border-white"
@@ -100,6 +100,33 @@ const HeroSection = () => {
                   Patient recovers
                 </p>
               </div>
+            </div>
+
+            {/* Review  */}
+            <div className="absolute -right-20 bottom-36 z-10 w-72 rounded-2xl bg-white p-4 shadow-2xl">
+              <div className="flex gap-3">
+                <img
+                  className="rounded-full"
+                  src={Images.DummyProfile3}
+                  width={45}
+                  height={45}
+                  alt="dummy prifile 3"
+                />
+                <div>
+                  <p className="font-semibold">Thomas Welch</p>
+                  <div className="flex">
+                    <Star className="size-5 fill-yellow-500 text-transparent" />
+                    <Star className="size-5 fill-yellow-500 text-transparent" />
+                    <Star className="size-5 fill-yellow-500 text-transparent" />
+                    <Star className="size-5 fill-yellow-500 text-transparent" />
+                    <Star className="size-5 fill-yellow-500 text-transparent" />
+                  </div>
+                </div>
+              </div>
+              <p className="mt-4 text-xs leading-5 font-medium text-gray-500">
+                "Dr. Chloe is very kind. She took the time to listen and explain
+                clearly. I felt truly cared for throughout my visit.""
+              </p>
             </div>
           </div>
         </div>
