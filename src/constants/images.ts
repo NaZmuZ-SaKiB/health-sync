@@ -7,6 +7,7 @@ import DummyProfile1 from "@/assets/images/dummy-profile-1.webp";
 import DummyProfile2 from "@/assets/images/dummy-profile-2.webp";
 import DummyProfile3 from "@/assets/images/dummy-profile-3.webp";
 import DummyProfile4 from "@/assets/images/dummy-profile-4.webp";
+import Heart from "@/assets/images/heart.webp";
 
 export const Images = {
   LogoMain,
@@ -18,4 +19,5 @@ export const Images = {
   DummyProfile2,
   DummyProfile3,
   DummyProfile4,
+  Heart,
 };
