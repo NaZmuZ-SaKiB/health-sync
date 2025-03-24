@@ -132,6 +132,9 @@
     @apply mx-auto max-w-[1400px];
   }
 }
+/*? ------------------- */
+/*? ----Animations----- */
+/*? ------------------- */
 
 @keyframes floatUpDown {
   0% {
