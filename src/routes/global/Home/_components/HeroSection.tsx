@@ -8,8 +8,9 @@ const HeroSection = () => {
       className="h-[920px] overflow-hidden bg-cover bg-center"
       style={{ backgroundImage: `url(${Images.HeroBG})` }}
     >
-      <div className="hs-container h-full">
+      <div className="hs-container relative h-full">
         <div className="grid h-full grid-cols-2 gap-10">
+          {/* Left Side  */}
           <div className="my-auto">
             <h1 className="text-secondary text-[80px] leading-24 font-bold">
               Medical & Health Care{" "}
@@ -41,6 +42,8 @@ const HeroSection = () => {
               </HSButton>
             </div>
           </div>
+
+          {/* Right Side  */}
           <div className="relative flex flex-col justify-end">
             <div className="absolute -bottom-[10%] z-1 grid aspect-square w-[120%] place-items-center rounded-full border border-white bg-transparent">
               <div className="grid aspect-square w-[85%] place-items-center rounded-full bg-white/50">
@@ -52,6 +55,35 @@ const HeroSection = () => {
               className="relative z-10 ml-auto w-[90%]"
               alt="Lady Doctor"
             />
+          </div>
+        </div>
+
+        {/* Question Floating  */}
+        <div className="floating-up-down absolute bottom-10 left-0 pt-16 pl-16">
+          <div className="hero-question absolute top-0 left-0 grid size-16 place-items-center rounded-2xl rounded-br-none bg-white shadow-2xl">
+            <img
+              className="absolute -right-5 bottom-0 size-5"
+              src={Icons.InnerRoundCorner}
+              alt="rouned"
+            />
+            <img
+              className="rounded-lg"
+              src={Images.QuestionDoctor}
+              alt="lady doctor"
+              width={45}
+              height={45}
+            />
+            <img
+              className="absolute right-0 -bottom-5 size-5 rotate-180"
+              src={Icons.InnerRoundCorner}
+              alt="rouned"
+            />
+          </div>
+          <div className="rounded-2xl rounded-tl-none bg-white px-4 py-3 shadow-2xl">
+            <p className="text-sm font-light text-slate-500">
+              Have a question?
+            </p>
+            <p className="text-primary text-lg font-semibold">info@gmail.com</p>
           </div>
         </div>
       </div>
