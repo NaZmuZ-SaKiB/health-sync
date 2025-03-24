@@ -9,6 +9,7 @@ const HeroSection = () => {
       style={{ backgroundImage: `url(${Images.HeroBG})` }}
     >
       <div className="hs-container relative h-full">
+        {/* Hero Content  */}
         <div className="grid h-full grid-cols-2 gap-10">
           {/* Left Side  */}
           <div className="my-auto">
@@ -45,22 +46,67 @@ const HeroSection = () => {
 
           {/* Right Side  */}
           <div className="relative flex flex-col justify-end">
+            {/* background circle  */}
             <div className="absolute -bottom-[10%] z-1 grid aspect-square w-[120%] place-items-center rounded-full border border-white bg-transparent">
               <div className="grid aspect-square w-[85%] place-items-center rounded-full bg-white/50">
                 <div className="aspect-square w-[80%] rounded-full bg-white/80"></div>
               </div>
             </div>
+
+            {/* Image  */}
             <img
               src={Images.BannerDoctor}
               className="relative z-10 ml-auto w-[90%]"
               alt="Lady Doctor"
             />
+
+            {/* Patients  */}
+            <div className="floating-up-left-right-down absolute bottom-32 z-10 flex items-center gap-2 rounded-full bg-white p-3.5">
+              <div className="flex items-center">
+                <img
+                  className="rounded-full border-2 border-white"
+                  src={Images.DummyProfile1}
+                  height={42}
+                  width={42}
+                  alt="Dummy Profile 1"
+                />
+                <img
+                  className="-ml-3 rounded-full border-2 border-white"
+                  src={Images.DummyProfile2}
+                  height={42}
+                  width={42}
+                  alt="Dummy Profile 2"
+                />
+                <img
+                  className="-ml-3 rounded-full border-2 border-white"
+                  src={Images.DummyProfile3}
+                  height={42}
+                  width={42}
+                  alt="Dummy Profile 3"
+                />
+                <img
+                  className="-ml-3 rounded-full border-2 border-white"
+                  src={Images.DummyProfile4}
+                  height={42}
+                  width={42}
+                  alt="Dummy Profile 4"
+                />
+              </div>
+              <div className="pr-3">
+                <p className="text-primary text-lg leading-5 font-semibold">
+                  150K
+                </p>
+                <p className="text-sm font-light text-slate-500">
+                  Patient recovers
+                </p>
+              </div>
+            </div>
           </div>
         </div>
 
         {/* Question Floating  */}
         <div className="floating-up-down absolute bottom-10 left-0 pt-16 pl-16">
-          <div className="hero-question absolute top-0 left-0 grid size-16 place-items-center rounded-2xl rounded-br-none bg-white shadow-2xl">
+          <div className="hero-question absolute top-0 left-0 grid size-16 place-items-center rounded-2xl rounded-br-none bg-white">
             <img
               className="absolute -right-5 bottom-0 size-5"
               src={Icons.InnerRoundCorner}
@@ -79,7 +125,7 @@ const HeroSection = () => {
               alt="rouned"
             />
           </div>
-          <div className="rounded-2xl rounded-tl-none bg-white px-4 py-3 shadow-2xl">
+          <div className="rounded-2xl rounded-tl-none bg-white px-4 py-3">
             <p className="text-sm font-light text-slate-500">
               Have a question?
             </p>
