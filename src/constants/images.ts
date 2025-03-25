@@ -10,6 +10,7 @@ import DummyProfile4 from "@/assets/images/dummy-profile-4.webp";
 import Heart from "@/assets/images/heart.webp";
 import MaleDoctor1 from "@/assets/images/male-doctor-1.webp";
 import FemaleDoctor1 from "@/assets/images/female-doctor-1.webp";
+import Background1 from "@/assets/images/background1.jpg";
 
 export const Images = {
   LogoMain,
@@ -24,4 +25,5 @@ export const Images = {
   Heart,
   MaleDoctor1,
   FemaleDoctor1,
+  Background1,
 };
