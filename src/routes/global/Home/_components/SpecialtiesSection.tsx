@@ -122,6 +122,8 @@ const SpecialtiesSection = () => {
                 style={{
                   maskImage: `url(${Icons.InnerRoundedSquarePNG})`,
                   maskPosition: "right bottom",
+                  WebkitMaskImage: `url(${Icons.InnerRoundedSquarePNG})`,
+                  WebkitMaskPosition: "right bottom",
                 }}
               ></div>
             </div>
