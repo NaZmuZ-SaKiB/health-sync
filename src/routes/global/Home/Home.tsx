@@ -3,6 +3,7 @@ import AboutSection from "./_components/AboutSection";
 import CountSection from "./_components/CountSection";
 import HeroSection from "./_components/HeroSection";
 import SpecialtiesSection from "./_components/SpecialtiesSection";
+import ChooseUsSection from "./_components/ChooseUsSection";
 
 const Home = () => {
   return (
@@ -16,6 +17,7 @@ const Home = () => {
       >
         <SpecialtiesSection />
       </div>
+      <ChooseUsSection />
     </div>
   );
 };
