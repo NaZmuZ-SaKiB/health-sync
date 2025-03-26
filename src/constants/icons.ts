@@ -8,6 +8,7 @@ import PulseLine from "@/assets/icons/pulse-line.png";
 import InnerRoundCorner from "@/assets/icons/inner-round-corner.svg";
 import InnerRoundedSquare from "@/assets/icons/inner-rounded-square.svg";
 import InnerRoundedSquarePNG from "@/assets/icons/inner-rounded-square.png";
+import ImageMaskPNG from "@/assets/icons/image-mask.png";
 import HeartIcon from "@/assets/icons/heart.png";
 import ENTIcon from "@/assets/icons/ENT.png";
 import DermatologyIcon from "@/assets/icons/dermatology.png";
@@ -28,6 +29,7 @@ export const Icons = {
   InnerRoundCorner,
   InnerRoundedSquare,
   InnerRoundedSquarePNG,
+  ImageMaskPNG,
   HeartIcon,
   ENTIcon,
   DermatologyIcon,

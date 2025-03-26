@@ -11,6 +11,8 @@ import Heart from "@/assets/images/heart.webp";
 import MaleDoctor1 from "@/assets/images/male-doctor-1.webp";
 import FemaleDoctor1 from "@/assets/images/female-doctor-1.webp";
 import Background1 from "@/assets/images/background1.jpg";
+import Background2 from "@/assets/images/background2.webp";
+import DoctorTreating from "@/assets/images/doctor-treating.webp";
 
 export const Images = {
   LogoMain,
@@ -26,4 +28,6 @@ export const Images = {
   MaleDoctor1,
   FemaleDoctor1,
   Background1,
+  Background2,
+  DoctorTreating,
 };
