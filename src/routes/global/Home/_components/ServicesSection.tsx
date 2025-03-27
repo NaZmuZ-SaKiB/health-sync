@@ -48,11 +48,11 @@ const ServicesSection = () => {
       <div className="hs-container">
         <div className="py-24">
           {/* Title  */}
-          <div className="mb-10 grid grid-cols-5 items-end">
-            <h2 className="text-secondary col-span-3 text-[45px] leading-14 font-bold">
-              Our Urgent Care Services
+          <div className="mb-10 flex items-end justify-between">
+            <h2 className="text-secondary text-[45px] leading-14 font-bold">
+              Our Urgent Care <br /> Services
             </h2>
-            <div className="col-span-2 flex items-center justify-end">
+            <div className="flex items-center justify-end">
               <HSButton className="h-auto py-1.5 pr-1.5 pl-5 text-sm">
                 View All{" "}
                 <span className="ml-2 grid size-10 place-items-center rounded-md bg-white">
