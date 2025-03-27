@@ -5,6 +5,7 @@ import HeroSection from "./_components/HeroSection";
 import SpecialtiesSection from "./_components/SpecialtiesSection";
 import ChooseUsSection from "./_components/ChooseUsSection";
 import ServicesSection from "./_components/ServicesSection";
+import DoctorSection from "./_components/DoctorSection";
 
 const Home = () => {
   return (
@@ -20,6 +21,7 @@ const Home = () => {
         <SpecialtiesSection />
       </div>
       <ChooseUsSection />
+      <DoctorSection />
     </div>
   );
 };
