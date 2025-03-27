@@ -53,13 +53,10 @@ const ServicesSection = () => {
               Our Urgent Care Services
             </h2>
             <div className="col-span-2 flex items-center justify-end">
-              <HSButton
-                variant={"secondary"}
-                className="h-auto py-1.5 pr-1.5 pl-5 text-sm"
-              >
+              <HSButton className="h-auto py-1.5 pr-1.5 pl-5 text-sm">
                 View All{" "}
                 <span className="ml-2 grid size-10 place-items-center rounded-md bg-white">
-                  <MoveRight className="text-btn-primary size-5" />
+                  <MoveRight className="text-primary size-5" />
                 </span>
               </HSButton>
             </div>
