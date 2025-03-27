@@ -17,6 +17,7 @@ import FemaleDoctor3 from "@/assets/images/female-doctor-3.webp";
 import Background1 from "@/assets/images/background1.jpg";
 import Background2 from "@/assets/images/background2.webp";
 import DoctorTreating from "@/assets/images/doctor-treating.webp";
+import ReviewsDoctor from "@/assets/images/reviews-doctor.webp";
 
 export const Images = {
   LogoMain,
@@ -38,4 +39,5 @@ export const Images = {
   Background1,
   Background2,
   DoctorTreating,
+  ReviewsDoctor,
 };
