@@ -64,11 +64,11 @@ const SpecialtiesSection = () => {
     <div className="hs-container">
       <div className="py-24">
         {/* Title  */}
-        <div className="mb-10 grid grid-cols-5 items-end">
-          <h2 className="text-secondary col-span-3 text-[45px] leading-14 font-bold">
-            We Have Doctors From All Specialties
+        <div className="mb-10 flex items-end justify-between">
+          <h2 className="text-secondary text-[45px] leading-14 font-bold">
+            We Have Doctors From All <br /> Specialties
           </h2>
-          <div className="col-span-2 flex items-center justify-end">
+          <div className="flex items-center justify-end">
             <HSButton
               variant={"secondary"}
               className="h-auto py-1.5 pr-1.5 pl-5 text-sm"
