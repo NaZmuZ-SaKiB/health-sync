@@ -17,6 +17,14 @@ import NeurologyIcon from "@/assets/icons/neurology.png";
 import OphthalmologyIcon from "@/assets/icons/ophthalmology.png";
 import OrthopedicsIcon from "@/assets/icons/orthopedics.png";
 import UrologyIcon from "@/assets/icons/urology.png";
+import AntibodyTestIcon from "@/assets/icons/antibody-test.webp";
+import HepaticTestIcon from "@/assets/icons/hepatic-test.webp";
+import LipidProfileIcon from "@/assets/icons/lipid-profile.webp";
+import ProlactinTestIcon from "@/assets/icons/prolactin-test.webp";
+import SugarTestIcon from "@/assets/icons/sugar-test.webp";
+import ThyroidTestIcon from "@/assets/icons/thyroid-test.webp";
+import VaccinationIcon from "@/assets/icons/vaccination.webp";
+import XRayIcon from "@/assets/icons/x-ray.webp";
 
 export const Icons = {
   CallIcon,
@@ -38,4 +46,12 @@ export const Icons = {
   OphthalmologyIcon,
   OrthopedicsIcon,
   UrologyIcon,
+  AntibodyTestIcon,
+  HepaticTestIcon,
+  LipidProfileIcon,
+  ProlactinTestIcon,
+  SugarTestIcon,
+  ThyroidTestIcon,
+  VaccinationIcon,
+  XRayIcon,
 };
