@@ -64,7 +64,7 @@ const SpecialtiesSection = () => {
     <div className="hs-container">
       <div className="py-24">
         {/* Title  */}
-        <div className="mb-8 grid grid-cols-5 items-end">
+        <div className="mb-10 grid grid-cols-5 items-end">
           <h2 className="text-secondary col-span-3 text-[45px] leading-14 font-bold">
             We Have Doctors From All Specialties
           </h2>
