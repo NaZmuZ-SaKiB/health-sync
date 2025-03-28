@@ -1,8 +1,10 @@
 import CircularProgress from "@/components/global/shared/CircularProgress";
 import HSButton from "@/components/global/shared/HSButton";
 import { Icons, Images } from "@/constants";
-import { MoveRight, MoveUpRight, Star } from "lucide-react";
+import { MoveRight, MoveUpRight } from "lucide-react";
 import { Link } from "react-router";
+import FloatingPatients from "./FloatingPatients";
+import FloatingReview from "./FloatingReview";
 
 const HeroSection = () => {
   return (
@@ -63,73 +65,10 @@ const HeroSection = () => {
             />
 
             {/* Patients  */}
-            <div className="floating-up-left-right-down absolute bottom-36 -left-10 z-10 flex items-center gap-2 rounded-full bg-white p-3.5">
-              <div className="flex items-center">
-                <img
-                  className="rounded-full border-2 border-white"
-                  src={Images.DummyProfile1}
-                  height={42}
-                  width={42}
-                  alt="Dummy Profile 1"
-                />
-                <img
-                  className="-ml-3 rounded-full border-2 border-white"
-                  src={Images.DummyProfile2}
-                  height={42}
-                  width={42}
-                  alt="Dummy Profile 2"
-                />
-                <img
-                  className="-ml-3 rounded-full border-2 border-white"
-                  src={Images.DummyProfile3}
-                  height={42}
-                  width={42}
-                  alt="Dummy Profile 3"
-                />
-                <img
-                  className="-ml-3 rounded-full border-2 border-white"
-                  src={Images.DummyProfile4}
-                  height={42}
-                  width={42}
-                  alt="Dummy Profile 4"
-                />
-              </div>
-              <div className="pr-3">
-                <p className="text-primary text-lg leading-5 font-semibold">
-                  150K
-                </p>
-                <p className="text-sm font-light text-slate-500">
-                  Patient recovers
-                </p>
-              </div>
-            </div>
+            <FloatingPatients className="bottom-36 -left-10" />
 
             {/* Review  */}
-            <div className="floating-up-down absolute -right-20 bottom-36 z-10 w-72 rounded-3xl bg-white p-4 shadow-2xl">
-              <div className="flex gap-3">
-                <img
-                  className="rounded-full"
-                  src={Images.DummyProfile3}
-                  width={45}
-                  height={45}
-                  alt="dummy prifile 3"
-                />
-                <div>
-                  <p className="font-semibold text-slate-700">Thomas Welch</p>
-                  <div className="flex">
-                    <Star className="size-5 fill-yellow-500 text-transparent" />
-                    <Star className="size-5 fill-yellow-500 text-transparent" />
-                    <Star className="size-5 fill-yellow-500 text-transparent" />
-                    <Star className="size-5 fill-yellow-500 text-transparent" />
-                    <Star className="size-5 fill-yellow-500 text-transparent" />
-                  </div>
-                </div>
-              </div>
-              <p className="mt-4 text-xs leading-5 font-medium text-gray-500">
-                "Dr. Chloe is very kind. She took the time to listen and explain
-                clearly. I felt truly cared for throughout my visit.""
-              </p>
-            </div>
+            <FloatingReview className="-right-20 bottom-36 shadow-2xl shadow-slate-300" />
 
             {/* Review Percentage  */}
             <div
