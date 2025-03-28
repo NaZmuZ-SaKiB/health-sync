@@ -8,6 +8,8 @@ import {
 } from "@/components/ui/carousel";
 import { Star } from "lucide-react";
 import Autoplay from "embla-carousel-autoplay";
+import FloatingPatients from "./FloatingPatients";
+import FloatingReview from "./FloatingReview";
 
 const ReviewSection = () => {
   return (
@@ -41,6 +43,12 @@ const ReviewSection = () => {
                 <span className="bg-primary absolute top-1/2 -right-[5px] size-[10px] -translate-y-1/2 rounded-full"></span>
               </div>
             </div>
+
+            {/* Patients  */}
+            <FloatingPatients className="bottom-10 left-10" />
+
+            {/* Review  */}
+            <FloatingReview className="top-1/2 right-10 -translate-y-1/2" />
           </div>
           <div className="px-10">
             <h2 className="mb-7 text-4xl leading-12 font-bold text-slate-50">
