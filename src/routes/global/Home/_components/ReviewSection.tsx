@@ -47,9 +47,11 @@ const ReviewSection = () => {
             {/* Patients  */}
             <FloatingPatients className="bottom-10 left-10" />
 
-            {/* Review  */}
+            {/* Floating Review  */}
             <FloatingReview className="top-1/2 right-10 -translate-y-1/2" />
           </div>
+
+          {/* Review text  */}
           <div className="px-10">
             <h2 className="mb-7 text-4xl leading-12 font-bold text-slate-50">
               Real Patients, Real Stories. And our Achievements
