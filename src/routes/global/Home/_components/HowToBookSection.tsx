@@ -81,7 +81,7 @@ const HowToBookSection = () => {
         {/* Right Side  */}
         <div className="relative col-span-2">
           <img
-            className="w-full rounded-3xl rounded-bl-4xl"
+            className="w-full rounded-2xl rounded-bl-4xl"
             src={Images.DoctorsTreating}
             alt="Doctors Treating"
           />
