@@ -1,3 +1,5 @@
+import HSButton from "@/components/global/shared/HSButton";
+import { Icons, Images } from "@/constants";
 import {
   CircleDollarSign,
   CircleUserRound,
@@ -6,6 +8,7 @@ import {
   HeartPulse,
   LucideProps,
   MapPin,
+  MoveRight,
 } from "lucide-react";
 
 type TBookingStep = {
@@ -43,7 +46,8 @@ const bookingSteps: TBookingStep[] = [
 const HowToBookSection = () => {
   return (
     <div className="hs-container">
-      <div className="grid grid-cols-3 py-24">
+      <div className="grid grid-cols-3 items-center gap-20 py-24">
+        {/* Left Side  */}
         <div>
           <h2 className="text-secondary mb-3 text-4xl font-bold">
             How to Book
@@ -74,7 +78,36 @@ const HowToBookSection = () => {
             ))}
           </div>
         </div>
-        <div className="col-span-2"></div>
+        {/* Right Side  */}
+        <div className="relative col-span-2">
+          <img
+            className="w-full rounded-3xl rounded-bl-4xl"
+            src={Images.DoctorsTreating}
+            alt="Doctors Treating"
+          />
+          <div className="absolute bottom-0 left-0 rounded-tr-3xl border-t-[1rem] border-r-[1rem] border-white bg-white">
+            <HSButton
+              variant={"secondary"}
+              className="h-auto py-2 pr-2 pl-5 text-lg"
+            >
+              Appointment{" "}
+              <span className="grid size-10 place-items-center rounded-md bg-white">
+                <MoveRight className="text-btn-primary size-5" />
+              </span>
+            </HSButton>
+
+            <img
+              className="absolute -top-[41px] left-0 size-[25px]"
+              src={Icons.InnerRoundCorner}
+              alt="rounded corner"
+            />
+            <img
+              className="absolute -right-[41px] bottom-0 size-[25px]"
+              src={Icons.InnerRoundCorner}
+              alt="rounded corner"
+            />
+          </div>
+        </div>
       </div>
     </div>
   );
