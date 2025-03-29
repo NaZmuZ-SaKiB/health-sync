@@ -19,6 +19,7 @@ import Background2 from "@/assets/images/background2.webp";
 import DoctorTreating from "@/assets/images/doctor-treating.webp";
 import ReviewsDoctor from "@/assets/images/reviews-doctor.webp";
 import DoctorsTreating from "@/assets/images/doctors-treating.webp";
+import FAQImage from "@/assets/images/faq-image.webp";
 
 export const Images = {
   LogoMain,
@@ -42,4 +43,5 @@ export const Images = {
   DoctorTreating,
   ReviewsDoctor,
   DoctorsTreating,
+  FAQImage,
 };
