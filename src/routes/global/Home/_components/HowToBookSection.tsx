@@ -85,6 +85,8 @@ const HowToBookSection = () => {
             src={Images.DoctorsTreating}
             alt="Doctors Treating"
           />
+
+          {/* Button  */}
           <div className="absolute bottom-0 left-0 rounded-tr-3xl border-t-[1rem] border-r-[1rem] border-white bg-white">
             <HSButton
               variant={"secondary"}
@@ -106,6 +108,19 @@ const HowToBookSection = () => {
               src={Icons.InnerRoundCorner}
               alt="rounded corner"
             />
+          </div>
+
+          {/* Numbers  */}
+          <div className="bg-primary absolute right-8 -bottom-10 grid w-1/2 grid-cols-2 gap-16 rounded-xl p-8 text-slate-50">
+            <div className="text-center">
+              <div className="text-4xl font-bold text-slate-50">180K+</div>
+              <div className="text-lg font-light">Specialists</div>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl font-bold text-slate-50">45K+</div>
+              <div className="text-lg font-light">Happy Patients</div>
+            </div>
+            <div className="absolute top-0 left-1/2 h-full w-[1px] bg-gradient-to-b from-transparent via-white to-transparent opacity-50"></div>
           </div>
         </div>
       </div>
