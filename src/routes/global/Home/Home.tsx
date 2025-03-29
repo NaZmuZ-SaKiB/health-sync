@@ -7,6 +7,7 @@ import ChooseUsSection from "./_components/ChooseUsSection";
 import ServicesSection from "./_components/ServicesSection";
 import DoctorSection from "./_components/DoctorSection";
 import ReviewSection from "./_components/ReviewSection";
+import HowToBookSection from "./_components/HowToBookSection";
 
 const Home = () => {
   return (
@@ -24,6 +25,7 @@ const Home = () => {
       <ChooseUsSection />
       <DoctorSection />
       <ReviewSection />
+      <HowToBookSection />
     </div>
   );
 };
