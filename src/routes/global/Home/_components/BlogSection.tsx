@@ -29,10 +29,7 @@ const blogs: TBlog[] = [
 
 const BlogSection = () => {
   return (
-    <div
-      className="bg-cover bg-center"
-      style={{ backgroundImage: `url(${Images.HeroBG})` }}
-    >
+    <div className="bg-primary/5">
       <div className="hs-container">
         <div className="py-24">
           {/* Title  */}
