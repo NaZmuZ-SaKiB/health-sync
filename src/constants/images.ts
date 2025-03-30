@@ -20,6 +20,7 @@ import Background1 from "@/assets/images/background1.jpg";
 import Background2 from "@/assets/images/background2.webp";
 import DoctorTreating from "@/assets/images/doctor-treating.webp";
 import DoctorsTreating from "@/assets/images/doctors-treating.webp";
+import DoctorInGroup from "@/assets/images/doctor-in-group.webp";
 import FAQImage from "@/assets/images/faq-image.webp";
 import BlogImage1 from "@/assets/images/blog-image-1.webp";
 import BlogImage2 from "@/assets/images/blog-image-2.webp";
@@ -49,6 +50,7 @@ export const Images = {
   Background2,
   DoctorTreating,
   DoctorsTreating,
+  DoctorInGroup,
   FAQImage,
   BlogImage1,
   BlogImage2,
