@@ -9,6 +9,7 @@ import DoctorSection from "./_components/DoctorSection";
 import ReviewSection from "./_components/ReviewSection";
 import HowToBookSection from "./_components/HowToBookSection";
 import FAQSection from "./_components/FAQSection";
+import PresidentSection from "./_components/PresidentSection";
 
 const Home = () => {
   return (
@@ -27,6 +28,7 @@ const Home = () => {
       <DoctorSection />
       <ReviewSection />
       <HowToBookSection />
+      <PresidentSection />
       <FAQSection />
     </div>
   );
