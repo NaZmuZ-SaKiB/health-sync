@@ -21,6 +21,10 @@ import Background2 from "@/assets/images/background2.webp";
 import DoctorTreating from "@/assets/images/doctor-treating.webp";
 import DoctorsTreating from "@/assets/images/doctors-treating.webp";
 import FAQImage from "@/assets/images/faq-image.webp";
+import BlogImage1 from "@/assets/images/blog-image-1.webp";
+import BlogImage2 from "@/assets/images/blog-image-2.webp";
+import BlogImage3 from "@/assets/images/blog-image-3.webp";
+import BlogImage4 from "@/assets/images/blog-image-4.webp";
 
 export const Images = {
   LogoMain,
@@ -46,4 +50,8 @@ export const Images = {
   DoctorTreating,
   DoctorsTreating,
   FAQImage,
+  BlogImage1,
+  BlogImage2,
+  BlogImage3,
+  BlogImage4,
 };
