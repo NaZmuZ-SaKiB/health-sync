@@ -1,3 +1,4 @@
+import Footer from "@/components/global/layout/Footer";
 import MainHeader from "@/components/global/layout/MainHeader";
 import TopHeader from "@/components/global/layout/TopHeader";
 import { Outlet } from "react-router";
@@ -8,6 +9,7 @@ const Layout = () => {
       <TopHeader />
       <MainHeader />
       <Outlet />
+      <Footer />
     </div>
   );
 };
