@@ -10,6 +10,7 @@ import ReviewSection from "./_components/ReviewSection";
 import HowToBookSection from "./_components/HowToBookSection";
 import FAQSection from "./_components/FAQSection";
 import PresidentSection from "./_components/PresidentSection";
+import BlogSection from "./_components/BlogSection";
 
 const Home = () => {
   return (
@@ -30,6 +31,7 @@ const Home = () => {
       <HowToBookSection />
       <PresidentSection />
       <FAQSection />
+      <BlogSection />
     </div>
   );
 };
