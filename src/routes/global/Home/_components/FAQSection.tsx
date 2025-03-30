@@ -11,11 +11,8 @@ import { Link } from "react-router";
 
 const FAQSection = () => {
   return (
-    <div
-      className="bg-white/70 bg-cover bg-center py-24 bg-blend-overlay"
-      style={{ backgroundImage: `url(${Images.HeroBG})` }}
-    >
-      <div className="hs-container">
+    <div className="hs-container">
+      <div className="py-24">
         <div className="grid grid-cols-5 items-center">
           {/* Left Side  */}
           <div className="col-span-3 pr-20">
@@ -30,7 +27,7 @@ const FAQSection = () => {
 
             <Accordion type="single" collapsible className="w-full space-y-4">
               <AccordionItem className="border-none" value="item-1">
-                <AccordionTrigger className="text-secondary bg-primary/5 cursor-pointer rounded-lg p-4 text-lg font-semibold">
+                <AccordionTrigger className="text-secondary bg-primary/5 border-primary/30 cursor-pointer rounded-lg border p-4 text-lg font-semibold hover:no-underline">
                   How do I book an appointment online?
                 </AccordionTrigger>
                 <AccordionContent className="border-secondary/10 mt-2 rounded-lg border bg-white/20 p-6 text-base leading-7 text-slate-500">
@@ -40,7 +37,7 @@ const FAQSection = () => {
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem className="border-none" value="item-2">
-                <AccordionTrigger className="text-secondary bg-primary/5 cursor-pointer rounded-lg p-4 text-lg font-semibold">
+                <AccordionTrigger className="text-secondary bg-primary/5 border-primary/30 cursor-pointer rounded-lg border p-4 text-lg font-semibold hover:no-underline">
                   What documents should I bring for my appointment?
                 </AccordionTrigger>
                 <AccordionContent className="border-secondary/10 mt-2 rounded-lg border bg-white/20 p-6 text-base leading-7 text-slate-500">
@@ -50,7 +47,7 @@ const FAQSection = () => {
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem className="border-none" value="item-3">
-                <AccordionTrigger className="text-secondary bg-primary/5 cursor-pointer rounded-lg p-4 text-lg font-semibold">
+                <AccordionTrigger className="text-secondary bg-primary/5 border-primary/30 cursor-pointer rounded-lg border p-4 text-lg font-semibold hover:no-underline">
                   Can I reschedule or cancel my appointment?
                 </AccordionTrigger>
                 <AccordionContent className="border-secondary/10 mt-2 rounded-lg border bg-white/20 p-6 text-base leading-7 text-slate-500">
@@ -60,7 +57,7 @@ const FAQSection = () => {
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem className="border-none" value="item-4">
-                <AccordionTrigger className="text-secondary bg-primary/5 cursor-pointer rounded-lg p-4 text-lg font-semibold">
+                <AccordionTrigger className="text-secondary bg-primary/5 border-primary/30 cursor-pointer rounded-lg border p-4 text-lg font-semibold hover:no-underline">
                   Do you offer emergency walk-in services?
                 </AccordionTrigger>
                 <AccordionContent className="border-secondary/10 mt-2 rounded-lg border bg-white/20 p-6 text-base leading-7 text-slate-500">
