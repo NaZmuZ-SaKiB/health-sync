@@ -11,6 +11,7 @@ import HowToBookSection from "./_components/HowToBookSection";
 import FAQSection from "./_components/FAQSection";
 import PresidentSection from "./_components/PresidentSection";
 import BlogSection from "./_components/BlogSection";
+import AppointmentSection from "./_components/AppointmentSection";
 
 const Home = () => {
   return (
@@ -24,6 +25,7 @@ const Home = () => {
         style={{ backgroundImage: `url(${Images.HeroBG})` }}
       >
         <SpecialtiesSection />
+        <AppointmentSection />
       </div>
       <ChooseUsSection />
       <DoctorSection />
