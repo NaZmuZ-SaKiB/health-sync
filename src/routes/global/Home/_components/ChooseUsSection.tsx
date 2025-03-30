@@ -4,7 +4,7 @@ import { Check } from "lucide-react";
 const ChooseUsSection = () => {
   return (
     <div
-      className="relative z-10 bg-cover bg-fixed bg-center py-16"
+      className="relative z-10 bg-cover bg-fixed bg-center py-24"
       style={{
         backgroundImage: `url(${Images.Background2})`,
       }}
