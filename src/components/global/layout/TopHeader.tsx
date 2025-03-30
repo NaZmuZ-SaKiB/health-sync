@@ -33,7 +33,7 @@ const headerData: THeaderData[] = [
   {
     icon: Icons.StethoscopeIcon,
     title: "Doctors Portal",
-    subTitle: "Register/ Login",
+    subTitle: "Register",
     link: "/doctors-portal",
     showArrow: true,
   },
