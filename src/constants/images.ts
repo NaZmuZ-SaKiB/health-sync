@@ -2,7 +2,6 @@ import LogoMain from "@/assets/images/logo-main.webp";
 import Logo from "@/assets/images/logo.webp";
 import HeroBG from "@/assets/images/hero-bg.webp";
 import BannerDoctor from "@/assets/images/banner-doctor.webp";
-import QuestionDoctor from "@/assets/images/question-doctor.webp";
 import DummyProfile1 from "@/assets/images/dummy-profile-1.webp";
 import DummyProfile2 from "@/assets/images/dummy-profile-2.webp";
 import DummyProfile3 from "@/assets/images/dummy-profile-3.webp";
@@ -14,10 +13,12 @@ import MaleDoctor3 from "@/assets/images/male-doctor-3.webp";
 import FemaleDoctor1 from "@/assets/images/female-doctor-1.webp";
 import FemaleDoctor2 from "@/assets/images/female-doctor-2.webp";
 import FemaleDoctor3 from "@/assets/images/female-doctor-3.webp";
+import QuestionDoctor from "@/assets/images/question-doctor.webp";
+import HospitalPresident from "@/assets/images/hospital-president.webp";
+import ReviewsDoctor from "@/assets/images/reviews-doctor.webp";
 import Background1 from "@/assets/images/background1.jpg";
 import Background2 from "@/assets/images/background2.webp";
 import DoctorTreating from "@/assets/images/doctor-treating.webp";
-import ReviewsDoctor from "@/assets/images/reviews-doctor.webp";
 import DoctorsTreating from "@/assets/images/doctors-treating.webp";
 import FAQImage from "@/assets/images/faq-image.webp";
 
@@ -26,7 +27,6 @@ export const Images = {
   Logo,
   HeroBG,
   BannerDoctor,
-  QuestionDoctor,
   DummyProfile1,
   DummyProfile2,
   DummyProfile3,
@@ -38,10 +38,12 @@ export const Images = {
   FemaleDoctor1,
   FemaleDoctor2,
   FemaleDoctor3,
+  QuestionDoctor,
+  HospitalPresident,
+  ReviewsDoctor,
   Background1,
   Background2,
   DoctorTreating,
-  ReviewsDoctor,
   DoctorsTreating,
   FAQImage,
 };
