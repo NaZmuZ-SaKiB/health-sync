@@ -34,14 +34,14 @@ const headerData: THeaderData[] = [
     icon: Icons.StethoscopeIcon,
     title: "Doctors Portal",
     subTitle: "Register",
-    link: "/doctors-portal",
+    link: "/auth/doctors-portal",
     showArrow: true,
   },
   {
     icon: Icons.AccountIcon,
     title: "Patient Portal",
     subTitle: "Sign In/ Sign Up",
-    link: "/sign-in",
+    link: "/auth/sign-in",
     showArrow: true,
   },
 ];
