@@ -38,7 +38,7 @@ const HSInput = ({
       name={name}
       render={({ field }) => (
         <FormItem className="group relative pt-5">
-          <FormLabel className="absolute top-7 text-base font-normal text-slate-50 transition-all duration-300 group-focus-within:top-0 group-focus-within:text-sm group-focus-within:font-medium has-[+input:not(:placeholder-shown)]:top-0">
+          <FormLabel className="absolute top-7 text-base font-normal text-slate-50 transition-all duration-300 group-focus-within:top-0 group-focus-within:text-sm group-focus-within:font-medium group-focus-within:text-yellow-300 has-[+input:not(:placeholder-shown)]:top-0 has-[+input:not(:placeholder-shown)]:text-sm has-[+input:not(:placeholder-shown)]:font-medium has-[+input:not(:placeholder-shown)]:text-yellow-300">
             {label}
             {required && "*"}
           </FormLabel>
