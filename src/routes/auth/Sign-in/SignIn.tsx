@@ -5,6 +5,9 @@ import { AuthValidation } from "@/lib/validations/auth.validation";
 import { z } from "zod";
 import HSInput from "@/components/global/form/HSInput";
 import { Form } from "@/components/ui/form";
+import HSSecretInput from "@/components/global/form/HSSecretInput";
+import HSButton from "@/components/global/shared/HSButton";
+import { Link } from "react-router";
 
 type TFormType = z.infer<typeof AuthValidation.signin>;
 
@@ -31,8 +34,37 @@ const SignInPage = () => {
           Sign In
         </h1>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(handleSignin)} className="">
-            <HSInput name="email" label="Email" type="email" />
+          <form
+            onSubmit={form.handleSubmit(handleSignin)}
+            className="space-y-5"
+          >
+            <HSInput name="email" label="Email" type="text" />
+            <div>
+              <HSSecretInput name="password" label="Password" />
+              <Link
+                to="/forgot-password"
+                className="mt-3 block text-sm text-slate-50 hover:text-yellow-300 hover:underline"
+              >
+                Forgot Password?
+              </Link>
+            </div>
+
+            <HSButton
+              variant="secondary"
+              className="h-auto w-full rounded-lg py-3"
+            >
+              Sign In
+            </HSButton>
+
+            <p className="text-sm text-slate-50">
+              Don't have an account?{" "}
+              <Link
+                to="/sign-up"
+                className="hover:text-yellow-300 hover:underline"
+              >
+                Sign Up
+              </Link>
+            </p>
           </form>
         </Form>
       </div>
