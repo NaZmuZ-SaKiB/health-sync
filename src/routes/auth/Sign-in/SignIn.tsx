@@ -42,7 +42,7 @@ const SignInPage = () => {
             <div>
               <HSSecretInput name="password" label="Password" />
               <Link
-                to="/forgot-password"
+                to="/auth/forgot-password"
                 className="mt-3 block text-sm text-slate-50 hover:text-yellow-300 hover:underline"
               >
                 Forgot Password?
@@ -59,7 +59,7 @@ const SignInPage = () => {
             <p className="text-sm text-slate-50">
               Don't have an account?{" "}
               <Link
-                to="/sign-up"
+                to="/auth/sign-up"
                 className="hover:text-yellow-300 hover:underline"
               >
                 Sign Up
