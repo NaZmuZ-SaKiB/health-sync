@@ -4,6 +4,7 @@ import "./index.css";
 import { RouterProvider } from "react-router";
 import router from "./routes";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+import { Toaster } from "sonner";
 
 const client = new ApolloClient({
   uri: import.meta.env.VITE_BACKEND_URL,
@@ -14,6 +15,7 @@ createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <ApolloProvider client={client}>
       <RouterProvider router={router} />
+      <Toaster closeButton richColors />
     </ApolloProvider>
   </StrictMode>,
 );
