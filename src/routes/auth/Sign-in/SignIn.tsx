@@ -8,10 +8,22 @@ import { Form } from "@/components/ui/form";
 import HSSecretInput from "@/components/global/form/HSSecretInput";
 import HSButton from "@/components/global/shared/HSButton";
 import { Link } from "react-router";
+import { gql, useMutation } from "@apollo/client";
+import { toast } from "sonner";
+
+const SIGN_IN = gql`
+  mutation Signin($email: String!, $password: String!) {
+    signin(email: $email, password: $password) {
+      token
+    }
+  }
+`;
 
 type TFormType = z.infer<typeof AuthValidation.signin>;
 
 const SignInPage = () => {
+  const [signinFn] = useMutation(SIGN_IN);
+
   const form = useForm<TFormType>({
     resolver: zodResolver(AuthValidation.signin),
     defaultValues: {
@@ -21,7 +33,23 @@ const SignInPage = () => {
   });
 
   const handleSignin: SubmitHandler<TFormType> = async (data) => {
-    console.log(data);
+    try {
+      toast.promise(
+        async () => {
+          return (await signinFn({ variables: { ...data } })).data?.signin;
+        },
+        {
+          loading: "Signing in...",
+          success: (data) => {
+            console.log(data);
+            return "Sign in successful";
+          },
+          error: (error: any) => error?.message,
+        },
+      );
+    } catch (error: any) {
+      console.log(error?.message);
+    }
   };
 
   return (
