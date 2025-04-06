@@ -13,7 +13,7 @@ const PresidentSection = () => {
 
       {/* Main Content */}
       <div className="hs-container">
-        <div className="grid grid-cols-2 items-center gap-10">
+        <div className="grid grid-cols-2 gap-10">
           {/* Left Side  */}
           <div className="relative">
             <img
@@ -30,8 +30,8 @@ const PresidentSection = () => {
           </div>
 
           {/* Right Side */}
-          <div className="pb-16">
-            <h2 className="text-secondary mb-4 text-4xl font-bold">
+          <div className="">
+            <h2 className="text-secondary mb-4 text-5xl leading-16 font-bold">
               A Message from Our President
             </h2>
 

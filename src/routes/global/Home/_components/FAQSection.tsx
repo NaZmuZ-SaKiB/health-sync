@@ -16,7 +16,7 @@ const FAQSection = () => {
         <div className="grid grid-cols-5 items-center">
           {/* Left Side  */}
           <div className="col-span-3 pr-20">
-            <h2 className="text-secondary mb-3 text-4xl font-bold">
+            <h2 className="text-secondary mb-3 text-5xl font-bold">
               Frequently Asked Questions
             </h2>
             <p className="mb-10 text-lg text-slate-500">

@@ -49,7 +49,7 @@ const ServicesSection = () => {
         <div className="py-24">
           {/* Title  */}
           <div className="mb-10 flex items-end justify-between">
-            <h2 className="text-secondary text-[45px] leading-14 font-bold">
+            <h2 className="text-secondary text-5xl leading-16 font-bold">
               Our Urgent Care <br /> Services
             </h2>
             <div className="flex items-center justify-end">

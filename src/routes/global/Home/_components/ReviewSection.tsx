@@ -16,6 +16,7 @@ const ReviewSection = () => {
     <div className="bg-secondary overflow-hidden">
       <div className="hs-container">
         <div className="grid grid-cols-2 items-center pt-24">
+          {/* Left Side  */}
           <div className="relative z-10">
             <img
               className="mx-auto w-full max-w-[500px]"
@@ -51,10 +52,10 @@ const ReviewSection = () => {
             <FloatingReview className="top-1/2 right-10 -translate-y-1/2" />
           </div>
 
-          {/* Review text  */}
+          {/* Right Side - Review text  */}
           <div className="px-10">
-            <h2 className="mb-7 text-4xl leading-12 font-bold text-slate-50">
-              Real Patients, Real Stories. And our Achievements
+            <h2 className="mb-7 text-5xl leading-16 font-bold text-slate-50">
+              What Our Patients Say
             </h2>
 
             <div>

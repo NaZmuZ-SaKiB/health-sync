@@ -91,7 +91,7 @@ const AboutSection = () => {
           </div>
           {/* Right Side  */}
           <div>
-            <h2 className="text-secondary mb-5 text-5xl leading-16 font-semibold">
+            <h2 className="text-secondary mb-5 text-5xl leading-16 font-bold">
               Trusted Medical Excellence for Everyone
             </h2>
             <p className="leading-7 text-slate-500">

@@ -49,7 +49,7 @@ const HowToBookSection = () => {
       <div className="grid grid-cols-3 items-center gap-20 py-24">
         {/* Left Side  */}
         <div>
-          <h2 className="text-secondary mb-3 text-4xl font-bold">
+          <h2 className="text-secondary mb-3 text-5xl font-bold">
             How to Book
           </h2>
           <p className="text-lg leading-7 font-light text-slate-500">
