@@ -1,4 +1,4 @@
-import { Images } from "@/constants";
+import { AUTH_KEY, Images } from "@/constants";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { AuthValidation } from "@/lib/validations/auth.validation";
@@ -7,9 +7,10 @@ import HSInput from "@/components/global/form/HSInput";
 import { Form } from "@/components/ui/form";
 import HSSecretInput from "@/components/global/form/HSSecretInput";
 import HSButton from "@/components/global/shared/HSButton";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { gql, useMutation } from "@apollo/client";
 import { toast } from "sonner";
+import { useCookies } from "react-cookie";
 
 const SIGN_IN = gql`
   mutation Signin($email: String!, $password: String!) {
@@ -23,6 +24,10 @@ type TFormType = z.infer<typeof AuthValidation.signin>;
 
 const SignInPage = () => {
   const [signinFn] = useMutation(SIGN_IN);
+
+  const [, setCookie] = useCookies([AUTH_KEY]);
+
+  const navigate = useNavigate();
 
   const form = useForm<TFormType>({
     resolver: zodResolver(AuthValidation.signin),
@@ -41,14 +46,15 @@ const SignInPage = () => {
         {
           loading: "Signing in...",
           success: (data) => {
-            console.log(data);
+            setCookie(AUTH_KEY, data?.token);
+            navigate("/");
             return "Sign in successful";
           },
           error: (error: any) => error?.message,
         },
       );
-    } catch (error: any) {
-      console.log(error?.message);
+    } catch {
+      toast.error("A Client error occurred");
     }
   };
 
