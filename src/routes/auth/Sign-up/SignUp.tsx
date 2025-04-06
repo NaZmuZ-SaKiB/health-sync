@@ -2,16 +2,41 @@ import HSInput from "@/components/global/form/HSInput";
 import HSSecretInput from "@/components/global/form/HSSecretInput";
 import HSButton from "@/components/global/shared/HSButton";
 import { Form } from "@/components/ui/form";
-import { Images } from "@/constants";
+import { AUTH_KEY, Images } from "@/constants";
 import { AuthValidation } from "@/lib/validations/auth.validation";
+import { gql, useMutation } from "@apollo/client";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useCookies } from "react-cookie";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import { toast } from "sonner";
 import { z } from "zod";
+
+const SIGN_UP = gql`
+  mutation Signup(
+    $email: String!
+    $password: String!
+    $confirmPassword: String!
+  ) {
+    signup(
+      email: $email
+      password: $password
+      confirmPassword: $confirmPassword
+    ) {
+      token
+    }
+  }
+`;
 
 type TFormType = z.infer<typeof AuthValidation.signup>;
 
 const SignUpPage = () => {
+  const [signupFn] = useMutation(SIGN_UP);
+
+  const [, setCookie] = useCookies([AUTH_KEY]);
+
+  const navigate = useNavigate();
+
   const form = useForm<TFormType>({
     resolver: zodResolver(AuthValidation.signup),
     defaultValues: {
@@ -22,7 +47,24 @@ const SignUpPage = () => {
   });
 
   const handleSignup: SubmitHandler<TFormType> = async (data) => {
-    console.log(data);
+    try {
+      toast.promise(
+        async () => {
+          return (await signupFn({ variables: { ...data } })).data?.signup;
+        },
+        {
+          loading: "Signing up...",
+          success: (data) => {
+            setCookie(AUTH_KEY, data?.token);
+            navigate("/");
+            return "Sign up successful";
+          },
+          error: (error: any) => error?.message,
+        },
+      );
+    } catch {
+      toast.error("A Client error occurred");
+    }
   };
 
   return (
