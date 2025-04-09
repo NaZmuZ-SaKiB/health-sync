@@ -21,6 +21,7 @@ const create = z.object({
     specialtyId: z.string().nonempty({
       message: "Specialty is required.",
     }),
+    locationId: z.string().min(1, { message: "Location is required." }),
     licenseNumber: z
       .string()
       .nonempty({ message: "License number is required." }),
