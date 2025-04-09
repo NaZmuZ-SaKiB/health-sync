@@ -60,11 +60,11 @@ const HSSelect = ({
             <FormControl>
               <SelectTrigger
                 className={cn(
-                  "rounded-none border-0 border-b-2 px-0 text-slate-50 shadow-none focus-visible:border-yellow-300 focus-visible:ring-0 [&>*]:!text-slate-50",
+                  "w-full rounded-none border-0 border-b-2 px-0 text-slate-50 shadow-none focus-visible:border-yellow-300 focus-visible:ring-0 [&>*]:!text-slate-50",
                   className,
                 )}
               >
-                <SelectValue placeholder="" />
+                <SelectValue placeholder="Select" />
               </SelectTrigger>
             </FormControl>
 
