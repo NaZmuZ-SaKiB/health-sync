@@ -56,6 +56,7 @@ const SignUpPage = () => {
           loading: "Signing up...",
           success: (data) => {
             setCookie(AUTH_KEY, data?.token);
+            form.reset();
             navigate("/");
             return "Sign up successful";
           },
@@ -72,7 +73,7 @@ const SignUpPage = () => {
       className="grid min-h-svh place-items-center bg-cover bg-center"
       style={{ backgroundImage: `url(${Images.HeroBG})` }}
     >
-      <div className="bg-primary w-full max-w-[400px] rounded-3xl p-10 shadow-2xl shadow-slate-300">
+      <div className="bg-primary-hover w-full max-w-[400px] rounded-3xl p-10 shadow-2xl shadow-slate-300">
         <h1 className="mb-5 text-center text-3xl font-semibold text-slate-50">
           Sign Up
         </h1>
@@ -89,8 +90,9 @@ const SignUpPage = () => {
             <HSButton
               variant="secondary"
               className="h-auto w-full rounded-lg py-3"
+              disabled={form.formState.isSubmitting}
             >
-              Sign Up
+              {form.formState.isSubmitting ? "Signing up..." : "Sign Up"}
             </HSButton>
 
             <p className="text-sm text-slate-50">
