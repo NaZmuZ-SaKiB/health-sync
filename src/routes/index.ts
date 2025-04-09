@@ -4,6 +4,7 @@ import { createBrowserRouter } from "react-router";
 import Home from "./global/Home/Home";
 import SignInPage from "./auth/Sign-in/SignIn";
 import SignUpPage from "./auth/Sign-up/SignUp";
+import DoctorsPortalPage from "./auth/Doctors-portal/DoctorsPortal";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: "/auth/sign-up",
         Component: SignUpPage,
+      },
+      {
+        path: "/auth/doctors-portal",
+        Component: DoctorsPortalPage,
       },
     ],
   },
