@@ -52,6 +52,7 @@ const HSSelect = ({
             {required && "*"}
           </FormLabel>
           <Select
+            {...field}
             onValueChange={field.onChange}
             defaultValue={field.value}
             disabled={disabled}
