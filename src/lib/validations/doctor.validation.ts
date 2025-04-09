@@ -14,7 +14,7 @@ const create = z.object({
   address: z
     .string()
     .min(5, { message: "Address must be at least 5 characters long." }),
-  dateOfBirth: z.coerce.date({ message: "Invalid date format." }),
+  dateOfBirth: z.string().date("Invalid date format."),
   gender: CommonValidation.gender,
   profilePicture: z.string().optional(),
   doctor: z.object({
