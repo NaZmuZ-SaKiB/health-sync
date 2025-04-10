@@ -1,7 +1,7 @@
 import { AUTH_KEY, Images } from "@/constants";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { AuthValidation } from "@/lib/validations/auth.validation";
+import { AuthValidation } from "@/lib/modules/auth/auth.validation";
 import { z } from "zod";
 import HSInput from "@/components/global/form/HSInput";
 import { Form } from "@/components/ui/form";
