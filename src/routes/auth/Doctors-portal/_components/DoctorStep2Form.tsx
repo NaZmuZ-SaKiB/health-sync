@@ -8,12 +8,13 @@ import { gql, useMutation, useQuery } from "@apollo/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { MoveLeft } from "lucide-react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useNavigate } from "react-router";
 import { toast } from "sonner";
 import { z } from "zod";
+import DoctorRegistrationSteps from "./DoctorRegistrationSteps";
 
 type TProps = {
-  setStep: React.Dispatch<React.SetStateAction<1 | 2>>;
+  prevStep: () => void;
+  nextStep: () => void;
   formData: any;
 };
 
@@ -45,10 +46,8 @@ const DOCTOR_CREATE = gql`
   }
 `;
 
-const DoctorStep2Form = ({ setStep, formData }: TProps) => {
+const DoctorStep2Form = ({ prevStep, nextStep, formData }: TProps) => {
   const [createDoctorFn] = useMutation(DOCTOR_CREATE);
-
-  const navigate = useNavigate();
 
   const form = useForm<TFormType>({
     resolver: zodResolver(DoctorValidation.create),
@@ -66,10 +65,6 @@ const DoctorStep2Form = ({ setStep, formData }: TProps) => {
     },
   });
 
-  const previousStep = () => {
-    setStep(1);
-  };
-
   const onSubmit: SubmitHandler<TFormType> = async (data) => {
     try {
       toast.promise(
@@ -79,9 +74,8 @@ const DoctorStep2Form = ({ setStep, formData }: TProps) => {
         {
           loading: "Submitting Form...",
           success: () => {
-            form.reset();
-            navigate("/");
-            return "Registration successful. Wait for Verification.";
+            nextStep();
+            return "Registration successful.";
           },
           error: (error: any) => error?.message,
         },
@@ -110,6 +104,14 @@ const DoctorStep2Form = ({ setStep, formData }: TProps) => {
 
   return (
     <Form {...form}>
+      <h1 className="mb-8 text-center text-3xl font-semibold text-slate-50">
+        Doctor Rgistration
+      </h1>
+
+      <div className="mb-8">
+        <DoctorRegistrationSteps step={2} />
+      </div>
+
       <form
         onSubmit={form.handleSubmit(onSubmit)}
         className="grid grid-cols-2 gap-x-8 gap-y-5"
@@ -153,7 +155,7 @@ const DoctorStep2Form = ({ setStep, formData }: TProps) => {
           className="text-secondary h-auto w-full rounded-lg bg-slate-100 py-3 hover:bg-slate-200"
           disabled={form.formState.isSubmitting}
           type="button"
-          onClick={previousStep}
+          onClick={prevStep}
         >
           <MoveLeft /> Go Back
         </HSButton>
