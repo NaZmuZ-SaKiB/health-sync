@@ -5,14 +5,14 @@ import HSTextarea from "@/components/global/form/HSTextarea";
 import HSButton from "@/components/global/shared/HSButton";
 import { Form } from "@/components/ui/form";
 import { GENDER, genders } from "@/constants";
-import { DoctorValidation } from "@/lib/validations/doctor.validation";
+import { DoctorValidation } from "@/lib/modules/doctor/doctor.validation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { MoveRight } from "lucide-react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
 
 type TProps = {
-  setStep: React.Dispatch<React.SetStateAction<1 | 2 | 3>>;
+  setStep: React.Dispatch<React.SetStateAction<1 | 2>>;
   setFormData: React.Dispatch<React.SetStateAction<any | null>>;
 };
 
