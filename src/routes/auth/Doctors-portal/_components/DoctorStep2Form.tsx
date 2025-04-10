@@ -3,23 +3,21 @@ import HSSelect from "@/components/global/form/HSSelect";
 import HSTextarea from "@/components/global/form/HSTextarea";
 import HSButton from "@/components/global/shared/HSButton";
 import { Form } from "@/components/ui/form";
-import { DoctorValidation } from "@/lib/validations/doctor.validation";
-import { gql, useQuery } from "@apollo/client";
+import { DoctorValidation } from "@/lib/modules/doctor/doctor.validation";
+import { gql, useMutation, useQuery } from "@apollo/client";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { MoveLeft, MoveRight } from "lucide-react";
+import { MoveLeft } from "lucide-react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { useNavigate } from "react-router";
+import { toast } from "sonner";
 import { z } from "zod";
 
 type TProps = {
-  setStep: React.Dispatch<React.SetStateAction<1 | 2 | 3>>;
-  setFormData: React.Dispatch<React.SetStateAction<any | null>>;
+  setStep: React.Dispatch<React.SetStateAction<1 | 2>>;
+  formData: any;
 };
 
-const formSchema = DoctorValidation.create.pick({
-  doctor: true,
-});
-
-type TFormType = z.infer<typeof formSchema>;
+type TFormType = z.infer<typeof DoctorValidation.create>;
 
 const SPECIALTIES_OPTIONS = gql`
   query Specialties {
@@ -39,10 +37,23 @@ const LOCATIONS_OPTIONS = gql`
   }
 `;
 
-const DoctorStep2Form = ({ setStep, setFormData }: TProps) => {
+const DOCTOR_CREATE = gql`
+  mutation CreateDoctor($input: UserDoctorCreateInput!) {
+    createDoctor(input: $input) {
+      success
+    }
+  }
+`;
+
+const DoctorStep2Form = ({ setStep, formData }: TProps) => {
+  const [createDoctorFn] = useMutation(DOCTOR_CREATE);
+
+  const navigate = useNavigate();
+
   const form = useForm<TFormType>({
-    resolver: zodResolver(formSchema),
+    resolver: zodResolver(DoctorValidation.create),
     defaultValues: {
+      ...formData,
       doctor: {
         specialtyId: "",
         locationId: "",
@@ -59,9 +70,25 @@ const DoctorStep2Form = ({ setStep, setFormData }: TProps) => {
     setStep(1);
   };
 
-  const onSubmit: SubmitHandler<TFormType> = (data) => {
-    setFormData((prevData: any) => ({ ...prevData, ...data }));
-    setStep(3);
+  const onSubmit: SubmitHandler<TFormType> = async (data) => {
+    try {
+      toast.promise(
+        async () => {
+          return await createDoctorFn({ variables: { input: { ...data } } });
+        },
+        {
+          loading: "Submitting Form...",
+          success: () => {
+            form.reset();
+            navigate("/");
+            return "Registration successful. Wait for Verification.";
+          },
+          error: (error: any) => error?.message,
+        },
+      );
+    } catch {
+      toast.error("A Client error occurred");
+    }
   };
 
   const { data: specialtiesData, loading: specialtiesLoading } =
@@ -128,7 +155,7 @@ const DoctorStep2Form = ({ setStep, setFormData }: TProps) => {
           type="button"
           onClick={previousStep}
         >
-          <MoveLeft /> Previous Step
+          <MoveLeft /> Go Back
         </HSButton>
 
         <HSButton
@@ -136,7 +163,7 @@ const DoctorStep2Form = ({ setStep, setFormData }: TProps) => {
           className="h-auto w-full rounded-lg py-3"
           disabled={form.formState.isSubmitting}
         >
-          Next Step <MoveRight />
+          {form.formState.isSubmitting ? "Submitting..." : "Submit"}
         </HSButton>
       </form>
     </Form>
