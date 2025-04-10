@@ -3,7 +3,7 @@ import HSSecretInput from "@/components/global/form/HSSecretInput";
 import HSButton from "@/components/global/shared/HSButton";
 import { Form } from "@/components/ui/form";
 import { AUTH_KEY, Images } from "@/constants";
-import { AuthValidation } from "@/lib/validations/auth.validation";
+import { AuthValidation } from "@/lib/modules/auth/auth.validation";
 import { gql, useMutation } from "@apollo/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useCookies } from "react-cookie";
