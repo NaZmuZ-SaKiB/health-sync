@@ -1,4 +1,6 @@
+import { Link } from "react-router";
 import DoctorRegistrationSteps from "./DoctorRegistrationSteps";
+import HSButton from "@/components/global/shared/HSButton";
 
 const DoctorSuccessStep = ({ email }: { email?: string }) => {
   return (
@@ -22,6 +24,14 @@ const DoctorSuccessStep = ({ email }: { email?: string }) => {
       </p>
       <br />
       <p className="text-slate-50">We look forward to having you on board!</p>
+
+      <div className="mt-8 flex w-full justify-center">
+        <Link to={"/"}>
+          <HSButton variant="secondary" className="h-auto px-8 py-3">
+            Back to Home
+          </HSButton>
+        </Link>
+      </div>
     </div>
   );
 };
