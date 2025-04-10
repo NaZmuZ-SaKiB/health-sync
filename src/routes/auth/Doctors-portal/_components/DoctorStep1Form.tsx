@@ -10,9 +10,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { MoveRight } from "lucide-react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
+import DoctorRegistrationSteps from "./DoctorRegistrationSteps";
 
 type TProps = {
-  setStep: React.Dispatch<React.SetStateAction<1 | 2>>;
+  nextStep: () => void;
   setFormData: React.Dispatch<React.SetStateAction<any | null>>;
 };
 
@@ -33,7 +34,7 @@ const genderOptions = genders.map((gender) => ({
   value: gender,
 }));
 
-const DoctorStep1Form = ({ setStep, setFormData }: TProps) => {
+const DoctorStep1Form = ({ nextStep, setFormData }: TProps) => {
   const form = useForm<TFormType>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -48,11 +49,19 @@ const DoctorStep1Form = ({ setStep, setFormData }: TProps) => {
 
   const onSubmit: SubmitHandler<TFormType> = (data) => {
     setFormData((prevData: any) => ({ ...prevData, ...data }));
-    setStep(2);
+    nextStep();
   };
 
   return (
     <Form {...form}>
+      <h1 className="mb-8 text-center text-3xl font-semibold text-slate-50">
+        Doctor Rgistration
+      </h1>
+
+      <div className="mb-8">
+        <DoctorRegistrationSteps step={1} />
+      </div>
+
       <form
         onSubmit={form.handleSubmit(onSubmit)}
         className="grid grid-cols-2 gap-x-8 gap-y-5"
