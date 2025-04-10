@@ -2,23 +2,15 @@ import { Images } from "@/constants";
 import { useState } from "react";
 import DoctorStep1Form from "./_components/DoctorStep1Form";
 import DoctorStep2Form from "./_components/DoctorStep2Form";
-import DoctorStep3Form from "./_components/DoctorStep3Form";
 
 const DoctorsPortalPage = () => {
-  const [step, setStep] = useState<1 | 2 | 3>(2);
+  const [step, setStep] = useState<1 | 2>(1);
 
   const [formData, setFormData] = useState<Record<string, any> | null>(null);
 
   const renderSteps = {
     1: () => <DoctorStep1Form setStep={setStep} setFormData={setFormData} />,
-    2: () => <DoctorStep2Form setStep={setStep} setFormData={setFormData} />,
-    3: () => (
-      <DoctorStep3Form
-        setStep={setStep}
-        formData={formData}
-        setFormData={setFormData}
-      />
-    ),
+    2: () => <DoctorStep2Form setStep={setStep} formData={formData} />,
   };
 
   return (
