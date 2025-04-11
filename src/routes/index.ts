@@ -7,6 +7,7 @@ import SignInPage from "./auth/Sign-in/SignIn";
 import SignUpPage from "./auth/Sign-up/SignUp";
 import DoctorsPortalPage from "./auth/Doctors-portal/DoctorsPortal";
 import DashboardPage from "./admin/Dashboard/Dashboard";
+import SpecialtiesPage from "./admin/Specialties/Specialties";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
       {
         path: "/admin",
         Component: DashboardPage,
+      },
+      {
+        path: "/admin/specialties",
+        Component: SpecialtiesPage,
       },
     ],
   },
