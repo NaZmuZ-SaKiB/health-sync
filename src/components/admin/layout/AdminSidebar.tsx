@@ -15,7 +15,7 @@ const AdminSidebar = () => {
   const { state } = useSidebar();
   return (
     <Sidebar collapsible="icon" className="[&>div]:bg-secondary border-none">
-      <SidebarHeader className="mb-5 hover:bg-slate-50/5">
+      <SidebarHeader className="hover:bg-slate-50/5">
         <Link
           to="/"
           className="flex flex-row items-center justify-center gap-3 py-5"
