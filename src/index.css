@@ -114,6 +114,9 @@
   --color-primary-hover: #00a0be;
   --color-secondary: #031c4e;
   --color-btn-primary: #031642;
+
+  /* Custom Screen Sizes  */
+  --breakpoint-xs: 480px;
 }
 
 @layer base {
