@@ -5,8 +5,8 @@ export type TSpecialty = {
   name: string;
   description?: string;
   icon?: string; // TODO: update to image model
-  createdAt?: string;
-  updatedAt?: string;
+  createdAt: string;
+  updatedAt: string;
 
   doctors: TDoctor[];
 };
