@@ -1,3 +1,4 @@
+import TableLoader from "@/components/admin/shared/TableLoader";
 import ABox from "@/components/admin/ui/ABox";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -22,7 +23,7 @@ const SPECIALTY_LIST = gql`
 const SpecialtyTable = () => {
   const { data: specialtiesData, loading } = useQuery(SPECIALTY_LIST);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <TableLoader />;
 
   return (
     <ABox>
