@@ -1,3 +1,4 @@
+import PlaceholderImage from "@/assets/images/placeholder-image.svg";
 import LogoMain from "@/assets/images/logo-main.webp";
 import Logo from "@/assets/images/logo.webp";
 import HeroBG from "@/assets/images/hero-bg.webp";
@@ -28,6 +29,7 @@ import BlogImage3 from "@/assets/images/blog-image-3.webp";
 import BlogImage4 from "@/assets/images/blog-image-4.webp";
 
 export const Images = {
+  PlaceholderImage,
   LogoMain,
   Logo,
   HeroBG,
