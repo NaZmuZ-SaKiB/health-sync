@@ -140,6 +140,34 @@
     @apply mx-auto max-w-[1400px];
   }
 }
+
+@layer components {
+  /*? --------------------------------- */
+  /*? --------- Primary Table --------- */
+  /*? --------------------------------- */
+
+  .primary-table {
+    @apply w-full;
+  }
+
+  .primary-table tbody {
+    @apply text-sm text-slate-900;
+  }
+
+  .primary-table th {
+    @apply bg-slate-50 text-sm font-semibold text-slate-900;
+  }
+
+  .primary-table td,
+  .primary-table th {
+    @apply border-collapse border p-1.5 text-center max-lg:text-xs;
+  }
+
+  /*? -------------------------------------------- */
+  /*? ------------- Primary Table End ------------ */
+  /*? -------------------------------------------- */
+}
+
 /*? ------------------- */
 /*? ----Animations----- */
 /*? ------------------- */
