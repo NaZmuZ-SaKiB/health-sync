@@ -12,7 +12,9 @@ const SpecialtiesPage = () => {
       <AGrid>
         <SpecialtyCreateForm />
 
-        <SpecialtyTable />
+        <div>
+          <SpecialtyTable />
+        </div>
       </AGrid>
     </APageContainer>
   );
