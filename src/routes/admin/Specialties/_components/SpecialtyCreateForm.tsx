@@ -28,7 +28,7 @@ const SpecialtyCreateForm = () => {
 
   return (
     <ABox>
-      <AFormH2>Add Brand</AFormH2>
+      <AFormH2>Add Specialty</AFormH2>
 
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
