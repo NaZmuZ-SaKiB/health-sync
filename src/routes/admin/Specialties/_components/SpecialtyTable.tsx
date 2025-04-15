@@ -3,25 +3,16 @@ import ABox from "@/components/admin/ui/ABox";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Images } from "@/constants";
+import { SpecialtyQueries } from "@/lib/modules/specialty/specialty.queries";
 import { TSpecialty } from "@/lib/modules/specialty/specialty.type";
 import formatDate from "@/utils/formatDate";
-import { gql, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { Edit, Eye, Trash2 } from "lucide-react";
 
-const SPECIALTY_LIST = gql`
-  query Specialties {
-    specialties {
-      id
-      name
-      icon
-      createdAt
-      updatedAt
-    }
-  }
-`;
-
 const SpecialtyTable = () => {
-  const { data: specialtiesData, loading } = useQuery(SPECIALTY_LIST);
+  const { data: specialtiesData, loading } = useQuery(
+    SpecialtyQueries.SPECIALTY_LIST,
+  );
 
   if (loading) return <TableLoader />;
 
