@@ -13,7 +13,7 @@ const HSButton = ({ className, children, ...props }: ButtonProps) => {
   return (
     <Button
       className={cn(
-        "cursor-pointer rounded-xl duration-300 active:scale-90",
+        "cursor-pointer rounded-xl duration-300 focus-visible:ring-0 active:scale-90",
         {
           "bg-primary hover:bg-primary-hover":
             props.variant === "default" || !props.variant,
