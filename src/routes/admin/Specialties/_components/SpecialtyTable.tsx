@@ -26,8 +26,8 @@ const SpecialtyTable = () => {
             </th>
             <th>Icon</th>
             <th>Name</th>
-            <th>Created At</th>
-            <th>Updated At</th>
+            <th>Date Added</th>
+            <th>Last Modified</th>
             <th>Actions</th>
           </tr>
         </thead>
