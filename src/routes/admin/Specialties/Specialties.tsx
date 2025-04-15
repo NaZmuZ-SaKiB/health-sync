@@ -10,7 +10,9 @@ const SpecialtiesPage = () => {
       <APageHeader title="Specialties" />
 
       <AGrid>
-        <SpecialtyCreateForm />
+        <div>
+          <SpecialtyCreateForm />
+        </div>
 
         <div>
           <SpecialtyTable />
