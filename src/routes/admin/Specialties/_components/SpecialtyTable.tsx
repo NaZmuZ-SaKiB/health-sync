@@ -1,10 +1,12 @@
 import TableLoader from "@/components/admin/shared/TableLoader";
 import ABox from "@/components/admin/ui/ABox";
+import HSPagination from "@/components/global/shared/HSPagination";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Images } from "@/constants";
 import { SpecialtyQueries } from "@/lib/modules/specialty/specialty.queries";
 import { TSpecialty } from "@/lib/modules/specialty/specialty.type";
+import { TMeta } from "@/types";
 import formatDate from "@/utils/formatDate";
 import { useQuery } from "@apollo/client";
 import { Edit, Eye, Trash2 } from "lucide-react";
@@ -19,6 +21,8 @@ const SpecialtyTable = () => {
       variables: Object.fromEntries(searchParams),
     },
   );
+
+  const meta: TMeta = specialtiesData?.getAllSpecialties?.meta;
 
   if (loading) return <TableLoader />;
 
@@ -76,6 +80,15 @@ const SpecialtyTable = () => {
           )}
         </tbody>
       </table>
+
+      <div className="mt-5">
+        <HSPagination
+          page={meta?.page || 1}
+          limit={meta?.limit || 10}
+          total={meta?.total}
+          admin
+        />
+      </div>
     </ABox>
   );
 };
