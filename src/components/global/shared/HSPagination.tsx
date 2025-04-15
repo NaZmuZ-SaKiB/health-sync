@@ -159,7 +159,7 @@ const RenderPaginationItems = ({
     items.unshift(
       <PaginationItem
         key="ellipsis-start"
-        className={cn("cursor-pointer rounded-md bg-slate-100", {
+        className={cn("cursor-pointer rounded-md border bg-transparent", {
           "rounded-none": admin,
         })}
       >
