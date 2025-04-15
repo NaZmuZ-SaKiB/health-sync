@@ -7,7 +7,6 @@ const SPECIALTY_LIST = gql`
     $searchTerm: String
     $sortBy: String
     $sortOrder: String
-    $name: String
   ) {
     getAllSpecialties(
       page: $page
