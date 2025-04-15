@@ -1,13 +1,34 @@
 import { gql } from "@apollo/client";
 
 const SPECIALTY_LIST = gql`
-  query Specialties {
-    specialties {
-      id
-      name
-      icon
-      createdAt
-      updatedAt
+  query GetAllSpecialties(
+    $page: String
+    $limit: String
+    $searchTerm: String
+    $sortBy: String
+    $sortOrder: String
+    $name: String
+  ) {
+    getAllSpecialties(
+      page: $page
+      limit: $limit
+      searchTerm: $searchTerm
+      sortBy: $sortBy
+      sortOrder: $sortOrder
+      name: $name
+    ) {
+      specialties {
+        id
+        name
+        icon
+        createdAt
+        updatedAt
+      }
+      meta {
+        page
+        limit
+        total
+      }
     }
   }
 `;
