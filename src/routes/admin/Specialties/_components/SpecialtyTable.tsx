@@ -22,9 +22,10 @@ const SpecialtyTable = () => {
     },
   );
 
-  const meta: TMeta = specialtiesData?.getAllSpecialties?.meta;
-
   if (loading) return <TableLoader />;
+
+  const meta: TMeta = specialtiesData?.getAllSpecialties?.meta;
+  const totalPages = Math.ceil(meta.total / meta.limit);
 
   return (
     <ABox>
@@ -81,13 +82,19 @@ const SpecialtyTable = () => {
         </tbody>
       </table>
 
-      <div className="mt-5">
-        <HSPagination
-          page={meta?.page || 1}
-          limit={meta?.limit || 10}
-          total={meta?.total}
-          admin
-        />
+      <div className="mt-2">
+        <div className="text-sm text-slate-700">
+          Showing {meta.limit} of {meta.total}. ({totalPages} page
+          {totalPages > 1 ? "s" : ""}.)
+        </div>
+        {totalPages !== 1 && (
+          <HSPagination
+            page={meta?.page || 1}
+            limit={meta?.limit || 10}
+            total={meta?.total}
+            admin
+          />
+        )}
       </div>
     </ABox>
   );
