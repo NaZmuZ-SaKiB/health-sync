@@ -3,6 +3,8 @@ import APageContainer from "@/components/admin/ui/APageContainer";
 import APageHeader from "@/components/admin/ui/APageHeader";
 import SpecialtyCreateForm from "./_components/SpecialtyCreateForm";
 import SpecialtyTable from "./_components/SpecialtyTable";
+import SearchFilter from "@/components/admin/shared/SearchFilter";
+import ABox from "@/components/admin/ui/ABox";
 
 const SpecialtiesPage = () => {
   return (
@@ -14,7 +16,10 @@ const SpecialtiesPage = () => {
           <SpecialtyCreateForm />
         </div>
 
-        <div>
+        <div className="space-y-4">
+          <ABox>
+            <SearchFilter />
+          </ABox>
           <SpecialtyTable />
         </div>
       </AGrid>
