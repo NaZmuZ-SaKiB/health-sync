@@ -20,7 +20,7 @@ const AGrid = ({
   return (
     <div
       className={cn(
-        "grid-cols-[40%_1fr] gap-4 @5xl:grid",
+        "grid-cols-[40%_1fr] gap-4 @max-5xl:space-y-4 @5xl:grid",
         {
           "grid-cols-[1fr_1fr]": equal,
           "grid-cols-[1fr_40%]": reverse,
