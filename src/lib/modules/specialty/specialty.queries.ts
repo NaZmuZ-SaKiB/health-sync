@@ -12,6 +12,19 @@ const SPECIALTY_LIST = gql`
   }
 `;
 
+const CREATE_SPECIALTY = gql`
+  mutation CreateSpecialty(
+    $name: String!
+    $description: String
+    $icon: String
+  ) {
+    createSpecialty(name: $name, description: $description, icon: $icon) {
+      success
+    }
+  }
+`;
+
 export const SpecialtyQueries = {
   SPECIALTY_LIST,
+  CREATE_SPECIALTY,
 };
