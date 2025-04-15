@@ -12,6 +12,7 @@ import { useQuery } from "@apollo/client";
 import { Edit, Eye, Trash2 } from "lucide-react";
 import { ChangeEvent } from "react";
 import { useSearchParams } from "react-router";
+import SpecialtyDelete from "./SpecialtyDelete";
 
 type TProps = {
   selected: string[];
@@ -104,13 +105,15 @@ const SpecialtyTable = ({ selected, setSelected }: TProps) => {
                     <Button size="icon" variant="outline">
                       <Edit />
                     </Button>
-                    <Button
-                      size="icon"
-                      variant="outline"
-                      className="hover:border-red-500 hover:bg-red-500 hover:text-slate-50"
-                    >
-                      <Trash2 />
-                    </Button>
+                    <SpecialtyDelete selected={[specialty.id]}>
+                      <Button
+                        size="icon"
+                        variant="outline"
+                        className="cursor-pointer hover:border-red-500 hover:bg-red-50 hover:text-red-500"
+                      >
+                        <Trash2 />
+                      </Button>
+                    </SpecialtyDelete>
                   </div>
                 </td>
               </tr>
