@@ -10,9 +10,15 @@ import { TMeta } from "@/types";
 import formatDate from "@/utils/formatDate";
 import { useQuery } from "@apollo/client";
 import { Edit, Eye, Trash2 } from "lucide-react";
+import { ChangeEvent } from "react";
 import { useSearchParams } from "react-router";
 
-const SpecialtyTable = () => {
+type TProps = {
+  selected: string[];
+  setSelected: (selected: string[]) => void;
+};
+
+const SpecialtyTable = ({ selected, setSelected }: TProps) => {
   const [searchParams] = useSearchParams();
 
   const { data: specialtiesData, loading } = useQuery(
@@ -21,6 +27,28 @@ const SpecialtyTable = () => {
       variables: Object.fromEntries(searchParams),
     },
   );
+
+  // Handle Select
+  const selectAll = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.checked) {
+      setSelected(
+        specialtiesData?.getAllSpecialties?.specialties.map(
+          (specialty: TSpecialty) => specialty.id,
+        ) || [],
+      );
+    } else {
+      setSelected([]);
+    }
+  };
+
+  const handleSelect = (e: ChangeEvent<HTMLInputElement>, id: string) => {
+    if (e.target.checked) {
+      setSelected([...selected, id]);
+    } else {
+      setSelected(selected.filter((item) => item !== id));
+    }
+  };
+  // End Handle Select
 
   if (loading) return <TableLoader />;
 
@@ -33,7 +61,11 @@ const SpecialtyTable = () => {
         <thead>
           <tr>
             <th className="w-10">
-              <Input type="checkbox" className="mx-auto size-4" />
+              <Input
+                type="checkbox"
+                className="mx-auto size-4"
+                onChange={selectAll}
+              />
             </th>
             <th>Icon</th>
             <th>Name</th>
@@ -47,7 +79,12 @@ const SpecialtyTable = () => {
             (specialty: TSpecialty) => (
               <tr key={specialty.id}>
                 <td>
-                  <Input type="checkbox" className="mx-auto size-4" />
+                  <Input
+                    checked={selected.includes(specialty.id)}
+                    onChange={(e) => handleSelect(e, specialty.id)}
+                    type="checkbox"
+                    className="mx-auto size-4"
+                  />
                 </td>
                 <td>
                   <img
