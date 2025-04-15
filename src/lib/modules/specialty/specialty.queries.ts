@@ -43,7 +43,16 @@ const CREATE_SPECIALTY = gql`
   }
 `;
 
+const DELETE_SPECIALTIES = gql`
+  mutation RemoveSpecialties($ids: [String!]!) {
+    removeSpecialties(ids: $ids) {
+      success
+    }
+  }
+`;
+
 export const SpecialtyQueries = {
   SPECIALTY_LIST,
   CREATE_SPECIALTY,
+  DELETE_SPECIALTIES,
 };
