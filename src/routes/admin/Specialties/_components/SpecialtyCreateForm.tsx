@@ -5,8 +5,9 @@ import AFormH2 from "@/components/admin/ui/AFormH2";
 import HSButton from "@/components/global/shared/HSButton";
 import { Form } from "@/components/ui/form";
 import { AUTH_KEY } from "@/constants";
+import { SpecialtyQueries } from "@/lib/modules/specialty/specialty.queries";
 import { SpecialtyValidation } from "@/lib/modules/specialty/specialty.validation";
-import { gql, useMutation } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useCookies } from "react-cookie";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -15,29 +16,16 @@ import { z } from "zod";
 
 type TFormType = z.infer<typeof SpecialtyValidation.create>;
 
-const CREATE_SPECIALTY = gql`
-  mutation CreateSpecialty(
-    $name: String!
-    $description: String
-    $icon: String
-  ) {
-    createSpecialty(name: $name, description: $description, icon: $icon) {
-      success
-    }
-  }
-`;
-
 const SpecialtyCreateForm = () => {
   const [cookies] = useCookies([AUTH_KEY]);
 
-  console.log(cookies[AUTH_KEY]);
-
-  const [createSpecialtyFn] = useMutation(CREATE_SPECIALTY, {
+  const [createSpecialtyFn] = useMutation(SpecialtyQueries.CREATE_SPECIALTY, {
     context: {
       headers: {
         Authorization: cookies[AUTH_KEY] || "",
       },
     },
+    refetchQueries: [SpecialtyQueries.SPECIALTY_LIST],
   });
 
   const form = useForm<TFormType>({
