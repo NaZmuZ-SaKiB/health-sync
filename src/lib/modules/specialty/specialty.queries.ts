@@ -14,7 +14,6 @@ const SPECIALTY_LIST = gql`
       searchTerm: $searchTerm
       sortBy: $sortBy
       sortOrder: $sortOrder
-      name: $name
     ) {
       specialties {
         id
