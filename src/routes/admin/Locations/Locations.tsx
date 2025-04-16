@@ -11,6 +11,8 @@ import LocationTable from "./_components/LocationTable";
 import { Link } from "react-router";
 import HSButton from "@/components/global/shared/HSButton";
 import { Plus } from "lucide-react";
+import LocationDelete from "./_components/LocationDelete";
+import { Button } from "@/components/ui/button";
 
 const locationSortByOptions = ["name", "createdAt", "updatedAt"];
 
@@ -30,7 +32,15 @@ const LocationsPage = () => {
       <ABox>
         <div className="mb-2 flex items-center gap-2">
           <SelectedCount count={selected.length} />
-          {/* // TODO: delete  */}
+          <LocationDelete selected={selected} setSelected={setSelected}>
+            <Button
+              className="cursor-pointer rounded-none border border-red-300 bg-transparent text-red-500 hover:border-red-500 hover:bg-red-50 hover:text-red-500 focus-visible:border-red-500 focus-visible:ring-0"
+              disabled={selected.length === 0}
+              size="sm"
+            >
+              Delete
+            </Button>
+          </LocationDelete>
           <SortByFilter options={locationSortByOptions} defaultValueIndex={1} />
           <SortOrderFilter />
           <LimitFilter />
