@@ -13,6 +13,7 @@ import { Edit, Eye, Trash2 } from "lucide-react";
 import { ChangeEvent } from "react";
 import { Link, useSearchParams } from "react-router";
 import SpecialtyDelete from "./SpecialtyDelete";
+import RefreshButton from "@/components/admin/shared/RefreshButton";
 
 type TProps = {
   selected: string[];
@@ -22,12 +23,13 @@ type TProps = {
 const SpecialtyTable = ({ selected, setSelected }: TProps) => {
   const [searchParams] = useSearchParams();
 
-  const { data: specialtiesData, loading } = useQuery(
-    SpecialtyQueries.SPECIALTY_LIST,
-    {
-      variables: Object.fromEntries(searchParams),
-    },
-  );
+  const {
+    data: specialtiesData,
+    loading,
+    refetch,
+  } = useQuery(SpecialtyQueries.SPECIALTY_LIST, {
+    variables: Object.fromEntries(searchParams),
+  });
 
   // Handle Select
   const selectAll = (e: ChangeEvent<HTMLInputElement>) => {
@@ -58,6 +60,8 @@ const SpecialtyTable = ({ selected, setSelected }: TProps) => {
 
   return (
     <ABox>
+      <RefreshButton fn={refetch} className="mb-2" />
+
       <table className="primary-table table table-auto">
         <thead>
           <tr>
