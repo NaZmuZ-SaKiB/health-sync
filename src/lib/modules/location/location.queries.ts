@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client";
 
 const LOCATION_LIST = gql`
-  query Locations(
+  query GetAllLocations(
     $page: String
     $limit: String
     $searchTerm: String
@@ -32,6 +32,20 @@ const LOCATION_LIST = gql`
   }
 `;
 
+const LOCATION_BY_ID = gql`
+  query Location($id: String!) {
+    location(id: $id) {
+      id
+      name
+      mapUrl
+      address
+      phoneNumber
+      description
+      image
+    }
+  }
+`;
+
 const CREATE_LOCATION = gql`
   mutation CreateLocation(
     $name: String!
@@ -54,4 +68,42 @@ const CREATE_LOCATION = gql`
   }
 `;
 
-export const LocationQueries = { LOCATION_LIST, CREATE_LOCATION };
+const UPDATE_LOCATION = gql`
+  mutation UpdateLocation(
+    $locationId: String!
+    $name: String
+    $mapUrl: String
+    $address: String
+    $phoneNumber: String
+    $description: String
+    $icon: String
+  ) {
+    updateLocation(
+      locationId: $locationId
+      name: $name
+      mapUrl: $mapUrl
+      address: $address
+      phoneNumber: $phoneNumber
+      description: $description
+      icon: $icon
+    ) {
+      success
+    }
+  }
+`;
+
+const DELETE_LOCATIONS = gql`
+  mutation RemoveLocations($ids: [String!]!) {
+    removeLocations(ids: $ids) {
+      success
+    }
+  }
+`;
+
+export const LocationQueries = {
+  LOCATION_LIST,
+  LOCATION_BY_ID,
+  CREATE_LOCATION,
+  UPDATE_LOCATION,
+  DELETE_LOCATIONS,
+};
