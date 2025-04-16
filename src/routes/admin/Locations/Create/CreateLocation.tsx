@@ -70,7 +70,7 @@ const CreateLocationPage = () => {
   };
   return (
     <APageContainer>
-      <APageHeader title="Create Location" />
+      <APageHeader title="Create Location" backButton />
 
       <AGrid>
         <div>
