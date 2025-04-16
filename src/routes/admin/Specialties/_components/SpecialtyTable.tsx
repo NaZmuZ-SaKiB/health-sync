@@ -132,7 +132,8 @@ const SpecialtyTable = ({ selected, setSelected }: TProps) => {
 
       <div className="mt-2">
         <div className="text-sm text-slate-700">
-          Showing {meta.limit} of {meta.total}. ({totalPages} page
+          Showing {meta.limit < meta.total ? meta.limit : meta.total} of{" "}
+          {meta.total}. ({totalPages} page
           {totalPages > 1 ? "s" : ""}.)
         </div>
         {totalPages !== 1 && (
