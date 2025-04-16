@@ -57,6 +57,7 @@ const SpecialtyEditForm = ({ specialty }: TProps) => {
         {
           loading: "Updating Specialty...",
           success: () => {
+            navigate("/admin/specialties");
             return "Specialty updated successfully.";
           },
           error: (error: any) => error?.message,
@@ -69,7 +70,7 @@ const SpecialtyEditForm = ({ specialty }: TProps) => {
 
   const onCancel = () => {
     form.reset();
-    navigate(-1);
+    navigate("/admin/specialties");
   };
 
   return (
