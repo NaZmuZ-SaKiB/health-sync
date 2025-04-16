@@ -11,6 +11,8 @@ import { useQuery } from "@apollo/client";
 import { Edit, Eye, Trash2 } from "lucide-react";
 import { ChangeEvent } from "react";
 import { Link, useSearchParams } from "react-router";
+import LocationDelete from "./LocationDelete";
+import RefreshButton from "@/components/admin/shared/RefreshButton";
 
 type TProps = {
   selected: string[];
@@ -20,12 +22,13 @@ type TProps = {
 const LocationTable = ({ selected, setSelected }: TProps) => {
   const [searchParams] = useSearchParams();
 
-  const { data: locationsData, loading } = useQuery(
-    LocationQueries.LOCATION_LIST,
-    {
-      variables: Object.fromEntries(searchParams),
-    },
-  );
+  const {
+    data: locationsData,
+    loading,
+    refetch,
+  } = useQuery(LocationQueries.LOCATION_LIST, {
+    variables: Object.fromEntries(searchParams),
+  });
 
   // Handle Select
   const selectAll = (e: ChangeEvent<HTMLInputElement>) => {
@@ -55,6 +58,7 @@ const LocationTable = ({ selected, setSelected }: TProps) => {
   const totalPages = Math.ceil(meta.total / meta.limit);
   return (
     <ABox>
+      <RefreshButton fn={refetch} className="mb-2" />
       <table className="primary-table table table-auto">
         <thead>
           <tr>
@@ -114,15 +118,15 @@ const LocationTable = ({ selected, setSelected }: TProps) => {
                       </Button>
                     </Link>
 
-                    {/* <locationDelete selected={[location.id]}> */}
-                    <Button
-                      size="icon"
-                      variant="outline"
-                      className="cursor-pointer hover:border-red-500 hover:bg-red-50 hover:text-red-500"
-                    >
-                      <Trash2 />
-                    </Button>
-                    {/* </locationDelete> */}
+                    <LocationDelete selected={[location.id]}>
+                      <Button
+                        size="icon"
+                        variant="outline"
+                        className="cursor-pointer hover:border-red-500 hover:bg-red-50 hover:text-red-500"
+                      >
+                        <Trash2 />
+                      </Button>
+                    </LocationDelete>
                   </div>
                 </td>
               </tr>
