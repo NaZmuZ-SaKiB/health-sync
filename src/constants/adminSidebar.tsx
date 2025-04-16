@@ -1,4 +1,9 @@
-import { BriefcaseMedical, LayoutDashboard, LucideProps } from "lucide-react";
+import {
+  BriefcaseMedical,
+  LayoutDashboard,
+  LucideProps,
+  MapPin,
+} from "lucide-react";
 
 type TAdminSidebarChildItem = {
   label: string;
@@ -24,5 +29,10 @@ export const adminSidebarItems: TAdminSidebarItem[] = [
     label: "Specialties",
     route: "/admin/specialties",
     icon: BriefcaseMedical,
+  },
+  {
+    label: "Locations",
+    route: "/admin/locations",
+    icon: MapPin,
   },
 ];
