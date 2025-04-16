@@ -71,7 +71,12 @@ const SpecialtyCreateForm = () => {
             label="Description"
             required={false}
           />
-          <HSButton className="rounded-none">Create</HSButton>
+          <HSButton
+            className="rounded-none"
+            disabled={form.formState.isSubmitting}
+          >
+            {form.formState.isSubmitting ? "Creating..." : "Create"}
+          </HSButton>
         </form>
       </Form>
     </ABox>
