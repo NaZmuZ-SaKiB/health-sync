@@ -8,6 +8,7 @@ import SignUpPage from "./auth/Sign-up/SignUp";
 import DoctorsPortalPage from "./auth/Doctors-portal/DoctorsPortal";
 import DashboardPage from "./admin/Dashboard/Dashboard";
 import SpecialtiesPage from "./admin/Specialties/Specialties";
+import EditSpecialtyPage from "./admin/Specialties/Edit/EditSpecialty";
 
 const router = createBrowserRouter([
   {
@@ -49,6 +50,11 @@ const router = createBrowserRouter([
       {
         path: "/admin/specialties",
         Component: SpecialtiesPage,
+      },
+
+      {
+        path: "/admin/specialties/:id",
+        Component: EditSpecialtyPage,
       },
     ],
   },
