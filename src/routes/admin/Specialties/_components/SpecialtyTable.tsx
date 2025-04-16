@@ -11,7 +11,7 @@ import formatDate from "@/utils/formatDate";
 import { useQuery } from "@apollo/client";
 import { Edit, Eye, Trash2 } from "lucide-react";
 import { ChangeEvent } from "react";
-import { useSearchParams } from "react-router";
+import { Link, useSearchParams } from "react-router";
 import SpecialtyDelete from "./SpecialtyDelete";
 
 type TProps = {
@@ -102,9 +102,17 @@ const SpecialtyTable = ({ selected, setSelected }: TProps) => {
                     <Button size="icon" variant="outline">
                       <Eye />
                     </Button>
-                    <Button size="icon" variant="outline">
-                      <Edit />
-                    </Button>
+
+                    <Link to={`/admin/specialties/${specialty.id}`}>
+                      <Button
+                        size="icon"
+                        variant="outline"
+                        className="cursor-pointer"
+                      >
+                        <Edit />
+                      </Button>
+                    </Link>
+
                     <SpecialtyDelete selected={[specialty.id]}>
                       <Button
                         size="icon"
