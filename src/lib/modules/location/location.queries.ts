@@ -63,7 +63,13 @@ const CREATE_LOCATION = gql`
       description: $description
       image: $image
     ) {
-      success
+      id
+      name
+      phoneNumber
+      mapUrl
+      address
+      createdAt
+      updatedAt
     }
   }
 `;
