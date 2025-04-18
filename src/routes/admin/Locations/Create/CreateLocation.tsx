@@ -17,6 +17,7 @@ import AGrid from "@/components/admin/ui/AGrid";
 import APageContainer from "@/components/admin/ui/APageContainer";
 import APageHeader from "@/components/admin/ui/APageHeader";
 import { useNavigate } from "react-router";
+import { TLocation } from "@/lib/modules/location/location.type";
 
 type TFormType = z.infer<typeof LocationValidations.create>;
 
@@ -31,7 +32,28 @@ const CreateLocationPage = () => {
         Authorization: cookies[AUTH_KEY] || "",
       },
     },
-    refetchQueries: [LocationQueries.LOCATION_LIST],
+    update: (cache, { data }) => {
+      const isCachedLocationExists = cache.readQuery({
+        query: LocationQueries.LOCATION_LIST,
+      }) as any;
+
+      if (isCachedLocationExists) {
+        const existingList = [
+          ...(isCachedLocationExists?.getAllLocations
+            ?.locations as TLocation[]),
+        ];
+
+        cache.writeQuery({
+          query: LocationQueries.LOCATION_LIST,
+          data: {
+            getAllLocations: {
+              ...isCachedLocationExists?.getAllLocations,
+              locations: [data?.createLocation, ...existingList],
+            },
+          },
+        });
+      }
+    },
   });
 
   const form = useForm<TFormType>({
