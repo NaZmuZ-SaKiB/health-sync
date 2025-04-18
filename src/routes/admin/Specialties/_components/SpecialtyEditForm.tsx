@@ -33,7 +33,30 @@ const SpecialtyEditForm = ({ specialty }: TProps) => {
         Authorization: cookies[AUTH_KEY] || "",
       },
     },
-    refetchQueries: [SpecialtyQueries.SPECIALTY_LIST],
+    update: (cache, { data }) => {
+      const existingSpecialtyList = cache.readQuery({
+        query: SpecialtyQueries.SPECIALTY_LIST,
+      }) as any;
+      if (existingSpecialtyList) {
+        const specialtyList = [
+          ...(existingSpecialtyList?.getAllSpecialties
+            ?.specialties as TSpecialty[]),
+        ];
+        const findIndex = specialtyList.findIndex(
+          (item) => item.id === specialty.id,
+        );
+        specialtyList[findIndex] = data?.updateSpecialty?.specialty;
+        cache.writeQuery({
+          query: SpecialtyQueries.SPECIALTY_LIST,
+          data: {
+            getAllSpecialties: {
+              ...existingSpecialtyList?.getAllSpecialties,
+              specialties: specialtyList,
+            },
+          },
+        });
+      }
+    },
   });
 
   const form = useForm<TFormType>({
