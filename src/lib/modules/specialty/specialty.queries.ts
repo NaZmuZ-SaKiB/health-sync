@@ -68,6 +68,13 @@ const UPDATE_SPECIALTY = gql`
       icon: $icon
     ) {
       success
+      specialty {
+        id
+        name
+        icon
+        createdAt
+        updatedAt
+      }
     }
   }
 `;
