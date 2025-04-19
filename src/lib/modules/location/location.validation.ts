@@ -9,4 +9,7 @@ const create = z.object({
   image: z.string().optional(),
 });
 
-export const LocationValidations = { create };
+const update = create.partial().extend({
+  locationId: z.string().min(1, { message: "Location ID is required." }),
+});
+export const LocationValidations = { create, update };
