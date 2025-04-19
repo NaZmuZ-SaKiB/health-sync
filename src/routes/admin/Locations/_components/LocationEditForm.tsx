@@ -48,6 +48,8 @@ const LocationEditForm = ({ location }: TProps) => {
           (item) => item.id === location.id,
         );
 
+        if (findIndex === -1) return;
+
         existingList[findIndex] = data?.updateLocation;
 
         cache.writeQuery({
@@ -59,7 +61,7 @@ const LocationEditForm = ({ location }: TProps) => {
             },
           },
         });
-      }
+      } else return;
     },
   });
 
