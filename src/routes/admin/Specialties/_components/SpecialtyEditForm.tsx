@@ -34,24 +34,28 @@ const SpecialtyEditForm = ({ specialty }: TProps) => {
       },
     },
     update: (cache, { data }) => {
-      const existingSpecialtyList = cache.readQuery({
+      const isCachedSpecialtiesExist = cache.readQuery({
         query: SpecialtyQueries.SPECIALTY_LIST,
       }) as any;
-      if (existingSpecialtyList) {
-        const specialtyList = [
-          ...(existingSpecialtyList?.getAllSpecialties
+
+      if (isCachedSpecialtiesExist) {
+        const existingList = [
+          ...(isCachedSpecialtiesExist?.getAllSpecialties
             ?.specialties as TSpecialty[]),
         ];
-        const findIndex = specialtyList.findIndex(
+
+        const findIndex = existingList.findIndex(
           (item) => item.id === specialty.id,
         );
-        specialtyList[findIndex] = data?.updateSpecialty?.specialty;
+
+        existingList[findIndex] = data?.updateSpecialty?.specialty;
+
         cache.writeQuery({
           query: SpecialtyQueries.SPECIALTY_LIST,
           data: {
             getAllSpecialties: {
-              ...existingSpecialtyList?.getAllSpecialties,
-              specialties: specialtyList,
+              ...isCachedSpecialtiesExist?.getAllSpecialties,
+              specialties: existingList,
             },
           },
         });
