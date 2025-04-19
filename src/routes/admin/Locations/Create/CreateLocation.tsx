@@ -33,13 +33,13 @@ const CreateLocationPage = () => {
       },
     },
     update: (cache, { data }) => {
-      const isCachedLocationExists = cache.readQuery({
+      const isCachedLocationsExists = cache.readQuery({
         query: LocationQueries.LOCATION_LIST,
       }) as any;
 
-      if (isCachedLocationExists) {
+      if (isCachedLocationsExists) {
         const existingList = [
-          ...(isCachedLocationExists?.getAllLocations
+          ...(isCachedLocationsExists?.getAllLocations
             ?.locations as TLocation[]),
         ];
 
@@ -47,7 +47,7 @@ const CreateLocationPage = () => {
           query: LocationQueries.LOCATION_LIST,
           data: {
             getAllLocations: {
-              ...isCachedLocationExists?.getAllLocations,
+              ...isCachedLocationsExists?.getAllLocations,
               locations: [data?.createLocation, ...existingList],
             },
           },
@@ -90,6 +90,7 @@ const CreateLocationPage = () => {
       toast.error("A Client error occurred");
     }
   };
+
   return (
     <APageContainer>
       <APageHeader title="Create Location" backButton />
