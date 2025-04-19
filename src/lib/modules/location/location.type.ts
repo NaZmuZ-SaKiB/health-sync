@@ -5,6 +5,7 @@ export type TLocation = {
   name: string;
   mapUrl: string;
   phoneNumber: string;
+  address: string;
   description?: string;
   image?: string; // TODO: update to image model
   createdAt: string;
