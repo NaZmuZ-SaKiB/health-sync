@@ -21,19 +21,23 @@ type TProps = {
 type TFormType = z.infer<typeof DoctorValidation.create>;
 
 const SPECIALTIES_OPTIONS = gql`
-  query Specialties {
-    specialties {
-      name
-      id
+  query GetAllSpecialties {
+    getAllSpecialties {
+      specialties {
+        id
+        name
+      }
     }
   }
 `;
 
 const LOCATIONS_OPTIONS = gql`
-  query Locations {
-    locations {
-      name
-      id
+  query GetAllLocations {
+    getAllLocations {
+      locations {
+        id
+        name
+      }
     }
   }
 `;
@@ -91,16 +95,20 @@ const DoctorStep2Form = ({ prevStep, nextStep, formData }: TProps) => {
     useQuery(LOCATIONS_OPTIONS);
 
   const specialtiesOptions =
-    specialtiesData?.specialties?.map((item: { name: string; id: string }) => ({
-      label: item.name,
-      value: item.id,
-    })) || [];
+    specialtiesData?.getAllSpecialties?.specialties?.map(
+      (item: { name: string; id: string }) => ({
+        label: item.name,
+        value: item.id,
+      }),
+    ) || [];
 
   const locationsOptions =
-    locationsData?.locations?.map((item: { name: string; id: string }) => ({
-      label: item.name,
-      value: item.id,
-    })) || [];
+    locationsData?.getAllLocations?.locations?.map(
+      (item: { name: string; id: string }) => ({
+        label: item.name,
+        value: item.id,
+      }),
+    ) || [];
 
   return (
     <Form {...form}>
