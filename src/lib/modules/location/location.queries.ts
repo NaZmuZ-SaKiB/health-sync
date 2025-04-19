@@ -93,7 +93,13 @@ const UPDATE_LOCATION = gql`
       description: $description
       icon: $icon
     ) {
-      success
+      id
+      name
+      mapUrl
+      phoneNumber
+      image
+      createdAt
+      updatedAt
     }
   }
 `;
