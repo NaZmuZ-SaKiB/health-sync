@@ -11,6 +11,7 @@ import SpecialtiesPage from "./admin/Specialties/Specialties";
 import EditSpecialtyPage from "./admin/Specialties/Edit/EditSpecialty";
 import LocationsPage from "./admin/Locations/Locations";
 import CreateLocationPage from "./admin/Locations/Create/CreateLocation";
+import EditLocationPage from "./admin/Locations/Edit/EditLocation";
 
 const router = createBrowserRouter([
   {
@@ -64,6 +65,10 @@ const router = createBrowserRouter([
       {
         path: "/admin/locations/create",
         Component: CreateLocationPage,
+      },
+      {
+        path: "/admin/locations/:id",
+        Component: EditLocationPage,
       },
     ],
   },
