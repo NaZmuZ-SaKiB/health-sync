@@ -48,6 +48,8 @@ const SpecialtyEditForm = ({ specialty }: TProps) => {
           (item) => item.id === specialty.id,
         );
 
+        if (findIndex === -1) return;
+
         existingList[findIndex] = data?.updateSpecialty?.specialty;
 
         cache.writeQuery({
@@ -59,7 +61,7 @@ const SpecialtyEditForm = ({ specialty }: TProps) => {
             },
           },
         });
-      }
+      } else return;
     },
   });
 
