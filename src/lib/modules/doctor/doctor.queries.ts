@@ -52,8 +52,8 @@ const DOCTOR_LIST = gql`
 `;
 
 const SINGLE_DOCTOR_APPLICATION = gql`
-  query Doctor($doctorId: String!) {
-    doctor(id: $doctorId) {
+  query Doctor($id: String!) {
+    doctor(id: $id) {
       id
       licenseNumber
       bio
