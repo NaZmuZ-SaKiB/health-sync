@@ -21,7 +21,7 @@ import { cn } from "@/lib/utils";
 import { Link } from "react-router";
 
 const AdminSidebar = () => {
-  const { state } = useSidebar();
+  const { state, setOpen } = useSidebar();
   return (
     <Sidebar collapsible="icon" className="[&>div]:bg-secondary border-none">
       <div className="bg-secondary h-full">
@@ -51,6 +51,7 @@ const AdminSidebar = () => {
                       className={cn("border-none", {
                         relative: state === "collapsed",
                       })}
+                      onClick={() => state === "collapsed" && setOpen(true)}
                     >
                       <SidebarMenuItem>
                         <AccordionTrigger
