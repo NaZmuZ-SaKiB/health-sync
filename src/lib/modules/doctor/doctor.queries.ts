@@ -51,6 +51,38 @@ const DOCTOR_LIST = gql`
   }
 `;
 
+const SINGLE_DOCTOR_APPLICATION = gql`
+  query Doctor($doctorId: String!) {
+    doctor(id: $doctorId) {
+      id
+      licenseNumber
+      bio
+      qualification
+      isVerified
+      experienceYears
+      fee
+      createdAt
+      updatedAt
+      user {
+        email
+        firstName
+        lastName
+        phoneNumber
+        address
+        dateOfBirth
+        gender
+      }
+      specialty {
+        name
+      }
+      location {
+        name
+      }
+    }
+  }
+`;
+
 export const DoctorQueries = {
   DOCTOR_LIST,
+  SINGLE_DOCTOR_APPLICATION,
 };
