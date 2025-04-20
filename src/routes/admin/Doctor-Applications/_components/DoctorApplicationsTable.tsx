@@ -4,7 +4,6 @@ import ABox from "@/components/admin/ui/ABox";
 import HSPagination from "@/components/global/shared/HSPagination";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Images } from "@/constants";
 import { DoctorQueries } from "@/lib/modules/doctor/doctor.queries";
 import { TDoctor } from "@/lib/modules/doctor/doctor.type";
 import { TMeta } from "@/types";
@@ -70,11 +69,9 @@ const DoctorApplicationsTable = ({ selected, setSelected }: TProps) => {
                 onChange={selectAll}
               />
             </th>
-            <th>Img</th>
             <th>Name</th>
             <th>Email</th>
             <th>Phone</th>
-            <th>Gender</th>
             <th>Specialty</th>
             <th>Location</th>
             <th>Fee</th>
@@ -94,18 +91,10 @@ const DoctorApplicationsTable = ({ selected, setSelected }: TProps) => {
                 />
               </td>
               <td>
-                <img
-                  src={doctor.user?.profilePicture || Images.PlaceholderImage}
-                  alt={doctor.user?.firstName}
-                  className="mx-auto size-8 object-cover object-center"
-                />
-              </td>
-              <td>
                 {doctor.user.firstName} {doctor?.user?.lastName ?? ""}
               </td>
               <td>{doctor.user.email}</td>
               <td>{doctor.user.phoneNumber}</td>
-              <td>{doctor.user.gender}</td>
               <td>{doctor.specialty.name}</td>
               <td>{doctor.location.name}</td>
               <td>{doctor.fee ? formatCurrency(doctor.fee) : 0}</td>
