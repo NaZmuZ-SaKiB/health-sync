@@ -1,16 +1,17 @@
 import {
-  BriefcaseMedical,
   LayoutDashboard,
   LucideProps,
-  MapPin,
+  Settings2,
+  Stethoscope,
+  UserRound,
 } from "lucide-react";
 
-type TAdminSidebarChildItem = {
+export type TAdminSidebarChildItem = {
   label: string;
   route: string;
 };
 
-type TAdminSidebarItem = {
+export type TAdminSidebarItem = {
   label: string;
   route?: string;
   icon: React.ForwardRefExoticComponent<
@@ -26,13 +27,45 @@ export const adminSidebarItems: TAdminSidebarItem[] = [
     icon: LayoutDashboard,
   },
   {
-    label: "Specialties",
-    route: "/admin/specialties",
-    icon: BriefcaseMedical,
+    label: "Users",
+    icon: UserRound,
+    children: [
+      {
+        label: "Patients",
+        route: "/admin/users/patients",
+      },
+      {
+        label: "Doctors",
+        route: "/admin/users/doctors",
+      },
+      {
+        label: "Admins",
+        route: "/admin/users/admins",
+      },
+    ],
   },
   {
-    label: "Locations",
-    route: "/admin/locations",
-    icon: MapPin,
+    label: "Doctor Settings",
+    icon: Stethoscope,
+    children: [
+      {
+        label: "Specialties",
+        route: "/admin/specialties",
+      },
+      {
+        label: "Doctor Applications",
+        route: "/admin/users/doctor-applications",
+      },
+    ],
+  },
+  {
+    label: "Settings",
+    icon: Settings2,
+    children: [
+      {
+        label: "Locations",
+        route: "/admin/locations",
+      },
+    ],
   },
 ];
