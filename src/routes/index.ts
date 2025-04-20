@@ -12,6 +12,7 @@ import EditSpecialtyPage from "./admin/Specialties/Edit/EditSpecialty";
 import LocationsPage from "./admin/Locations/Locations";
 import CreateLocationPage from "./admin/Locations/Create/CreateLocation";
 import EditLocationPage from "./admin/Locations/Edit/EditLocation";
+import DoctorApplications from "./admin/Doctor-Applications/DoctorApplications";
 
 const router = createBrowserRouter([
   {
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
       {
         path: "/admin",
         Component: DashboardPage,
+      },
+      {
+        path: "/admin/doctor-applications",
+        Component: DoctorApplications,
       },
       {
         path: "/admin/specialties",
