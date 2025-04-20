@@ -31,7 +31,6 @@ const DOCTOR_LIST = gql`
           email
           phoneNumber
           profilePicture
-          gender
         }
         specialty {
           name
