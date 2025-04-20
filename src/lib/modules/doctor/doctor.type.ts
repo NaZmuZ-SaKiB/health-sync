@@ -1,3 +1,4 @@
+import { TLocation } from "../location/location.type";
 import { TSpecialty } from "../specialty/specialty.type";
 import { TUser } from "../user/user.type";
 
@@ -14,7 +15,7 @@ export type TDoctor = {
 
   user: TUser;
   specialty: TSpecialty;
-  // location: TLocation;
+  location: TLocation;
   // schedules: TSchedule[];
   // timeSlots: TTimeSlot[]
   //   appointments: TAppointment[];
