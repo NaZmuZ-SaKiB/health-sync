@@ -29,6 +29,7 @@ const DOCTOR_LIST = gql`
           firstName
           lastName
           email
+          phoneNumber
           profilePicture
           gender
         }
