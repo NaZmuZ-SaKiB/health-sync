@@ -54,7 +54,7 @@ export const adminSidebarItems: TAdminSidebarItem[] = [
       },
       {
         label: "Doctor Applications",
-        route: "/admin/users/doctor-applications",
+        route: "/admin/doctor-applications",
       },
     ],
   },
