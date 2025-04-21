@@ -12,7 +12,7 @@ import formatDate from "@/utils/formatDate";
 import { useQuery } from "@apollo/client";
 import { Eye, Trash2 } from "lucide-react";
 import { ChangeEvent } from "react";
-import { useSearchParams } from "react-router";
+import { Link, useSearchParams } from "react-router";
 
 type TProps = {
   selected: string[];
@@ -76,6 +76,7 @@ const DoctorApplicationsTable = ({ selected, setSelected }: TProps) => {
             <th>Location</th>
             <th>Fee</th>
             <th>Apply Date</th>
+            <th>Verify</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -99,11 +100,18 @@ const DoctorApplicationsTable = ({ selected, setSelected }: TProps) => {
               <td>{doctor.location.name}</td>
               <td>{doctor.fee ? formatCurrency(doctor.fee) : 0}</td>
               <td>{formatDate(doctor.createdAt)}</td>
+              <td>Accept/ Reject</td>
               <td>
                 <div className="flex items-center justify-center gap-1.5">
-                  <Button size="icon" variant="outline">
-                    <Eye />
-                  </Button>
+                  <Link to={`/admin/doctor-applications/${doctor.id}`}>
+                    <Button
+                      size="icon"
+                      variant="outline"
+                      className="cursor-pointer"
+                    >
+                      <Eye />
+                    </Button>
+                  </Link>
 
                   {/* // TODO: <doctorDelete selected={[doctor.id]}> */}
                   <Button
