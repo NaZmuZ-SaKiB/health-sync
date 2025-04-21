@@ -19,6 +19,8 @@ export type TDay =
   | "SATURDAY"
   | "SUNDAY";
 
+export type TDoctorVerificationStatus = "PENDING" | "VERIFIED" | "REJECTED";
+
 export type TAppointmentStatus =
   | "SCHEDULED"
   | "COMPLETED"
