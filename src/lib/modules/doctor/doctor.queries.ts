@@ -82,7 +82,16 @@ const SINGLE_DOCTOR_APPLICATION = gql`
   }
 `;
 
+const UPDATE_DOCTOR = gql`
+  mutation UpdateDoctor($input: UserDoctorUpdateInput!) {
+    updateDoctor(input: $input) {
+      success
+    }
+  }
+`;
+
 export const DoctorQueries = {
   DOCTOR_LIST,
   SINGLE_DOCTOR_APPLICATION,
+  UPDATE_DOCTOR,
 };
