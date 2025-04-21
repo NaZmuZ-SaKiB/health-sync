@@ -77,7 +77,6 @@ const update = z.object({
         .number()
         .min(0, { message: "Fee must be a non-negative number." })
         .optional(),
-      verificationStatus: CommonValidation.doctorVerificationStatus.optional(),
     })
     .optional(),
 });
