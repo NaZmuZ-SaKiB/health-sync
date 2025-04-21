@@ -2,6 +2,7 @@ import {
   TAppointmentStatus,
   TBloodGroup,
   TDay,
+  TDoctorVerificationStatus,
   TGender,
   TNotificationType,
   TPaymentStatus,
@@ -34,6 +35,12 @@ export const DAY = {
   FRIDAY: "FRIDAY",
   SATURDAY: "SATURDAY",
   SUNDAY: "SUNDAY",
+} as const;
+
+export const DOCTOR_VERIFICATION_STATUS = {
+  PENDING: "PENDING",
+  VERIFIED: "VERIFIED",
+  REJECTED: "REJECTED",
 } as const;
 
 export const APPOINTMENT_STATUS = {
@@ -92,6 +99,12 @@ export const days: TDay[] = [
   "FRIDAY",
   "SATURDAY",
   "SUNDAY",
+];
+
+export const doctorVerificationStatuses: TDoctorVerificationStatus[] = [
+  "PENDING",
+  "VERIFIED",
+  "REJECTED",
 ];
 
 export const appointmentStatuses: TAppointmentStatus[] = [
