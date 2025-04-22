@@ -90,8 +90,20 @@ const UPDATE_DOCTOR = gql`
   }
 `;
 
+const VERIFY_DOCTOR = gql`
+  mutation VerifyDoctor(
+    $doctorId: String!
+    $status: DOCTOR_VERIFICATION_STATUS!
+  ) {
+    verifyDoctor(doctorId: $doctorId, status: $status) {
+      success
+    }
+  }
+`;
+
 export const DoctorQueries = {
   DOCTOR_LIST,
   SINGLE_DOCTOR_APPLICATION,
   UPDATE_DOCTOR,
+  VERIFY_DOCTOR,
 };
