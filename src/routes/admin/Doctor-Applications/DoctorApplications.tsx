@@ -16,7 +16,6 @@ const DoctorApplications = () => {
 
       <ABox>
         <div className="mb-2 flex items-center gap-2">
-          {/* // TODO: ADD Bulk Update - reject, approve, delete  */}
           <SortByFilter options={doctorSortByOptions} defaultValueIndex={1} />
           <SortOrderFilter />
           <LimitFilter />
