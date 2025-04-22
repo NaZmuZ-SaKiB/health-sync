@@ -22,7 +22,11 @@ const DoctorApplicationsTable = () => {
     loading,
     refetch,
   } = useQuery(DoctorQueries.DOCTOR_LIST, {
-    variables: { ...Object.fromEntries(searchParams), isVerified: "false" },
+    variables: {
+      sortBy: "appliedDate",
+      ...Object.fromEntries(searchParams),
+      isVerified: "false",
+    },
   });
 
   if (loading) return <TableLoader />;
