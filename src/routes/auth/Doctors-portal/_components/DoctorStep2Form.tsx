@@ -93,7 +93,7 @@ const DoctorStep2Form = ({ prevStep, nextStep, formData }: TProps) => {
     SPECIALTIES_OPTIONS,
     {
       variables: {
-        limit: 9999,
+        limit: "9999",
       },
     },
   );
@@ -101,7 +101,7 @@ const DoctorStep2Form = ({ prevStep, nextStep, formData }: TProps) => {
     LOCATIONS_OPTIONS,
     {
       variables: {
-        limit: 9999,
+        limit: "9999",
       },
     },
   );
