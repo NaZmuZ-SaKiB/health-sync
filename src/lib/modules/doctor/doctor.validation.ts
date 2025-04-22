@@ -81,4 +81,9 @@ const update = z.object({
     .optional(),
 });
 
-export const DoctorValidation = { create, update };
+const verify = z.object({
+  doctorId: z.string().nonempty({ message: "Doctor ID is required." }),
+  status: CommonValidation.doctorVerificationStatus,
+});
+
+export const DoctorValidation = { create, update, verify };
