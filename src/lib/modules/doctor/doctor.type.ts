@@ -12,6 +12,7 @@ export type TDoctor = {
   isVerified: boolean;
   experienceYears: number;
   fee?: number;
+  isDeleted: boolean;
   appliedDate: Date;
   createdAt: Date;
   updatedAt: Date;
