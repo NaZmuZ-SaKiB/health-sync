@@ -14,6 +14,7 @@ import DoctorRegistrationSteps from "./DoctorRegistrationSteps";
 
 type TProps = {
   nextStep: () => void;
+  formData: any;
   setFormData: React.Dispatch<React.SetStateAction<any | null>>;
 };
 
@@ -34,16 +35,17 @@ const genderOptions = genders.map((gender) => ({
   value: gender,
 }));
 
-const DoctorStep1Form = ({ nextStep, setFormData }: TProps) => {
+const DoctorStep1Form = ({ nextStep, formData, setFormData }: TProps) => {
   const form = useForm<TFormType>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      firstName: "",
-      lastName: "",
-      email: "",
-      phoneNumber: "",
-      address: "",
-      gender: GENDER.MALE,
+      firstName: formData?.firstName || "",
+      lastName: formData?.lastName || "",
+      email: formData?.email || "",
+      phoneNumber: formData?.phoneNumber || "",
+      address: formData?.address || "",
+      gender: formData?.gender || GENDER.MALE,
+      dateOfBirth: formData?.dateOfBirth || "",
     },
   });
 
