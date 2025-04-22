@@ -11,6 +11,7 @@ const DOCTOR_LIST = gql`
     $specialty: String
     $location: String
     $isVerified: String
+    $isDeleted: String
   ) {
     getAllDoctors(
       page: $page
@@ -22,6 +23,7 @@ const DOCTOR_LIST = gql`
       specialty: $specialty
       location: $location
       isVerified: $isVerified
+      isDeleted: $isDeleted
     ) {
       doctors {
         id
