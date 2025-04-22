@@ -39,6 +39,8 @@ const DOCTOR_LIST = gql`
           name
         }
         fee
+        verificationStatus
+        appliedDate
         createdAt
         updatedAt
       }
@@ -58,6 +60,7 @@ const SINGLE_DOCTOR_APPLICATION = gql`
       licenseNumber
       bio
       qualification
+      verificationStatus
       isVerified
       experienceYears
       fee
