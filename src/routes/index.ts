@@ -13,6 +13,7 @@ import LocationsPage from "./admin/Locations/Locations";
 import CreateLocationPage from "./admin/Locations/Create/CreateLocation";
 import EditLocationPage from "./admin/Locations/Edit/EditLocation";
 import DoctorApplications from "./admin/Doctor-Applications/DoctorApplications";
+import SingleDoctorApplication from "./admin/Doctor-Applications/Single-Doctor-Application/SingleDoctorApplication";
 
 const router = createBrowserRouter([
   {
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
       {
         path: "/admin/doctor-applications",
         Component: DoctorApplications,
+      },
+      {
+        path: "/admin/doctor-applications/:id",
+        Component: SingleDoctorApplication,
       },
       {
         path: "/admin/specialties",
