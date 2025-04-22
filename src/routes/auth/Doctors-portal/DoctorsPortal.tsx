@@ -17,7 +17,13 @@ const DoctorsPortalPage = () => {
   };
 
   const renderSteps = {
-    1: () => <DoctorStep1Form nextStep={nextStep} setFormData={setFormData} />,
+    1: () => (
+      <DoctorStep1Form
+        nextStep={nextStep}
+        formData={formData}
+        setFormData={setFormData}
+      />
+    ),
     2: () => (
       <DoctorStep2Form
         prevStep={previousStep}
