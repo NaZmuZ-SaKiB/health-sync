@@ -3,23 +3,18 @@ import TableLoader from "@/components/admin/shared/TableLoader";
 import ABox from "@/components/admin/ui/ABox";
 import HSPagination from "@/components/global/shared/HSPagination";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { DoctorQueries } from "@/lib/modules/doctor/doctor.queries";
 import { TDoctor } from "@/lib/modules/doctor/doctor.type";
 import { TMeta } from "@/types";
 import { formatCurrency } from "@/utils/formatCurrency";
 import formatDate from "@/utils/formatDate";
 import { useQuery } from "@apollo/client";
-import { Eye, Trash2 } from "lucide-react";
-import { ChangeEvent } from "react";
+import { Eye } from "lucide-react";
 import { Link, useSearchParams } from "react-router";
+import DoctorVerificationButton from "./DoctorVerificationButton";
+import { DOCTOR_VERIFICATION_STATUS } from "@/constants";
 
-type TProps = {
-  selected: string[];
-  setSelected: (selected: string[]) => void;
-};
-
-const DoctorApplicationsTable = ({ selected, setSelected }: TProps) => {
+const DoctorApplicationsTable = () => {
   const [searchParams] = useSearchParams();
 
   const {
@@ -29,28 +24,6 @@ const DoctorApplicationsTable = ({ selected, setSelected }: TProps) => {
   } = useQuery(DoctorQueries.DOCTOR_LIST, {
     variables: { ...Object.fromEntries(searchParams), isVerified: "false" },
   });
-
-  // Handle Select
-  const selectAll = (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.checked) {
-      setSelected(
-        doctorsData?.getAllDoctors?.doctors.map(
-          (doctor: TDoctor) => doctor.id,
-        ) || [],
-      );
-    } else {
-      setSelected([]);
-    }
-  };
-
-  const handleSelect = (e: ChangeEvent<HTMLInputElement>, id: string) => {
-    if (e.target.checked) {
-      setSelected([...selected, id]);
-    } else {
-      setSelected(selected.filter((item) => item !== id));
-    }
-  };
-  // End Handle Select
 
   if (loading) return <TableLoader />;
 
@@ -62,13 +35,6 @@ const DoctorApplicationsTable = ({ selected, setSelected }: TProps) => {
       <table className="primary-table table table-auto">
         <thead>
           <tr>
-            <th className="w-10">
-              <Input
-                type="checkbox"
-                className="mx-auto size-4"
-                onChange={selectAll}
-              />
-            </th>
             <th>Name</th>
             <th>Email</th>
             <th>Phone</th>
@@ -84,14 +50,6 @@ const DoctorApplicationsTable = ({ selected, setSelected }: TProps) => {
           {doctorsData?.getAllDoctors?.doctors.map((doctor: TDoctor) => (
             <tr key={doctor.id}>
               <td>
-                <Input
-                  checked={selected.includes(doctor.id)}
-                  onChange={(e) => handleSelect(e, doctor.id)}
-                  type="checkbox"
-                  className="mx-auto size-4"
-                />
-              </td>
-              <td>
                 {doctor.user.firstName} {doctor?.user?.lastName ?? ""}
               </td>
               <td>{doctor.user.email}</td>
@@ -100,7 +58,32 @@ const DoctorApplicationsTable = ({ selected, setSelected }: TProps) => {
               <td>{doctor.location.name}</td>
               <td>{doctor.fee ? formatCurrency(doctor.fee) : 0}</td>
               <td>{formatDate(doctor.createdAt)}</td>
-              <td>Accept/ Reject</td>
+              <td>
+                {doctor.verificationStatus ===
+                DOCTOR_VERIFICATION_STATUS.REJECTED ? (
+                  <span className="border border-red-500 bg-red-50 px-2 py-0.5 text-sm text-red-500">
+                    Rejected
+                  </span>
+                ) : (
+                  <div className="flex items-center gap-2">
+                    <DoctorVerificationButton
+                      doctorId={doctor.id}
+                      status={DOCTOR_VERIFICATION_STATUS.VERIFIED}
+                      title="Accept"
+                      loadingTitle="Accepting..."
+                      small
+                    />
+                    <DoctorVerificationButton
+                      doctorId={doctor.id}
+                      status={DOCTOR_VERIFICATION_STATUS.REJECTED}
+                      title="Reject"
+                      loadingTitle="Rejecting..."
+                      className="border border-red-500 bg-red-50 text-red-500 hover:bg-red-500 hover:text-slate-50"
+                      small
+                    />
+                  </div>
+                )}
+              </td>
               <td>
                 <div className="flex items-center justify-center gap-1.5">
                   <Link to={`/admin/doctor-applications/${doctor.id}`}>
@@ -112,16 +95,6 @@ const DoctorApplicationsTable = ({ selected, setSelected }: TProps) => {
                       <Eye />
                     </Button>
                   </Link>
-
-                  {/* // TODO: <doctorDelete selected={[doctor.id]}> */}
-                  <Button
-                    size="icon"
-                    variant="outline"
-                    className="cursor-pointer hover:border-red-500 hover:bg-red-50 hover:text-red-500"
-                  >
-                    <Trash2 />
-                  </Button>
-                  {/* </doctorDelete> */}
                 </div>
               </td>
             </tr>
