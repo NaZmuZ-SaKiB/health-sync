@@ -11,9 +11,10 @@ import { TMeta } from "@/types";
 import { formatCurrency } from "@/utils/formatCurrency";
 import formatDate from "@/utils/formatDate";
 import { useQuery } from "@apollo/client";
-import { Eye } from "lucide-react";
+import { Eye, Trash2 } from "lucide-react";
 import { ChangeEvent } from "react";
 import { Link, useSearchParams } from "react-router";
+import DoctorDelete from "./DoctorDelete";
 
 type TProps = {
   selected: string[];
@@ -126,6 +127,16 @@ const DoctorsTable = ({ selected, setSelected }: TProps) => {
                       <Eye />
                     </Button>
                   </Link>
+
+                  <DoctorDelete selected={[doctor.id]}>
+                    <Button
+                      size="icon"
+                      variant="outline"
+                      className="cursor-pointer hover:border-red-500 hover:bg-red-50 hover:text-red-500"
+                    >
+                      <Trash2 />
+                    </Button>
+                  </DoctorDelete>
                 </div>
               </td>
             </tr>
