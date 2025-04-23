@@ -55,6 +55,58 @@ const DOCTOR_LIST = gql`
   }
 `;
 
+const DOCTOR_APPLICATION_LIST = gql`
+  query GetAllDoctors(
+    $page: String
+    $limit: String
+    $searchTerm: String
+    $sortBy: String
+    $sortOrder: String
+    $gender: String
+    $specialty: String
+    $location: String
+    $isVerified: String
+    $isDeleted: String
+  ) {
+    getAllDoctors(
+      page: $page
+      limit: $limit
+      searchTerm: $searchTerm
+      sortBy: $sortBy
+      sortOrder: $sortOrder
+      gender: $gender
+      specialty: $specialty
+      location: $location
+      isVerified: $isVerified
+      isDeleted: $isDeleted
+    ) {
+      doctors {
+        id
+        user {
+          firstName
+          lastName
+          email
+          phoneNumber
+        }
+        specialty {
+          name
+        }
+        location {
+          name
+        }
+        fee
+        verificationStatus
+        appliedDate
+      }
+      meta {
+        page
+        limit
+        total
+      }
+    }
+  }
+`;
+
 const SINGLE_DOCTOR_APPLICATION = gql`
   query Doctor($id: String!) {
     doctor(id: $id) {
@@ -116,6 +168,7 @@ const DELETE_DOCTOR = gql`
 
 export const DoctorQueries = {
   DOCTOR_LIST,
+  DOCTOR_APPLICATION_LIST,
   SINGLE_DOCTOR_APPLICATION,
   UPDATE_DOCTOR,
   VERIFY_DOCTOR,
