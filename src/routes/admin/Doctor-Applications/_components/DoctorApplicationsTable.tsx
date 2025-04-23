@@ -21,7 +21,7 @@ const DoctorApplicationsTable = () => {
     data: doctorsData,
     loading,
     refetch,
-  } = useQuery(DoctorQueries.DOCTOR_LIST, {
+  } = useQuery(DoctorQueries.DOCTOR_APPLICATION_LIST, {
     variables: {
       sortBy: "appliedDate",
       ...Object.fromEntries(searchParams),
@@ -61,7 +61,7 @@ const DoctorApplicationsTable = () => {
               <td>{doctor.specialty.name}</td>
               <td>{doctor.location.name}</td>
               <td>{doctor.fee ? formatCurrency(doctor.fee) : 0}</td>
-              <td>{formatDate(doctor.createdAt)}</td>
+              <td>{formatDate(doctor.appliedDate)}</td>
               <td>
                 {doctor.verificationStatus ===
                 DOCTOR_VERIFICATION_STATUS.REJECTED ? (
