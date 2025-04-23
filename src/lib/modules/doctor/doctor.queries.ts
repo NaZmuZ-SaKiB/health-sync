@@ -158,9 +158,9 @@ const VERIFY_DOCTOR = gql`
   }
 `;
 
-const DELETE_DOCTOR = gql`
-  mutation DeleteDoctor($doctorId: String!) {
-    deleteDoctor(doctorId: $doctorId) {
+const DELETE_DOCTORS = gql`
+  mutation DeleteDoctors($ids: [String!]!) {
+    deleteDoctors(ids: $ids) {
       success
     }
   }
@@ -172,5 +172,5 @@ export const DoctorQueries = {
   SINGLE_DOCTOR_APPLICATION,
   UPDATE_DOCTOR,
   VERIFY_DOCTOR,
-  DELETE_DOCTOR,
+  DELETE_DOCTORS,
 };
