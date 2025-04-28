@@ -118,7 +118,7 @@ const DoctorsTable = ({ selected, setSelected }: TProps) => {
 
               <td>
                 <div className="flex items-center justify-center gap-1.5">
-                  <Link to={`/admin/doctor/${doctor.id}`}>
+                  <Link to={`/admin/users/doctors/${doctor.id}`}>
                     <Button
                       size="icon"
                       variant="outline"
