@@ -29,8 +29,6 @@ const SingleDoctorApplication = () => {
     return <PageLoader />;
   }
 
-  console.log(doctor);
-
   return (
     <APageContainer>
       <APageHeader
@@ -38,17 +36,29 @@ const SingleDoctorApplication = () => {
         backButton
       >
         <div className="flex items-center gap-2">
-          <DoctorVerificationButton
-            status={DOCTOR_VERIFICATION_STATUS.VERIFIED}
-            title="Accept"
-            loadingTitle="Accepting..."
-          />
-          <DoctorVerificationButton
-            status={DOCTOR_VERIFICATION_STATUS.REJECTED}
-            title="Reject"
-            loadingTitle="Rejecting..."
-            className="border border-red-500 bg-red-50 text-red-500 hover:bg-red-500 hover:text-slate-50"
-          />
+          {doctor?.verificationStatus ===
+            DOCTOR_VERIFICATION_STATUS.PENDING && (
+            <>
+              <DoctorVerificationButton
+                status={DOCTOR_VERIFICATION_STATUS.VERIFIED}
+                title="Accept"
+                loadingTitle="Accepting..."
+              />
+              <DoctorVerificationButton
+                status={DOCTOR_VERIFICATION_STATUS.REJECTED}
+                title="Reject"
+                loadingTitle="Rejecting..."
+                className="border border-red-500 bg-red-50 text-red-500 hover:bg-red-500 hover:text-slate-50"
+              />
+            </>
+          )}
+
+          {doctor?.verificationStatus ===
+            DOCTOR_VERIFICATION_STATUS.REJECTED && (
+            <span className="border border-red-500 bg-red-50 px-2 py-0.5 text-sm text-red-500">
+              Rejected
+            </span>
+          )}
         </div>
       </APageHeader>
 
@@ -136,7 +146,7 @@ const SingleDoctorApplication = () => {
           <DetailField
             title={"Qualification"}
             value={doctor?.qualification}
-            className="col-span-6"
+            className="col-span-4"
           />
         </div>
       </ABox>
