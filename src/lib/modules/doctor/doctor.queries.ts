@@ -73,7 +73,10 @@ const SINGLE_DOCTOR = gql`
         address
         dateOfBirth
         gender
-        profilePicture
+        profilePicture {
+          publicId
+          secureUrl
+        }
       }
       specialty {
         name
