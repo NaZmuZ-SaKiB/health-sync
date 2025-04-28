@@ -6,6 +6,7 @@ import router from "./routes";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import { Toaster } from "sonner";
 import { CookiesProvider } from "react-cookie";
+import UserProvider from "./contexts/UserProvider";
 
 const client = new ApolloClient({
   uri: import.meta.env.VITE_BACKEND_URL,
@@ -21,7 +22,9 @@ createRoot(document.getElementById("root")!).render(
           httpOnly: process.env.NODE_ENV === "production",
         }}
       >
-        <RouterProvider router={router} />
+        <UserProvider>
+          <RouterProvider router={router} />
+        </UserProvider>
       </CookiesProvider>
       <Toaster closeButton richColors />
     </ApolloProvider>
