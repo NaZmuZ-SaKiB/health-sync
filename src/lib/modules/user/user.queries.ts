@@ -6,6 +6,7 @@ const CONTEXT_USER = gql`
       id
       email
       role
+      needPasswordChange
     }
   }
 `;
