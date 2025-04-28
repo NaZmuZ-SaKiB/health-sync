@@ -139,6 +139,10 @@
   .hs-container {
     @apply mx-auto max-w-[1400px];
   }
+
+  .no-focus {
+    @apply !outline-none focus:!ring-0 focus:ring-transparent focus:!ring-offset-0 focus-visible:!ring-0 focus-visible:ring-transparent focus-visible:!ring-offset-0;
+  }
 }
 
 @layer components {
