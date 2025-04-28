@@ -15,6 +15,7 @@ import EditLocationPage from "./admin/Locations/Edit/EditLocation";
 import DoctorApplications from "./admin/Doctor-Applications/DoctorApplications";
 import SingleDoctorApplication from "./admin/Doctor-Applications/Single-Doctor-Application/SingleDoctorApplication";
 import DoctorsPage from "./admin/Users/Doctors/Doctors";
+import SingleDoctorPage from "./admin/Users/Doctors/Single-Doctor/SingleDoctor";
 
 const router = createBrowserRouter([
   {
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
       {
         path: "/admin/users/doctors",
         Component: DoctorsPage,
+      },
+      {
+        path: "/admin/users/doctors/:id",
+        Component: SingleDoctorPage,
       },
       {
         path: "/admin/doctor-applications",
