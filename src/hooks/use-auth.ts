@@ -7,6 +7,7 @@ type TUserContext = {
     id: string;
     email: string;
     role: TRole;
+    needPasswordChange: boolean;
   } | null;
   loading: boolean;
 };
