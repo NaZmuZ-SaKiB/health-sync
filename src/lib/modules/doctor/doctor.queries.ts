@@ -55,6 +55,36 @@ const DOCTOR_LIST = gql`
   }
 `;
 
+const SINGLE_DOCTOR = gql`
+  query Doctor($id: String!) {
+    doctor(id: $id) {
+      id
+      licenseNumber
+      bio
+      qualification
+      experienceYears
+      fee
+      user {
+        id
+        email
+        firstName
+        lastName
+        phoneNumber
+        address
+        dateOfBirth
+        gender
+        profilePicture
+      }
+      specialty {
+        name
+      }
+      location {
+        name
+      }
+    }
+  }
+`;
+
 const DOCTOR_APPLICATION_LIST = gql`
   query GetAllDoctors(
     $page: String
@@ -168,6 +198,7 @@ const DELETE_DOCTORS = gql`
 
 export const DoctorQueries = {
   DOCTOR_LIST,
+  SINGLE_DOCTOR,
   DOCTOR_APPLICATION_LIST,
   SINGLE_DOCTOR_APPLICATION,
   UPDATE_DOCTOR,
