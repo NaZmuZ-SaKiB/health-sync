@@ -63,6 +63,7 @@ const ProfilePicutre = ({ image }: { image: TImage | null }) => {
           Images.PlaceholderImage
         }
         alt=""
+        className="w-full"
       />
 
       {!editMode && (
