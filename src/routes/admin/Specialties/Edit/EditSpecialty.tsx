@@ -1,5 +1,5 @@
 import PageLoader from "@/components/admin/shared/PageLoader";
-import AGrid from "@/components/admin/ui/AGrid";
+import DGrid from "@/components/global/shared/DGrid";
 import APageContainer from "@/components/admin/ui/APageContainer";
 import APageHeader from "@/components/admin/ui/APageHeader";
 import { SpecialtyQueries } from "@/lib/modules/specialty/specialty.queries";
@@ -32,11 +32,11 @@ const EditSpecialtyPage = () => {
     <APageContainer>
       <APageHeader title={specialty?.name ?? "Edit"} backButton />
 
-      <AGrid>
+      <DGrid>
         <div>
           <SpecialtyEditForm specialty={specialty as TSpecialty} />
         </div>
-      </AGrid>
+      </DGrid>
     </APageContainer>
   );
 };

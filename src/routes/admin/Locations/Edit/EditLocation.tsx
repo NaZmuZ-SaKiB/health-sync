@@ -1,5 +1,5 @@
 import PageLoader from "@/components/admin/shared/PageLoader";
-import AGrid from "@/components/admin/ui/AGrid";
+import DGrid from "@/components/global/shared/DGrid";
 import APageContainer from "@/components/admin/ui/APageContainer";
 import APageHeader from "@/components/admin/ui/APageHeader";
 import { LocationQueries } from "@/lib/modules/location/location.queries";
@@ -33,11 +33,11 @@ const EditLocationPage = () => {
     <APageContainer>
       <APageHeader title={location?.name ?? "Edit"} backButton />
 
-      <AGrid>
+      <DGrid>
         <div>
           <LocationEditForm location={location as TLocation} />
         </div>
-      </AGrid>
+      </DGrid>
     </APageContainer>
   );
 };

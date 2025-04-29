@@ -1,4 +1,4 @@
-import AGrid from "@/components/admin/ui/AGrid";
+import DGrid from "@/components/global/shared/DGrid";
 import APageContainer from "@/components/admin/ui/APageContainer";
 import APageHeader from "@/components/admin/ui/APageHeader";
 import SpecialtyCreateForm from "./_components/SpecialtyCreateForm";
@@ -22,7 +22,7 @@ const SpecialtiesPage = () => {
     <APageContainer>
       <APageHeader title="Specialties" />
 
-      <AGrid>
+      <DGrid>
         <div>
           <SpecialtyCreateForm />
         </div>
@@ -51,7 +51,7 @@ const SpecialtiesPage = () => {
           </ABox>
           <SpecialtyTable selected={selected} setSelected={setSelected} />
         </div>
-      </AGrid>
+      </DGrid>
     </APageContainer>
   );
 };

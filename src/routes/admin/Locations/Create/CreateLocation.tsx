@@ -13,7 +13,7 @@ import { useCookies } from "react-cookie";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
-import AGrid from "@/components/admin/ui/AGrid";
+import DGrid from "@/components/global/shared/DGrid";
 import APageContainer from "@/components/admin/ui/APageContainer";
 import APageHeader from "@/components/admin/ui/APageHeader";
 import { useNavigate } from "react-router";
@@ -95,7 +95,7 @@ const CreateLocationPage = () => {
     <APageContainer>
       <APageHeader title="Create Location" backButton />
 
-      <AGrid>
+      <DGrid>
         <div>
           <ABox>
             <AFormH2>Add Location</AFormH2>
@@ -124,7 +124,7 @@ const CreateLocationPage = () => {
             </Form>
           </ABox>
         </div>
-      </AGrid>
+      </DGrid>
     </APageContainer>
   );
 };
