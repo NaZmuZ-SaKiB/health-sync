@@ -1,4 +1,4 @@
-import ADetailField from "@/components/admin/shared/ADetailField";
+import DetailField from "@/components/global/shared/DetailField";
 import PageLoader from "@/components/admin/shared/PageLoader";
 import ABox from "@/components/admin/ui/ABox";
 import AFormH2 from "@/components/admin/ui/AFormH2";
@@ -38,29 +38,29 @@ const SingleDoctorPage = () => {
         <AFormH2>Personal Information</AFormH2>
 
         <div className="grid grid-cols-6 gap-5">
-          <ADetailField
+          <DetailField
             title="First Name"
             value={doctor?.user?.firstName}
             className="col-span-3"
           />
-          <ADetailField
+          <DetailField
             title="Last Name"
             value={doctor?.user?.lastName}
             className="col-span-3"
           />
-          <ADetailField
+          <DetailField
             title="Gender"
             value={doctor?.user?.gender}
             className="col-span-3"
           />
 
-          <ADetailField
+          <DetailField
             title="Date of Birth"
             value={formatDate(doctor?.user?.dateOfBirth as string)}
             className="col-span-3"
           />
 
-          <ADetailField
+          <DetailField
             title={`About ${doctor?.user?.firstName} ${doctor?.user?.lastName}`}
             value={doctor?.bio}
             className="col-span-3"
@@ -72,32 +72,32 @@ const SingleDoctorPage = () => {
         <AFormH2>Professional Information</AFormH2>
 
         <div className="grid grid-cols-6 gap-5">
-          <ADetailField
+          <DetailField
             title={"Qualification"}
             value={doctor?.qualification}
             className="col-span-4"
           />
-          <ADetailField
+          <DetailField
             title="Specialty"
             value={doctor?.specialty?.name}
             className="col-span-2"
           />
-          <ADetailField
+          <DetailField
             title="License Number"
             value={doctor?.licenseNumber}
             className="col-span-2"
           />
-          <ADetailField
+          <DetailField
             title="Experience"
             value={doctor?.experienceYears}
             className="col-span-2"
           />
-          <ADetailField
+          <DetailField
             title="Fee"
             value={formatCurrency(doctor?.fee ?? 0)}
             className="col-span-2"
           />
-          <ADetailField
+          <DetailField
             title="Location"
             value={doctor?.location?.name}
             className="col-span-2"
@@ -108,17 +108,17 @@ const SingleDoctorPage = () => {
       <ABox>
         <AFormH2>Contact Information</AFormH2>
         <div className="grid grid-cols-6 gap-5">
-          <ADetailField
+          <DetailField
             title="Email"
             value={doctor?.user?.email}
             className="col-span-2"
           />
-          <ADetailField
+          <DetailField
             title="Phone"
             value={doctor?.user?.phoneNumber}
             className="col-span-2"
           />
-          <ADetailField
+          <DetailField
             title="Address"
             value={doctor?.user?.address}
             className="col-span-3"
