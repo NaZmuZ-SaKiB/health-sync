@@ -11,11 +11,16 @@ import { useState } from "react";
 import { useCookies } from "react-cookie";
 import { toast } from "sonner";
 
-const ProfilePicutre = ({ image }: { image: TImage | null }) => {
+type TProps = {
+  image: TImage | null;
+  isEditMode?: boolean;
+};
+
+const ProfilePicutre = ({ image, isEditMode = false }: TProps) => {
   const [cookies] = useCookies([AUTH_KEY]);
 
   const [selectedImages, setSelectedImages] = useState<TImage[]>([]);
-  const [editMode, setEditMode] = useState<boolean>(false);
+  const [editMode, setEditMode] = useState<boolean>(isEditMode);
 
   const [updateProfilePictureFn] = useMutation(
     UserQueries.UPDATE_PROFILE_PICTURE,
