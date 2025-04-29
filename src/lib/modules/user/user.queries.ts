@@ -50,7 +50,16 @@ const PROFILE = gql`
   }
 `;
 
+const UPDATE_PROFILE_PICTURE = gql`
+  mutation UpdateProfilePicture($id: String!) {
+    updateProfilePicture(id: $id) {
+      success
+    }
+  }
+`;
+
 export const UserQueries = {
   CONTEXT_USER,
   PROFILE,
+  UPDATE_PROFILE_PICTURE,
 };
