@@ -101,7 +101,10 @@ const DoctorsTable = ({ selected, setSelected }: TProps) => {
               </td>
               <td>
                 <img
-                  src={doctor.user.profilePicture || Images.PlaceholderImage}
+                  src={
+                    doctor.user.profilePicture.secureUrl ||
+                    Images.PlaceholderImage
+                  }
                   alt={doctor.user.firstName}
                   className="mx-auto size-8 object-cover object-center"
                 />
