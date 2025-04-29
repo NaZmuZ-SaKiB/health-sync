@@ -5,6 +5,7 @@ const IMAGE_LIST = gql`
     getAllImages(page: $page, limit: $limit, searchTerm: $searchTerm) {
       images {
         id
+        publicId
         name
         secureUrl
         thumbnailUrl
