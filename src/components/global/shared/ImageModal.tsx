@@ -16,6 +16,8 @@ import HSButton from "./HSButton";
 import { Check, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import HSPagination from "./HSPagination";
+import { useCookies } from "react-cookie";
+import { AUTH_KEY } from "@/constants";
 
 type TProps = {
   selectedImages: TImage[];
@@ -36,6 +38,8 @@ const ImageModal = ({
   multiple = false,
   title = "Select Image",
 }: TProps) => {
+  const [cookies] = useCookies([AUTH_KEY]);
+
   const [filters, setFilters] = useState<TFilters>({
     limit: "35",
     page: 1,
@@ -57,6 +61,11 @@ const ImageModal = ({
 
   const { data: imagesData, loading } = useQuery(ImageQueries.IMAGE_LIST, {
     variables: { ...filters, page: filters.page.toString() },
+    context: {
+      headers: {
+        Authorization: cookies[AUTH_KEY] || "",
+      },
+    },
   });
 
   const handleClick = (image: TImage) => {
