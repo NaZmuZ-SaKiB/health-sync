@@ -7,7 +7,7 @@ import { formatCurrency } from "@/utils/formatCurrency";
 const DoctorInformation = ({ doctor }: { doctor: TDoctor }) => {
   return (
     <DBox>
-      <DFormH2 className="text-slate-700">Professional Info</DFormH2>
+      <DFormH2 className="">Professional Info</DFormH2>
 
       <div className="grid grid-cols-6 gap-5">
         <DetailField title={"Bio"} value={doctor?.bio} className="col-span-6" />
