@@ -1,6 +1,7 @@
 import { TGender, TRole } from "@/types";
 import { TDoctor } from "../doctor/doctor.type";
 import { TPatient } from "../patient/patient.type";
+import { TImage } from "../image/image.type";
 
 export type TUser = {
   id: string;
@@ -13,7 +14,6 @@ export type TUser = {
   address: string;
   dateOfBirth: string;
   gender: TGender;
-  profilePicture: string; // TODO: update to image model
   role: TRole;
   isActive: boolean;
   createdAt: Date;
@@ -21,5 +21,5 @@ export type TUser = {
 
   patient?: TPatient;
   doctor?: TDoctor;
-  // images: TImage[]
+  profilePicture: TImage;
 };
