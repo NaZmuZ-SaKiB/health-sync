@@ -10,12 +10,14 @@ import { UserQueries } from "@/lib/modules/user/user.queries";
 import { TUser } from "@/lib/modules/user/user.type";
 import formatDate from "@/utils/formatDate";
 import { useQuery } from "@apollo/client";
-import { Edit, UserCheck2 } from "lucide-react";
+import { Edit } from "lucide-react";
 import { useCookies } from "react-cookie";
 import { Link } from "react-router";
 import DoctorInformation from "./_components/DoctorInformation";
 import { TDoctor } from "@/lib/modules/doctor/doctor.type";
 import ProfilePicutre from "./_components/ProfilePicutre";
+import PatientInformation from "./_components/PatientInformation";
+import { TPatient } from "@/lib/modules/patient/patient.type";
 
 const ProfilePage = () => {
   const [cookies] = useCookies([AUTH_KEY]);
@@ -31,8 +33,6 @@ const ProfilePage = () => {
   if (loading) return <div>Loading...</div>;
 
   const user: TUser = userData?.me;
-
-  console.log(UserCheck2);
 
   return (
     <DPageContainer>
@@ -55,17 +55,17 @@ const ProfilePage = () => {
             <div className="grid grid-cols-6 gap-5">
               <DetailField
                 title="First Name"
-                value={user?.firstName}
+                value={user?.firstName ?? "N/A"}
                 className="col-span-3"
               />
               <DetailField
                 title="Last Name"
-                value={user?.lastName}
+                value={user?.lastName ?? "N/A"}
                 className="col-span-3"
               />
               <DetailField
                 title="Gender"
-                value={user?.gender}
+                value={user?.gender ?? "N/A"}
                 className="col-span-3"
               />
               <DetailField
@@ -75,17 +75,21 @@ const ProfilePage = () => {
               />
               <DetailField
                 title="Phone"
-                value={user?.phoneNumber}
+                value={user?.phoneNumber ?? "N/A"}
                 className="col-span-3"
               />
               <DetailField
                 title="Date of Birth"
-                value={formatDate(user?.dateOfBirth as string)}
+                value={
+                  user?.dateOfBirth
+                    ? formatDate(user?.dateOfBirth as string)
+                    : "N/A"
+                }
                 className="col-span-3"
               />
               <DetailField
                 title="Address"
-                value={user?.address}
+                value={user?.address ?? "N/A"}
                 className="col-span-6"
               />
             </div>
@@ -93,6 +97,10 @@ const ProfilePage = () => {
 
           {user?.role === ROLE.DOCTOR && (
             <DoctorInformation doctor={user?.doctor as TDoctor} />
+          )}
+
+          {user?.role === ROLE.PATIENT && (
+            <PatientInformation patient={user?.patient as TPatient} />
           )}
         </div>
 
