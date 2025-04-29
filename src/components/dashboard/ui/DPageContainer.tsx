@@ -11,7 +11,7 @@ const DPageContainer = ({ children, className }: TProps) => {
   return (
     <div
       className={cn(
-        "xs:pr-3 max-xs:p-2 @container flex h-[calc(100svh-72px)] flex-col gap-3 overflow-auto overflow-x-hidden max-lg:px-3",
+        "xs:pr-3 xs:pb-3 max-xs:p-2 @container flex h-[calc(100svh-72px)] flex-col gap-3 overflow-auto overflow-x-hidden max-lg:px-3",
         className,
       )}
     >
