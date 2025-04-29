@@ -29,6 +29,6 @@ const update = z.object({
     .optional(),
 });
 
-export const validations = {
+export const PatientValidation = {
   update,
 };
