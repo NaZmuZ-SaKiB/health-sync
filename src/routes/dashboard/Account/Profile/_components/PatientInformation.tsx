@@ -7,7 +7,7 @@ const PatientInformation = ({ patient }: { patient: TPatient }) => {
   console.log(patient);
   return (
     <DBox>
-      <DFormH2 className="text-slate-700">Health Info</DFormH2>
+      <DFormH2 className="">Health Info</DFormH2>
 
       <div className="grid grid-cols-6 gap-5">
         <DetailField
