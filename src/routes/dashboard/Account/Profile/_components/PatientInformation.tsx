@@ -4,7 +4,6 @@ import DetailField from "@/components/global/shared/DetailField";
 import { TPatient } from "@/lib/modules/patient/patient.type";
 
 const PatientInformation = ({ patient }: { patient: TPatient }) => {
-  console.log(patient);
   return (
     <DBox>
       <DFormH2 className="">Health Info</DFormH2>
