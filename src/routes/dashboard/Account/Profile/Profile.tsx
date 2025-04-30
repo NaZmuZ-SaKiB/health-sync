@@ -50,7 +50,7 @@ const ProfilePage = () => {
       <DGrid small reverse className="gap-3 @max-5xl:space-y-3">
         <div className="space-y-3">
           <DBox>
-            <DFormH2 className="text-slate-700">Personal Info</DFormH2>
+            <DFormH2 className="">Personal Info</DFormH2>
 
             <div className="grid grid-cols-6 gap-5">
               <DetailField
