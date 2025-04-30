@@ -38,6 +38,7 @@ const PROFILE = gql`
           name
         }
         location {
+          id
           name
         }
         licenseNumber
