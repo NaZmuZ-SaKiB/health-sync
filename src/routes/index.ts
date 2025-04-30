@@ -19,6 +19,7 @@ import DoctorsPage from "./admin/Users/Doctors/Doctors";
 import SingleDoctorPage from "./admin/Users/Doctors/Single-Doctor/SingleDoctor";
 import DashboardPage from "./dashboard/Dashboard";
 import ProfilePage from "./dashboard/Account/Profile/Profile";
+import AccountEditPage from "./dashboard/Account/Profile/Edit/AccountEditPage";
 
 const router = createBrowserRouter([
   {
@@ -60,6 +61,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/account/profile",
         Component: ProfilePage,
+      },
+      {
+        path: "/dashboard/account/profile/edit",
+        Component: AccountEditPage,
       },
     ],
   },
