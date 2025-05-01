@@ -175,7 +175,33 @@ const SINGLE_DOCTOR_APPLICATION = gql`
 const UPDATE_DOCTOR = gql`
   mutation UpdateDoctor($input: UserDoctorUpdateInput!) {
     updateDoctor(input: $input) {
-      success
+      id
+      email
+      firstName
+      lastName
+      phoneNumber
+      address
+      dateOfBirth
+      gender
+      role
+      profilePicture {
+        publicId
+        secureUrl
+      }
+      doctor {
+        specialty {
+          name
+        }
+        location {
+          id
+          name
+        }
+        licenseNumber
+        bio
+        qualification
+        experienceYears
+        fee
+      }
     }
   }
 `;
