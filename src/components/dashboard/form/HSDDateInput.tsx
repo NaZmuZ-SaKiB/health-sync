@@ -70,7 +70,7 @@ const HSDDateInput = ({
                   {(segment) => (
                     <DateSegment
                       segment={segment}
-                      className="data-[invalid]:data-[focused]:bg-destructive data-[focused]:text-foreground data-[invalid]:data-[focused]:data-[placeholder]:text-destructive-foreground data-[invalid]:data-[focused]:text-destructive-foreground data-[invalid]:data-[placeholder]:text-destructive data-[invalid]:text-destructive data-[focused]:bg-primary-hover inline rounded p-0.5 text-slate-900 caret-transparent outline-0 data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50 data-[placeholder]:text-slate-500 data-[focused]:data-[placeholder]:text-slate-50 data-[type=literal]:px-0 data-[type=literal]:text-slate-50/70"
+                      className="data-[invalid]:data-[focused]:bg-destructive data-[invalid]:data-[focused]:data-[placeholder]:text-destructive-foreground data-[invalid]:data-[focused]:text-destructive-foreground data-[invalid]:data-[placeholder]:text-destructive data-[invalid]:text-destructive data-[focused]:bg-primary-hover inline rounded p-0.5 text-slate-900 caret-transparent outline-0 data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50 data-[focused]:text-slate-50 data-[placeholder]:text-slate-500 data-[focused]:data-[placeholder]:text-slate-50 data-[type=literal]:px-0 data-[type=literal]:text-slate-50/70"
                     />
                   )}
                 </DateInput>
