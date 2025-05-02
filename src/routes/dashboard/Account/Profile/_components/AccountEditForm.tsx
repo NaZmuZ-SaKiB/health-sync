@@ -1,7 +1,7 @@
 import { TUser } from "@/lib/modules/user/user.type";
 import DPageHeader from "@/components/dashboard/ui/DPageHeader";
 import { Resolver, SubmitHandler, useForm } from "react-hook-form";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import HSButton from "@/components/global/shared/HSButton";
 import DBox from "@/components/dashboard/ui/DBox";
 import DFormH2 from "@/components/dashboard/ui/DFormH2";
@@ -10,7 +10,7 @@ import { z } from "zod";
 import { PatientValidation } from "@/lib/modules/patient/patient.validation";
 import { DoctorValidation } from "@/lib/modules/doctor/doctor.validation";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { BLOOD_GROUP, GENDER, genders, ROLE } from "@/constants";
+import { AUTH_KEY, BLOOD_GROUP, GENDER, genders, ROLE } from "@/constants";
 import { Form } from "@/components/ui/form";
 import HSDInput from "@/components/dashboard/form/HSDInput";
 import HSDSelect from "@/components/dashboard/form/HSDSelect";
@@ -19,6 +19,12 @@ import HSDTextarea from "@/components/dashboard/form/HSDTextarea";
 import ProfilePicutre from "./ProfilePicutre";
 import PatientEditForm from "./PatientEditForm";
 import DoctorEditForm from "./DoctorEditForm";
+import { useCookies } from "react-cookie";
+import { useMutation } from "@apollo/client";
+import { DoctorQueries } from "@/lib/modules/doctor/doctor.queries";
+import { UserQueries } from "@/lib/modules/user/user.queries";
+import { PatientQueries } from "@/lib/modules/patient/patient.queries";
+import { toast } from "sonner";
 
 type TForm = z.infer<
   typeof PatientValidation.update | typeof DoctorValidation.update
@@ -30,6 +36,31 @@ const genderOptions = genders.map((gender) => ({
 }));
 
 const AccountEditForm = ({ user }: { user: TUser }) => {
+  const [cookies] = useCookies([AUTH_KEY]);
+
+  const navigate = useNavigate();
+
+  const [updateDoctorFn] = useMutation(DoctorQueries.UPDATE_DOCTOR, {
+    context: {
+      headers: {
+        Authorization: cookies[AUTH_KEY] || "",
+      },
+    },
+    refetchQueries: [UserQueries.PROFILE],
+  });
+
+  const [updatePatientFn] = useMutation(PatientQueries.UPDATE_PATIENT, {
+    context: {
+      headers: {
+        Authorization: cookies[AUTH_KEY] || "",
+      },
+    },
+    refetchQueries: [UserQueries.PROFILE],
+  });
+
+  const updateProfileFn =
+    user.role === ROLE.DOCTOR ? updateDoctorFn : updatePatientFn;
+
   let resolver: Resolver = zodResolver(PatientValidation.update);
   const defaultValues: TForm = {
     firstName: user?.firstName ?? "",
@@ -67,7 +98,23 @@ const AccountEditForm = ({ user }: { user: TUser }) => {
   });
 
   const handleUpdate: SubmitHandler<TForm> = async (data) => {
-    console.log(data);
+    try {
+      toast.promise(
+        async () => {
+          return await updateProfileFn({ variables: { input: { ...data } } });
+        },
+        {
+          loading: "Saving Changes...",
+          success: () => {
+            navigate("/dashboard/account/profile");
+            return "Profile Updated.";
+          },
+          error: (error: any) => error?.message,
+        },
+      );
+    } catch {
+      toast.error("A Client error occurred");
+    }
   };
 
   return (
@@ -92,6 +139,7 @@ const AccountEditForm = ({ user }: { user: TUser }) => {
               type="submit"
               variant="secondary"
               className="border-secondary h-auto self-start rounded-md border px-5 py-2"
+              disabled={form.formState.isSubmitting}
             >
               Save
             </HSButton>
