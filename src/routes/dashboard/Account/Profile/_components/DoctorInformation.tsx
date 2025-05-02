@@ -38,7 +38,7 @@ const DoctorInformation = ({ doctor }: { doctor: TDoctor }) => {
         />
         <DetailField
           title="Fee"
-          value={formatCurrency(doctor?.fee ?? 0)}
+          value={formatCurrency(doctor?.fee || 0)}
           className="col-span-3"
         />
       </div>
