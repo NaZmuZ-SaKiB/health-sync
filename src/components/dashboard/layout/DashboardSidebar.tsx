@@ -4,16 +4,24 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { doctorSidebarItems } from "@/constants";
+import { doctorSidebarItems, patientSidebarItems, ROLE } from "@/constants";
+import useAuth from "@/hooks/use-auth";
 import { Circle } from "lucide-react";
 import { Link } from "react-router";
 
 const DashboardSidebar = () => {
+  const { user, loading } = useAuth();
+
+  if (loading) return null;
+
+  const sidebarItems =
+    user?.role === ROLE.PATIENT ? patientSidebarItems : doctorSidebarItems;
+
   return (
     <div className="h-[calc(100svh-72px)] p-3 pt-0">
       <div className="h-full rounded-lg bg-white px-3 py-4 text-slate-50">
         <Accordion type="single" collapsible>
-          {doctorSidebarItems.map((item) => {
+          {sidebarItems.map((item) => {
             if (item.children?.length) {
               return (
                 <AccordionItem
