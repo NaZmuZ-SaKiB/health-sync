@@ -20,6 +20,28 @@ export type TSidebarItem = {
   children?: TAdminSidebarChildItem[];
 };
 
+export const patientSidebarItems: TSidebarItem[] = [
+  {
+    label: "Dashboard",
+    route: "/dashboard",
+    icon: LayoutDashboard,
+  },
+  {
+    label: "Account",
+    icon: UserRound,
+    children: [
+      {
+        label: "Profile",
+        route: "/dashboard/account/profile",
+      },
+      {
+        label: "Change Password",
+        route: "/dashboard/account/change-password",
+      },
+    ],
+  },
+];
+
 export const doctorSidebarItems: TSidebarItem[] = [
   {
     label: "Dashboard",
