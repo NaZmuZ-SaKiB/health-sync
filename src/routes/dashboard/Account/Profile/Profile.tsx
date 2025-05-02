@@ -55,17 +55,17 @@ const ProfilePage = () => {
             <div className="grid grid-cols-6 gap-5">
               <DetailField
                 title="First Name"
-                value={user?.firstName ?? "N/A"}
+                value={user?.firstName || "N/A"}
                 className="col-span-3"
               />
               <DetailField
                 title="Last Name"
-                value={user?.lastName ?? "N/A"}
+                value={user?.lastName || "N/A"}
                 className="col-span-3"
               />
               <DetailField
                 title="Gender"
-                value={user?.gender ?? "N/A"}
+                value={user?.gender || "N/A"}
                 className="col-span-3"
               />
               <DetailField
@@ -75,7 +75,7 @@ const ProfilePage = () => {
               />
               <DetailField
                 title="Phone"
-                value={user?.phoneNumber ?? "N/A"}
+                value={user?.phoneNumber || "N/A"}
                 className="col-span-3"
               />
               <DetailField
@@ -89,7 +89,7 @@ const ProfilePage = () => {
               />
               <DetailField
                 title="Address"
-                value={user?.address ?? "N/A"}
+                value={user?.address || "N/A"}
                 className="col-span-6"
               />
             </div>
