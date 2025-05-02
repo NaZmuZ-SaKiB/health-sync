@@ -11,22 +11,22 @@ const PatientInformation = ({ patient }: { patient: TPatient }) => {
       <div className="grid grid-cols-6 gap-5">
         <DetailField
           title={"Allergies"}
-          value={patient?.allergies ?? "N/A"}
+          value={patient?.allergies || "N/A"}
           className="col-span-3"
         />
         <DetailField
           title={"Blood Group"}
-          value={patient?.bloodGroup ?? "N/A"}
+          value={patient?.bloodGroup || "N/A"}
           className="col-span-3"
         />
         <DetailField
           title={"Emergency Contact Name"}
-          value={patient?.emergencyContactName ?? "N/A"}
+          value={patient?.emergencyContactName || "N/A"}
           className="col-span-3"
         />
         <DetailField
           title={"Emergency Contact Phone"}
-          value={patient?.emergencyContactPhone ?? "N/A"}
+          value={patient?.emergencyContactPhone || "N/A"}
           className="col-span-3"
         />
       </div>
