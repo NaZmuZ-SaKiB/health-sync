@@ -13,7 +13,7 @@ const update = z.object({
     .optional(),
   phoneNumber: z.string().optional(),
   address: z.string().optional(),
-  dateOfBirth: z.coerce.date({ message: "Invalid Date" }).optional(),
+  dateOfBirth: z.string().date("Invalid Date").optional(),
   gender: CommonValidation.gender.optional(),
   profilePicture: z
     .string()
