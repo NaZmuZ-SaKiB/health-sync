@@ -2,6 +2,7 @@ import { TDoctorVerificationStatus } from "@/types";
 import { TLocation } from "../location/location.type";
 import { TSpecialty } from "../specialty/specialty.type";
 import { TUser } from "../user/user.type";
+import { TDoctorSchedule } from "../doctor-schedule/doctor-schedule.type";
 
 export type TDoctor = {
   id: string;
@@ -20,7 +21,7 @@ export type TDoctor = {
   user: TUser;
   specialty: TSpecialty;
   location: TLocation;
-  // schedules: TSchedule[];
+  schedules: TDoctorSchedule[];
   // timeSlots: TTimeSlot[]
   //   appointments: TAppointment[];
   //   reviews: TReview[];
