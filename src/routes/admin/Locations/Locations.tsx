@@ -2,7 +2,7 @@ import APageContainer from "@/components/admin/ui/APageContainer";
 import APageHeader from "@/components/admin/ui/APageHeader";
 import { useState } from "react";
 import ABox from "@/components/admin/ui/ABox";
-import SelectedCount from "@/components/admin/shared/SelectedCount";
+import SelectedCount from "@/components/global/shared/SelectedCount";
 import SortByFilter from "@/components/admin/shared/SortByFilter";
 import SortOrderFilter from "@/components/admin/shared/SortOrderFilter";
 import LimitFilter from "@/components/admin/shared/LimitFilter";

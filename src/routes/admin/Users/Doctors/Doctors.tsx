@@ -1,6 +1,6 @@
 import LimitFilter from "@/components/admin/shared/LimitFilter";
 import SearchFilter from "@/components/admin/shared/SearchFilter";
-import SelectedCount from "@/components/admin/shared/SelectedCount";
+import SelectedCount from "@/components/global/shared/SelectedCount";
 import SortByFilter from "@/components/admin/shared/SortByFilter";
 import SortOrderFilter from "@/components/admin/shared/SortOrderFilter";
 import ABox from "@/components/admin/ui/ABox";

@@ -9,7 +9,7 @@ import SortByFilter from "@/components/admin/shared/SortByFilter";
 import SortOrderFilter from "@/components/admin/shared/SortOrderFilter";
 import LimitFilter from "@/components/admin/shared/LimitFilter";
 import { useState } from "react";
-import SelectedCount from "@/components/admin/shared/SelectedCount";
+import SelectedCount from "@/components/global/shared/SelectedCount";
 import SpecialtyDelete from "./_components/SpecialtyDelete";
 import { Button } from "@/components/ui/button";
 
