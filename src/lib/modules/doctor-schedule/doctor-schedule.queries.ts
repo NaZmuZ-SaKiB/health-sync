@@ -13,6 +13,15 @@ const DOCTOR_SCHEDULES = gql`
   }
 `;
 
+const UPDATE_DOCTOR_SCHEDULES = gql`
+  mutation UpdateDoctorSchedule($input: DoctorScheduleUpdateInput!) {
+    updateDoctorSchedule(input: $input) {
+      success
+    }
+  }
+`;
+
 export const DoctorScheduleQueries = {
   DOCTOR_SCHEDULES,
+  UPDATE_DOCTOR_SCHEDULES,
 };
