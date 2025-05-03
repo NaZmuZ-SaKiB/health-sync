@@ -1,4 +1,4 @@
-import { HTMLInputTypeAttribute } from "react";
+import { HTMLInputTypeAttribute, InputHTMLAttributes } from "react";
 import { useFormContext } from "react-hook-form";
 
 import {
@@ -24,7 +24,7 @@ type TProps = {
   required?: boolean;
   disabled?: boolean;
   readOnly?: boolean;
-};
+} & InputHTMLAttributes<HTMLInputElement>;
 
 const HSDInput = ({
   name,
@@ -37,6 +37,7 @@ const HSDInput = ({
   required = true,
   disabled = false,
   readOnly = false,
+  ...otherProps
 }: TProps) => {
   const { control } = useFormContext();
 
@@ -72,6 +73,7 @@ const HSDInput = ({
               disabled={disabled}
               readOnly={readOnly}
               {...field}
+              {...otherProps}
             />
           </FormControl>
           {description && (
