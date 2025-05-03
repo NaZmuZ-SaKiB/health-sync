@@ -167,9 +167,29 @@
     @apply border-collapse border p-1.5 text-center max-lg:text-xs;
   }
 
-  /*? -------------------------------------------- */
-  /*? ------------- Primary Table End ------------ */
-  /*? -------------------------------------------- */
+  /*? ------------------------------------------------ */
+  /*? ------------- Doctor Schedule Table ------------ */
+  /*? ------------------------------------------------ */
+
+  .doctor-schedule-table th {
+    @apply bg-primary-hover border-primary text-slate-50;
+  }
+
+  .doctor-schedule-table th:first-child {
+    @apply border-orange-500 bg-orange-500;
+  }
+
+  .doctor-schedule-table td:first-child {
+    @apply border-slate-500 bg-slate-700;
+  }
+
+  .doctor-schedule-table th:nth-child(2) {
+    @apply border-b-primary-hover;
+  }
+
+  .doctor-schedule-table td:nth-child(2) {
+    @apply border-teal-400 bg-teal-500 text-slate-50;
+  }
 }
 
 /*? ------------------- */
