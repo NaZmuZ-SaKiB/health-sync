@@ -9,6 +9,7 @@ import { Edit } from "lucide-react";
 import { ChangeEvent } from "react";
 import ScheduleBulkUpdateModal from "./ScheduleBulkUpdateModal";
 import formatTime from "@/utils/formatTime";
+import ScheduleAvailableSwitch from "./ScheduleAvailableSwitch";
 
 type TProps = {
   selected: string[];
@@ -85,7 +86,12 @@ const ScheduleTable = ({ selected, setSelected }: TProps) => {
               <td>{formatTime(schedule.startTime)}</td>
               <td>{formatTime(schedule.endTime)}</td>
               <td>{schedule.sessionLength} Minutes</td>
-              <td>{schedule?.isAvailable ? "true" : "false"}</td>
+              <td>
+                <ScheduleAvailableSwitch
+                  id={schedule?.id}
+                  isAvailable={schedule?.isAvailable}
+                />
+              </td>
               <td>
                 <ScheduleBulkUpdateModal
                   ids={[schedule.id]}
