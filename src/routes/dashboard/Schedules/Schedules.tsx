@@ -23,9 +23,10 @@ const SchedulesPage = () => {
 
               <ScheduleBulkUpdateModal ids={selected} setIds={setSelected}>
                 <HSButton
-                  className="rounded-lg"
+                  className="rounded-md"
                   variant="secondary"
                   disabled={!selected.length}
+                  size="sm"
                 >
                   Bulk Update
                 </HSButton>
