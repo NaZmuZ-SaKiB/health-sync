@@ -1,4 +1,5 @@
 import HSDInput from "@/components/dashboard/form/HSDInput";
+import HSDSwitch from "@/components/dashboard/form/HSDSwitch";
 import HSDTimeInput from "@/components/dashboard/form/HSDTimeInput";
 import HSButton from "@/components/global/shared/HSButton";
 import { Button } from "@/components/ui/button";
@@ -59,6 +60,7 @@ const ScheduleBulkUpdateModal = ({
       startTime: defaultValue?.startTime || "09:30",
       endTime: defaultValue?.endTime || "17:30",
       sessionLength: defaultValue?.sessionLength || 30,
+      isAvailable: defaultValue?.isAvailable || true,
     },
     resolver: zodResolver(DoctorScheduleValidation.update),
     mode: "onBlur",
@@ -143,6 +145,13 @@ const ScheduleBulkUpdateModal = ({
               min={15}
               max={60}
               step={15}
+            />
+
+            <HSDSwitch
+              name="isAvailable"
+              label="Availability"
+              required={false}
+              vertical
             />
 
             <DialogFooter className="mt-10">
