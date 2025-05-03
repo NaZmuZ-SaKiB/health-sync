@@ -20,6 +20,7 @@ const update = z.object({
       "Session Length must be a multiplier of 15. Ex: 15,30,45,60",
     )
     .optional(),
+  isAvailable: z.boolean().optional(),
 });
 
 export const DoctorScheduleValidation = { update };
