@@ -13,6 +13,7 @@ export type TAppointmentFormData = z.infer<typeof AppointmentValidation.create>;
 const AppointmentPage = () => {
   const [formLoading, setFormLoading] = useState<boolean>(true);
   const [formData, setFormData] = useState<Partial<TAppointmentFormData>>({});
+  const [step, setStep] = useState<1>(1);
 
   const [cookies] = useCookies([AUTH_KEY]);
 
@@ -52,6 +53,16 @@ const AppointmentPage = () => {
 
   console.log("formData", formData);
 
+  const renderStep = {
+    1: () => (
+      <AppointmentStep1
+        formData={formData}
+        setFormData={setFormData}
+        setStep={setStep}
+      />
+    ),
+  };
+
   return (
     <div>
       <div
@@ -59,16 +70,14 @@ const AppointmentPage = () => {
         style={{ backgroundImage: `url(${Images.HeroBG})` }}
       >
         <div className="hs-container">
-          <h1 className="text-secondary text-5xl leading-14 font-bold">
+          <h1 className="text-secondary text-center text-5xl leading-14 font-bold">
             Make an Appointment
           </h1>
         </div>
       </div>
 
       <div className="hs-container">
-        <div className="py-20">
-          <AppointmentStep1 formData={formData} setFormData={setFormData} />
-        </div>
+        <div className="py-20">{renderStep[step]()}</div>
       </div>
     </div>
   );
