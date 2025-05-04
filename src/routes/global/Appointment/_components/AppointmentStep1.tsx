@@ -8,6 +8,7 @@ import AppointmentDoctorInfo from "./AppointmentDoctorInfo";
 type TProps = {
   formData: Partial<TAppointmentFormData>;
   setFormData: React.Dispatch<React.SetStateAction<any>>;
+  setStep: any;
 };
 
 const SPECIALTIES_OPTIONS = gql`
@@ -69,7 +70,7 @@ const DOCTOR_LIST = gql`
   }
 `;
 
-const AppointmentStep1 = ({ formData, setFormData }: TProps) => {
+const AppointmentStep1 = ({ formData, setFormData, setStep }: TProps) => {
   const [selectedSpecialty, setSelectedSpecialty] = useState<string>("");
   const [selectedLocation, setSelectedLocation] = useState<string>("");
   const [selectedDoctor, setSelectedDoctor] = useState<string>(
@@ -173,7 +174,9 @@ const AppointmentStep1 = ({ formData, setFormData }: TProps) => {
         </div>
       </div>
 
-      {selectedDoctor && <AppointmentDoctorInfo id={selectedDoctor} />}
+      {selectedDoctor && (
+        <AppointmentDoctorInfo id={selectedDoctor} setStep={setStep} />
+      )}
     </div>
   );
 };
