@@ -40,7 +40,12 @@ const SINGLE_DOCTOR = gql`
   }
 `;
 
-const AppointmentDoctorInfo = ({ id }: { id: string }) => {
+type TProps = {
+  id: string;
+  setStep: any;
+};
+
+const AppointmentDoctorInfo = ({ id, setStep }: TProps) => {
   const { data: doctorData, loading } = useQuery(SINGLE_DOCTOR, {
     variables: { id },
     skip: !id,
@@ -129,20 +134,27 @@ const AppointmentDoctorInfo = ({ id }: { id: string }) => {
           ))}
           {doctor?.schedules?.length === 0 && (
             <tr>
-              <td colSpan={6}>Doctor is not available</td>
+              <td colSpan={6} className="p-5 text-base text-slate-50">
+                Doctor is not available
+              </td>
             </tr>
           )}
         </tbody>
       </table>
 
-      <div className="mt-10 flex justify-center">
-        <HSButton className="h-auto py-2 pr-2 pl-5 text-lg">
-          Continue{" "}
-          <span className="grid size-10 place-items-center rounded-md bg-white">
-            <MoveRight className="text-primary size-5" />
-          </span>
-        </HSButton>
-      </div>
+      {doctor?.schedules?.length > 0 && (
+        <div className="mt-10 flex justify-center">
+          <HSButton
+            className="h-auto py-2 pr-2 pl-5 text-lg"
+            onClick={() => setStep(2)}
+          >
+            Continue{" "}
+            <span className="grid size-10 place-items-center rounded-md bg-white">
+              <MoveRight className="text-primary size-5" />
+            </span>
+          </HSButton>
+        </div>
+      )}
     </div>
   );
 };
