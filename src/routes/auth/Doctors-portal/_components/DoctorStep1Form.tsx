@@ -1,6 +1,6 @@
 import HSDateInput from "@/components/global/form/HSDateInput";
 import HSInput from "@/components/global/form/HSInput";
-import HSSelect from "@/components/global/form/HSSelect";
+import HSSelectInput from "@/components/global/form/HSSelectInput";
 import HSTextarea from "@/components/global/form/HSTextarea";
 import HSButton from "@/components/global/shared/HSButton";
 import { Form } from "@/components/ui/form";
@@ -74,7 +74,7 @@ const DoctorStep1Form = ({ nextStep, formData, setFormData }: TProps) => {
         <HSInput name="email" label="Email" type="text" />
         <HSInput name="phoneNumber" label="Phone Number" type="text" />
 
-        <HSSelect name="gender" label="Gender" options={genderOptions} />
+        <HSSelectInput name="gender" label="Gender" options={genderOptions} />
         <HSDateInput name="dateOfBirth" label="Date of Birth" />
 
         <div className="col-span-2">

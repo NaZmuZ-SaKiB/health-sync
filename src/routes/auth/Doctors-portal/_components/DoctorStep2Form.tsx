@@ -1,5 +1,5 @@
 import HSInput from "@/components/global/form/HSInput";
-import HSSelect from "@/components/global/form/HSSelect";
+import HSSelectInput from "@/components/global/form/HSSelectInput";
 import HSTextarea from "@/components/global/form/HSTextarea";
 import HSButton from "@/components/global/shared/HSButton";
 import { Form } from "@/components/ui/form";
@@ -136,13 +136,13 @@ const DoctorStep2Form = ({ prevStep, nextStep, formData }: TProps) => {
         onSubmit={form.handleSubmit(onSubmit)}
         className="grid grid-cols-2 gap-x-8 gap-y-5"
       >
-        <HSSelect
+        <HSSelectInput
           name="doctor.specialtyId"
           label="Specialty"
           options={specialtiesOptions}
           disabled={specialtiesLoading}
         />
-        <HSSelect
+        <HSSelectInput
           name="doctor.locationId"
           label="Location"
           options={locationsOptions}
