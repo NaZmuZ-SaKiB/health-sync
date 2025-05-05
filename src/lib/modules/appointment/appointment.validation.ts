@@ -7,20 +7,20 @@ const create = z.object({
     firstName: z.string(),
     lastName: z.string(),
     phoneNumber: z.string(),
-    address: z.string(),
+    address: z.string().optional(),
     dateOfBirth: z.string().date("Invalid Date."),
     gender: CommonValidation.gender,
 
     patient: z.object({
       bloodGroup: CommonValidation.bloodGroup,
-      allergies: z.string(),
+      allergies: z.string().optional(),
     }),
   }),
 
   appointment: z.object({
     doctorId: z.string(),
     timeSlot: z.object({
-      slotDate: z.string().date("Invalid Date."),
+      slotDate: z.string(),
       startTime: z.string(),
       endTime: z.string(),
     }),
