@@ -15,7 +15,12 @@ type TProps = {
 const AppointmentStep2 = ({ formData, setFormData, setStep }: TProps) => {
   const [date, setDate] = useState<Date>(
     formData?.appointment?.timeSlot?.slotDate
-      ? new Date(formData?.appointment?.timeSlot?.slotDate)
+      ? new Date(
+          moment(
+            formData?.appointment?.timeSlot?.slotDate,
+            "DD-MM-YYYY",
+          ).format("YYYY-MM-DD"),
+        )
       : new Date(),
   );
 
@@ -28,7 +33,7 @@ const AppointmentStep2 = ({ formData, setFormData, setStep }: TProps) => {
         appointment: {
           ...prev?.appointment,
           timeSlot: {
-            slotDate: moment(formattedDate).format("DD-MM-YYYY"),
+            slotDate: formattedDate,
           },
         },
       }));
@@ -42,13 +47,11 @@ const AppointmentStep2 = ({ formData, setFormData, setStep }: TProps) => {
     {
       variables: {
         doctorId: formData?.appointment?.doctorId,
-        date: date.toDateString(),
+        date: date?.toDateString(),
       },
       skip: !date,
     },
   );
-
-  console.log("schedule", scheduleData?.getDoctorScheduleByDate);
 
   return (
     <div className="bg-primary-hover mx-auto mb-10 w-full max-w-[800px] space-y-10 rounded-3xl p-10 text-slate-50 shadow-2xl shadow-slate-300">
@@ -59,7 +62,7 @@ const AppointmentStep2 = ({ formData, setFormData, setStep }: TProps) => {
             defaultValue={date}
             setDate={setDate}
             fromDate={new Date()}
-            toDate={new Date(Date.now() + 9 * 24 * 60 * 60 * 1000)}
+            toDate={new Date(Date.now() + 2 * 24 * 60 * 60 * 1000)}
             className="max-w-[300px]"
           />
         </label>
