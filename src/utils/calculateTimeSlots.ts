@@ -4,6 +4,7 @@ import { toast } from "sonner";
 type TTimeSlot = {
   startTime: string;
   endTime: string;
+  isBooked: boolean;
 };
 
 const calculateTimeSlots = (
@@ -42,6 +43,7 @@ const calculateTimeSlots = (
       slots.push({
         startTime: currentSlotStart.format("HH:mm"),
         endTime: currentSlotEnd.format("HH:mm"),
+        isBooked: false,
       });
     }
 
