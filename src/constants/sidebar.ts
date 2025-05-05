@@ -1,4 +1,5 @@
 import {
+  CalendarCheck,
   CalendarClock,
   LayoutDashboard,
   LucideProps,
@@ -40,6 +41,11 @@ export const patientSidebarItems: TSidebarItem[] = [
         route: "/dashboard/account/change-password",
       },
     ],
+  },
+  {
+    label: "Appointments",
+    route: "/dashboard/my-appointments",
+    icon: CalendarCheck,
   },
 ];
 
