@@ -30,6 +30,7 @@ const SINGLE_DOCTOR = gql`
         name
       }
       schedules {
+        id
         day
         startTime
         endTime
