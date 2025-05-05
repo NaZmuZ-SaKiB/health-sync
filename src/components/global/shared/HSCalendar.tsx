@@ -26,6 +26,11 @@ const HSCalendar = ({
   toDate,
   className,
 }: TProps) => {
+  const handleSelect = (selectedDate: Date | undefined) => {
+    if (selectedDate) {
+      setDate(selectedDate);
+    }
+  };
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -48,7 +53,7 @@ const HSCalendar = ({
         <Calendar
           mode="single"
           selected={defaultValue}
-          onSelect={setDate}
+          onSelect={handleSelect}
           fromDate={fromDate}
           toDate={toDate}
         />
