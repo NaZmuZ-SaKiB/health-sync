@@ -7,13 +7,14 @@ import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import { z } from "zod";
 import AppointmentStep1 from "./_components/AppointmentStep1";
+import AppointmentStep2 from "./_components/AppointmentStep2";
 
 export type TAppointmentFormData = z.infer<typeof AppointmentValidation.create>;
 
 const AppointmentPage = () => {
   const [formLoading, setFormLoading] = useState<boolean>(true);
   const [formData, setFormData] = useState<Partial<TAppointmentFormData>>({});
-  const [step, setStep] = useState<1>(1);
+  const [step, setStep] = useState<1 | 2>(1);
 
   const [cookies] = useCookies([AUTH_KEY]);
 
@@ -56,6 +57,13 @@ const AppointmentPage = () => {
   const renderStep = {
     1: () => (
       <AppointmentStep1
+        formData={formData}
+        setFormData={setFormData}
+        setStep={setStep}
+      />
+    ),
+    2: () => (
+      <AppointmentStep2
         formData={formData}
         setFormData={setFormData}
         setStep={setStep}
