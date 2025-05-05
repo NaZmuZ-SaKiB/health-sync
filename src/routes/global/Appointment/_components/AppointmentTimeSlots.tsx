@@ -6,6 +6,9 @@ import { useState } from "react";
 import { TAppointmentFormData } from "../Appointment";
 import HSButton from "@/components/global/shared/HSButton";
 import { MoveLeft, MoveRight } from "lucide-react";
+import { useQuery } from "@apollo/client";
+import { TimeSlotQueries } from "@/lib/modules/time-slot/time-slot.queries";
+import { TTimeSlot } from "@/lib/modules/time-slot/time-slot.type";
 
 type TProps = {
   schedule: TDoctorSchedule;
@@ -14,27 +17,52 @@ type TProps = {
   setStep: any;
 };
 
-type TTimeSlot = {
-  startTime: string;
-  endTime: string;
-  slotDate: string;
-};
-
 const AppointmentTimeSlots = ({
   schedule,
   formData,
   setFormData,
   setStep,
 }: TProps) => {
-  const [selected, setSelected] = useState<TTimeSlot | null>(
+  const [selected, setSelected] = useState<Partial<TTimeSlot> | null>(
     formData?.appointment?.timeSlot || null,
   );
+
+  const { data: slotData, loading } = useQuery(
+    TimeSlotQueries.GET_TIME_SLOT_BY_DATE,
+    {
+      variables: {
+        doctorId: formData?.appointment?.doctorId,
+        date: formData?.appointment?.timeSlot?.slotDate,
+      },
+      skip: !formData?.appointment?.timeSlot?.slotDate,
+    },
+  );
+
+  if (loading) return null;
+  // TODO: Loader
+
+  const existingSlots: TTimeSlot[] = slotData?.getTimeSlotsByDate;
+
+  if (!schedule.isAvailable) {
+    return (
+      <div className="bg-yellow-300 p-3 text-slate-900">
+        Doctor is not available this day!
+      </div>
+    );
+  }
 
   const timeSlots = calculateTimeSlots(
     schedule.startTime,
     schedule.endTime,
     schedule.sessionLength,
   );
+
+  existingSlots.filter((item) => item.isBooked);
+
+  existingSlots.forEach((item) => {
+    const slot = timeSlots.findIndex((i) => i.startTime === item.startTime);
+    timeSlots[slot].isBooked = true;
+  });
 
   const handleSelect = (slot: Pick<TTimeSlot, "startTime" | "endTime">) => {
     setSelected({ ...slot, slotDate: "" });
@@ -66,6 +94,8 @@ const AppointmentTimeSlots = ({
               {
                 "border-yellow-300 bg-yellow-300 font-semibold text-slate-900":
                   selected?.startTime === item.startTime,
+                "pointer-events-none cursor-not-allowed border-slate-300 bg-slate-300 text-slate-700 hover:border-slate-300 hover:bg-slate-300 hover:text-slate-700":
+                  item.isBooked,
               },
             )}
           >
