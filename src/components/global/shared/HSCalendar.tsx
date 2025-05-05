@@ -10,6 +10,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { ClassValue } from "clsx";
+import { useState } from "react";
 
 type TProps = {
   defaultValue: Date;
@@ -26,13 +27,16 @@ const HSCalendar = ({
   toDate,
   className,
 }: TProps) => {
+  const [open, setOpen] = useState(false);
+
   const handleSelect = (selectedDate: Date | undefined) => {
     if (selectedDate) {
       setDate(selectedDate);
     }
+    setOpen(false);
   };
   return (
-    <Popover>
+    <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
         <Button
           variant={"outline"}
