@@ -8,13 +8,16 @@ import { useCookies } from "react-cookie";
 import { z } from "zod";
 import AppointmentStep1 from "./_components/AppointmentStep1";
 import AppointmentStep2 from "./_components/AppointmentStep2";
+import AppointmentStep3 from "./_components/AppointmentStep3";
+import AppointmentSuccessStep from "./_components/AppointmentSuccessStep";
 
 export type TAppointmentFormData = z.infer<typeof AppointmentValidation.create>;
 
 const AppointmentPage = () => {
   const [formLoading, setFormLoading] = useState<boolean>(true);
   const [formData, setFormData] = useState<Partial<TAppointmentFormData>>({});
-  const [step, setStep] = useState<1 | 2>(1);
+  const [isNewUser, setIsNewUser] = useState<boolean>(false);
+  const [step, setStep] = useState<1 | 2 | 3 | 4>(4);
 
   const [cookies] = useCookies([AUTH_KEY]);
 
@@ -52,8 +55,6 @@ const AppointmentPage = () => {
 
   if (loading || formLoading) return <div>Loading...</div>;
 
-  console.log("formData", formData);
-
   const renderStep = {
     1: () => (
       <AppointmentStep1
@@ -69,6 +70,14 @@ const AppointmentPage = () => {
         setStep={setStep}
       />
     ),
+    3: () => (
+      <AppointmentStep3
+        formData={formData}
+        setStep={setStep}
+        setIsNewUser={setIsNewUser}
+      />
+    ),
+    4: () => <AppointmentSuccessStep isNewUser={isNewUser} />,
   };
 
   return (
