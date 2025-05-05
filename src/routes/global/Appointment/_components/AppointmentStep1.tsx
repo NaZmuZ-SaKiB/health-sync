@@ -154,24 +154,26 @@ const AppointmentStep1 = ({ formData, setFormData, setStep }: TProps) => {
           </label>
         </div>
 
-        <div>
-          <label>
-            <p className="text-sm font-semibold">Doctor</p>
-            <HSSelect
-              options={doctorOptions}
-              disabled={
-                (!selectedSpecialty && !selectedLocation) || doctorsLoading
-              }
-              onValueChange={(v) => {
-                setSelectedDoctor(v);
-                setFormData((prev: TAppointmentFormData) => ({
-                  ...prev,
-                  appointment: { ...prev.appointment, doctorId: v },
-                }));
-              }}
-            />
-          </label>
-        </div>
+        {selectedSpecialty && selectedLocation && !doctorsLoading && (
+          <div>
+            <label>
+              <p className="text-sm font-semibold">Doctor</p>
+              <HSSelect
+                options={doctorOptions}
+                disabled={
+                  !selectedSpecialty || !selectedLocation || doctorsLoading
+                }
+                onValueChange={(v) => {
+                  setSelectedDoctor(v);
+                  setFormData((prev: TAppointmentFormData) => ({
+                    ...prev,
+                    appointment: { doctorId: v },
+                  }));
+                }}
+              />
+            </label>
+          </div>
+        )}
       </div>
 
       {selectedDoctor && (
