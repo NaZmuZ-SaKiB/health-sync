@@ -1,4 +1,4 @@
-import TableLoader from "@/components/admin/shared/TableLoader";
+import TableLoader from "@/components/global/shared/TableLoader";
 import ABox from "@/components/admin/ui/ABox";
 import HSPagination from "@/components/global/shared/HSPagination";
 import { Button } from "@/components/ui/button";
@@ -13,7 +13,7 @@ import { Edit, Eye, Trash2 } from "lucide-react";
 import { ChangeEvent } from "react";
 import { Link, useSearchParams } from "react-router";
 import SpecialtyDelete from "./SpecialtyDelete";
-import RefreshButton from "@/components/admin/shared/RefreshButton";
+import RefreshButton from "@/components/global/shared/RefreshButton";
 
 type TProps = {
   selected: string[];

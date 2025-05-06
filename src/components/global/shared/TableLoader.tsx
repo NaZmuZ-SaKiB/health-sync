@@ -1,4 +1,4 @@
-import ABox from "../ui/ABox";
+import ABox from "../../admin/ui/ABox";
 
 const TableLoader = () => {
   return (

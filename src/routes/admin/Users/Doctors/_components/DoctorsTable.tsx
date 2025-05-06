@@ -1,5 +1,5 @@
-import RefreshButton from "@/components/admin/shared/RefreshButton";
-import TableLoader from "@/components/admin/shared/TableLoader";
+import RefreshButton from "@/components/global/shared/RefreshButton";
+import TableLoader from "@/components/global/shared/TableLoader";
 import ABox from "@/components/admin/ui/ABox";
 import HSPagination from "@/components/global/shared/HSPagination";
 import { Button } from "@/components/ui/button";
