@@ -6,12 +6,18 @@ import {
   DropdownMenuRadioItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { cn } from "@/lib/utils";
+import { ClassValue } from "clsx";
 import { useState } from "react";
 import { useSearchParams } from "react-router";
 
-type TProps = { options: string[]; defaultValueIndex: number };
+type TProps = {
+  options: string[];
+  defaultValueIndex: number;
+  className?: ClassValue;
+};
 
-const SortByFilter = ({ options, defaultValueIndex }: TProps) => {
+const SortByFilter = ({ options, defaultValueIndex, className }: TProps) => {
   const [sortBy, setSortBy] = useState(options[defaultValueIndex]);
 
   const [searchParams, setSearchParams] = useSearchParams();
@@ -32,7 +38,10 @@ const SortByFilter = ({ options, defaultValueIndex }: TProps) => {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button
-          className="focus-visible:border-primary cursor-pointer rounded-none text-slate-700 capitalize hover:bg-slate-50 focus-visible:text-slate-900 focus-visible:ring-0"
+          className={cn(
+            "focus-visible:border-primary cursor-pointer rounded-none text-slate-700 capitalize hover:bg-slate-50 focus-visible:text-slate-900 focus-visible:ring-0",
+            className,
+          )}
           variant="outline"
           size="sm"
         >
