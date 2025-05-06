@@ -13,7 +13,7 @@ import { ClassValue } from "clsx";
 import { useState } from "react";
 
 type TProps = {
-  defaultValue: Date;
+  defaultValue?: Date;
   setDate: any;
   fromDate?: Date;
   toDate?: Date;
