@@ -20,7 +20,7 @@ import SingleDoctorPage from "./admin/Users/Doctors/Single-Doctor/SingleDoctor";
 import DashboardPage from "./dashboard/Dashboard";
 import ProfilePage from "./dashboard/Account/Profile/Profile";
 import AccountEditPage from "./dashboard/Account/Profile/Edit/AccountEditPage";
-import SchedulesPage from "./dashboard/Schedules/Schedules";
+import SchedulesPage from "./dashboard/(Doctor)/Schedules/Schedules";
 import AppointmentPage from "./global/Appointment/Appointment";
 
 const router = createBrowserRouter([
