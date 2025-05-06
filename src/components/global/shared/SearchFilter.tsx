@@ -4,8 +4,14 @@ import { useEffect, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { useSearchParams } from "react-router";
 import HSButton from "@/components/global/shared/HSButton";
+import { ClassValue } from "clsx";
+import { cn } from "@/lib/utils";
 
-const SearchFilter = () => {
+type TProps = {
+  className?: ClassValue;
+};
+
+const SearchFilter = ({ className }: TProps) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const params = new URLSearchParams(searchParams);
@@ -55,7 +61,10 @@ const SearchFilter = () => {
         <Input
           value={search}
           placeholder="Search..."
-          className="focus-visible:border-primary w-full rounded-none pr-8 focus-visible:ring-0"
+          className={cn(
+            "focus-visible:border-primary w-full rounded-none pr-8 focus-visible:ring-0",
+            className,
+          )}
           onChange={handleChange}
           onKeyDown={(e) => {
             if (e.key === "Enter") {
@@ -71,7 +80,10 @@ const SearchFilter = () => {
       </div>
       <HSButton
         variant="outline"
-        className="focus-visible:border-primary h-auto rounded-none px-10 text-slate-700 hover:bg-slate-50 hover:text-slate-900"
+        className={cn(
+          "focus-visible:border-primary h-auto rounded-none px-10 py-0 text-slate-700 hover:bg-slate-50 hover:text-slate-900",
+          className,
+        )}
         onClick={handleSearch}
       >
         Search
