@@ -1,8 +1,8 @@
+import { createBrowserRouter } from "react-router";
 import Layout from "@/routes/global/Layout";
 import AuthLayout from "@/routes/auth/Layout";
 import AdminLayout from "@/routes/admin/Layout";
 import DashboardLayout from "@/routes/dashboard/Layout";
-import { createBrowserRouter } from "react-router";
 import Home from "./global/Home/Home";
 import SignInPage from "./auth/Sign-in/SignIn";
 import SignUpPage from "./auth/Sign-up/SignUp";
@@ -22,6 +22,7 @@ import ProfilePage from "./dashboard/Account/Profile/Profile";
 import AccountEditPage from "./dashboard/Account/Profile/Edit/AccountEditPage";
 import SchedulesPage from "./dashboard/(Doctor)/Schedules/Schedules";
 import AppointmentPage from "./global/Appointment/Appointment";
+import MyAppointmentsPage from "./dashboard/(Patient)/My-Appointments/MyAppointments";
 
 const router = createBrowserRouter([
   {
@@ -72,6 +73,13 @@ const router = createBrowserRouter([
         path: "/dashboard/account/profile/edit",
         Component: AccountEditPage,
       },
+      //* Patients
+      {
+        path: "/dashboard/my-appointments",
+        Component: MyAppointmentsPage,
+      },
+
+      //* Doctors
       {
         path: "/dashboard/schedules",
         Component: SchedulesPage,
