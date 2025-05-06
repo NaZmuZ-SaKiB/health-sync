@@ -10,6 +10,7 @@ import AppointmentStep1 from "./_components/AppointmentStep1";
 import AppointmentStep2 from "./_components/AppointmentStep2";
 import AppointmentStep3 from "./_components/AppointmentStep3";
 import AppointmentSuccessStep from "./_components/AppointmentSuccessStep";
+import AppointmentSteps from "./_components/AppointmentSteps";
 
 export type TAppointmentFormData = z.infer<typeof AppointmentValidation.create>;
 
@@ -17,7 +18,7 @@ const AppointmentPage = () => {
   const [formLoading, setFormLoading] = useState<boolean>(true);
   const [formData, setFormData] = useState<Partial<TAppointmentFormData>>({});
   const [isNewUser, setIsNewUser] = useState<boolean>(false);
-  const [step, setStep] = useState<1 | 2 | 3 | 4>(4);
+  const [step, setStep] = useState<1 | 2 | 3 | 4>(1);
 
   const [cookies] = useCookies([AUTH_KEY]);
 
@@ -94,7 +95,10 @@ const AppointmentPage = () => {
       </div>
 
       <div className="hs-container">
-        <div className="py-20">{renderStep[step]()}</div>
+        <div className="mt-10">
+          <AppointmentSteps step={step} />
+        </div>
+        <div className="pt-10 pb-20">{renderStep[step]()}</div>
       </div>
     </div>
   );
