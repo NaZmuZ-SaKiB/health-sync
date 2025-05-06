@@ -29,7 +29,6 @@ const SortByFilter = ({ options, defaultValueIndex, className }: TProps) => {
 
     params.delete("sortBy");
     params.delete("page");
-    params.append("page", "1");
     params.append("sortBy", value);
 
     setSearchParams(params);

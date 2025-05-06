@@ -24,7 +24,6 @@ const SearchFilter = ({ className }: TProps) => {
     if (!e.target.value) {
       params.delete("searchTerm");
       params.delete("page");
-      params.append("page", "1");
 
       setSearchParams(params);
     }

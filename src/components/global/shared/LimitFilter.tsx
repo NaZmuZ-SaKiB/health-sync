@@ -32,7 +32,6 @@ const LimitFilter = ({ defaultValue, className }: TProps) => {
 
     params.delete("limit");
     params.delete("page");
-    params.append("page", "1");
     params.append("limit", value);
 
     setSearchParams(params);

@@ -29,7 +29,6 @@ const SortOrderFilter = ({ className }: TProps) => {
 
     params.delete("sortOrder");
     params.delete("page");
-    params.append("page", "1");
     params.append("sortOrder", value);
 
     setSearchParams(params);
