@@ -32,8 +32,6 @@ const MyAppointmentsTable = () => {
 
   if (loading) return <TableLoader />;
 
-  console.log(appointmentsData);
-
   const meta: TMeta = appointmentsData?.getAllAppointments?.meta;
   const totalPages = Math.ceil(meta?.total / meta?.limit);
 
