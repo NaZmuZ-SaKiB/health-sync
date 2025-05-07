@@ -67,7 +67,7 @@ const MyAppointmentsTable = () => {
                   <div className="flex items-center justify-center gap-1.5">
                     <CancelAppointmentButton
                       id={appointment.id}
-                      isCanceled={
+                      isCancelled={
                         appointment.status === APPOINTMENT_STATUS.CANCELLED
                       }
                     />
