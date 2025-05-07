@@ -50,6 +50,51 @@ const MY_APPOINTMENTS = gql`
   }
 `;
 
+const DOCTOR_APPOINTMENTS = gql`
+  query GetAllAppointments(
+    $page: String
+    $limit: String
+    $searchTerm: String
+    $sortBy: String
+    $sortOrder: String
+    $status: APPOINTMENT_STATUS
+    $date: String
+  ) {
+    getAllAppointments(
+      page: $page
+      limit: $limit
+      searchTerm: $searchTerm
+      sortBy: $sortBy
+      sortOrder: $sortOrder
+      status: $status
+      date: $date
+    ) {
+      appointments {
+        id
+        status
+        patient {
+          user {
+            firstName
+            lastName
+            phoneNumber
+          }
+        }
+        timeSlot {
+          day
+          slotDate
+          startTime
+          endTime
+        }
+      }
+      meta {
+        page
+        limit
+        total
+      }
+    }
+  }
+`;
+
 const CREATE_APPOINTMENT = gql`
   mutation CreateAppointment($input: AppointmentCreateInput!) {
     createAppointment(input: $input) {
@@ -77,6 +122,7 @@ const UPDATE_APPOINTMENT = gql`
 
 export const AppointmentQueries = {
   MY_APPOINTMENTS,
+  DOCTOR_APPOINTMENTS,
   CREATE_APPOINTMENT,
   UPDATE_APPOINTMENT,
 };
