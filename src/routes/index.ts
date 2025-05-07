@@ -23,6 +23,7 @@ import AccountEditPage from "./dashboard/Account/Profile/Edit/AccountEditPage";
 import SchedulesPage from "./dashboard/(Doctor)/Schedules/Schedules";
 import AppointmentPage from "./global/Appointment/Appointment";
 import MyAppointmentsPage from "./dashboard/(Patient)/My-Appointments/MyAppointments";
+import DoctorAppointmentsPage from "./dashboard/(Doctor)/Appointments/DoctorAppointments";
 
 const router = createBrowserRouter([
   {
@@ -80,6 +81,10 @@ const router = createBrowserRouter([
       },
 
       //* Doctors
+      {
+        path: "/dashboard/appointments",
+        Component: DoctorAppointmentsPage,
+      },
       {
         path: "/dashboard/schedules",
         Component: SchedulesPage,
