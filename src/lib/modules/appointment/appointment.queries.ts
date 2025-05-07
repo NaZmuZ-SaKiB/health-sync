@@ -21,6 +21,7 @@ const MY_APPOINTMENTS = gql`
     ) {
       appointments {
         id
+        status
         doctor {
           user {
             firstName
