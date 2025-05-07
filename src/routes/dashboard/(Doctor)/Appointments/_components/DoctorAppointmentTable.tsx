@@ -12,7 +12,7 @@ import formatTime from "@/utils/formatTime";
 import { useQuery } from "@apollo/client";
 import { Eye } from "lucide-react";
 import { useCookies } from "react-cookie";
-import { useSearchParams } from "react-router";
+import { Link, useSearchParams } from "react-router";
 
 const DoctorAppointmentTable = () => {
   const [cookies] = useCookies([AUTH_KEY]);
@@ -75,15 +75,22 @@ const DoctorAppointmentTable = () => {
                 </td>
                 <td>
                   <div className="flex items-center justify-center gap-1.5">
-                    <Button size="icon" variant="outline">
-                      <Eye />
-                    </Button>
+                    <Link to={`/dashboard/appointments/${appointment.id}`}>
+                      <Button
+                        size="icon"
+                        variant="outline"
+                        className="cursor-pointer"
+                      >
+                        <Eye />
+                      </Button>
+                    </Link>
 
                     <CancelAppointmentButton
                       id={appointment.id}
-                      isCanceled={
+                      isCancelled={
                         appointment.status === APPOINTMENT_STATUS.CANCELLED
                       }
+                      hideIfCancelled
                     />
                   </div>
                 </td>
