@@ -31,7 +31,7 @@ const MyAppointmentsPage = () => {
           />
           <SortOrderFilter className="rounded-md" />
           <LimitFilter className="rounded-md" />
-          <DateFilter />
+          <DateFilter className="rounded-md" />
           <FieldFilter
             name="status"
             label="Status"
