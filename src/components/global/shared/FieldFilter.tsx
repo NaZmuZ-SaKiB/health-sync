@@ -59,7 +59,7 @@ const FieldFilter = ({ name, label, options, className }: TProps) => {
           variant="outline"
           size="sm"
         >
-          {label} : {value}
+          {label} : {value.toLowerCase()}
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="rounded-none p-0">
@@ -70,7 +70,7 @@ const FieldFilter = ({ name, label, options, className }: TProps) => {
               key={`${name}-filter-${option.value}`}
               value={option.value}
             >
-              {option.label}
+              {option.label.toLowerCase()}
             </DropdownMenuRadioItem>
           ))}
         </DropdownMenuRadioGroup>
