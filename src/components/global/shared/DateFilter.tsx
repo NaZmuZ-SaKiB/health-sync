@@ -57,8 +57,9 @@ const DateFilter = ({ fromDate, toDate, className }: TProps) => {
       <PopoverTrigger asChild>
         <Button
           variant={"outline"}
+          size="sm"
           className={cn(
-            "focus-visible:border-primary justify-start rounded-none border bg-transparent text-left font-normal focus-visible:ring-0",
+            "focus-visible:border-primary cursor-pointer justify-start rounded-none border bg-transparent text-left font-normal hover:bg-slate-50 focus-visible:ring-0",
             className,
           )}
         >
