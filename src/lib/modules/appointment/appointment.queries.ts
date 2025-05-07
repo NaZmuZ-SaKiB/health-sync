@@ -58,4 +58,24 @@ const CREATE_APPOINTMENT = gql`
   }
 `;
 
-export const AppointmentQueries = { MY_APPOINTMENTS, CREATE_APPOINTMENT };
+const UPDATE_APPOINTMENT = gql`
+  mutation UpdateAppointment(
+    $appointmentId: String!
+    $status: APPOINTMENT_STATUS
+    $notes: String
+  ) {
+    updateAppointment(
+      appointmentId: $appointmentId
+      status: $status
+      notes: $notes
+    ) {
+      success
+    }
+  }
+`;
+
+export const AppointmentQueries = {
+  MY_APPOINTMENTS,
+  CREATE_APPOINTMENT,
+  UPDATE_APPOINTMENT,
+};
