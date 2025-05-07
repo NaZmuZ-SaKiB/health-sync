@@ -1,16 +1,22 @@
 import { Button } from "@/components/ui/button";
 import { APPOINTMENT_STATUS, AUTH_KEY } from "@/constants";
 import { AppointmentQueries } from "@/lib/modules/appointment/appointment.queries";
+import { cn } from "@/lib/utils";
 import { useMutation } from "@apollo/client";
 import { useCookies } from "react-cookie";
 import { toast } from "sonner";
 
 type TProps = {
   id: string;
-  isCanceled: boolean;
+  isCancelled: boolean;
+  hideIfCancelled?: boolean;
 };
 
-const CancelAppointmentButton = ({ id, isCanceled }: TProps) => {
+const CancelAppointmentButton = ({
+  id,
+  isCancelled,
+  hideIfCancelled,
+}: TProps) => {
   const [cookies] = useCookies([AUTH_KEY]);
 
   const [updateAppointmentFn, { loading }] = useMutation(
@@ -54,11 +60,14 @@ const CancelAppointmentButton = ({ id, isCanceled }: TProps) => {
 
   return (
     <>
-      {isCanceled ? (
+      {isCancelled ? (
         <Button
           size="sm"
           variant="outline"
-          className="h-auto border-red-500 bg-red-50 px-3 py-1 text-xs text-red-500 hover:border-red-500 hover:bg-red-50 hover:text-red-500"
+          className={cn(
+            "h-auto border-red-500 bg-red-50 px-3 py-1 text-xs text-red-500 hover:border-red-500 hover:bg-red-50 hover:text-red-500",
+            { hidden: hideIfCancelled },
+          )}
         >
           Canceled
         </Button>
@@ -67,7 +76,7 @@ const CancelAppointmentButton = ({ id, isCanceled }: TProps) => {
           size="sm"
           variant="outline"
           className="cursor-pointer hover:border-red-500 hover:bg-red-50 hover:text-red-500"
-          disabled={isCanceled || loading}
+          disabled={isCancelled || loading}
           onClick={handleClick}
         >
           {loading ? "Cancelling..." : "Cancel"}
