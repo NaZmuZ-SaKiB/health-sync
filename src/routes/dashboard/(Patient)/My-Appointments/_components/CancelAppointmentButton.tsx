@@ -21,7 +21,10 @@ const CancelAppointmentButton = ({ id, isCanceled }: TProps) => {
           Authorization: cookies[AUTH_KEY] || "",
         },
       },
-      refetchQueries: [AppointmentQueries.MY_APPOINTMENTS],
+      refetchQueries: [
+        AppointmentQueries.MY_APPOINTMENTS,
+        AppointmentQueries.DOCTOR_APPOINTMENTS,
+      ],
     },
   );
 
