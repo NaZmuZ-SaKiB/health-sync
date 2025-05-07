@@ -70,6 +70,11 @@ export const doctorSidebarItems: TSidebarItem[] = [
     ],
   },
   {
+    label: "Appointments",
+    route: "/dashboard/appointments",
+    icon: CalendarCheck,
+  },
+  {
     label: "Schedules",
     icon: CalendarClock,
     route: "/dashboard/schedules",
