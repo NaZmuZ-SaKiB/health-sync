@@ -2,16 +2,15 @@ import DBox from "@/components/dashboard/ui/DBox";
 import HSPagination from "@/components/global/shared/HSPagination";
 import RefreshButton from "@/components/global/shared/RefreshButton";
 import TableLoader from "@/components/global/shared/TableLoader";
-import { Button } from "@/components/ui/button";
-import { AUTH_KEY } from "@/constants";
+import { APPOINTMENT_STATUS, AUTH_KEY } from "@/constants";
 import { AppointmentQueries } from "@/lib/modules/appointment/appointment.queries";
 import { TAppointment } from "@/lib/modules/appointment/appointment.type";
 import { TMeta } from "@/types";
 import formatTime from "@/utils/formatTime";
 import { useQuery } from "@apollo/client";
-import { Eye } from "lucide-react";
 import { useCookies } from "react-cookie";
 import { useSearchParams } from "react-router";
+import CancelAppointmentButton from "./CancelAppointmentButton";
 
 const MyAppointmentsTable = () => {
   const [cookies] = useCookies([AUTH_KEY]);
@@ -68,10 +67,12 @@ const MyAppointmentsTable = () => {
                 <td>{appointment.doctor.location.name}</td>
                 <td>
                   <div className="flex items-center justify-center gap-1.5">
-                    <Button size="icon" variant="outline">
-                      <Eye />
-                    </Button>
-                    // TODO Cancel Appointment
+                    <CancelAppointmentButton
+                      id={appointment.id}
+                      isCanceled={
+                        appointment.status === APPOINTMENT_STATUS.CANCELLED
+                      }
+                    />
                   </div>
                 </td>
               </tr>
