@@ -14,6 +14,7 @@ import { Eye } from "lucide-react";
 import { useCookies } from "react-cookie";
 import { Link, useSearchParams } from "react-router";
 import UpdateAppointmentStatus from "./UpdateAppointmentStatus";
+import AddNotesButton from "./AddNotesButton";
 
 const DoctorAppointmentTable = () => {
   const [cookies] = useCookies([AUTH_KEY]);
@@ -89,13 +90,21 @@ const DoctorAppointmentTable = () => {
                       </Button>
                     </Link>
 
-                    <CancelAppointmentButton
+                    <AddNotesButton
                       id={appointment.id}
-                      isCancelled={
-                        appointment.status === APPOINTMENT_STATUS.CANCELLED
-                      }
-                      hideIfCancelled
+                      defaultValue={appointment?.notes}
                     />
+
+                    {(appointment.status === APPOINTMENT_STATUS.SCHEDULED ||
+                      appointment.status === APPOINTMENT_STATUS.CANCELLED) && (
+                      <CancelAppointmentButton
+                        id={appointment.id}
+                        isCancelled={
+                          appointment.status === APPOINTMENT_STATUS.CANCELLED
+                        }
+                        hideIfCancelled
+                      />
+                    )}
                   </div>
                 </td>
               </tr>
