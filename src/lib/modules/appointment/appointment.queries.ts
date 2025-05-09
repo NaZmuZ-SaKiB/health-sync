@@ -96,8 +96,8 @@ const DOCTOR_APPOINTMENTS = gql`
 `;
 
 const SINGLE_APPOINTMENT = gql`
-  query Appointment($appointmentId: String!) {
-    appointment(id: $appointmentId) {
+  query Appointment($id: String!) {
+    appointment(id: $id) {
       id
       status
       reason
