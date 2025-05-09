@@ -65,12 +65,15 @@ const MyAppointmentsTable = () => {
                 <td>{appointment.doctor.location.name}</td>
                 <td>
                   <div className="flex items-center justify-center gap-1.5">
-                    <CancelAppointmentButton
-                      id={appointment.id}
-                      isCancelled={
-                        appointment.status === APPOINTMENT_STATUS.CANCELLED
-                      }
-                    />
+                    {(appointment.status === APPOINTMENT_STATUS.SCHEDULED ||
+                      appointment.status === APPOINTMENT_STATUS.CANCELLED) && (
+                      <CancelAppointmentButton
+                        id={appointment.id}
+                        isCancelled={
+                          appointment.status === APPOINTMENT_STATUS.CANCELLED
+                        }
+                      />
+                    )}
                   </div>
                 </td>
               </tr>
