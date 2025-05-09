@@ -72,6 +72,7 @@ const DOCTOR_APPOINTMENTS = gql`
       appointments {
         id
         status
+        notes
         patient {
           user {
             firstName
