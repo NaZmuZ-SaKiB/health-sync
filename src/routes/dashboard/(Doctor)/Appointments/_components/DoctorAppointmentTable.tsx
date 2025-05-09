@@ -13,6 +13,7 @@ import { useQuery } from "@apollo/client";
 import { Eye } from "lucide-react";
 import { useCookies } from "react-cookie";
 import { Link, useSearchParams } from "react-router";
+import UpdateAppointmentStatus from "./UpdateAppointmentStatus";
 
 const DoctorAppointmentTable = () => {
   const [cookies] = useCookies([AUTH_KEY]);
@@ -70,8 +71,11 @@ const DoctorAppointmentTable = () => {
                 </td>
                 <td>{formatTime(appointment.timeSlot.startTime)}</td>
                 <td>{formatTime(appointment.timeSlot.endTime)}</td>
-                <td className="capitalize">
-                  {appointment.status.toLowerCase()}
+                <td>
+                  <UpdateAppointmentStatus
+                    id={appointment.id}
+                    defaultValue={appointment.status}
+                  />
                 </td>
                 <td>
                   <div className="flex items-center justify-center gap-1.5">
