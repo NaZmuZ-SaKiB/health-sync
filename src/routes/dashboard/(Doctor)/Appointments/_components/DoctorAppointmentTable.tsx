@@ -90,10 +90,12 @@ const DoctorAppointmentTable = () => {
                       </Button>
                     </Link>
 
-                    <AddNotesButton
-                      id={appointment.id}
-                      defaultValue={appointment?.notes}
-                    />
+                    {appointment.status === APPOINTMENT_STATUS.COMPLETED && (
+                      <AddNotesButton
+                        id={appointment.id}
+                        defaultValue={appointment?.notes}
+                      />
+                    )}
 
                     {(appointment.status === APPOINTMENT_STATUS.SCHEDULED ||
                       appointment.status === APPOINTMENT_STATUS.CANCELLED) && (
