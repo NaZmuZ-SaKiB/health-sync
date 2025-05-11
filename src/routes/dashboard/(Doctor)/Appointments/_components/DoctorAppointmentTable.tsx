@@ -15,6 +15,7 @@ import { useCookies } from "react-cookie";
 import { Link, useSearchParams } from "react-router";
 import UpdateAppointmentStatus from "./UpdateAppointmentStatus";
 import AddNotesButton from "./AddNotesButton";
+import AddPrescriptionButton from "./AddPrescriptionButton";
 
 const DoctorAppointmentTable = () => {
   const [cookies] = useCookies([AUTH_KEY]);
@@ -91,10 +92,22 @@ const DoctorAppointmentTable = () => {
                     </Link>
 
                     {appointment.status === APPOINTMENT_STATUS.COMPLETED && (
-                      <AddNotesButton
-                        id={appointment.id}
-                        defaultValue={appointment?.notes}
-                      />
+                      <>
+                        <AddNotesButton
+                          id={appointment.id}
+                          defaultValue={appointment?.notes}
+                        />
+
+                        <AddPrescriptionButton
+                          id={appointment.id}
+                          patientId={appointment.patient?.id}
+                          defaultValues={{
+                            title: appointment?.report?.title,
+                            notes: appointment?.report?.notes,
+                            fileUrl: appointment?.report?.fileUrl,
+                          }}
+                        />
+                      </>
                     )}
 
                     {(appointment.status === APPOINTMENT_STATUS.SCHEDULED ||
