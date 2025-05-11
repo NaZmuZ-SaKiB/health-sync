@@ -13,6 +13,7 @@ import { useSearchParams } from "react-router";
 import CancelAppointmentButton from "./CancelAppointmentButton";
 import PrescriptionDetail from "./PrescriptionDetail";
 import AddReviewButton from "./AddReviewButton";
+import ViewReviewModal from "@/components/dashboard/shared/ViewReviewModal";
 
 const MyAppointmentsTable = () => {
   const [cookies] = useCookies([AUTH_KEY]);
@@ -82,9 +83,11 @@ const MyAppointmentsTable = () => {
                       )}
 
                     {appointment.status === APPOINTMENT_STATUS.COMPLETED &&
-                      !appointment?.review && (
-                        <AddReviewButton id={appointment.id} />
-                      )}
+                    appointment?.review ? (
+                      <ViewReviewModal review={appointment.review} />
+                    ) : (
+                      <AddReviewButton id={appointment.id} />
+                    )}
                   </div>
                 </td>
               </tr>
