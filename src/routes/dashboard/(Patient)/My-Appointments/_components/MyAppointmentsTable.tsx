@@ -75,9 +75,10 @@ const MyAppointmentsTable = () => {
                         }
                       />
                     )}
-                    {appointment.status === APPOINTMENT_STATUS.COMPLETED && (
-                      <PrescriptionDetail prescription={appointment.report} />
-                    )}
+                    {appointment.status === APPOINTMENT_STATUS.COMPLETED &&
+                      appointment?.report && (
+                        <PrescriptionDetail prescription={appointment.report} />
+                      )}
                   </div>
                 </td>
               </tr>
