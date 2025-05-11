@@ -11,6 +11,7 @@ import { useQuery } from "@apollo/client";
 import { useCookies } from "react-cookie";
 import { useSearchParams } from "react-router";
 import CancelAppointmentButton from "./CancelAppointmentButton";
+import PrescriptionDetail from "./PrescriptionDetail";
 
 const MyAppointmentsTable = () => {
   const [cookies] = useCookies([AUTH_KEY]);
@@ -73,6 +74,9 @@ const MyAppointmentsTable = () => {
                           appointment.status === APPOINTMENT_STATUS.CANCELLED
                         }
                       />
+                    )}
+                    {appointment.status === APPOINTMENT_STATUS.COMPLETED && (
+                      <PrescriptionDetail prescription={appointment.report} />
                     )}
                   </div>
                 </td>
