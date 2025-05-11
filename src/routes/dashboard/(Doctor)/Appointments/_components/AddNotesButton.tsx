@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
@@ -91,6 +92,7 @@ const AddNotesButton = ({ id, defaultValue }: TProps) => {
       <DialogContent>
         <DialogHeader className="mb-5">
           <DialogTitle className="text-primary-hover">Add Notes</DialogTitle>
+          <DialogDescription hidden>Add Notes</DialogDescription>
         </DialogHeader>
 
         <Form {...form}>
