@@ -74,6 +74,7 @@ const DOCTOR_APPOINTMENTS = gql`
         status
         notes
         patient {
+          id
           user {
             firstName
             lastName
@@ -85,6 +86,11 @@ const DOCTOR_APPOINTMENTS = gql`
           slotDate
           startTime
           endTime
+        }
+        report {
+          title
+          notes
+          fileUrl
         }
       }
       meta {
