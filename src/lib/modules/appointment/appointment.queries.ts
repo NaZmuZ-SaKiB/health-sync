@@ -45,6 +45,10 @@ const MY_APPOINTMENTS = gql`
           notes
           fileUrl
         }
+        review {
+          rating
+          comment
+        }
       }
       meta {
         page
@@ -96,6 +100,10 @@ const DOCTOR_APPOINTMENTS = gql`
           title
           notes
           fileUrl
+        }
+        review {
+          rating
+          comment
         }
       }
       meta {
