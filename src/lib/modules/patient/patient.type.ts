@@ -1,5 +1,7 @@
 import { TBloodGroup } from "@/types";
 import { TUser } from "../user/user.type";
+import { TAppointment } from "../appointment/appointment.type";
+import { TMedicalReport } from "../medical-report/medical-report.type";
 
 export type TPatient = {
   id: string;
@@ -11,6 +13,6 @@ export type TPatient = {
   updatedAt: string;
 
   user: TUser;
-  //   appointments: TAppointment[];
-  // medicalReports: TMedicalReport[]
+  appointments: TAppointment[];
+  medicalReports: TMedicalReport[];
 };
