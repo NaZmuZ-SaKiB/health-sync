@@ -40,6 +40,11 @@ const MY_APPOINTMENTS = gql`
           startTime
           endTime
         }
+        report {
+          title
+          notes
+          fileUrl
+        }
       }
       meta {
         page
