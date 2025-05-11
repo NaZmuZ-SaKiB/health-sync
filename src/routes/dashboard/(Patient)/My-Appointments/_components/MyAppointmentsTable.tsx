@@ -12,6 +12,7 @@ import { useCookies } from "react-cookie";
 import { useSearchParams } from "react-router";
 import CancelAppointmentButton from "./CancelAppointmentButton";
 import PrescriptionDetail from "./PrescriptionDetail";
+import AddReviewButton from "./AddReviewButton";
 
 const MyAppointmentsTable = () => {
   const [cookies] = useCookies([AUTH_KEY]);
@@ -78,6 +79,11 @@ const MyAppointmentsTable = () => {
                     {appointment.status === APPOINTMENT_STATUS.COMPLETED &&
                       appointment?.report && (
                         <PrescriptionDetail prescription={appointment.report} />
+                      )}
+
+                    {appointment.status === APPOINTMENT_STATUS.COMPLETED &&
+                      !appointment?.review && (
+                        <AddReviewButton id={appointment.id} />
                       )}
                   </div>
                 </td>
