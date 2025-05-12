@@ -50,4 +50,31 @@ const CREATE_SERVICE = gql`
   }
 `;
 
-export const ServiceQueries = { SERVICE_LIST, SERVICE_BY_ID, CREATE_SERVICE };
+const UPDATE_SERVICE = gql`
+  mutation UpdateService(
+    $serviceId: String!
+    $name: String
+    $description: String
+    $icon: String
+  ) {
+    updateService(
+      serviceId: $serviceId
+      name: $name
+      description: $description
+      icon: $icon
+    ) {
+      id
+      name
+      icon
+      createdAt
+      updatedAt
+    }
+  }
+`;
+
+export const ServiceQueries = {
+  SERVICE_LIST,
+  SERVICE_BY_ID,
+  CREATE_SERVICE,
+  UPDATE_SERVICE,
+};
