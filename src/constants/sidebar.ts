@@ -121,7 +121,7 @@ export const adminSidebarItems: TSidebarItem[] = [
     ],
   },
   {
-    label: "Service Settigns",
+    label: "Service Management",
     icon: Syringe,
     children: [
       {
