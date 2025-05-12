@@ -25,6 +25,7 @@ import AppointmentPage from "./global/Appointment/Appointment";
 import MyAppointmentsPage from "./dashboard/(Patient)/My-Appointments/MyAppointments";
 import DoctorAppointmentsPage from "./dashboard/(Doctor)/Appointments/DoctorAppointments";
 import SingleAppointmentPage from "./dashboard/(Doctor)/Appointments/SingleAppointment/SingleAppointmentPage";
+import AdminServicesPage from "./admin/Services/Services";
 
 const router = createBrowserRouter([
   {
@@ -127,6 +128,10 @@ const router = createBrowserRouter([
       {
         path: "/admin/specialties/:id",
         Component: EditSpecialtyPage,
+      },
+      {
+        path: "/admin/services",
+        Component: AdminServicesPage,
       },
       {
         path: "/admin/locations",
