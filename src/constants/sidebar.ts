@@ -5,6 +5,7 @@ import {
   LucideProps,
   Settings2,
   Stethoscope,
+  Syringe,
   UserRound,
 } from "lucide-react";
 
@@ -116,6 +117,20 @@ export const adminSidebarItems: TSidebarItem[] = [
       {
         label: "Doctor Applications",
         route: "/admin/doctor-applications",
+      },
+    ],
+  },
+  {
+    label: "Service Settigns",
+    icon: Syringe,
+    children: [
+      {
+        label: "Services",
+        route: "/admin/services",
+      },
+      {
+        label: "Service Appointments",
+        route: "/admin/services/appointmetns",
       },
     ],
   },
