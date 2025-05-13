@@ -10,9 +10,10 @@ import { TService } from "@/lib/modules/service/service.type";
 import { TMeta } from "@/types";
 import formatDate from "@/utils/formatDate";
 import { useQuery } from "@apollo/client";
-import { Edit, Eye, Trash2 } from "lucide-react";
+import { Eye, Trash2 } from "lucide-react";
 import { ChangeEvent } from "react";
-import { Link, useSearchParams } from "react-router";
+import { useSearchParams } from "react-router";
+import ServiceUpdateModal from "./ServiceUpdateModal";
 
 type TProps = {
   selected: string[];
@@ -105,15 +106,7 @@ const ServiceTable = ({ selected, setSelected }: TProps) => {
                     <Eye />
                   </Button>
 
-                  <Link to={`/admin/services/${service.id}`}>
-                    <Button
-                      size="icon"
-                      variant="outline"
-                      className="cursor-pointer"
-                    >
-                      <Edit />
-                    </Button>
-                  </Link>
+                  <ServiceUpdateModal id={service.id} />
 
                   {/* <ServiceDelete selected={[service.id]}> */}
                   <Button
