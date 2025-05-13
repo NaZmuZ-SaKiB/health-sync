@@ -13,4 +13,6 @@ const create = z.object({
     .optional(),
 });
 
-export const ServiceValidation = { create };
+const update = create.partial();
+
+export const ServiceValidation = { create, update };
