@@ -25,7 +25,7 @@ const ServiceCreateForm = () => {
         Authorization: cookies[AUTH_KEY] || "",
       },
     },
-    //   refetchQueries: [ServiceQueries.],
+    refetchQueries: [ServiceQueries.SERVICE_LIST],
   });
 
   const form = useForm<TForm>({
