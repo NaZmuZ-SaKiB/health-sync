@@ -56,7 +56,7 @@ const ServiceTable = ({ selected, setSelected }: TProps) => {
   if (loading) return <TableLoader />;
 
   const meta: TMeta = servicesData?.getAllServices?.meta;
-  const totalPages = Math.ceil(meta.total / meta.limit);
+  const totalPages = Math.ceil(meta?.total / meta?.limit);
 
   return (
     <ABox>
