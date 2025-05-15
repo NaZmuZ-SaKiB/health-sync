@@ -14,6 +14,7 @@ import { Eye, Trash2 } from "lucide-react";
 import { ChangeEvent } from "react";
 import { useSearchParams } from "react-router";
 import ServiceUpdateModal from "./ServiceUpdateModal";
+import ServiceSettingsModal from "./ServiceSettingsModal";
 
 type TProps = {
   selected: string[];
@@ -107,6 +108,10 @@ const ServiceTable = ({ selected, setSelected }: TProps) => {
                   </Button>
 
                   <ServiceUpdateModal id={service.id} />
+                  <ServiceSettingsModal
+                    serviceId={service.id}
+                    settings={service?.serviceSettings}
+                  />
 
                   {/* <ServiceDelete selected={[service.id]}> */}
                   <Button
