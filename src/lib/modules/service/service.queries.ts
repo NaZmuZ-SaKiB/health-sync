@@ -21,6 +21,13 @@ const SERVICE_LIST = gql`
         icon
         createdAt
         updatedAt
+
+        serviceSettings {
+          id
+          startTime
+          endTime
+          duration
+        }
       }
       meta {
         page
