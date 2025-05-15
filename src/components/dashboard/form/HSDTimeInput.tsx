@@ -25,6 +25,7 @@ type TProps = {
   disabled?: boolean;
   description?: string;
   vertical?: boolean;
+  admin?: boolean;
 };
 
 const hoursArray = [
@@ -51,6 +52,7 @@ const HSDTimeInput = ({
   disabled = false,
   vertical = false,
   description,
+  admin = false,
 }: TProps) => {
   const [loading, setLoading] = useState(true);
   const [hour, setHour] = useState("00");
@@ -112,7 +114,14 @@ const HSDTimeInput = ({
                 onValueChange={(v) => handleChange("h", v)}
                 disabled={disabled}
               >
-                <SelectTrigger className="focus-visible:border-primary focus-visible:text-primary-hover !h-auto px-2 py-1 focus-visible:ring-0">
+                <SelectTrigger
+                  className={cn(
+                    "focus-visible:border-primary focus-visible:text-primary-hover !h-auto px-2 py-1 focus-visible:ring-0",
+                    {
+                      "rounded-none": admin,
+                    },
+                  )}
+                >
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent className="min-w-0">
