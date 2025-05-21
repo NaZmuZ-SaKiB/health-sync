@@ -1,8 +1,7 @@
-import { TDoctorSchedule } from "@/lib/modules/doctor-schedule/doctor-schedule.type";
 import { cn } from "@/lib/utils";
 import calculateTimeSlots from "@/utils/calculateTimeSlots";
 import formatTime from "@/utils/formatTime";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { TAppointmentFormData } from "../Appointment";
 import HSButton from "@/components/global/shared/HSButton";
 import { MoveLeft, MoveRight } from "lucide-react";
@@ -11,7 +10,12 @@ import { TimeSlotQueries } from "@/lib/modules/time-slot/time-slot.queries";
 import { TTimeSlot } from "@/lib/modules/time-slot/time-slot.type";
 
 type TProps = {
-  schedule: TDoctorSchedule;
+  schedule: {
+    startTime: string;
+    endTime: string;
+    sessionLength?: number;
+    duration?: number;
+  };
   formData: Partial<TAppointmentFormData>;
   setFormData: React.Dispatch<React.SetStateAction<any>>;
   setStep: any;
@@ -27,11 +31,25 @@ const AppointmentTimeSlots = ({
     formData?.appointment?.timeSlot || null,
   );
 
+  useEffect(() => {
+    setSelected(null);
+  }, [formData?.appointment?.timeSlot?.slotDate]);
+
+  const doctorOrServiceId: { doctorId?: string; serviceId?: string } = {};
+
+  if (formData?.appointment?.doctorId) {
+    doctorOrServiceId.doctorId = formData?.appointment?.doctorId;
+  }
+
+  if (formData?.appointment?.serviceId) {
+    doctorOrServiceId.serviceId = formData?.appointment?.serviceId;
+  }
+
   const { data: slotData, loading } = useQuery(
     TimeSlotQueries.GET_TIME_SLOT_BY_DATE,
     {
       variables: {
-        doctorId: formData?.appointment?.doctorId,
+        ...doctorOrServiceId,
         date: formData?.appointment?.timeSlot?.slotDate,
       },
       skip: !formData?.appointment?.timeSlot?.slotDate,
@@ -43,23 +61,17 @@ const AppointmentTimeSlots = ({
 
   const existingSlots: TTimeSlot[] = slotData?.getTimeSlotsByDate;
 
-  if (!schedule.isAvailable) {
-    return (
-      <div className="bg-yellow-300 p-3 text-slate-900">
-        Doctor is not available this day!
-      </div>
-    );
-  }
+  const sessionLength = schedule?.sessionLength || schedule?.duration;
 
   const timeSlots = calculateTimeSlots(
     schedule.startTime,
     schedule.endTime,
-    schedule.sessionLength,
+    sessionLength as number,
   );
 
-  existingSlots.filter((item) => item.isBooked);
+  existingSlots?.filter((item) => item.isBooked);
 
-  existingSlots.forEach((item) => {
+  existingSlots?.forEach((item) => {
     const slot = timeSlots.findIndex((i) => i.startTime === item.startTime);
     timeSlots[slot].isBooked = true;
   });
