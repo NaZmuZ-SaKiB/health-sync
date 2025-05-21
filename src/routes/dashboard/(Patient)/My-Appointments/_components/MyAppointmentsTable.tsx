@@ -46,7 +46,7 @@ const MyAppointmentsTable = () => {
         <thead>
           <tr>
             <th>Date</th>
-            <th>Doctor</th>
+            <th>Doctor/ Service</th>
             <th>Start Time</th>
             <th>End Time</th>
             <th>Location</th>
@@ -59,13 +59,18 @@ const MyAppointmentsTable = () => {
             (appointment: TAppointment) => (
               <tr key={appointment.id}>
                 <td>{appointment.timeSlot.slotDate}</td>
-                <td>
-                  {appointment.doctor.user.firstName}{" "}
-                  {appointment.doctor.user.lastName}
-                </td>
+                {appointment?.doctor && (
+                  <td>
+                    {appointment.doctor.user.firstName}{" "}
+                    {appointment.doctor.user.lastName}
+                  </td>
+                )}
+                {appointment?.service && <td>{appointment?.service?.name}</td>}
                 <td>{formatTime(appointment.timeSlot.startTime)}</td>
                 <td>{formatTime(appointment.timeSlot.endTime)}</td>
-                <td>{appointment.doctor.location.name}</td>
+                <td>
+                  {appointment?.doctor?.location?.name || "Diagnostic Center"}
+                </td>
                 <td>
                   <div className="flex items-center justify-center gap-1.5">
                     {(appointment.status === APPOINTMENT_STATUS.SCHEDULED ||
@@ -83,11 +88,14 @@ const MyAppointmentsTable = () => {
                       )}
 
                     {appointment.status === APPOINTMENT_STATUS.COMPLETED &&
-                    appointment?.review ? (
-                      <ViewReviewModal review={appointment.review} />
-                    ) : (
-                      <AddReviewButton id={appointment.id} />
-                    )}
+                      appointment?.review && (
+                        <ViewReviewModal review={appointment.review} />
+                      )}
+
+                    {appointment.status === APPOINTMENT_STATUS.COMPLETED &&
+                      !appointment?.review && (
+                        <AddReviewButton id={appointment.id} />
+                      )}
                   </div>
                 </td>
               </tr>
