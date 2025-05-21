@@ -5,6 +5,7 @@ export type TServiceSettings = {
   startTime: string;
   endTime: string;
   duration: number;
+  fee: number;
   createdAt: Date;
   updatedAt: Date;
 
