@@ -4,12 +4,24 @@ import { useState } from "react";
 import HSSelect from "@/components/global/shared/HSSelect";
 import { TDoctor } from "@/lib/modules/doctor/doctor.type";
 import AppointmentDoctorInfo from "./AppointmentDoctorInfo";
+import AppointmentServiceInfo from "./AppointmentServiceInfo";
 
 type TProps = {
   formData: Partial<TAppointmentFormData>;
   setFormData: React.Dispatch<React.SetStateAction<any>>;
   setStep: any;
 };
+
+const SERVICE_OPTIONS = gql`
+  query Services {
+    getAllServices {
+      services {
+        id
+        name
+      }
+    }
+  }
+`;
 
 const SPECIALTIES_OPTIONS = gql`
   query GetAllSpecialties($limit: String) {
@@ -71,10 +83,42 @@ const DOCTOR_LIST = gql`
 `;
 
 const AppointmentStep1 = ({ formData, setFormData, setStep }: TProps) => {
+  const [selectedService, setSelectedService] = useState<string>("");
   const [selectedSpecialty, setSelectedSpecialty] = useState<string>("");
   const [selectedLocation, setSelectedLocation] = useState<string>("");
   const [selectedDoctor, setSelectedDoctor] = useState<string>(
     formData?.appointment?.doctorId || "",
+  );
+
+  const selectDoctor = (doctorId: string) => {
+    setSelectedService("");
+
+    setSelectedDoctor(doctorId);
+    setFormData((prev: TAppointmentFormData) => ({
+      ...prev,
+      appointment: { doctorId: doctorId },
+    }));
+  };
+
+  const selectService = (serviceId: string) => {
+    setSelectedSpecialty("");
+    setSelectedLocation("");
+    setSelectedDoctor("");
+
+    setSelectedService(serviceId);
+    setFormData((prev: TAppointmentFormData) => ({
+      ...prev,
+      appointment: { serviceId: serviceId },
+    }));
+  };
+
+  const { data: servicesData, loading: servicesLoading } = useQuery(
+    SERVICE_OPTIONS,
+    {
+      variables: {
+        limit: "9999",
+      },
+    },
   );
 
   const { data: specialtiesData, loading: specialtiesLoading } = useQuery(
@@ -85,6 +129,7 @@ const AppointmentStep1 = ({ formData, setFormData, setStep }: TProps) => {
       },
     },
   );
+
   const { data: locationsData, loading: locationsLoading } = useQuery(
     LOCATIONS_OPTIONS,
     {
@@ -106,6 +151,14 @@ const AppointmentStep1 = ({ formData, setFormData, setStep }: TProps) => {
     },
     skip: !selectedSpecialty || !selectedLocation,
   });
+
+  const serviceOptions =
+    servicesData?.getAllServices?.services?.map(
+      (item: { name: string; id: string }) => ({
+        label: item.name,
+        value: item.id,
+      }),
+    ) || [];
 
   const specialtyOptions =
     specialtiesData?.getAllSpecialties?.specialties?.map(
@@ -132,10 +185,27 @@ const AppointmentStep1 = ({ formData, setFormData, setStep }: TProps) => {
   return (
     <div>
       <div className="bg-primary-hover mx-auto mb-10 w-full max-w-[400px] space-y-3 rounded-3xl p-10 text-slate-50 shadow-2xl shadow-slate-300">
+        <h2 className="mb-5 text-center font-semibold">Service Appointment</h2>
+
+        <div>
+          <label>
+            <p className="text-sm font-semibold">Service</p>
+            <HSSelect
+              value={selectedService}
+              options={serviceOptions}
+              disabled={servicesLoading}
+              onValueChange={selectService}
+            />
+          </label>
+        </div>
+
+        <h2 className="my-5 text-center font-semibold">Doctor Appointment</h2>
+
         <div>
           <label>
             <p className="text-sm font-semibold">Specialty</p>
             <HSSelect
+              value={selectedSpecialty}
               options={specialtyOptions}
               disabled={specialtiesLoading}
               onValueChange={(v) => setSelectedSpecialty(v)}
@@ -147,6 +217,7 @@ const AppointmentStep1 = ({ formData, setFormData, setStep }: TProps) => {
           <label>
             <p className="text-sm font-semibold">Location</p>
             <HSSelect
+              value={selectedLocation}
               options={locationOptions}
               disabled={locationsLoading}
               onValueChange={(v) => setSelectedLocation(v)}
@@ -159,17 +230,12 @@ const AppointmentStep1 = ({ formData, setFormData, setStep }: TProps) => {
             <label>
               <p className="text-sm font-semibold">Doctor</p>
               <HSSelect
+                value={selectedDoctor}
                 options={doctorOptions}
                 disabled={
                   !selectedSpecialty || !selectedLocation || doctorsLoading
                 }
-                onValueChange={(v) => {
-                  setSelectedDoctor(v);
-                  setFormData((prev: TAppointmentFormData) => ({
-                    ...prev,
-                    appointment: { doctorId: v },
-                  }));
-                }}
+                onValueChange={selectDoctor}
               />
             </label>
           </div>
@@ -178,6 +244,10 @@ const AppointmentStep1 = ({ formData, setFormData, setStep }: TProps) => {
 
       {selectedDoctor && (
         <AppointmentDoctorInfo id={selectedDoctor} setStep={setStep} />
+      )}
+
+      {selectedService && (
+        <AppointmentServiceInfo id={selectedService} setStep={setStep} />
       )}
     </div>
   );
