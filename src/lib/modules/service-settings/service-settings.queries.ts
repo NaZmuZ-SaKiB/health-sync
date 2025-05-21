@@ -1,5 +1,15 @@
 import { gql } from "@apollo/client";
 
+const SINGLE_SERVICE_SETTINGS = gql`
+  query ServiceSettings($serviceId: String!) {
+    serviceSettings(serviceId: $serviceId) {
+      startTime
+      endTime
+      duration
+    }
+  }
+`;
+
 const UPDATE_SERVICE_SETTINGS = gql`
   mutation UpdateServiceSettings(
     $serviceId: String!
@@ -18,4 +28,7 @@ const UPDATE_SERVICE_SETTINGS = gql`
   }
 `;
 
-export const ServiceSettingsQueries = { UPDATE_SERVICE_SETTINGS };
+export const ServiceSettingsQueries = {
+  SINGLE_SERVICE_SETTINGS,
+  UPDATE_SERVICE_SETTINGS,
+};
