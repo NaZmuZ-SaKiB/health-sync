@@ -18,7 +18,8 @@ const create = z.object({
   }),
 
   appointment: z.object({
-    doctorId: z.string(),
+    doctorId: z.string().optional(),
+    serviceId: z.string().optional(),
     timeSlot: z.object({
       slotDate: z.string(),
       startTime: z.string(),
