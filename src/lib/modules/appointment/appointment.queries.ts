@@ -38,6 +38,9 @@ const MY_APPOINTMENTS = gql`
         service {
           name
         }
+        location {
+          name
+        }
         timeSlot {
           slotDate
           startTime
