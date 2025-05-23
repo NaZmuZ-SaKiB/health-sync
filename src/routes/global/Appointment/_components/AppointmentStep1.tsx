@@ -90,25 +90,39 @@ const AppointmentStep1 = ({ formData, setFormData, setStep }: TProps) => {
     formData?.appointment?.doctorId || "",
   );
 
+  const selectLocation = (locationId: string) => {
+    setSelectedLocation(locationId);
+
+    setFormData((prev: TAppointmentFormData) => ({
+      ...prev,
+      appointment: { ...prev.appointment, locationId },
+    }));
+  };
+
   const selectDoctor = (doctorId: string) => {
     setSelectedService("");
 
     setSelectedDoctor(doctorId);
     setFormData((prev: TAppointmentFormData) => ({
       ...prev,
-      appointment: { doctorId: doctorId },
+      appointment: {
+        doctorId: doctorId,
+        locationId: prev?.appointment?.locationId || "",
+      },
     }));
   };
 
   const selectService = (serviceId: string) => {
     setSelectedSpecialty("");
-    setSelectedLocation("");
     setSelectedDoctor("");
 
     setSelectedService(serviceId);
     setFormData((prev: TAppointmentFormData) => ({
       ...prev,
-      appointment: { serviceId: serviceId },
+      appointment: {
+        serviceId: serviceId,
+        locationId: prev?.appointment?.locationId || "",
+      },
     }));
   };
 
@@ -185,7 +199,23 @@ const AppointmentStep1 = ({ formData, setFormData, setStep }: TProps) => {
   return (
     <div>
       <div className="bg-primary-hover mx-auto mb-10 w-full max-w-[400px] space-y-3 rounded-3xl p-10 text-slate-50 shadow-2xl shadow-slate-300">
-        <h2 className="mb-5 text-center font-semibold">Service Appointment</h2>
+        <div className="mb-5">
+          <label>
+            <p className="text-sm font-semibold">Location</p>
+            <HSSelect
+              value={selectedLocation}
+              options={locationOptions}
+              disabled={locationsLoading}
+              onValueChange={selectLocation}
+            />
+          </label>
+        </div>
+
+        <h2 className="mb-5 flex items-center gap-2 text-center font-medium text-yellow-300">
+          <span className="block h-[1px] w-full flex-1 bg-yellow-300"></span>
+          <span>Service Appointment</span>
+          <span className="block h-[1px] w-full flex-1 bg-yellow-300"></span>
+        </h2>
 
         <div>
           <label>
@@ -199,7 +229,11 @@ const AppointmentStep1 = ({ formData, setFormData, setStep }: TProps) => {
           </label>
         </div>
 
-        <h2 className="my-5 text-center font-semibold">Doctor Appointment</h2>
+        <h2 className="my-5 flex items-center gap-2 text-center font-medium text-yellow-300">
+          <span className="block h-[1px] w-full flex-1 bg-yellow-300"></span>
+          <span>Doctor Appointment</span>
+          <span className="block h-[1px] w-full flex-1 bg-yellow-300"></span>
+        </h2>
 
         <div>
           <label>
@@ -209,18 +243,6 @@ const AppointmentStep1 = ({ formData, setFormData, setStep }: TProps) => {
               options={specialtyOptions}
               disabled={specialtiesLoading}
               onValueChange={(v) => setSelectedSpecialty(v)}
-            />
-          </label>
-        </div>
-
-        <div>
-          <label>
-            <p className="text-sm font-semibold">Location</p>
-            <HSSelect
-              value={selectedLocation}
-              options={locationOptions}
-              disabled={locationsLoading}
-              onValueChange={(v) => setSelectedLocation(v)}
             />
           </label>
         </div>
