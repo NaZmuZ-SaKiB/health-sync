@@ -69,7 +69,9 @@ const MyAppointmentsTable = () => {
                 <td>{formatTime(appointment.timeSlot.startTime)}</td>
                 <td>{formatTime(appointment.timeSlot.endTime)}</td>
                 <td>
-                  {appointment?.doctor?.location?.name || "Diagnostic Center"}
+                  {appointment?.doctor?.location?.name ||
+                    appointment?.location?.name ||
+                    "N/A"}
                 </td>
                 <td>
                   <div className="flex items-center justify-center gap-1.5">
