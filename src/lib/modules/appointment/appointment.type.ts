@@ -5,6 +5,7 @@ import { TTimeSlot } from "../time-slot/time-slot.type";
 import { TMedicalReport } from "../medical-report/medical-report.type";
 import { TReview } from "../review/review.type";
 import { TService } from "../service/service.type";
+import { TLocation } from "../location/location.type";
 
 export type TAppointment = {
   id: string;
@@ -17,6 +18,7 @@ export type TAppointment = {
   patient: TPatient;
   doctor: TDoctor;
   service: TService;
+  location: TLocation;
   timeSlot: TTimeSlot;
   // payment: TPayment;
   report: TMedicalReport;
