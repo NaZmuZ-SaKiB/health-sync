@@ -6,7 +6,7 @@ import DetailField from "@/components/global/shared/DetailField";
 import { APPOINTMENT_STATUS, AUTH_KEY } from "@/constants";
 import { AppointmentQueries } from "@/lib/modules/appointment/appointment.queries";
 import { TAppointment } from "@/lib/modules/appointment/appointment.type";
-import CancelAppointmentButton from "@/routes/dashboard/(Patient)/My-Appointments/_components/CancelAppointmentButton";
+import CancelAppointmentButton from "@/components/dashboard/shared/CancelAppointmentButton";
 import formatTime from "@/utils/formatTime";
 import { useQuery } from "@apollo/client";
 import { useCookies } from "react-cookie";
