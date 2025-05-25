@@ -20,6 +20,7 @@ import { useMutation } from "@apollo/client";
 import { AppointmentQueries } from "@/lib/modules/appointment/appointment.queries";
 import { toast } from "sonner";
 import { useCookies } from "react-cookie";
+import { TimeSlotQueries } from "@/lib/modules/time-slot/time-slot.queries";
 
 type TProps = {
   formData: Partial<TAppointmentFormData>;
@@ -63,6 +64,9 @@ const AppointmentStep3 = ({ formData, setStep, setIsNewUser }: TProps) => {
 
   const [createAppointmentFn] = useMutation(
     AppointmentQueries.CREATE_APPOINTMENT,
+    {
+      refetchQueries: [TimeSlotQueries.GET_TIME_SLOT_BY_DATE],
+    },
   );
 
   const form = useForm<TAppointmentFormData>({
