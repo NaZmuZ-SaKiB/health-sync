@@ -10,10 +10,10 @@ import formatTime from "@/utils/formatTime";
 import { useQuery } from "@apollo/client";
 import { useCookies } from "react-cookie";
 import { useSearchParams } from "react-router";
-import CancelAppointmentButton from "./CancelAppointmentButton";
 import PrescriptionDetail from "./PrescriptionDetail";
 import AddReviewButton from "./AddReviewButton";
 import ViewReviewModal from "@/components/dashboard/shared/ViewReviewModal";
+import CancelAppointmentButton from "@/components/dashboard/shared/CancelAppointmentButton";
 
 const MyAppointmentsTable = () => {
   const [cookies] = useCookies([AUTH_KEY]);
