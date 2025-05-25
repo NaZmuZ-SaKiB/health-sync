@@ -130,7 +130,7 @@ export const adminSidebarItems: TSidebarItem[] = [
       },
       {
         label: "Service Appointments",
-        route: "/admin/services/appointmetns",
+        route: "/admin/services/appointments",
       },
     ],
   },
