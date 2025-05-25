@@ -65,7 +65,7 @@ const MY_APPOINTMENTS = gql`
   }
 `;
 
-const DOCTOR_APPOINTMENTS = gql`
+const DOCTOR_SERVICE_APPOINTMENTS = gql`
   query GetAllAppointments(
     $page: String
     $limit: String
@@ -184,7 +184,7 @@ const UPDATE_APPOINTMENT = gql`
 
 export const AppointmentQueries = {
   MY_APPOINTMENTS,
-  DOCTOR_APPOINTMENTS,
+  DOCTOR_SERVICE_APPOINTMENTS,
   SINGLE_APPOINTMENT,
   CREATE_APPOINTMENT,
   UPDATE_APPOINTMENT,
