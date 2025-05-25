@@ -6,17 +6,17 @@ import { Button } from "@/components/ui/button";
 import { APPOINTMENT_STATUS, AUTH_KEY } from "@/constants";
 import { AppointmentQueries } from "@/lib/modules/appointment/appointment.queries";
 import { TAppointment } from "@/lib/modules/appointment/appointment.type";
-import CancelAppointmentButton from "@/routes/dashboard/(Patient)/My-Appointments/_components/CancelAppointmentButton";
+import CancelAppointmentButton from "@/components/dashboard/shared/CancelAppointmentButton";
 import { TMeta } from "@/types";
 import formatTime from "@/utils/formatTime";
 import { useQuery } from "@apollo/client";
 import { Eye } from "lucide-react";
 import { useCookies } from "react-cookie";
 import { Link, useSearchParams } from "react-router";
-import UpdateAppointmentStatus from "./UpdateAppointmentStatus";
-import AddNotesButton from "./AddNotesButton";
-import AddPrescriptionButton from "./AddPrescriptionButton";
 import ViewReviewModal from "@/components/dashboard/shared/ViewReviewModal";
+import UpdateAppointmentStatus from "@/components/dashboard/shared/UpdateAppointmentStatus";
+import AddNotesButton from "@/components/dashboard/shared/AddNotesButton";
+import AddPrescriptionButton from "@/components/dashboard/shared/AddPrescriptionButton";
 
 const DoctorAppointmentTable = () => {
   const [cookies] = useCookies([AUTH_KEY]);
@@ -27,7 +27,7 @@ const DoctorAppointmentTable = () => {
     data: appointmentsData,
     loading,
     refetch,
-  } = useQuery(AppointmentQueries.DOCTOR_APPOINTMENTS, {
+  } = useQuery(AppointmentQueries.DOCTOR_SERVICE_APPOINTMENTS, {
     variables: Object.fromEntries(searchParams),
     context: {
       headers: {
