@@ -35,7 +35,11 @@ const AppointmentTimeSlots = ({
     setSelected(null);
   }, [formData?.appointment?.timeSlot?.slotDate]);
 
-  const doctorOrServiceId: { doctorId?: string; serviceId?: string } = {};
+  const doctorOrServiceId: {
+    doctorId?: string;
+    serviceId?: string;
+    locationId?: string;
+  } = {};
 
   if (formData?.appointment?.doctorId) {
     doctorOrServiceId.doctorId = formData?.appointment?.doctorId;
@@ -43,6 +47,7 @@ const AppointmentTimeSlots = ({
 
   if (formData?.appointment?.serviceId) {
     doctorOrServiceId.serviceId = formData?.appointment?.serviceId;
+    doctorOrServiceId.locationId = formData?.appointment?.locationId;
   }
 
   const { data: slotData, loading } = useQuery(
