@@ -8,6 +8,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { REPORT_TYPE } from "@/constants";
 import { TMedicalReport } from "@/lib/modules/medical-report/medical-report.type";
 import { useState } from "react";
 import { Link } from "react-router";
@@ -22,7 +23,10 @@ const PrescriptionDetail = ({ prescription }: TProps) => {
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button variant="outline" size="sm" className="cursor-pointer">
-          Prescription
+          {prescription?.reportType === REPORT_TYPE.PRESCRIPTION &&
+            "Prescription"}
+          {prescription?.reportType === REPORT_TYPE.LAB_REPORT && "Report"}
+          {prescription?.reportType === REPORT_TYPE.DIAGNOSIS && "Diagnosis"}
         </Button>
       </DialogTrigger>
 
