@@ -3,7 +3,7 @@ import HSPagination from "@/components/global/shared/HSPagination";
 import RefreshButton from "@/components/global/shared/RefreshButton";
 import TableLoader from "@/components/global/shared/TableLoader";
 import { Button } from "@/components/ui/button";
-import { APPOINTMENT_STATUS, AUTH_KEY } from "@/constants";
+import { APPOINTMENT_STATUS, AUTH_KEY, REPORT_TYPE } from "@/constants";
 import { AppointmentQueries } from "@/lib/modules/appointment/appointment.queries";
 import { TAppointment } from "@/lib/modules/appointment/appointment.type";
 import CancelAppointmentButton from "@/components/dashboard/shared/CancelAppointmentButton";
@@ -102,12 +102,15 @@ const DoctorAppointmentTable = () => {
                         <AddPrescriptionButton
                           id={appointment.id}
                           patientId={appointment.patient?.id}
+                          reportType={REPORT_TYPE.PRESCRIPTION}
                           defaultValues={{
                             title: appointment?.report?.title,
                             notes: appointment?.report?.notes,
                             fileUrl: appointment?.report?.fileUrl,
                           }}
-                        />
+                        >
+                          Prescribe
+                        </AddPrescriptionButton>
                       </>
                     )}
 
