@@ -1,5 +1,39 @@
 import { gql } from "@apollo/client";
 
+const MY_REPORTS = gql`
+  query GetAllReports(
+    $page: String
+    $limit: String
+    $searchTerm: String
+    $sortBy: String
+    $sortOrder: String
+    $reportType: REPORT_TYPE
+  ) {
+    getAllReports(
+      page: $page
+      limit: $limit
+      searchTerm: $searchTerm
+      sortBy: $sortBy
+      sortOrder: $sortOrder
+      reportType: $reportType
+    ) {
+      meta {
+        page
+        limit
+        total
+      }
+      reports {
+        id
+        title
+        reportType
+        reportDate
+        fileUrl
+        notes
+      }
+    }
+  }
+`;
+
 const CREATE_MEDICAL_REPORT = gql`
   mutation CreateMedicalReport(
     $patientId: String!
@@ -24,4 +58,7 @@ const CREATE_MEDICAL_REPORT = gql`
   }
 `;
 
-export const MedicalReportQueries = { CREATE_MEDICAL_REPORT };
+export const MedicalReportQueries = {
+  MY_REPORTS,
+  CREATE_MEDICAL_REPORT,
+};
