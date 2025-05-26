@@ -5,7 +5,7 @@ const CREATE_MEDICAL_REPORT = gql`
     $patientId: String!
     $title: String!
     $appointmentId: String
-    $reportType: REPORT_TYPE
+    $reportType: REPORT_TYPE!
     $reportDate: String
     $fileUrl: String
     $notes: String
