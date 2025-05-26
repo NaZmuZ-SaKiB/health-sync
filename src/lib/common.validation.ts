@@ -1,5 +1,15 @@
-import { bloodGroups, doctorVerificationStatuses, genders } from "@/constants";
-import { TBloodGroup, TDoctorVerificationStatus, TGender } from "@/types";
+import {
+  bloodGroups,
+  doctorVerificationStatuses,
+  genders,
+  reportTypes,
+} from "@/constants";
+import {
+  TBloodGroup,
+  TDoctorVerificationStatus,
+  TGender,
+  TReportType,
+} from "@/types";
 import { z } from "zod";
 
 const gender = z.enum(genders as [TGender, ...TGender[]], {
@@ -26,8 +36,15 @@ const doctorVerificationStatus = z.enum(
   },
 );
 
+const reportType = z.enum(reportTypes as [TReportType, ...TReportType[]], {
+  errorMap: () => ({
+    message: "Invalid report type.",
+  }),
+});
+
 export const CommonValidation = {
   gender,
   bloodGroup,
   doctorVerificationStatus,
+  reportType,
 };
