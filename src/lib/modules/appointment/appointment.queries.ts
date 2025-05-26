@@ -50,6 +50,7 @@ const MY_APPOINTMENTS = gql`
           title
           notes
           fileUrl
+          reportType
         }
         review {
           rating
