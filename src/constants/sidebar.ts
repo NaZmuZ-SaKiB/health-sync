@@ -1,4 +1,5 @@
 import {
+  BookText,
   CalendarCheck,
   CalendarClock,
   LayoutDashboard,
@@ -47,6 +48,11 @@ export const patientSidebarItems: TSidebarItem[] = [
     label: "Appointments",
     route: "/dashboard/my-appointments",
     icon: CalendarCheck,
+  },
+  {
+    label: "Reports",
+    route: "/dashboard/reports",
+    icon: BookText,
   },
 ];
 
