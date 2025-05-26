@@ -16,6 +16,7 @@ import { AUTH_KEY } from "@/constants";
 import { AppointmentQueries } from "@/lib/modules/appointment/appointment.queries";
 import { MedicalReportQueries } from "@/lib/modules/medical-report/medical-report.queries";
 import { MedicalReportValidation } from "@/lib/modules/medical-report/medical-report.validation";
+import { TReportType } from "@/types";
 import { useMutation } from "@apollo/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
@@ -27,12 +28,20 @@ import { z } from "zod";
 type TProps = {
   id: string;
   patientId: string;
+  reportType: TReportType;
   defaultValues?: Partial<TForm>;
+  children: React.ReactNode;
 };
 
 type TForm = z.infer<typeof MedicalReportValidation.prescriptionSchema>;
 
-const AddPrescriptionButton = ({ id, defaultValues, patientId }: TProps) => {
+const AddPrescriptionButton = ({
+  id,
+  defaultValues,
+  patientId,
+  reportType,
+  children,
+}: TProps) => {
   const [open, setOpen] = useState<boolean>(false);
 
   const [cookies] = useCookies([AUTH_KEY]);
@@ -54,6 +63,7 @@ const AddPrescriptionButton = ({ id, defaultValues, patientId }: TProps) => {
       fileUrl: defaultValues?.fileUrl || "",
       notes: defaultValues?.notes || "",
       title: defaultValues?.title || "",
+      reportType,
     },
     resolver: zodResolver(MedicalReportValidation.prescriptionSchema),
   });
@@ -90,7 +100,7 @@ const AddPrescriptionButton = ({ id, defaultValues, patientId }: TProps) => {
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button variant="outline" size="sm" className="cursor-pointer">
-          Prescribe
+          {children}
         </Button>
       </DialogTrigger>
 
