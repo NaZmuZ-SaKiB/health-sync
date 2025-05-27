@@ -1,6 +1,6 @@
 import { gql } from "@apollo/client";
 
-const MY_REPORTS = gql`
+const REPORTS = gql`
   query GetAllReports(
     $page: String
     $limit: String
@@ -8,6 +8,7 @@ const MY_REPORTS = gql`
     $sortBy: String
     $sortOrder: String
     $reportType: REPORT_TYPE
+    $patientId: String
   ) {
     getAllReports(
       page: $page
@@ -16,6 +17,7 @@ const MY_REPORTS = gql`
       sortBy: $sortBy
       sortOrder: $sortOrder
       reportType: $reportType
+      patientId: $patientId
     ) {
       meta {
         page
@@ -59,6 +61,6 @@ const CREATE_MEDICAL_REPORT = gql`
 `;
 
 export const MedicalReportQueries = {
-  MY_REPORTS,
+  REPORTS,
   CREATE_MEDICAL_REPORT,
 };
