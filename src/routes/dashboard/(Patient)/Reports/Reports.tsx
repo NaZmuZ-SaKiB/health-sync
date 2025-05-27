@@ -1,3 +1,4 @@
+import ReportsTable from "@/components/dashboard/shared/ReportsTable";
 import DBox from "@/components/dashboard/ui/DBox";
 import DPageContainer from "@/components/dashboard/ui/DPageContainer";
 import DPageHeader from "@/components/dashboard/ui/DPageHeader";
@@ -7,7 +8,6 @@ import SearchFilter from "@/components/global/shared/SearchFilter";
 import SortByFilter from "@/components/global/shared/SortByFilter";
 import SortOrderFilter from "@/components/global/shared/SortOrderFilter";
 import { REPORT_TYPE } from "@/constants";
-import MyReportsTable from "./_components/MyReportsTable";
 
 const reportSortByOptions = ["reportDate", "createdAt", "updatedAt"];
 const reportTypeOptions = [
@@ -45,7 +45,7 @@ const MyReportsPage = () => {
         <SearchFilter className="rounded-md" />
       </DBox>
 
-      <MyReportsTable />
+      <ReportsTable />
     </DPageContainer>
   );
 };
