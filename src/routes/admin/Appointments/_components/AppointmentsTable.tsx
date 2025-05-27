@@ -7,6 +7,7 @@ import { AUTH_KEY } from "@/constants";
 import { AppointmentQueries } from "@/lib/modules/appointment/appointment.queries";
 import { TAppointment } from "@/lib/modules/appointment/appointment.type";
 import { TMeta } from "@/types";
+import copyToClipboard from "@/utils/copyToClipboard";
 import formatTime from "@/utils/formatTime";
 import { useQuery } from "@apollo/client";
 import { useCookies } from "react-cookie";
@@ -41,6 +42,7 @@ const AppointmentsTable = () => {
       <table className="primary-table table table-auto">
         <thead>
           <tr>
+            <th>ID</th>
             <th>Date</th>
             <th>Patient</th>
             <th>Phone</th>
@@ -54,6 +56,12 @@ const AppointmentsTable = () => {
           {appointmentsData?.getAllAppointments?.appointments.map(
             (appointment: TAppointment) => (
               <tr key={appointment.id}>
+                <td
+                  className="cursor-pointer"
+                  onClick={() => copyToClipboard(appointment?.id)}
+                >
+                  {appointment?.id?.slice(0, 4)}...
+                </td>
                 <td>{appointment.timeSlot.slotDate}</td>
                 <td>
                   {appointment.patient.user.firstName}{" "}
