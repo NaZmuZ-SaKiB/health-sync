@@ -10,7 +10,7 @@ import CancelAppointmentButton from "@/components/dashboard/shared/CancelAppoint
 import formatTime from "@/utils/formatTime";
 import { useQuery } from "@apollo/client";
 import { useCookies } from "react-cookie";
-import { useParams } from "react-router";
+import { Link, useParams } from "react-router";
 
 const SingleAppointmentPage = () => {
   const { id } = useParams();
@@ -86,7 +86,15 @@ const SingleAppointmentPage = () => {
       </DBox>
 
       <DBox>
-        <DFormH2 className="">Patient Info</DFormH2>
+        <div className="flex items-center justify-between gap-3">
+          <DFormH2 className="">Patient Info</DFormH2>
+          <Link
+            className="border-primary rounded-md border px-3 py-1 text-sm text-slate-700 hover:bg-slate-50"
+            to={`/dashboard/appointments/patient-reports/${appointment.patient.id}`}
+          >
+            Medical Reports
+          </Link>
+        </div>
 
         <div className="grid grid-cols-6 gap-5">
           <DetailField
