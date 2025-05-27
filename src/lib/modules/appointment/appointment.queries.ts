@@ -30,10 +30,6 @@ const MY_APPOINTMENTS = gql`
           specialty {
             name
           }
-          location {
-            name
-            mapUrl
-          }
         }
         service {
           name
@@ -122,6 +118,66 @@ const DOCTOR_SERVICE_APPOINTMENTS = gql`
   }
 `;
 
+const ALL_APPOINTMENTS = gql`
+  query GetAllAppointments(
+    $page: String
+    $limit: String
+    $searchTerm: String
+    $sortBy: String
+    $sortOrder: String
+    $status: APPOINTMENT_STATUS
+    $date: String
+    $all: Boolean
+  ) {
+    getAllAppointments(
+      page: $page
+      limit: $limit
+      searchTerm: $searchTerm
+      sortBy: $sortBy
+      sortOrder: $sortOrder
+      status: $status
+      date: $date
+      all: $all
+    ) {
+      appointments {
+        id
+        status
+        patient {
+          id
+          user {
+            firstName
+            lastName
+            phoneNumber
+          }
+        }
+        doctor {
+          id
+          user {
+            firstName
+            lastName
+          }
+        }
+        service {
+          name
+        }
+        location {
+          name
+        }
+        timeSlot {
+          slotDate
+          startTime
+          endTime
+        }
+      }
+      meta {
+        page
+        limit
+        total
+      }
+    }
+  }
+`;
+
 const SINGLE_APPOINTMENT = gql`
   query Appointment($id: String!) {
     appointment(id: $id) {
@@ -187,6 +243,7 @@ const UPDATE_APPOINTMENT = gql`
 export const AppointmentQueries = {
   MY_APPOINTMENTS,
   DOCTOR_SERVICE_APPOINTMENTS,
+  ALL_APPOINTMENTS,
   SINGLE_APPOINTMENT,
   CREATE_APPOINTMENT,
   UPDATE_APPOINTMENT,
