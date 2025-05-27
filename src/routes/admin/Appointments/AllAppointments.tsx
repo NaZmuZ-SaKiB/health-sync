@@ -9,6 +9,7 @@ import SortByFilter from "@/components/global/shared/SortByFilter";
 import SortOrderFilter from "@/components/global/shared/SortOrderFilter";
 import { appointmentStatuses } from "@/constants";
 import AppointmentsTable from "./_components/AppointmentsTable";
+import { gql, useQuery } from "@apollo/client";
 
 const appointmentSortByOptions = ["createdAt", "updatedAt"];
 
@@ -17,7 +18,35 @@ const statusOptions = appointmentStatuses.map((item) => ({
   value: item,
 }));
 
+const LOCATIONS_OPTIONS = gql`
+  query GetAllLocations($limit: String) {
+    getAllLocations(limit: $limit) {
+      locations {
+        id
+        name
+      }
+    }
+  }
+`;
+
 const AllAppointmentsPage = () => {
+  const { data: locationsData, loading: locationsLoading } = useQuery(
+    LOCATIONS_OPTIONS,
+    {
+      variables: {
+        limit: "9999",
+      },
+    },
+  );
+
+  const locationOptions =
+    locationsData?.getAllLocations?.locations?.map(
+      (item: { name: string; id: string }) => ({
+        label: item.name,
+        value: item.id,
+      }),
+    ) || [];
+
   return (
     <APageContainer>
       <APageHeader title="All Appointments" />
@@ -32,6 +61,12 @@ const AllAppointmentsPage = () => {
           <LimitFilter />
           <DateFilter />
           <FieldFilter name="status" label="Status" options={statusOptions} />
+          <FieldFilter
+            name="locationId"
+            label="Location"
+            options={locationOptions}
+            disabled={locationsLoading}
+          />
         </div>
         <SearchFilter />
       </ABox>
