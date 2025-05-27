@@ -19,9 +19,16 @@ type TProps = {
     value: string;
   }[];
   className?: ClassValue;
+  disabled?: boolean;
 };
 
-const FieldFilter = ({ name, label, options, className }: TProps) => {
+const FieldFilter = ({
+  name,
+  label,
+  options,
+  className,
+  disabled = false,
+}: TProps) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const params = new URLSearchParams(searchParams);
 
@@ -50,8 +57,9 @@ const FieldFilter = ({ name, label, options, className }: TProps) => {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>
+      <DropdownMenuTrigger asChild disabled={disabled}>
         <Button
+          disabled={disabled}
           className={cn(
             "focus-visible:border-primary cursor-pointer rounded-none text-slate-700 capitalize hover:bg-slate-50 focus-visible:text-slate-900 focus-visible:ring-0",
             className,
@@ -59,7 +67,9 @@ const FieldFilter = ({ name, label, options, className }: TProps) => {
           variant="outline"
           size="sm"
         >
-          {label} : {value.toLowerCase()}
+          {label} :{" "}
+          {options.find((item) => item.value === value)?.label?.toLowerCase() ||
+            "All"}
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="rounded-none p-0">
