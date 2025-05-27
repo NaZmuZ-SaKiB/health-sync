@@ -28,6 +28,7 @@ import SingleAppointmentPage from "./dashboard/(Doctor)/Appointments/SingleAppoi
 import AdminServicesPage from "./admin/Services/Services";
 import ServiceAppointmentsPage from "./admin/Services/appointments/ServiceAppointments";
 import MyReportsPage from "./dashboard/(Patient)/Reports/Reports";
+import PatientReportsPage from "./dashboard/(Doctor)/Appointments/Reports/PatientReports";
 
 const router = createBrowserRouter([
   {
@@ -96,6 +97,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/appointments/:id",
         Component: SingleAppointmentPage,
+      },
+      {
+        path: "/dashboard/appointments/patient-reports/:id",
+        Component: PatientReportsPage,
       },
       {
         path: "/dashboard/schedules",
