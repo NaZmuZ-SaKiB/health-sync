@@ -130,6 +130,7 @@ const SINGLE_APPOINTMENT = gql`
       reason
       notes
       patient {
+        id
         emergencyContactName
         emergencyContactPhone
         bloodGroup
