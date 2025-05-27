@@ -70,6 +70,7 @@ const DOCTOR_SERVICE_APPOINTMENTS = gql`
     $sortBy: String
     $sortOrder: String
     $status: APPOINTMENT_STATUS
+    $locationId: String
     $date: String
   ) {
     getAllAppointments(
@@ -79,6 +80,7 @@ const DOCTOR_SERVICE_APPOINTMENTS = gql`
       sortBy: $sortBy
       sortOrder: $sortOrder
       status: $status
+      locationId: $locationId
       date: $date
     ) {
       appointments {
@@ -127,6 +129,7 @@ const ALL_APPOINTMENTS = gql`
     $sortOrder: String
     $status: APPOINTMENT_STATUS
     $date: String
+    $locationId: String
     $all: Boolean
   ) {
     getAllAppointments(
@@ -137,6 +140,7 @@ const ALL_APPOINTMENTS = gql`
       sortOrder: $sortOrder
       status: $status
       date: $date
+      locationId: $locationId
       all: $all
     ) {
       appointments {
