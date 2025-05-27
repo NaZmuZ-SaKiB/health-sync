@@ -17,6 +17,7 @@ import ViewReviewModal from "@/components/dashboard/shared/ViewReviewModal";
 import UpdateAppointmentStatus from "@/components/dashboard/shared/UpdateAppointmentStatus";
 import AddNotesButton from "@/components/dashboard/shared/AddNotesButton";
 import AddPrescriptionButton from "@/components/dashboard/shared/AddPrescriptionButton";
+import copyToClipboard from "@/utils/copyToClipboard";
 
 const DoctorAppointmentTable = () => {
   const [cookies] = useCookies([AUTH_KEY]);
@@ -48,6 +49,7 @@ const DoctorAppointmentTable = () => {
       <table className="primary-table table table-auto">
         <thead>
           <tr>
+            <th>ID</th>
             <th>Date</th>
             <th>Patient</th>
             <th>Phone Number</th>
@@ -63,6 +65,12 @@ const DoctorAppointmentTable = () => {
           {appointmentsData?.getAllAppointments?.appointments.map(
             (appointment: TAppointment) => (
               <tr key={appointment.id}>
+                <td
+                  className="cursor-pointer"
+                  onClick={() => copyToClipboard(appointment?.id)}
+                >
+                  {appointment?.id?.slice(0, 4)}...
+                </td>
                 <td>{appointment.timeSlot.slotDate}</td>
                 <td>
                   {appointment.patient.user.firstName}{" "}
