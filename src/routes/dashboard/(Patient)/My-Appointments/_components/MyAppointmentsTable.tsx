@@ -9,7 +9,7 @@ import { TMeta } from "@/types";
 import formatTime from "@/utils/formatTime";
 import { useQuery } from "@apollo/client";
 import { useCookies } from "react-cookie";
-import { useSearchParams } from "react-router";
+import { Link, useSearchParams } from "react-router";
 import AddReviewButton from "./AddReviewButton";
 import ViewReviewModal from "@/components/dashboard/shared/ViewReviewModal";
 import CancelAppointmentButton from "@/components/dashboard/shared/CancelAppointmentButton";
@@ -69,9 +69,12 @@ const MyAppointmentsTable = () => {
                 <td>{formatTime(appointment.timeSlot.startTime)}</td>
                 <td>{formatTime(appointment.timeSlot.endTime)}</td>
                 <td>
-                  {appointment?.doctor?.location?.name ||
-                    appointment?.location?.name ||
-                    "N/A"}
+                  <Link
+                    to={appointment?.location?.mapUrl}
+                    className="text-sky-600 hover:underline"
+                  >
+                    {appointment?.location?.name}
+                  </Link>
                 </td>
                 <td>
                   <div className="flex items-center justify-center gap-1.5">
