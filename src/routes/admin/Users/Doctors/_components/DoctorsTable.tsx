@@ -102,7 +102,7 @@ const DoctorsTable = ({ selected, setSelected }: TProps) => {
               <td>
                 <img
                   src={
-                    doctor.user.profilePicture.secureUrl ||
+                    doctor.user?.profilePicture?.secureUrl ||
                     Images.PlaceholderImage
                   }
                   alt={doctor.user.firstName}
