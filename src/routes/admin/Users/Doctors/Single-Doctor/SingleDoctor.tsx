@@ -10,6 +10,7 @@ import { formatCurrency } from "@/utils/formatCurrency";
 import formatDate from "@/utils/formatDate";
 import { useQuery } from "@apollo/client";
 import { useParams } from "react-router";
+import { Images } from "@/constants";
 
 const SingleDoctorPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -37,34 +38,49 @@ const SingleDoctorPage = () => {
       <ABox>
         <AFormH2>Personal Information</AFormH2>
 
-        <div className="grid grid-cols-6 gap-5">
-          <DetailField
-            title="First Name"
-            value={doctor?.user?.firstName}
-            className="col-span-3"
-          />
-          <DetailField
-            title="Last Name"
-            value={doctor?.user?.lastName}
-            className="col-span-3"
-          />
-          <DetailField
-            title="Gender"
-            value={doctor?.user?.gender}
-            className="col-span-3"
-          />
+        <div className="grid grid-cols-[3fr_1fr] items-start gap-5">
+          {/* Left Side */}
+          <div className="grid grid-cols-6 gap-5">
+            <DetailField
+              title="First Name"
+              value={doctor?.user?.firstName}
+              className="col-span-3"
+            />
+            <DetailField
+              title="Last Name"
+              value={doctor?.user?.lastName}
+              className="col-span-3"
+            />
+            <DetailField
+              title="Gender"
+              value={doctor?.user?.gender}
+              className="col-span-3"
+            />
 
-          <DetailField
-            title="Date of Birth"
-            value={formatDate(doctor?.user?.dateOfBirth as string)}
-            className="col-span-3"
-          />
+            <DetailField
+              title="Date of Birth"
+              value={formatDate(doctor?.user?.dateOfBirth as string)}
+              className="col-span-3"
+            />
 
-          <DetailField
-            title={`About ${doctor?.user?.firstName} ${doctor?.user?.lastName}`}
-            value={doctor?.bio}
-            className="col-span-3"
-          />
+            <DetailField
+              title={`About ${doctor?.user?.firstName} ${doctor?.user?.lastName}`}
+              value={doctor?.bio}
+              className="col-span-3"
+            />
+          </div>
+
+          {/* Right Side */}
+          <div>
+            <img
+              src={
+                doctor?.user?.profilePicture?.secureUrl ||
+                Images.PlaceholderImage
+              }
+              alt={doctor?.user?.firstName || "Doctor"}
+              className="aspect-square object-cover object-top"
+            />
+          </div>
         </div>
       </ABox>
 
