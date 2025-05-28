@@ -11,7 +11,7 @@ import copyToClipboard from "@/utils/copyToClipboard";
 import formatTime from "@/utils/formatTime";
 import { useQuery } from "@apollo/client";
 import { useCookies } from "react-cookie";
-import { useSearchParams } from "react-router";
+import { Link, useSearchParams } from "react-router";
 
 const AppointmentsTable = () => {
   const [cookies] = useCookies([AUTH_KEY]);
@@ -70,8 +70,13 @@ const AppointmentsTable = () => {
                 <td>{appointment.patient.user.phoneNumber}</td>
                 {appointment?.doctor && (
                   <td>
-                    {appointment.doctor.user.firstName}{" "}
-                    {appointment.doctor.user.lastName}
+                    <Link
+                      to={`/admin/users/doctors/${appointment?.doctor?.id}`}
+                      className="text-sky-600 hover:underline"
+                    >
+                      {appointment.doctor.user.firstName}{" "}
+                      {appointment.doctor.user.lastName}
+                    </Link>
                   </td>
                 )}
                 {appointment?.service && <td>{appointment?.service.name}</td>}
