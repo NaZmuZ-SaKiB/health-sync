@@ -23,7 +23,7 @@ const AdminTopbar = () => {
   }, [toggleSidebar, state]);
 
   return (
-    <div className="flex h-[50px] items-center bg-white">
+    <div className="flex h-[50px] items-center border-b bg-white">
       <SidebarTrigger />
     </div>
   );
