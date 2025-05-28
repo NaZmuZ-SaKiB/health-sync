@@ -32,7 +32,10 @@ const DOCTOR_LIST = gql`
           lastName
           email
           phoneNumber
-          profilePicture
+          profilePicture {
+            publicId
+            secureUrl
+          }
         }
         specialty {
           name
