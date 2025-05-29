@@ -26,11 +26,13 @@ import MyAppointmentsPage from "./dashboard/(Patient)/My-Appointments/MyAppointm
 import DoctorAppointmentsPage from "./dashboard/(Doctor)/Appointments/DoctorAppointments";
 import SingleAppointmentPage from "./dashboard/(Doctor)/Appointments/SingleAppointment/SingleAppointmentPage";
 import AdminServicesPage from "./admin/Services/Services";
-import ServiceAppointmentsPage from "./admin/Services/appointments/ServiceAppointments";
+import ServiceAppointmentsPage from "./admin/Services/Appointments/ServiceAppointments";
 import MyReportsPage from "./dashboard/(Patient)/Reports/Reports";
 import PatientReportsPage from "./dashboard/(Doctor)/Appointments/Reports/PatientReports";
 import AllAppointmentsPage from "./admin/Appointments/AllAppointments";
 import PatientsPage from "./admin/Users/Patients/Patients";
+import SinglePatientPage from "./admin/Users/Patients/Single-Patient/SinglePatient";
+import SingleServiceAppointmentPage from "./admin/Services/Appointments/SingleServiceAppointment/SingleServiceAppointment";
 
 const router = createBrowserRouter([
   {
@@ -123,6 +125,10 @@ const router = createBrowserRouter([
         Component: PatientsPage,
       },
       {
+        path: "/admin/users/patients/:id",
+        Component: SinglePatientPage,
+      },
+      {
         path: "/admin/users/doctors",
         Component: DoctorsPage,
       },
@@ -153,6 +159,10 @@ const router = createBrowserRouter([
       {
         path: "/admin/services/appointments",
         Component: ServiceAppointmentsPage,
+      },
+      {
+        path: "/admin/services/appointments/:id",
+        Component: SingleServiceAppointmentPage,
       },
       {
         path: "/admin/appointments",
