@@ -15,6 +15,7 @@ import { ChangeEvent } from "react";
 import { useSearchParams } from "react-router";
 import ServiceUpdateModal from "./ServiceUpdateModal";
 import ServiceSettingsModal from "./ServiceSettingsModal";
+import ServiceDelete from "./ServiceDelete";
 
 type TProps = {
   selected: string[];
@@ -117,15 +118,15 @@ const ServiceTable = ({ selected, setSelected }: TProps) => {
                     settings={service?.serviceSettings}
                   />
 
-                  {/* <ServiceDelete selected={[service.id]}> */}
-                  <Button
-                    size="icon"
-                    variant="outline"
-                    className="cursor-pointer rounded-none hover:border-red-500 hover:bg-red-50 hover:text-red-500"
-                  >
-                    <Trash2 />
-                  </Button>
-                  {/* </ServiceDelete> */}
+                  <ServiceDelete selected={[service.id]}>
+                    <Button
+                      size="icon"
+                      variant="outline"
+                      className="cursor-pointer rounded-none hover:border-red-500 hover:bg-red-50 hover:text-red-500"
+                    >
+                      <Trash2 />
+                    </Button>
+                  </ServiceDelete>
                 </div>
               </td>
             </tr>
