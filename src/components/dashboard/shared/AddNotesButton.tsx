@@ -13,6 +13,7 @@ import {
 import { Form } from "@/components/ui/form";
 import { AUTH_KEY } from "@/constants";
 import { AppointmentQueries } from "@/lib/modules/appointment/appointment.queries";
+import { cn } from "@/lib/utils";
 import { useMutation } from "@apollo/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
@@ -24,6 +25,7 @@ import { z } from "zod";
 type TProps = {
   id: string;
   defaultValue?: string;
+  admin?: boolean;
 };
 
 const formSchema = z.object({
@@ -32,7 +34,7 @@ const formSchema = z.object({
 
 type TForm = z.infer<typeof formSchema>;
 
-const AddNotesButton = ({ id, defaultValue }: TProps) => {
+const AddNotesButton = ({ id, defaultValue, admin = false }: TProps) => {
   const [open, setOpen] = useState<boolean>(false);
 
   const [cookies] = useCookies([AUTH_KEY]);
@@ -84,7 +86,13 @@ const AddNotesButton = ({ id, defaultValue }: TProps) => {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="outline" size="sm" className="cursor-pointer">
+        <Button
+          variant="outline"
+          size="sm"
+          className={cn("h-auto cursor-pointer", {
+            "rounded-none": admin,
+          })}
+        >
           Add Notes
         </Button>
       </DialogTrigger>

@@ -16,6 +16,7 @@ import { AUTH_KEY } from "@/constants";
 import { AppointmentQueries } from "@/lib/modules/appointment/appointment.queries";
 import { MedicalReportQueries } from "@/lib/modules/medical-report/medical-report.queries";
 import { MedicalReportValidation } from "@/lib/modules/medical-report/medical-report.validation";
+import { cn } from "@/lib/utils";
 import { TReportType } from "@/types";
 import { useMutation } from "@apollo/client";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -31,6 +32,7 @@ type TProps = {
   reportType: TReportType;
   defaultValues?: Partial<TForm>;
   children: React.ReactNode;
+  admin?: boolean;
 };
 
 type TForm = z.infer<typeof MedicalReportValidation.prescriptionSchema>;
@@ -41,6 +43,7 @@ const AddPrescriptionButton = ({
   patientId,
   reportType,
   children,
+  admin = false,
 }: TProps) => {
   const [open, setOpen] = useState<boolean>(false);
 
@@ -99,7 +102,13 @@ const AddPrescriptionButton = ({
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="outline" size="sm" className="cursor-pointer">
+        <Button
+          variant="outline"
+          size="sm"
+          className={cn("h-auto cursor-pointer", {
+            "rounded-none": admin,
+          })}
+        >
           {children}
         </Button>
       </DialogTrigger>

@@ -10,12 +10,14 @@ type TProps = {
   id: string;
   isCancelled: boolean;
   hideIfCancelled?: boolean;
+  admin?: boolean;
 };
 
 const CancelAppointmentButton = ({
   id,
   isCancelled,
   hideIfCancelled,
+  admin = false,
 }: TProps) => {
   const [cookies] = useCookies([AUTH_KEY]);
 
@@ -66,7 +68,7 @@ const CancelAppointmentButton = ({
           variant="outline"
           className={cn(
             "h-auto border-red-500 bg-red-50 px-3 py-1 text-xs text-red-500 hover:border-red-500 hover:bg-red-50 hover:text-red-500",
-            { hidden: hideIfCancelled },
+            { hidden: hideIfCancelled, "rounded-none": admin },
           )}
         >
           Canceled
