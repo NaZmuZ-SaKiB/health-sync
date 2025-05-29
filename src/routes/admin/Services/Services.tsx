@@ -11,6 +11,7 @@ import SortOrderFilter from "@/components/global/shared/SortOrderFilter";
 import LimitFilter from "@/components/global/shared/LimitFilter";
 import SearchFilter from "@/components/global/shared/SearchFilter";
 import ServiceTable from "./_components/ServiceTable";
+import ServiceDelete from "./_components/ServiceDelete";
 
 const serviceSortByOptions = ["name", "createdAt", "updatedAt"];
 
@@ -30,15 +31,15 @@ const AdminServicesPage = () => {
           <ABox>
             <div className="mb-2 flex items-center gap-2">
               <SelectedCount count={selected.length} />
-              {/* <SpecialtyDelete selected={selected} setSelected={setSelected}> */}
-              <Button
-                className="cursor-pointer rounded-none border border-red-300 bg-transparent text-red-500 hover:border-red-500 hover:bg-red-50 hover:text-red-500 focus-visible:border-red-500 focus-visible:ring-0"
-                disabled={selected.length === 0}
-                size="sm"
-              >
-                Delete
-              </Button>
-              {/* </SpecialtyDelete> */}
+              <ServiceDelete selected={selected} setSelected={setSelected}>
+                <Button
+                  className="cursor-pointer rounded-none border border-red-300 bg-transparent text-red-500 hover:border-red-500 hover:bg-red-50 hover:text-red-500 focus-visible:border-red-500 focus-visible:ring-0"
+                  disabled={selected.length === 0}
+                  size="sm"
+                >
+                  Delete
+                </Button>
+              </ServiceDelete>
               <SortByFilter
                 options={serviceSortByOptions}
                 defaultValueIndex={1}
