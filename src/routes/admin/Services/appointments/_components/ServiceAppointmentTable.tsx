@@ -89,12 +89,12 @@ const ServiceAppointmentTable = () => {
                   />
                 </td>
                 <td>
-                  <div className="flex items-center justify-center gap-1.5">
+                  <div className="flex items-stretch justify-center gap-1.5">
                     <Link to={`/admin/services/appointments/${appointment.id}`}>
                       <Button
                         size="icon"
                         variant="outline"
-                        className="cursor-pointer"
+                        className="cursor-pointer rounded-none"
                       >
                         <Eye />
                       </Button>
@@ -105,6 +105,7 @@ const ServiceAppointmentTable = () => {
                         <AddNotesButton
                           id={appointment.id}
                           defaultValue={appointment?.notes}
+                          admin
                         />
 
                         <AddPrescriptionButton
@@ -116,6 +117,7 @@ const ServiceAppointmentTable = () => {
                             notes: appointment?.report?.notes,
                             fileUrl: appointment?.report?.fileUrl,
                           }}
+                          admin
                         >
                           Add Report
                         </AddPrescriptionButton>
@@ -130,11 +132,12 @@ const ServiceAppointmentTable = () => {
                           appointment.status === APPOINTMENT_STATUS.CANCELLED
                         }
                         hideIfCancelled
+                        admin
                       />
                     )}
 
                     {appointment?.review && (
-                      <ViewReviewModal review={appointment.review} />
+                      <ViewReviewModal review={appointment.review} admin />
                     )}
                   </div>
                 </td>
