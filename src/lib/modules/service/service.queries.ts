@@ -79,9 +79,18 @@ const UPDATE_SERVICE = gql`
   }
 `;
 
+const DELETE_SERVICES = gql`
+  mutation DeleteServices($ids: [String!]!) {
+    deleteServices(ids: $ids) {
+      success
+    }
+  }
+`;
+
 export const ServiceQueries = {
   SERVICE_LIST,
   SERVICE_BY_ID,
   CREATE_SERVICE,
   UPDATE_SERVICE,
+  DELETE_SERVICES,
 };
