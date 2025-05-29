@@ -125,7 +125,7 @@ const DoctorsTable = ({ selected, setSelected }: TProps) => {
                     <Button
                       size="icon"
                       variant="outline"
-                      className="cursor-pointer"
+                      className="cursor-pointer rounded-none"
                     >
                       <Eye />
                     </Button>
@@ -135,7 +135,7 @@ const DoctorsTable = ({ selected, setSelected }: TProps) => {
                     <Button
                       size="icon"
                       variant="outline"
-                      className="cursor-pointer hover:border-red-500 hover:bg-red-50 hover:text-red-500"
+                      className="cursor-pointer rounded-none hover:border-red-500 hover:bg-red-50 hover:text-red-500"
                     >
                       <Trash2 />
                     </Button>
