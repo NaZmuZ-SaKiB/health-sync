@@ -78,7 +78,7 @@ const SingleDoctorPage = () => {
                 Images.PlaceholderImage
               }
               alt={doctor?.user?.firstName || "Doctor"}
-              className="aspect-square object-cover object-top"
+              className="aspect-square w-full object-cover object-top"
             />
           </div>
         </div>
