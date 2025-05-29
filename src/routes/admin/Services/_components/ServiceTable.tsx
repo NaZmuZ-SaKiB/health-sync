@@ -103,7 +103,11 @@ const ServiceTable = ({ selected, setSelected }: TProps) => {
               <td>{formatDate(service.updatedAt)}</td>
               <td>
                 <div className="flex items-center justify-center gap-1.5">
-                  <Button size="icon" variant="outline">
+                  <Button
+                    size="icon"
+                    variant="outline"
+                    className="rounded-none"
+                  >
                     <Eye />
                   </Button>
 
@@ -117,7 +121,7 @@ const ServiceTable = ({ selected, setSelected }: TProps) => {
                   <Button
                     size="icon"
                     variant="outline"
-                    className="cursor-pointer hover:border-red-500 hover:bg-red-50 hover:text-red-500"
+                    className="cursor-pointer rounded-none hover:border-red-500 hover:bg-red-50 hover:text-red-500"
                   >
                     <Trash2 />
                   </Button>
