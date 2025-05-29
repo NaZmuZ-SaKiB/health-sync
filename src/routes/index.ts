@@ -30,6 +30,7 @@ import ServiceAppointmentsPage from "./admin/Services/appointments/ServiceAppoin
 import MyReportsPage from "./dashboard/(Patient)/Reports/Reports";
 import PatientReportsPage from "./dashboard/(Doctor)/Appointments/Reports/PatientReports";
 import AllAppointmentsPage from "./admin/Appointments/AllAppointments";
+import PatientsPage from "./admin/Users/Patients/Patients";
 
 const router = createBrowserRouter([
   {
@@ -116,6 +117,10 @@ const router = createBrowserRouter([
       {
         path: "/admin",
         Component: ADashboardPage,
+      },
+      {
+        path: "/admin/users/patients",
+        Component: PatientsPage,
       },
       {
         path: "/admin/users/doctors",
