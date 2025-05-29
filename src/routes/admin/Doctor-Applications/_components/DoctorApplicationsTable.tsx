@@ -94,7 +94,7 @@ const DoctorApplicationsTable = () => {
                     <Button
                       size="icon"
                       variant="outline"
-                      className="cursor-pointer"
+                      className="cursor-pointer rounded-none"
                     >
                       <Eye />
                     </Button>
