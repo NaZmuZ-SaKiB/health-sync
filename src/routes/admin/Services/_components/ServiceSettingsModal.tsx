@@ -88,7 +88,11 @@ const ServiceSettingsModal = ({ settings, serviceId }: TProps) => {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="outline" size="icon" className="cursor-pointer">
+        <Button
+          variant="outline"
+          size="icon"
+          className="cursor-pointer rounded-none"
+        >
           <Clock />
         </Button>
       </DialogTrigger>
