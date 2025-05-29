@@ -1,3 +1,4 @@
+import UserActiveStatusToggle from "@/components/admin/shared/UserActiveStatusToggle";
 import ABox from "@/components/admin/ui/ABox";
 import HSPagination from "@/components/global/shared/HSPagination";
 import RefreshButton from "@/components/global/shared/RefreshButton";
@@ -6,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { AUTH_KEY, Images } from "@/constants";
 import { PatientQueries } from "@/lib/modules/patient/patient.queries";
 import { TPatient } from "@/lib/modules/patient/patient.type";
+import { cn } from "@/lib/utils";
 import { TMeta } from "@/types";
 import formatBloodGroup from "@/utils/formatBloodGroup";
 import formatDate from "@/utils/formatDate";
@@ -52,7 +54,8 @@ const PatientsTable = () => {
             <th>Gender</th>
             <th>Blood Group</th>
             <th>Date Added</th>
-            <th>Actions</th>
+            <th>Status</th>
+            <th>View</th>
           </tr>
         </thead>
         <tbody>
@@ -77,20 +80,34 @@ const PatientsTable = () => {
               <td>{patient?.user?.gender || "N/A"}</td>
               <td>{formatBloodGroup(patient?.bloodGroup)}</td>
               <td>{formatDate(patient.createdAt)}</td>
-
+              <td>
+                <div
+                  className={cn(
+                    "border border-green-600 bg-green-50 text-green-600",
+                    {
+                      "border border-red-600 bg-red-50 text-red-600":
+                        !patient?.user?.isActive,
+                    },
+                  )}
+                >
+                  {patient?.user?.isActive ? "Active" : "Blocked"}
+                </div>
+              </td>
               <td>
                 <div className="flex items-center justify-center gap-1.5">
                   <Link to={`/admin/users/patients/${patient.id}`}>
                     <Button
                       size="icon"
                       variant="outline"
-                      className="cursor-pointer"
+                      className="cursor-pointer rounded-none"
                     >
                       <Eye />
                     </Button>
                   </Link>
-
-                  {/* TODO: update active status  */}
+                  <UserActiveStatusToggle
+                    id={patient?.user?.id}
+                    isActive={patient?.user?.isActive}
+                  />
                 </div>
               </td>
             </tr>
