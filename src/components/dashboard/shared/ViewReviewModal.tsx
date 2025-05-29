@@ -10,19 +10,25 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { TReview } from "@/lib/modules/review/review.type";
+import { cn } from "@/lib/utils";
 import { useState } from "react";
 
 type TProps = {
   review: TReview;
+  admin?: boolean;
 };
 
-const ViewReviewModal = ({ review }: TProps) => {
+const ViewReviewModal = ({ review, admin = false }: TProps) => {
   const [open, setOpen] = useState<boolean>(false);
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="outline" size="sm" className="cursor-pointer">
+        <Button
+          variant="outline"
+          size="sm"
+          className={cn("h-auto cursor-pointer", { "rounded-none": admin })}
+        >
           Review
         </Button>
       </DialogTrigger>
