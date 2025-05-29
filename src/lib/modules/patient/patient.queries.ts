@@ -1,5 +1,51 @@
 import { gql } from "@apollo/client";
 
+const PATIENT_LIST = gql`
+  query GetAllPatients(
+    $page: String
+    $limit: String
+    $searchTerm: String
+    $sortBy: String
+    $sortOrder: String
+    $gender: String
+    $bloodGroup: String
+  ) {
+    getAllPatients(
+      page: $page
+      limit: $limit
+      searchTerm: $searchTerm
+      sortBy: $sortBy
+      sortOrder: $sortOrder
+      gender: $gender
+      bloodGroup: $bloodGroup
+    ) {
+      meta {
+        page
+        limit
+        total
+      }
+      patients {
+        id
+        bloodGroup
+        createdAt
+        user {
+          id
+          email
+          firstName
+          lastName
+          phoneNumber
+          gender
+          isActive
+          profilePicture {
+            publicId
+            secureUrl
+          }
+        }
+      }
+    }
+  }
+`;
+
 const UPDATE_PATIENT = gql`
   mutation UpdatePatient($input: UserPatientUpdateInput!) {
     updatePatient(input: $input) {
@@ -26,4 +72,4 @@ const UPDATE_PATIENT = gql`
   }
 `;
 
-export const PatientQueries = { UPDATE_PATIENT };
+export const PatientQueries = { UPDATE_PATIENT, PATIENT_LIST };
