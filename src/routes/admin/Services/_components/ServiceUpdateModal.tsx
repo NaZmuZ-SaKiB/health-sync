@@ -36,7 +36,11 @@ const ServiceUpdateModal = ({ id }: TProps) => {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button size="icon" variant="outline" className="cursor-pointer">
+        <Button
+          size="icon"
+          variant="outline"
+          className="cursor-pointer rounded-none"
+        >
           <Edit />
         </Button>
       </DialogTrigger>
