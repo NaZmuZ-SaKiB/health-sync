@@ -64,8 +64,13 @@ const AppointmentsTable = () => {
                 </td>
                 <td>{appointment.timeSlot.slotDate}</td>
                 <td>
-                  {appointment.patient.user.firstName}{" "}
-                  {appointment.patient.user.lastName}
+                  <Link
+                    to={`/admin/users/patients/${appointment?.patient?.id}`}
+                    className="text-sky-600 hover:underline"
+                  >
+                    {appointment.patient.user.firstName}{" "}
+                    {appointment.patient.user.lastName}
+                  </Link>
                 </td>
                 <td>{appointment.patient.user.phoneNumber}</td>
                 {appointment?.doctor && (
