@@ -10,8 +10,14 @@ import { useState } from "react";
 import DoctorsTable from "./_components/DoctorsTable";
 import DoctorDelete from "./_components/DoctorDelete";
 import { Button } from "@/components/ui/button";
+import { genders } from "@/constants";
+import FieldFilter from "@/components/global/shared/FieldFilter";
 
 const doctorSortByOptions = ["fee", "appliedDate", "createdAt", "updatedAt"];
+const genderOptions = genders.map((item) => ({
+  label: item,
+  value: item,
+}));
 
 const DoctorsPage = () => {
   const [selected, setSelected] = useState<string[]>([]);
@@ -34,6 +40,7 @@ const DoctorsPage = () => {
           </DoctorDelete>
           <SortByFilter options={doctorSortByOptions} defaultValueIndex={3} />
           <SortOrderFilter />
+          <FieldFilter name="gender" label="Gender" options={genderOptions} />
           <LimitFilter />
         </div>
         <SearchFilter />
