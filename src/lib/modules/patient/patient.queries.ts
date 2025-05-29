@@ -46,6 +46,32 @@ const PATIENT_LIST = gql`
   }
 `;
 
+const SINGLE_PATIENT = gql`
+  query Patient($id: String!) {
+    patient(id: $id) {
+      id
+      emergencyContactName
+      emergencyContactPhone
+      bloodGroup
+      allergies
+      user {
+        id
+        email
+        firstName
+        lastName
+        phoneNumber
+        address
+        dateOfBirth
+        gender
+        profilePicture {
+          publicId
+          secureUrl
+        }
+      }
+    }
+  }
+`;
+
 const UPDATE_PATIENT = gql`
   mutation UpdatePatient($input: UserPatientUpdateInput!) {
     updatePatient(input: $input) {
@@ -72,4 +98,4 @@ const UPDATE_PATIENT = gql`
   }
 `;
 
-export const PatientQueries = { UPDATE_PATIENT, PATIENT_LIST };
+export const PatientQueries = { UPDATE_PATIENT, PATIENT_LIST, SINGLE_PATIENT };
