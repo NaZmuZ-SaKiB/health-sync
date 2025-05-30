@@ -10,19 +10,27 @@ import {
 } from "@/components/ui/dialog";
 import { REPORT_TYPE } from "@/constants";
 import { TMedicalReport } from "@/lib/modules/medical-report/medical-report.type";
+import { cn } from "@/lib/utils";
 import { useState } from "react";
 import { Link } from "react-router";
 
 type TProps = {
   prescription: TMedicalReport;
+  admin?: boolean;
 };
 
-const PrescriptionDetail = ({ prescription }: TProps) => {
+const PrescriptionDetail = ({ prescription, admin = false }: TProps) => {
   const [open, setOpen] = useState<boolean>(false);
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="outline" size="sm" className="cursor-pointer">
+        <Button
+          variant="outline"
+          size="sm"
+          className={cn("h-auto cursor-pointer", {
+            "rounded-none": admin,
+          })}
+        >
           {prescription?.reportType === REPORT_TYPE.PRESCRIPTION &&
             "Prescription"}
           {prescription?.reportType === REPORT_TYPE.LAB_REPORT && "Report"}
