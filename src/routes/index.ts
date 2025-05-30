@@ -27,12 +27,13 @@ import DoctorAppointmentsPage from "./dashboard/(Doctor)/Appointments/DoctorAppo
 import SingleAppointmentPage from "./dashboard/(Doctor)/Appointments/SingleAppointment/SingleAppointmentPage";
 import AdminServicesPage from "./admin/Services/Services";
 import ServiceAppointmentsPage from "./admin/Services/Appointments/ServiceAppointments";
-import MyReportsPage from "./dashboard/(Patient)/Reports/Reports";
 import PatientReportsPage from "./dashboard/(Doctor)/Appointments/Reports/PatientReports";
 import AllAppointmentsPage from "./admin/Appointments/AllAppointments";
 import PatientsPage from "./admin/Users/Patients/Patients";
 import SinglePatientPage from "./admin/Users/Patients/Single-Patient/SinglePatient";
 import SingleServiceAppointmentPage from "./admin/Services/Appointments/SingleServiceAppointment/SingleServiceAppointment";
+import MyReportsPage from "./dashboard/(Patient)/Reports/MyReports";
+import ReportsPage from "./admin/Services/Reports/Reports";
 
 const router = createBrowserRouter([
   {
@@ -163,6 +164,10 @@ const router = createBrowserRouter([
       {
         path: "/admin/services/appointments/:id",
         Component: SingleServiceAppointmentPage,
+      },
+      {
+        path: "/admin/services/reports",
+        Component: ReportsPage,
       },
       {
         path: "/admin/appointments",
