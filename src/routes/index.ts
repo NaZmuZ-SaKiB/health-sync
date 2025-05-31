@@ -34,6 +34,7 @@ import SinglePatientPage from "./admin/Users/Patients/Single-Patient/SinglePatie
 import SingleServiceAppointmentPage from "./admin/Services/Appointments/SingleServiceAppointment/SingleServiceAppointment";
 import MyReportsPage from "./dashboard/(Patient)/Reports/MyReports";
 import ReportsPage from "./admin/Services/Reports/Reports";
+import ReviewsPage from "./admin/Appointments/Reviews/Reviews";
 
 const router = createBrowserRouter([
   {
@@ -172,6 +173,10 @@ const router = createBrowserRouter([
       {
         path: "/admin/appointments",
         Component: AllAppointmentsPage,
+      },
+      {
+        path: "/admin/reviews",
+        Component: ReviewsPage,
       },
       {
         path: "/admin/locations",
