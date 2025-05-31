@@ -36,7 +36,7 @@ const ViewReviewModal = ({ review, admin = false }: TProps) => {
       <DialogContent>
         <DialogHeader className="mb-5">
           <DialogTitle className="text-primary-hover">Review</DialogTitle>
-          <DialogDescription hidden>Prescription</DialogDescription>
+          <DialogDescription hidden>Review</DialogDescription>
         </DialogHeader>
 
         <div className="flex flex-col gap-3">
