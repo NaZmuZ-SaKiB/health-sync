@@ -50,6 +50,47 @@ const REVIEW_LIST = gql`
   }
 `;
 
+const MY_REVIEW_LIST = gql`
+  query GetAllReviews(
+    $page: String
+    $limit: String
+    $searchTerm: String
+    $sortBy: String
+    $sortOrder: String
+    $type: String
+    $serviceId: String
+  ) {
+    getAllReviews(
+      page: $page
+      limit: $limit
+      searchTerm: $searchTerm
+      sortBy: $sortBy
+      sortOrder: $sortOrder
+      type: $type
+      serviceId: $serviceId
+    ) {
+      meta {
+        page
+        limit
+        total
+      }
+      reviews {
+        id
+        rating
+        comment
+        patient {
+          user {
+            firstName
+            lastName
+            email
+            phoneNumber
+          }
+        }
+      }
+    }
+  }
+`;
+
 const CREATE_REVIEW = gql`
   mutation CreateReview(
     $appointmentId: String!
@@ -66,4 +107,4 @@ const CREATE_REVIEW = gql`
   }
 `;
 
-export const ReviewQueries = { REVIEW_LIST, CREATE_REVIEW };
+export const ReviewQueries = { REVIEW_LIST, MY_REVIEW_LIST, CREATE_REVIEW };
