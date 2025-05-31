@@ -145,13 +145,23 @@ export const adminSidebarItems: TSidebarItem[] = [
     ],
   },
   {
-    label: "Settings",
-    icon: Settings2,
+    label: "Appointment",
+    icon: CalendarCheck,
     children: [
       {
         label: "All Appointments",
         route: "/admin/appointments",
       },
+      {
+        label: "Reviews",
+        route: "/admin/reviews",
+      },
+    ],
+  },
+  {
+    label: "Settings",
+    icon: Settings2,
+    children: [
       {
         label: "Locations",
         route: "/admin/locations",
