@@ -5,6 +5,7 @@ import {
   LayoutDashboard,
   LucideProps,
   Settings2,
+  Star,
   Stethoscope,
   Syringe,
   UserRound,
@@ -85,6 +86,11 @@ export const doctorSidebarItems: TSidebarItem[] = [
     label: "Schedules",
     icon: CalendarClock,
     route: "/dashboard/schedules",
+  },
+  {
+    label: "Reviews",
+    icon: Star,
+    route: "/dashboard/my-reviews",
   },
 ];
 
