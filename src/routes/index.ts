@@ -35,6 +35,7 @@ import SingleServiceAppointmentPage from "./admin/Services/Appointments/SingleSe
 import MyReportsPage from "./dashboard/(Patient)/Reports/MyReports";
 import ReportsPage from "./admin/Services/Reports/Reports";
 import ReviewsPage from "./admin/Appointments/Reviews/Reviews";
+import MyReviewsPage from "./dashboard/(Doctor)/My-Reviews/MyReviews";
 
 const router = createBrowserRouter([
   {
@@ -111,6 +112,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/schedules",
         Component: SchedulesPage,
+      },
+      {
+        path: "/dashboard/my-reviews",
+        Component: MyReviewsPage,
       },
     ],
   },
