@@ -12,7 +12,7 @@ import formatDate from "@/utils/formatDate";
 import { useQuery } from "@apollo/client";
 import { Eye, Trash2 } from "lucide-react";
 import { ChangeEvent } from "react";
-import { useSearchParams } from "react-router";
+import { Link, useSearchParams } from "react-router";
 import ServiceUpdateModal from "./ServiceUpdateModal";
 import ServiceSettingsModal from "./ServiceSettingsModal";
 import ServiceDelete from "./ServiceDelete";
@@ -127,6 +127,16 @@ const ServiceTable = ({ selected, setSelected }: TProps) => {
                       <Trash2 />
                     </Button>
                   </ServiceDelete>
+
+                  <Link to={`/admin/services/reviews/${service?.id}`}>
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      className="rounded-none"
+                    >
+                      Reviews
+                    </Button>
+                  </Link>
                 </div>
               </td>
             </tr>
