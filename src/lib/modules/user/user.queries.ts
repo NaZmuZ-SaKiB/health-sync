@@ -51,6 +51,43 @@ const PROFILE = gql`
   }
 `;
 
+const ADMINS_LIST = gql`
+  query GetAllAdmins(
+    $page: String
+    $limit: String
+    $searchTerm: String
+    $sortBy: String
+    $sortOrder: String
+    $gender: String
+  ) {
+    getAllAdmins(
+      page: $page
+      limit: $limit
+      searchTerm: $searchTerm
+      sortBy: $sortBy
+      sortOrder: $sortOrder
+      gender: $gender
+    ) {
+      meta {
+        page
+        limit
+        total
+      }
+      users {
+        id
+        email
+        firstName
+        lastName
+        phoneNumber
+        profilePicture {
+          publicId
+          secureUrl
+        }
+      }
+    }
+  }
+`;
+
 const UPDATE_PROFILE_PICTURE = gql`
   mutation UpdateProfilePicture($id: String!) {
     updateProfilePicture(id: $id) {
@@ -70,6 +107,7 @@ const UPDATE_USER_STATUS = gql`
 export const UserQueries = {
   CONTEXT_USER,
   PROFILE,
+  ADMINS_LIST,
   UPDATE_PROFILE_PICTURE,
   UPDATE_USER_STATUS,
 };
