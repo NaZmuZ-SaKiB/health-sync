@@ -37,6 +37,7 @@ import ReportsPage from "./admin/Services/Reports/Reports";
 import ReviewsPage from "./admin/Appointments/Reviews/Reviews";
 import MyReviewsPage from "./dashboard/(Doctor)/My-Reviews/MyReviews";
 import ServiceReviewsPage from "./admin/Services/Reviews/ServiceReviews";
+import AdminsPage from "./admin/Users/Admins/_components/Admins";
 
 const router = createBrowserRouter([
   {
@@ -142,6 +143,14 @@ const router = createBrowserRouter([
       },
       {
         path: "/admin/users/doctors/:id",
+        Component: SingleDoctorPage,
+      },
+      {
+        path: "/admin/users/admins",
+        Component: AdminsPage,
+      },
+      {
+        path: "/admin/users/admins/:id",
         Component: SingleDoctorPage,
       },
       {
