@@ -83,6 +83,8 @@ const ADMINS_LIST = gql`
           publicId
           secureUrl
         }
+        createdAt
+        updatedAt
       }
     }
   }
