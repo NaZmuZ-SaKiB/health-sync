@@ -37,7 +37,8 @@ import ReportsPage from "./admin/Services/Reports/Reports";
 import ReviewsPage from "./admin/Appointments/Reviews/Reviews";
 import MyReviewsPage from "./dashboard/(Doctor)/My-Reviews/MyReviews";
 import ServiceReviewsPage from "./admin/Services/Reviews/ServiceReviews";
-import AdminsPage from "./admin/Users/Admins/_components/Admins";
+import AdminsPage from "./admin/Users/Admins/Admins";
+import CreateAdminPage from "./admin/Users/Admins/Create/CreateAdmin";
 
 const router = createBrowserRouter([
   {
@@ -148,6 +149,10 @@ const router = createBrowserRouter([
       {
         path: "/admin/users/admins",
         Component: AdminsPage,
+      },
+      {
+        path: "/admin/users/admins/create",
+        Component: CreateAdminPage,
       },
       {
         path: "/admin/users/admins/:id",
