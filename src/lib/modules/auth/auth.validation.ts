@@ -42,4 +42,12 @@ const signin = z.object({
   password: z.string().min(1, { message: "Password is required." }),
 });
 
-export const AuthValidation = { signup, signin };
+const createAdmin = z.object({
+  email: z
+    .string()
+    .min(1, { message: "Email is required" })
+    .email({ message: "Invalid email address" })
+    .max(255, { message: "Email must be less than 255 characters" }),
+});
+
+export const AuthValidation = { signup, signin, createAdmin };
