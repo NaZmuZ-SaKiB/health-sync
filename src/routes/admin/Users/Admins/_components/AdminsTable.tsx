@@ -11,9 +11,10 @@ import { TMeta } from "@/types";
 import formatDate from "@/utils/formatDate";
 import { useQuery } from "@apollo/client";
 import { Eye, Trash2 } from "lucide-react";
-import { ChangeEvent } from "react";
+import { ChangeEvent, useEffect } from "react";
 import { useCookies } from "react-cookie";
 import { Link, useSearchParams } from "react-router";
+import AdminDelete from "./AdminDelete";
 
 type TProps = {
   selected: string[];
@@ -40,6 +41,10 @@ const AdminsTable = ({ selected, setSelected }: TProps) => {
       },
     },
   });
+
+  useEffect(() => {
+    refetch();
+  }, [refetch]);
 
   // Handle Select
   const selectAll = (e: ChangeEvent<HTMLInputElement>) => {
@@ -110,7 +115,8 @@ const AdminsTable = ({ selected, setSelected }: TProps) => {
                 />
               </td>
               <td>
-                {admin.firstName} {admin?.lastName ?? ""}
+                {admin.firstName} {admin?.lastName ?? ""}{" "}
+                {!admin?.firstName && !admin?.lastName && "N/A"}
               </td>
               <td>{admin.email}</td>
               <td>{admin.phoneNumber}</td>
@@ -129,15 +135,15 @@ const AdminsTable = ({ selected, setSelected }: TProps) => {
                     </Button>
                   </Link>
 
-                  {/* <DoctorDelete selected={[doctor.id]}> */}
-                  <Button
-                    size="icon"
-                    variant="outline"
-                    className="cursor-pointer rounded-none hover:border-red-500 hover:bg-red-50 hover:text-red-500"
-                  >
-                    <Trash2 />
-                  </Button>
-                  {/* </DoctorDelete> */}
+                  <AdminDelete selected={[admin.id]}>
+                    <Button
+                      size="icon"
+                      variant="outline"
+                      className="cursor-pointer rounded-none hover:border-red-500 hover:bg-red-50 hover:text-red-500"
+                    >
+                      <Trash2 />
+                    </Button>
+                  </AdminDelete>
                 </div>
               </td>
             </tr>
