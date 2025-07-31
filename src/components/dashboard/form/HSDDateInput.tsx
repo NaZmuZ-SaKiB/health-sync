@@ -26,6 +26,7 @@ type TProps = {
   disabled?: boolean;
   className?: ClassValue;
   description?: string;
+  admin?: boolean;
 };
 
 const HSDDateInput = ({
@@ -35,6 +36,7 @@ const HSDDateInput = ({
   disabled = false,
   className,
   description,
+  admin = false,
 }: TProps) => {
   const { control } = useFormContext();
   return (
@@ -66,7 +68,14 @@ const HSDDateInput = ({
                     {required && "*"}
                   </Label>
                 </FormLabel>
-                <DateInput className="focus-within:border-primary rounded-md border px-2.5 py-1">
+                <DateInput
+                  className={cn(
+                    "focus-within:border-primary rounded-md border px-2.5 py-1",
+                    {
+                      "rounded-none bg-slate-50": admin,
+                    },
+                  )}
+                >
                   {(segment) => (
                     <DateSegment
                       segment={segment}
