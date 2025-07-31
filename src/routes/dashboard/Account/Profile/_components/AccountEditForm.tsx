@@ -16,7 +16,6 @@ import HSDInput from "@/components/dashboard/form/HSDInput";
 import HSDSelect from "@/components/dashboard/form/HSDSelect";
 import HSDDateInput from "@/components/dashboard/form/HSDDateInput";
 import HSDTextarea from "@/components/dashboard/form/HSDTextarea";
-import ProfilePicutre from "./ProfilePicutre";
 import PatientEditForm from "./PatientEditForm";
 import DoctorEditForm from "./DoctorEditForm";
 import { useCookies } from "react-cookie";
@@ -25,6 +24,7 @@ import { DoctorQueries } from "@/lib/modules/doctor/doctor.queries";
 import { UserQueries } from "@/lib/modules/user/user.queries";
 import { PatientQueries } from "@/lib/modules/patient/patient.queries";
 import { toast } from "sonner";
+import ProfilePicutre from "@/components/dashboard/shared/ProfilePicutre";
 
 type TForm = z.infer<
   typeof PatientValidation.update | typeof DoctorValidation.update
