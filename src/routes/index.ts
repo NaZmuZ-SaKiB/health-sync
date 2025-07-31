@@ -39,6 +39,9 @@ import MyReviewsPage from "./dashboard/(Doctor)/My-Reviews/MyReviews";
 import ServiceReviewsPage from "./admin/Services/Reviews/ServiceReviews";
 import AdminsPage from "./admin/Users/Admins/Admins";
 import CreateAdminPage from "./admin/Users/Admins/Create/CreateAdmin";
+import SingleAdminPage from "./admin/Users/Admins/Single-Admin/SingleAdmin";
+import AdminProfilePage from "./admin/Account/Profile/Profile";
+import EditAdminProfilePage from "./admin/Account/Profile/Edit/EditProfile";
 
 const router = createBrowserRouter([
   {
@@ -131,6 +134,14 @@ const router = createBrowserRouter([
         Component: ADashboardPage,
       },
       {
+        path: "/admin/account/profile",
+        Component: AdminProfilePage,
+      },
+      {
+        path: "/admin/account/profile/edit",
+        Component: EditAdminProfilePage,
+      },
+      {
         path: "/admin/users/patients",
         Component: PatientsPage,
       },
@@ -156,7 +167,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/admin/users/admins/:id",
-        Component: SingleDoctorPage,
+        Component: SingleAdminPage,
       },
       {
         path: "/admin/doctor-applications",
