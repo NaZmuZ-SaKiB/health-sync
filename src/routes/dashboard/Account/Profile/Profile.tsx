@@ -15,7 +15,7 @@ import { useCookies } from "react-cookie";
 import { Link } from "react-router";
 import DoctorInformation from "./_components/DoctorInformation";
 import { TDoctor } from "@/lib/modules/doctor/doctor.type";
-import ProfilePicutre from "./_components/ProfilePicutre";
+import ProfilePicutre from "../../../../components/dashboard/shared/ProfilePicutre";
 import PatientInformation from "./_components/PatientInformation";
 import { TPatient } from "@/lib/modules/patient/patient.type";
 
