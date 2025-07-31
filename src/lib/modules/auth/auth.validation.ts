@@ -1,3 +1,4 @@
+import { CommonValidation } from "@/lib/common.validation";
 import { z } from "zod";
 
 const signup = z
@@ -42,6 +43,21 @@ const signin = z.object({
   password: z.string().min(1, { message: "Password is required." }),
 });
 
+const update = z.object({
+  firstName: z
+    .string()
+    .max(50, "First name must be less than 50 characters.")
+    .optional(),
+  lastName: z
+    .string()
+    .max(50, "Last name must be less than 50 characters.")
+    .optional(),
+  phoneNumber: z.string().optional(),
+  address: z.string().optional(),
+  dateOfBirth: z.string().optional(),
+  gender: CommonValidation.gender.optional(),
+});
+
 const createAdmin = z.object({
   email: z
     .string()
@@ -50,4 +66,4 @@ const createAdmin = z.object({
     .max(255, { message: "Email must be less than 255 characters" }),
 });
 
-export const AuthValidation = { signup, signin, createAdmin };
+export const AuthValidation = { signup, signin, update, createAdmin };
