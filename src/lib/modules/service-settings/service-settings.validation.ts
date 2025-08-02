@@ -15,6 +15,7 @@ const update = z.object({
       message: "End time must be in HH:mm format.",
     }),
   duration: z.coerce.number().min(15, "Duration must be at least 15 minutes"),
+  fee: z.coerce.number().min(0, "Fee must be non-negative"),
 });
 
 export const ServiceSettingsValidation = { update };
