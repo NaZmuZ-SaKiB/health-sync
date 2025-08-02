@@ -2,7 +2,7 @@ import DBox from "@/components/dashboard/ui/DBox";
 import HSPagination from "@/components/global/shared/HSPagination";
 import RefreshButton from "@/components/global/shared/RefreshButton";
 import TableLoader from "@/components/global/shared/TableLoader";
-import { APPOINTMENT_STATUS, AUTH_KEY } from "@/constants";
+import { APPOINTMENT_STATUS, AUTH_KEY, PAYMENT_STATUS } from "@/constants";
 import { AppointmentQueries } from "@/lib/modules/appointment/appointment.queries";
 import { TAppointment } from "@/lib/modules/appointment/appointment.type";
 import { TMeta } from "@/types";
@@ -15,6 +15,9 @@ import ViewReviewModal from "@/components/dashboard/shared/ViewReviewModal";
 import CancelAppointmentButton from "@/components/dashboard/shared/CancelAppointmentButton";
 import PrescriptionDetail from "@/components/dashboard/shared/PrescriptionDetail";
 import copyToClipboard from "@/utils/copyToClipboard";
+import PaymentButton from "@/components/global/shared/PaymentButton";
+import { useEffect } from "react";
+import { cn } from "@/lib/utils";
 
 const MyAppointmentsTable = () => {
   const [cookies] = useCookies([AUTH_KEY]);
@@ -34,6 +37,10 @@ const MyAppointmentsTable = () => {
     },
   });
 
+  useEffect(() => {
+    refetch();
+  }, [refetch]);
+
   if (loading) return <TableLoader />;
 
   const meta: TMeta = appointmentsData?.getAllAppointments?.meta;
@@ -52,6 +59,7 @@ const MyAppointmentsTable = () => {
             <th>Start Time</th>
             <th>End Time</th>
             <th>Location</th>
+            <th>Payment</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -84,8 +92,36 @@ const MyAppointmentsTable = () => {
                     {appointment?.location?.name}
                   </Link>
                 </td>
+                <td
+                  className={cn("font-semibold capitalize", {
+                    "text-emerald-600":
+                      appointment.payment.status === PAYMENT_STATUS.COMPLETED,
+                    "text-yellow-600":
+                      appointment.payment.status === PAYMENT_STATUS.PENDING,
+                    "text-red-600":
+                      appointment.payment.status === PAYMENT_STATUS.FAILED,
+                    "text-slate-600":
+                      appointment.payment.status === PAYMENT_STATUS.REFUNDED,
+                  })}
+                >
+                  {appointment.payment.status === PAYMENT_STATUS.COMPLETED
+                    ? "Paid"
+                    : appointment.payment.status === PAYMENT_STATUS.PENDING
+                      ? "Unpaid"
+                      : appointment.payment.status.toLowerCase()}
+                </td>
                 <td>
                   <div className="flex items-center justify-center gap-1.5">
+                    {appointment.status === APPOINTMENT_STATUS.SCHEDULED &&
+                      (appointment.payment.status === PAYMENT_STATUS.PENDING ||
+                        appointment.payment.status ===
+                          PAYMENT_STATUS.FAILED) && (
+                        <PaymentButton
+                          className="h-auto cursor-pointer border bg-emerald-600 py-1 hover:bg-emerald-700"
+                          appointmentId={appointment.id}
+                        />
+                      )}
+
                     {(appointment.status === APPOINTMENT_STATUS.SCHEDULED ||
                       appointment.status === APPOINTMENT_STATUS.CANCELLED) && (
                       <CancelAppointmentButton
