@@ -52,6 +52,9 @@ const MY_APPOINTMENTS = gql`
           rating
           comment
         }
+        payment {
+          status
+        }
       }
       meta {
         page
