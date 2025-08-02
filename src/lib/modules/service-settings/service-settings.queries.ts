@@ -6,6 +6,7 @@ const SINGLE_SERVICE_SETTINGS = gql`
       startTime
       endTime
       duration
+      fee
     }
   }
 `;
@@ -16,12 +17,14 @@ const UPDATE_SERVICE_SETTINGS = gql`
     $startTime: String
     $endTime: String
     $duration: Int
+    $fee: Float
   ) {
     updateServiceSettings(
       serviceId: $serviceId
       startTime: $startTime
       endTime: $endTime
       duration: $duration
+      fee: $fee
     ) {
       success
     }
