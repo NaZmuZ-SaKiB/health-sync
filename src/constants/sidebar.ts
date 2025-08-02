@@ -159,6 +159,10 @@ export const adminSidebarItems: TSidebarItem[] = [
         route: "/admin/appointments",
       },
       {
+        label: "Payments",
+        route: "/admin/payments",
+      },
+      {
         label: "Reviews",
         route: "/admin/reviews",
       },
