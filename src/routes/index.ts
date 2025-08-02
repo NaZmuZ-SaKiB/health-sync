@@ -43,6 +43,7 @@ import SingleAdminPage from "./admin/Users/Admins/Single-Admin/SingleAdmin";
 import AdminProfilePage from "./admin/Account/Profile/Profile";
 import EditAdminProfilePage from "./admin/Account/Profile/Edit/EditProfile";
 import PaymentResultPage from "./global/PaymentResult/PaymentResult";
+import PaymentsPage from "./admin/Appointments/Payments/Payments";
 
 const router = createBrowserRouter([
   {
@@ -213,6 +214,10 @@ const router = createBrowserRouter([
       {
         path: "/admin/appointments",
         Component: AllAppointmentsPage,
+      },
+      {
+        path: "/admin/payments",
+        Component: PaymentsPage,
       },
       {
         path: "/admin/reviews",
