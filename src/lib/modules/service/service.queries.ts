@@ -27,6 +27,7 @@ const SERVICE_LIST = gql`
           startTime
           endTime
           duration
+          fee
         }
       }
       meta {
