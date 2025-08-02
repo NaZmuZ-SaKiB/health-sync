@@ -42,6 +42,7 @@ import CreateAdminPage from "./admin/Users/Admins/Create/CreateAdmin";
 import SingleAdminPage from "./admin/Users/Admins/Single-Admin/SingleAdmin";
 import AdminProfilePage from "./admin/Account/Profile/Profile";
 import EditAdminProfilePage from "./admin/Account/Profile/Edit/EditProfile";
+import PaymentResultPage from "./global/PaymentResult/PaymentResult";
 
 const router = createBrowserRouter([
   {
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
       {
         path: "/appointment",
         Component: AppointmentPage,
+      },
+      {
+        path: "/payment-result",
+        Component: PaymentResultPage,
       },
     ],
   },
