@@ -21,7 +21,7 @@ import { useCookies } from "react-cookie";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { ServiceSettingsQueries } from "@/lib/modules/service-settings/service-settings.queries";
-import { Clock } from "lucide-react";
+import { Settings } from "lucide-react";
 import HSDTimeInput from "@/components/dashboard/form/HSDTimeInput";
 import HSAInput from "@/components/admin/form/HSAInput";
 import { ServiceQueries } from "@/lib/modules/service/service.queries";
@@ -55,6 +55,7 @@ const ServiceSettingsModal = ({ settings, serviceId }: TProps) => {
       startTime: settings?.startTime || "09:30",
       endTime: settings?.endTime || "17:30",
       duration: settings?.duration || 15,
+      fee: settings?.fee || 0,
     },
     resolver: zodResolver(ServiceSettingsValidation.update),
     mode: "onBlur",
@@ -93,7 +94,7 @@ const ServiceSettingsModal = ({ settings, serviceId }: TProps) => {
           size="icon"
           className="cursor-pointer rounded-none"
         >
-          <Clock />
+          <Settings />
         </Button>
       </DialogTrigger>
 
@@ -135,6 +136,14 @@ const ServiceSettingsModal = ({ settings, serviceId }: TProps) => {
               min={15}
               max={60}
               step={15}
+            />
+
+            <HSAInput
+              name="fee"
+              label="Fee"
+              type="number"
+              required={false}
+              vertical
             />
 
             <DialogFooter className="mt-10">
