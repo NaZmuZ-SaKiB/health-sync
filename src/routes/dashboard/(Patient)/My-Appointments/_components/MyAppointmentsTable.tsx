@@ -111,8 +111,13 @@ const MyAppointmentsTable = () => {
                       : appointment.payment.status.toLowerCase()}
                 </td>
                 <td>
-                  <div className="flex items-center justify-center gap-1.5">
-                    {appointment.status === APPOINTMENT_STATUS.SCHEDULED &&
+                  <div className="flex justify-center gap-1.5">
+                    {/*Show Payment Button If:
+                    1. Appointment status is PENDING_PAYMENT
+                    2. Payment status is PENDING or FAILED*/}
+
+                    {appointment.status ===
+                      APPOINTMENT_STATUS.PENDING_PAYMENT &&
                       (appointment.payment.status === PAYMENT_STATUS.PENDING ||
                         appointment.payment.status ===
                           PAYMENT_STATUS.FAILED) && (
@@ -122,7 +127,9 @@ const MyAppointmentsTable = () => {
                         />
                       )}
 
-                    {(appointment.status === APPOINTMENT_STATUS.SCHEDULED ||
+                    {(appointment.status ===
+                      APPOINTMENT_STATUS.PENDING_PAYMENT ||
+                      appointment.status === APPOINTMENT_STATUS.SCHEDULED ||
                       appointment.status === APPOINTMENT_STATUS.CANCELLED) && (
                       <CancelAppointmentButton
                         id={appointment.id}
