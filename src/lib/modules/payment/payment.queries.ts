@@ -33,6 +33,9 @@ const MY_PAYMENTS = gql`
               lastName
             }
           }
+          service {
+            name
+          }
         }
         status
         details
