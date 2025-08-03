@@ -44,6 +44,7 @@ import AdminProfilePage from "./admin/Account/Profile/Profile";
 import EditAdminProfilePage from "./admin/Account/Profile/Edit/EditProfile";
 import PaymentResultPage from "./global/PaymentResult/PaymentResult";
 import PaymentsPage from "./admin/Appointments/Payments/Payments";
+import TransactionsPage from "./dashboard/(Patient)/Transactions/Transactions";
 
 const router = createBrowserRouter([
   {
@@ -102,6 +103,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/my-appointments",
         Component: MyAppointmentsPage,
+      },
+      {
+        path: "/dashboard/transactions",
+        Component: TransactionsPage,
       },
       {
         path: "/dashboard/reports",
