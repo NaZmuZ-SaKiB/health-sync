@@ -99,6 +99,7 @@ const UpdateAppointmentStatus = ({ id, defaultValue }: TProps) => {
                   value={option}
                   disabled={option === APPOINTMENT_STATUS.SCHEDULED}
                   hidden={
+                    option === APPOINTMENT_STATUS.PENDING_PAYMENT ||
                     option === APPOINTMENT_STATUS.CANCELLED ||
                     option === APPOINTMENT_STATUS.SCHEDULED
                   }
