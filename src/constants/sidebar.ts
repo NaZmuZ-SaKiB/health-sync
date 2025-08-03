@@ -2,6 +2,7 @@ import {
   BookText,
   CalendarCheck,
   CalendarClock,
+  CircleDollarSign,
   LayoutDashboard,
   LucideProps,
   Settings2,
@@ -49,6 +50,11 @@ export const patientSidebarItems: TSidebarItem[] = [
     label: "Appointments",
     route: "/dashboard/my-appointments",
     icon: CalendarCheck,
+  },
+  {
+    label: "Transactions",
+    route: "/dashboard/transactions",
+    icon: CircleDollarSign,
   },
   {
     label: "Reports",
