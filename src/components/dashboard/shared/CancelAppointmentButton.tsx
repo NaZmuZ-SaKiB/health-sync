@@ -77,7 +77,7 @@ const CancelAppointmentButton = ({
         <Button
           size="sm"
           variant="outline"
-          className="cursor-pointer hover:border-red-500 hover:bg-red-50 hover:text-red-500"
+          className="h-auto cursor-pointer hover:border-red-500 hover:bg-red-50 hover:text-red-500"
           disabled={isCancelled || loading}
           onClick={handleClick}
         >
