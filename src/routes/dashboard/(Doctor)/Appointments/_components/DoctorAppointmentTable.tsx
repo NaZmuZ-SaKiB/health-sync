@@ -89,7 +89,7 @@ const DoctorAppointmentTable = () => {
                   />
                 </td>
                 <td>
-                  <div className="flex items-center justify-center gap-1.5">
+                  <div className="flex justify-center gap-1.5">
                     <Link to={`/dashboard/appointments/${appointment.id}`}>
                       <Button
                         size="icon"
