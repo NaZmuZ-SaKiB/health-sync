@@ -44,6 +44,7 @@ export const DOCTOR_VERIFICATION_STATUS = {
 } as const;
 
 export const APPOINTMENT_STATUS = {
+  PENDING_PAYMENT: "PENDING_PAYMENT",
   SCHEDULED: "SCHEDULED",
   COMPLETED: "COMPLETED",
   CANCELLED: "CANCELLED",
@@ -108,6 +109,7 @@ export const doctorVerificationStatuses: TDoctorVerificationStatus[] = [
 ];
 
 export const appointmentStatuses: TAppointmentStatus[] = [
+  "PENDING_PAYMENT",
   "SCHEDULED",
   "COMPLETED",
   "CANCELLED",

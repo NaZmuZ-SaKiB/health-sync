@@ -22,6 +22,7 @@ export type TDay =
 export type TDoctorVerificationStatus = "PENDING" | "VERIFIED" | "REJECTED";
 
 export type TAppointmentStatus =
+  | "PENDING_PAYMENT"
   | "SCHEDULED"
   | "COMPLETED"
   | "CANCELLED"
