@@ -1,4 +1,5 @@
 import ABox from "@/components/admin/ui/ABox";
+import PaymentDetailsModal from "@/components/dashboard/shared/PaymentDetailsModal";
 import HSPagination from "@/components/global/shared/HSPagination";
 import RefreshButton from "@/components/global/shared/RefreshButton";
 import TableLoader from "@/components/global/shared/TableLoader";
@@ -74,7 +75,9 @@ const PaymentsTable = () => {
               >
                 {payment.status.toLowerCase()}
               </td>
-              <td>Details</td>
+              <td>
+                <PaymentDetailsModal details={payment.details} admin />
+              </td>
             </tr>
           ))}
         </tbody>
