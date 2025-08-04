@@ -93,7 +93,7 @@ const SpecialtyTable = ({ selected, setSelected }: TProps) => {
                 </td>
                 <td>
                   <img
-                    src={specialty.icon || Images.PlaceholderImage}
+                    src={specialty.icon?.secureUrl || Images.PlaceholderImage}
                     alt={specialty.name}
                     className="mx-auto size-8 object-cover object-center"
                   />
