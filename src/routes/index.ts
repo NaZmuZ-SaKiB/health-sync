@@ -1,50 +1,52 @@
 import { createBrowserRouter } from "react-router";
-import Layout from "@/routes/global/Layout";
-import AuthLayout from "@/routes/auth/Layout";
-import AdminLayout from "@/routes/admin/Layout";
-import DashboardLayout from "@/routes/dashboard/Layout";
+
 import Home from "./global/Home/Home";
+import Layout from "@/routes/global/Layout";
+import MediaPage from "./admin/Media/Media";
+import AuthLayout from "@/routes/auth/Layout";
 import SignInPage from "./auth/Sign-in/SignIn";
 import SignUpPage from "./auth/Sign-up/SignUp";
-import DoctorsPortalPage from "./auth/Doctors-portal/DoctorsPortal";
-import ADashboardPage from "./admin/Dashboard/ADashboard";
-import SpecialtiesPage from "./admin/Specialties/Specialties";
-import EditSpecialtyPage from "./admin/Specialties/Edit/EditSpecialty";
-import LocationsPage from "./admin/Locations/Locations";
-import CreateLocationPage from "./admin/Locations/Create/CreateLocation";
-import EditLocationPage from "./admin/Locations/Edit/EditLocation";
-import DoctorApplications from "./admin/Doctor-Applications/DoctorApplications";
-import SingleDoctorApplication from "./admin/Doctor-Applications/Single-Doctor-Application/SingleDoctorApplication";
-import DoctorsPage from "./admin/Users/Doctors/Doctors";
-import SingleDoctorPage from "./admin/Users/Doctors/Single-Doctor/SingleDoctor";
+import AdminLayout from "@/routes/admin/Layout";
 import DashboardPage from "./dashboard/Dashboard";
-import ProfilePage from "./dashboard/Account/Profile/Profile";
-import AccountEditPage from "./dashboard/Account/Profile/Edit/AccountEditPage";
-import SchedulesPage from "./dashboard/(Doctor)/Schedules/Schedules";
-import AppointmentPage from "./global/Appointment/Appointment";
-import MyAppointmentsPage from "./dashboard/(Patient)/My-Appointments/MyAppointments";
-import DoctorAppointmentsPage from "./dashboard/(Doctor)/Appointments/DoctorAppointments";
-import SingleAppointmentPage from "./dashboard/(Doctor)/Appointments/SingleAppointment/SingleAppointmentPage";
-import AdminServicesPage from "./admin/Services/Services";
-import ServiceAppointmentsPage from "./admin/Services/Appointments/ServiceAppointments";
-import PatientReportsPage from "./dashboard/(Doctor)/Appointments/Reports/PatientReports";
-import AllAppointmentsPage from "./admin/Appointments/AllAppointments";
-import PatientsPage from "./admin/Users/Patients/Patients";
-import SinglePatientPage from "./admin/Users/Patients/Single-Patient/SinglePatient";
-import SingleServiceAppointmentPage from "./admin/Services/Appointments/SingleServiceAppointment/SingleServiceAppointment";
-import MyReportsPage from "./dashboard/(Patient)/Reports/MyReports";
-import ReportsPage from "./admin/Services/Reports/Reports";
-import ReviewsPage from "./admin/Appointments/Reviews/Reviews";
-import MyReviewsPage from "./dashboard/(Doctor)/My-Reviews/MyReviews";
-import ServiceReviewsPage from "./admin/Services/Reviews/ServiceReviews";
 import AdminsPage from "./admin/Users/Admins/Admins";
-import CreateAdminPage from "./admin/Users/Admins/Create/CreateAdmin";
-import SingleAdminPage from "./admin/Users/Admins/Single-Admin/SingleAdmin";
+import DashboardLayout from "@/routes/dashboard/Layout";
+import DoctorsPage from "./admin/Users/Doctors/Doctors";
+import LocationsPage from "./admin/Locations/Locations";
+import ADashboardPage from "./admin/Dashboard/ADashboard";
+import AdminServicesPage from "./admin/Services/Services";
+import PatientsPage from "./admin/Users/Patients/Patients";
+import ReportsPage from "./admin/Services/Reports/Reports";
+import SpecialtiesPage from "./admin/Specialties/Specialties";
+import ReviewsPage from "./admin/Appointments/Reviews/Reviews";
+import ProfilePage from "./dashboard/Account/Profile/Profile";
+import AppointmentPage from "./global/Appointment/Appointment";
 import AdminProfilePage from "./admin/Account/Profile/Profile";
-import EditAdminProfilePage from "./admin/Account/Profile/Edit/EditProfile";
-import PaymentResultPage from "./global/PaymentResult/PaymentResult";
 import PaymentsPage from "./admin/Appointments/Payments/Payments";
+import EditLocationPage from "./admin/Locations/Edit/EditLocation";
+import DoctorsPortalPage from "./auth/Doctors-portal/DoctorsPortal";
+import MyReportsPage from "./dashboard/(Patient)/Reports/MyReports";
+import SchedulesPage from "./dashboard/(Doctor)/Schedules/Schedules";
+import PaymentResultPage from "./global/PaymentResult/PaymentResult";
+import MyReviewsPage from "./dashboard/(Doctor)/My-Reviews/MyReviews";
+import CreateAdminPage from "./admin/Users/Admins/Create/CreateAdmin";
+import EditSpecialtyPage from "./admin/Specialties/Edit/EditSpecialty";
+import AllAppointmentsPage from "./admin/Appointments/AllAppointments";
+import ServiceReviewsPage from "./admin/Services/Reviews/ServiceReviews";
+import CreateLocationPage from "./admin/Locations/Create/CreateLocation";
+import SingleAdminPage from "./admin/Users/Admins/Single-Admin/SingleAdmin";
+import EditAdminProfilePage from "./admin/Account/Profile/Edit/EditProfile";
+import AccountEditPage from "./dashboard/Account/Profile/Edit/AccountEditPage";
 import TransactionsPage from "./dashboard/(Patient)/Transactions/Transactions";
+import DoctorApplications from "./admin/Doctor-Applications/DoctorApplications";
+import SingleDoctorPage from "./admin/Users/Doctors/Single-Doctor/SingleDoctor";
+import SinglePatientPage from "./admin/Users/Patients/Single-Patient/SinglePatient";
+import MyAppointmentsPage from "./dashboard/(Patient)/My-Appointments/MyAppointments";
+import ServiceAppointmentsPage from "./admin/Services/Appointments/ServiceAppointments";
+import DoctorAppointmentsPage from "./dashboard/(Doctor)/Appointments/DoctorAppointments";
+import PatientReportsPage from "./dashboard/(Doctor)/Appointments/Reports/PatientReports";
+import SingleAppointmentPage from "./dashboard/(Doctor)/Appointments/SingleAppointment/SingleAppointmentPage";
+import SingleDoctorApplication from "./admin/Doctor-Applications/Single-Doctor-Application/SingleDoctorApplication";
+import SingleServiceAppointmentPage from "./admin/Services/Appointments/SingleServiceAppointment/SingleServiceAppointment";
 
 const router = createBrowserRouter([
   {
@@ -227,6 +229,10 @@ const router = createBrowserRouter([
       {
         path: "/admin/reviews",
         Component: ReviewsPage,
+      },
+      {
+        path: "/admin/media",
+        Component: MediaPage,
       },
       {
         path: "/admin/locations",
