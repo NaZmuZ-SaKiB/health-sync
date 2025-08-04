@@ -12,6 +12,7 @@ export type TImage = {
   url: string;
   secureUrl: string;
   thumbnailUrl: string;
+  isProfilePicture: boolean;
   createdAt: string;
   updatedAt: string;
 
