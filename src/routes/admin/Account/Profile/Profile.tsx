@@ -33,7 +33,7 @@ const AdminProfilePage = () => {
   return (
     <APageContainer>
       <APageHeader
-        title={`${user.firstName || ""} ${user.lastName || ""}${!user.firstName && !user.lastName && "Your Profile"}`}
+        title={`${user.firstName || ""} ${user.lastName || ""}${!user.firstName && !user.lastName ? "Your Profile" : ""}`}
       >
         <Link to={`/admin/account/profile/edit`}>
           <HSButton
