@@ -2,6 +2,7 @@ import HSAInput from "@/components/admin/form/HSAInput";
 import HSATextarea from "@/components/admin/form/HSATextarea";
 import ABox from "@/components/admin/ui/ABox";
 import AFormH2 from "@/components/admin/ui/AFormH2";
+import HSImageUpload from "@/components/global/form/HSImageUpload";
 import HSButton from "@/components/global/shared/HSButton";
 import { Form } from "@/components/ui/form";
 import { AUTH_KEY } from "@/constants";
@@ -70,7 +71,7 @@ const SpecialtyEditForm = ({ specialty }: TProps) => {
       specialtyId: specialty.id,
       name: specialty.name,
       description: specialty?.description ?? "",
-      // TODO: Add Image - field = icon
+      iconId: specialty?.icon?.id,
     },
     resolver: zodResolver(SpecialtyValidation.update),
     mode: "onBlur",
@@ -113,6 +114,12 @@ const SpecialtyEditForm = ({ specialty }: TProps) => {
             name="description"
             label="Description"
             required={false}
+          />
+          <HSImageUpload
+            name="iconId"
+            label="Icon"
+            reset={false}
+            defaultValue={specialty?.icon ? [specialty.icon] : []}
           />
 
           <div>
