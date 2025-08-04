@@ -164,7 +164,7 @@ const ImageModal = ({
             {totalPages !== 1 && (
               <HSPagination
                 page={meta?.page || 1}
-                limit={meta?.limit || 10}
+                limit={meta?.limit || 35}
                 total={meta?.total}
                 customFunction={onPageChange}
                 admin
