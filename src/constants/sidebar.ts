@@ -3,6 +3,7 @@ import {
   CalendarCheck,
   CalendarClock,
   CircleDollarSign,
+  Image,
   LayoutDashboard,
   LucideProps,
   Settings2,
@@ -173,6 +174,11 @@ export const adminSidebarItems: TSidebarItem[] = [
         route: "/admin/reviews",
       },
     ],
+  },
+  {
+    label: "Media",
+    route: "/admin/media",
+    icon: Image,
   },
   {
     label: "Settings",
