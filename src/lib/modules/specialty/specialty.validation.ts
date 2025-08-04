@@ -6,11 +6,7 @@ const create = z.object({
     .min(3, { message: "Specialty name must have min 3 chars." })
     .max(255),
   description: z.string().max(255).optional(),
-  icon: z
-    .string()
-    .nonempty()
-    .url({ message: "Invalid URL for icon." })
-    .optional(),
+  iconId: z.string().nonempty().optional(),
 });
 
 const update = create.partial().extend({
