@@ -89,7 +89,7 @@ const ProfilePicutre = ({ image, isEditMode = false }: TProps) => {
               title={`Select Image`}
               multiple={false}
             />
-            <UploadImageButton>
+            <UploadImageButton isProfilePicture={true}>
               <HSButton
                 variant="outline"
                 size="icon"
