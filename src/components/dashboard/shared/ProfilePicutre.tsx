@@ -88,6 +88,7 @@ const ProfilePicutre = ({ image, isEditMode = false }: TProps) => {
               setSelectedImages={setSelectedImages}
               title={`Select Image`}
               multiple={false}
+              isProfilePicture={true}
             />
             <UploadImageButton isProfilePicture={true}>
               <HSButton
