@@ -2,6 +2,7 @@ import HSAInput from "@/components/admin/form/HSAInput";
 import HSATextarea from "@/components/admin/form/HSATextarea";
 import ABox from "@/components/admin/ui/ABox";
 import AFormH2 from "@/components/admin/ui/AFormH2";
+import HSImageUpload from "@/components/global/form/HSImageUpload";
 import HSButton from "@/components/global/shared/HSButton";
 import { Form } from "@/components/ui/form";
 import { AUTH_KEY } from "@/constants";
@@ -33,7 +34,6 @@ const SpecialtyCreateForm = () => {
     defaultValues: {
       name: "",
       description: "",
-      // TODO: Add Image - field = icon
     },
     mode: "onBlur",
   });
@@ -71,6 +71,8 @@ const SpecialtyCreateForm = () => {
             label="Description"
             required={false}
           />
+          <HSImageUpload name="iconId" label="Icon" defaultValue={[]} />
+
           <HSButton
             className="rounded-none"
             disabled={form.formState.isSubmitting}
