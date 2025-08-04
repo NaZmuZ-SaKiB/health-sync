@@ -21,6 +21,7 @@ type TProps = {
   multiple?: boolean;
   description?: string;
   reset?: boolean;
+  isProfilePicture?: boolean;
 };
 
 const HSImageUpload = ({
@@ -30,6 +31,7 @@ const HSImageUpload = ({
   multiple = false,
   description,
   reset = true,
+  isProfilePicture = false,
 }: TProps) => {
   const { control, setValue, formState } = useFormContext();
 
@@ -114,12 +116,13 @@ const HSImageUpload = ({
                   setSelectedImages={setImages}
                   title={`Select ${label}`}
                   multiple={multiple}
+                  isProfilePicture={isProfilePicture}
                 />
                 <UploadImageButton>
                   <HSButton
                     type="button"
                     variant="outline"
-                    className="text-primary aspect-square h-full self-start rounded-none px-1 py-1"
+                    className="text-primary aspect-square h-full self-start rounded-none !px-0 !py-0"
                   >
                     <Plus className="size-6" />
                   </HSButton>
