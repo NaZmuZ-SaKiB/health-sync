@@ -83,7 +83,7 @@ const UploadImageButton = ({
       url: item?.url,
       secureUrl: item?.secure_url,
       thumbnailUrl: item?.thumbnail_url,
-      isProfilePicture: item?.is_profile_picture,
+      isProfilePicture: isProfilePicture,
     }));
 
     try {
@@ -105,11 +105,8 @@ const UploadImageButton = ({
     }
   };
   return (
-    <Button
-      className={cn(
-        "h-auto bg-transparent p-0 hover:bg-transparent",
-        className,
-      )}
+    <div
+      className={cn("", className)}
       onClick={() => widgetRef.current?.open()}
     >
       {children ? (
@@ -119,7 +116,7 @@ const UploadImageButton = ({
           <Plus className="size-full" />
         </div>
       )}
-    </Button>
+    </div>
   );
 };
 
