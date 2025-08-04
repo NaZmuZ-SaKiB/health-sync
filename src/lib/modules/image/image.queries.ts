@@ -1,8 +1,18 @@
 import { gql } from "@apollo/client";
 
 const IMAGE_LIST = gql`
-  query GetAllImages($page: String, $limit: String, $searchTerm: String) {
-    getAllImages(page: $page, limit: $limit, searchTerm: $searchTerm) {
+  query GetAllImages(
+    $page: String
+    $limit: String
+    $searchTerm: String
+    $isProfilePicture: Boolean
+  ) {
+    getAllImages(
+      page: $page
+      limit: $limit
+      searchTerm: $searchTerm
+      isProfilePicture: $isProfilePicture
+    ) {
       images {
         id
         publicId
