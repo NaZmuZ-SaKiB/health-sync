@@ -24,12 +24,14 @@ type TProps = {
   setSelectedImages: (images: TImage[]) => void;
   multiple?: boolean;
   title?: string;
+  isProfilePicture?: boolean;
 };
 
 type TFilters = {
   limit: string;
   page: number;
   searchTerm: string;
+  isProfilePicture?: boolean;
 };
 
 const ImageModal = ({
@@ -37,6 +39,7 @@ const ImageModal = ({
   setSelectedImages,
   multiple = false,
   title = "Select Image",
+  isProfilePicture = false,
 }: TProps) => {
   const [cookies] = useCookies([AUTH_KEY]);
 
@@ -44,6 +47,7 @@ const ImageModal = ({
     limit: "35",
     page: 1,
     searchTerm: "",
+    isProfilePicture,
   });
 
   const onPageChange = (page: number) => {
