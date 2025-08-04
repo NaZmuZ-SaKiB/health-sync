@@ -27,9 +27,14 @@ declare global {
 type TProps = {
   children?: React.ReactNode;
   className?: ClassValue;
+  isProfilePicture?: boolean;
 };
 
-const UploadImageButton = ({ children, className }: TProps) => {
+const UploadImageButton = ({
+  children,
+  className,
+  isProfilePicture = false,
+}: TProps) => {
   const cloudinaryRef = useRef<any>(null);
   const widgetRef = useRef<any>(null);
 
@@ -78,6 +83,7 @@ const UploadImageButton = ({ children, className }: TProps) => {
       url: item?.url,
       secureUrl: item?.secure_url,
       thumbnailUrl: item?.thumbnail_url,
+      isProfilePicture: item?.is_profile_picture,
     }));
 
     try {
