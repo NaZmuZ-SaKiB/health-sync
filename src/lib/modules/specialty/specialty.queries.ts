@@ -18,7 +18,11 @@ const SPECIALTY_LIST = gql`
       specialties {
         id
         name
-        icon
+        icon {
+          id
+          publicId
+          secureUrl
+        }
         createdAt
         updatedAt
       }
@@ -37,7 +41,11 @@ const SPECIALTY_BY_ID = gql`
       id
       name
       description
-      icon
+      icon {
+        id
+        publicId
+        secureUrl
+      }
     }
   }
 `;
@@ -46,9 +54,9 @@ const CREATE_SPECIALTY = gql`
   mutation CreateSpecialty(
     $name: String!
     $description: String
-    $icon: String
+    $iconId: String
   ) {
-    createSpecialty(name: $name, description: $description, icon: $icon) {
+    createSpecialty(name: $name, description: $description, iconId: $iconId) {
       success
     }
   }
@@ -59,19 +67,23 @@ const UPDATE_SPECIALTY = gql`
     $specialtyId: String!
     $name: String
     $description: String
-    $icon: String
+    $iconId: String
   ) {
     updateSpecialty(
       specialtyId: $specialtyId
       name: $name
       description: $description
-      icon: $icon
+      iconId: $iconId
     ) {
       success
       specialty {
         id
         name
-        icon
+        icon {
+          id
+          publicId
+          secureUrl
+        }
         createdAt
         updatedAt
       }
