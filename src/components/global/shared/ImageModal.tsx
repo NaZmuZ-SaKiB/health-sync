@@ -100,7 +100,7 @@ const ImageModal = ({
         </HSButton>
       </DialogTrigger>
 
-      <DialogContent className="no-focus flex max-h-[95svh] max-w-[95vw] flex-col overflow-y-auto">
+      <DialogContent className="no-focus flex h-[95svh] !max-w-[95vw] flex-col overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="font-semibold">
             Insert File{multiple ? "s" : ""}
@@ -154,7 +154,7 @@ const ImageModal = ({
           </div>
         </div>
 
-        <DialogFooter className="flex w-full !items-center !justify-between max-lg:!flex-col-reverse">
+        <DialogFooter className="flex w-full !items-center !justify-between border-t pt-2 max-lg:!flex-col-reverse">
           <div className="mt-2">
             <div className="text-sm text-slate-700">
               Showing {meta.limit < meta.total ? meta.limit : meta.total} of{" "}
