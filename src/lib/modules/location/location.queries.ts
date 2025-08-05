@@ -41,7 +41,11 @@ const LOCATION_BY_ID = gql`
       address
       phoneNumber
       description
-      image
+      image {
+        id
+        publicId
+        secureUrl
+      }
     }
   }
 `;
@@ -53,7 +57,7 @@ const CREATE_LOCATION = gql`
     $address: String!
     $phoneNumber: String!
     $description: String
-    $image: String
+    $imageId: String
   ) {
     createLocation(
       name: $name
@@ -61,7 +65,7 @@ const CREATE_LOCATION = gql`
       address: $address
       phoneNumber: $phoneNumber
       description: $description
-      image: $image
+      imageId: $imageId
     ) {
       id
       name
@@ -82,7 +86,7 @@ const UPDATE_LOCATION = gql`
     $address: String
     $phoneNumber: String
     $description: String
-    $icon: String
+    $imageId: String
   ) {
     updateLocation(
       locationId: $locationId
@@ -91,13 +95,17 @@ const UPDATE_LOCATION = gql`
       address: $address
       phoneNumber: $phoneNumber
       description: $description
-      icon: $icon
+      imageId: $imageId
     ) {
       id
       name
       mapUrl
       phoneNumber
-      image
+      image {
+        id
+        publicId
+        secureUrl
+      }
       createdAt
       updatedAt
     }
