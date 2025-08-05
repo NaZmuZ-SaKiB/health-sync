@@ -1,4 +1,5 @@
 import { TDoctor } from "../doctor/doctor.type";
+import { TImage } from "../image/image.type";
 
 export type TLocation = {
   id: string;
@@ -7,9 +8,9 @@ export type TLocation = {
   phoneNumber: string;
   address: string;
   description?: string;
-  image?: string; // TODO: update to image model
   createdAt: string;
   updatedAt: string;
 
+  image?: TImage;
   doctors: TDoctor[];
 };
