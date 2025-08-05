@@ -1,12 +1,14 @@
 import ABox from "@/components/admin/ui/ABox";
 import HSPagination from "@/components/global/shared/HSPagination";
 import RefreshButton from "@/components/global/shared/RefreshButton";
+import UploadImageButton from "@/components/global/shared/UploadImageButton";
 import { AUTH_KEY } from "@/constants";
 import { ImageQueries } from "@/lib/modules/image/image.queries";
+import { TImage } from "@/lib/modules/image/image.type";
 import { cn } from "@/lib/utils";
 import { TMeta } from "@/types";
 import { useQuery } from "@apollo/client";
-import { Check } from "lucide-react";
+import { Check, Plus } from "lucide-react";
 import { useCookies } from "react-cookie";
 import { useSearchParams } from "react-router";
 
@@ -25,7 +27,11 @@ const MediaGallery = ({ selected, setSelected }: TProps) => {
     loading,
     refetch,
   } = useQuery(ImageQueries.IMAGE_LIST, {
-    variables: { ...Object.fromEntries(searchParams), isProfilePicture: false },
+    variables: {
+      limit: "35",
+      ...Object.fromEntries(searchParams),
+      isProfilePicture: false,
+    },
     context: {
       headers: {
         Authorization: cookies[AUTH_KEY] || "",
@@ -43,7 +49,12 @@ const MediaGallery = ({ selected, setSelected }: TProps) => {
     <ABox>
       <RefreshButton fn={refetch} className="mb-2" />
 
-      <div className="flex flex-wrap gap-3 max-sm:justify-center">
+      <div className="grid grid-cols-[repeat(auto-fill,minmax(128px,1fr))] gap-3 max-sm:justify-center">
+        <UploadImageButton>
+          <div className="text-primary hover:text-primary-hover grid h-full cursor-pointer place-items-center border hover:bg-slate-50">
+            <Plus className="size-20" />
+          </div>
+        </UploadImageButton>
         {imagesData?.getAllImages?.images?.map((image: TImage) => {
           const isActive = !!selected.find((img) => img === image.id);
           return (
@@ -54,7 +65,7 @@ const MediaGallery = ({ selected, setSelected }: TProps) => {
               })}
               // onClick={() => handleClick(image)}
             >
-              <div className="aspect-square size-32 cursor-pointer overflow-hidden border border-slate-300 bg-slate-100">
+              <div className="aspect-square cursor-pointer overflow-hidden border border-slate-300 bg-slate-100">
                 <img
                   src={image.secureUrl}
                   width={128}
@@ -90,7 +101,7 @@ const MediaGallery = ({ selected, setSelected }: TProps) => {
           <HSPagination
             admin
             page={meta?.page || 1}
-            limit={meta?.limit || 10}
+            limit={meta?.limit || 35}
             total={meta?.total}
           />
         )}
