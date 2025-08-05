@@ -26,7 +26,7 @@ createRoot(document.getElementById("root")!).render(
           <RouterProvider router={router} />
         </UserProvider>
       </CookiesProvider>
-      <Toaster closeButton richColors />
+      <Toaster closeButton richColors position="top-center" />
     </ApolloProvider>
   </StrictMode>,
 );
