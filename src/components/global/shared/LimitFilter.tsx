@@ -16,9 +16,9 @@ type TProps = {
   className?: ClassValue;
 };
 
-type TLimit = "10" | "25" | "50" | "75" | "100";
+type TLimit = "10" | "25" | "35" | "50" | "75" | "100";
 
-const limitOptions: TLimit[] = ["10", "25", "50", "75", "100"];
+const limitOptions: TLimit[] = ["10", "25", "35", "50", "75", "100"];
 
 const LimitFilter = ({ defaultValue, className }: TProps) => {
   const [limit, setLimit] = useState<TLimit>(defaultValue ?? "10");
