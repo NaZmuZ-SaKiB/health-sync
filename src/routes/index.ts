@@ -21,6 +21,7 @@ import ReviewsPage from "./admin/Appointments/Reviews/Reviews";
 import ProfilePage from "./dashboard/Account/Profile/Profile";
 import AppointmentPage from "./global/Appointment/Appointment";
 import AdminProfilePage from "./admin/Account/Profile/Profile";
+import EditServicePage from "./admin/Services/Edit/EditService";
 import PaymentsPage from "./admin/Appointments/Payments/Payments";
 import EditLocationPage from "./admin/Locations/Edit/EditLocation";
 import DoctorsPortalPage from "./auth/Doctors-portal/DoctorsPortal";
@@ -47,6 +48,7 @@ import PatientReportsPage from "./dashboard/(Doctor)/Appointments/Reports/Patien
 import SingleAppointmentPage from "./dashboard/(Doctor)/Appointments/SingleAppointment/SingleAppointmentPage";
 import SingleDoctorApplication from "./admin/Doctor-Applications/Single-Doctor-Application/SingleDoctorApplication";
 import SingleServiceAppointmentPage from "./admin/Services/Appointments/SingleServiceAppointment/SingleServiceAppointment";
+import ChangePasswordPage from "./auth/Change-Password/ChangePassword";
 
 const router = createBrowserRouter([
   {
@@ -82,6 +84,10 @@ const router = createBrowserRouter([
       {
         path: "/auth/doctors-portal",
         Component: DoctorsPortalPage,
+      },
+      {
+        path: "/auth/change-password",
+        Component: ChangePasswordPage,
       },
     ],
   },
@@ -201,6 +207,10 @@ const router = createBrowserRouter([
       {
         path: "/admin/services",
         Component: AdminServicesPage,
+      },
+      {
+        path: "/admin/services/:id",
+        Component: EditServicePage,
       },
       {
         path: "/admin/services/appointments",
