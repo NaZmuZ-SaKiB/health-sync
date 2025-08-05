@@ -23,7 +23,7 @@ import LipidProfileIcon from "@/assets/icons/lipid-profile.webp";
 import ProlactinTestIcon from "@/assets/icons/prolactin-test.webp";
 import SugarTestIcon from "@/assets/icons/sugar-test.webp";
 import ThyroidTestIcon from "@/assets/icons/thyroid-test.webp";
-import VaccinationIcon from "@/assets/icons/vaccination.webp";
+import VaccinationIcon from "@/assets/icons/vaccination.png";
 import XRayIcon from "@/assets/icons/x-ray.webp";
 
 export const Icons = {
