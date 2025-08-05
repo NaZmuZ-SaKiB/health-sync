@@ -6,15 +6,23 @@ import SearchFilter from "@/components/global/shared/SearchFilter";
 import SelectedCount from "@/components/global/shared/SelectedCount";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-import { Link } from "react-router";
 import MediaGallery from "./_components/MediaGallery";
+import UploadImageButton from "@/components/global/shared/UploadImageButton";
+import HSButton from "@/components/global/shared/HSButton";
+import { Plus } from "lucide-react";
 
 const MediaPage = () => {
   const [selected, setSelected] = useState<string[]>([]);
 
   return (
     <APageContainer>
-      <APageHeader title="Media" />
+      <APageHeader title="Media">
+        <UploadImageButton>
+          <HSButton className="h-auto self-start rounded-none px-5 py-2">
+            <Plus className="mr-2" /> Upload Image
+          </HSButton>
+        </UploadImageButton>
+      </APageHeader>
 
       <ABox>
         <div className="mb-2 flex items-center gap-2">
@@ -28,7 +36,7 @@ const MediaPage = () => {
             Delete
           </Button>
           {/*</LocationDelete>*/}
-          <LimitFilter />
+          <LimitFilter defaultValue="35" />
         </div>
         <SearchFilter />
       </ABox>
