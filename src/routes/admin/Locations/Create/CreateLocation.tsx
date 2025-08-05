@@ -18,6 +18,7 @@ import APageContainer from "@/components/admin/ui/APageContainer";
 import APageHeader from "@/components/admin/ui/APageHeader";
 import { useNavigate } from "react-router";
 import { TLocation } from "@/lib/modules/location/location.type";
+import HSImageUpload from "@/components/global/form/HSImageUpload";
 
 type TFormType = z.infer<typeof LocationValidations.create>;
 
@@ -64,7 +65,6 @@ const CreateLocationPage = () => {
       mapUrl: "",
       address: "",
       description: "",
-      // TODO: Add Image - field = image
     },
     mode: "onBlur",
   });
@@ -114,6 +114,8 @@ const CreateLocationPage = () => {
                   label="Description"
                   required={false}
                 />
+                <HSImageUpload name="imageId" label="Image" defaultValue={[]} />
+
                 <HSButton
                   className="rounded-none"
                   disabled={form.formState.isSubmitting}
