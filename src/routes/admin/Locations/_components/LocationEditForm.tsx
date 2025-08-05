@@ -2,6 +2,7 @@ import HSAInput from "@/components/admin/form/HSAInput";
 import HSATextarea from "@/components/admin/form/HSATextarea";
 import ABox from "@/components/admin/ui/ABox";
 import AFormH2 from "@/components/admin/ui/AFormH2";
+import HSImageUpload from "@/components/global/form/HSImageUpload";
 import HSButton from "@/components/global/shared/HSButton";
 import { Form } from "@/components/ui/form";
 import { AUTH_KEY } from "@/constants";
@@ -74,7 +75,7 @@ const LocationEditForm = ({ location }: TProps) => {
       mapUrl: location.mapUrl,
       address: location.address,
       description: location.description ?? "",
-      // TODO: Add Image - field = image
+      imageId: location?.image?.id,
     },
     mode: "onBlur",
   });
@@ -120,6 +121,12 @@ const LocationEditForm = ({ location }: TProps) => {
             name="description"
             label="Description"
             required={false}
+          />
+          <HSImageUpload
+            name="imageId"
+            label="Image"
+            reset={false}
+            defaultValue={location?.image ? [location?.image] : []}
           />
 
           <div>
