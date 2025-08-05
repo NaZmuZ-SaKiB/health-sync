@@ -16,6 +16,7 @@ const SIGN_IN = gql`
   mutation Signin($email: String!, $password: String!) {
     signin(email: $email, password: $password) {
       token
+      needPasswordChange
     }
   }
 `;
@@ -47,9 +48,15 @@ const SignInPage = () => {
           loading: "Signing in...",
           success: (data) => {
             setCookie(AUTH_KEY, data?.token);
-            form.reset();
-            navigate("/");
-            return "Sign in successful";
+            if (data?.needPasswordChange) {
+              navigate("/auth/change-password");
+              form.reset();
+              return "You Need to Change Your Password";
+            } else {
+              navigate("/");
+              form.reset();
+              return "Sign in successful";
+            }
           },
           error: (error: any) => error?.message,
         },
