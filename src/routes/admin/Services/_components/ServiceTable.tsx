@@ -10,10 +10,9 @@ import { TService } from "@/lib/modules/service/service.type";
 import { TMeta } from "@/types";
 import formatDate from "@/utils/formatDate";
 import { useQuery } from "@apollo/client";
-import { Eye, Trash2 } from "lucide-react";
-import { ChangeEvent } from "react";
+import { Edit, Eye, Trash2 } from "lucide-react";
+import { ChangeEvent, useEffect } from "react";
 import { Link, useSearchParams } from "react-router";
-import ServiceUpdateModal from "./ServiceUpdateModal";
 import ServiceSettingsModal from "./ServiceSettingsModal";
 import ServiceDelete from "./ServiceDelete";
 
@@ -32,6 +31,10 @@ const ServiceTable = ({ selected, setSelected }: TProps) => {
   } = useQuery(ServiceQueries.SERVICE_LIST, {
     variables: Object.fromEntries(searchParams),
   });
+
+  useEffect(() => {
+    refetch();
+  }, [refetch]);
 
   // Handle Select
   const selectAll = (e: ChangeEvent<HTMLInputElement>) => {
@@ -94,7 +97,7 @@ const ServiceTable = ({ selected, setSelected }: TProps) => {
               </td>
               <td>
                 <img
-                  src={service.icon || Images.PlaceholderImage}
+                  src={service?.icon?.secureUrl || Images.PlaceholderImage}
                   alt={service.name}
                   className="mx-auto size-8 object-cover object-center"
                 />
@@ -112,7 +115,16 @@ const ServiceTable = ({ selected, setSelected }: TProps) => {
                     <Eye />
                   </Button>
 
-                  <ServiceUpdateModal id={service.id} />
+                  <Link to={`/admin/services/${service.id}`}>
+                    <Button
+                      size="icon"
+                      variant="outline"
+                      className="cursor-pointer rounded-none"
+                    >
+                      <Edit />
+                    </Button>
+                  </Link>
+
                   <ServiceSettingsModal
                     serviceId={service.id}
                     settings={service?.serviceSettings}
