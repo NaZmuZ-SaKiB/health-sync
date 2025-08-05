@@ -18,7 +18,11 @@ const SERVICE_LIST = gql`
       services {
         id
         name
-        icon
+        icon {
+          id
+          publicId
+          secureUrl
+        }
         createdAt
         updatedAt
 
@@ -45,14 +49,22 @@ const SERVICE_BY_ID = gql`
       id
       name
       description
-      icon
+      icon {
+        id
+        publicId
+        secureUrl
+      }
     }
   }
 `;
 
 const CREATE_SERVICE = gql`
-  mutation CreateService($name: String!, $description: String, $icon: String) {
-    createService(name: $name, description: $description, icon: $icon) {
+  mutation CreateService(
+    $name: String!
+    $description: String
+    $iconId: String
+  ) {
+    createService(name: $name, description: $description, iconId: $iconId) {
       success
     }
   }
@@ -63,17 +75,21 @@ const UPDATE_SERVICE = gql`
     $serviceId: String!
     $name: String
     $description: String
-    $icon: String
+    $iconId: String
   ) {
     updateService(
       serviceId: $serviceId
       name: $name
       description: $description
-      icon: $icon
+      iconId: $iconId
     ) {
       id
       name
-      icon
+      icon {
+        id
+        publicId
+        secureUrl
+      }
       createdAt
       updatedAt
     }
