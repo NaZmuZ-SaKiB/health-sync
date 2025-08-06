@@ -185,6 +185,10 @@ export const adminSidebarItems: TSidebarItem[] = [
     icon: Settings2,
     children: [
       {
+        label: "Homepage",
+        route: "/admin/setting/homepage",
+      },
+      {
         label: "Locations",
         route: "/admin/locations",
       },
