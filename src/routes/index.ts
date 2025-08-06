@@ -32,6 +32,7 @@ import MyReviewsPage from "./dashboard/(Doctor)/My-Reviews/MyReviews";
 import CreateAdminPage from "./admin/Users/Admins/Create/CreateAdmin";
 import EditSpecialtyPage from "./admin/Specialties/Edit/EditSpecialty";
 import AllAppointmentsPage from "./admin/Appointments/AllAppointments";
+import ChangePasswordPage from "./auth/Change-Password/ChangePassword";
 import ServiceReviewsPage from "./admin/Services/Reviews/ServiceReviews";
 import CreateLocationPage from "./admin/Locations/Create/CreateLocation";
 import SingleAdminPage from "./admin/Users/Admins/Single-Admin/SingleAdmin";
@@ -48,7 +49,7 @@ import PatientReportsPage from "./dashboard/(Doctor)/Appointments/Reports/Patien
 import SingleAppointmentPage from "./dashboard/(Doctor)/Appointments/SingleAppointment/SingleAppointmentPage";
 import SingleDoctorApplication from "./admin/Doctor-Applications/Single-Doctor-Application/SingleDoctorApplication";
 import SingleServiceAppointmentPage from "./admin/Services/Appointments/SingleServiceAppointment/SingleServiceAppointment";
-import ChangePasswordPage from "./auth/Change-Password/ChangePassword";
+import HomepageSettingsPage from "./admin/Setting/Homepage/HomepageSettings";
 
 const router = createBrowserRouter([
   {
@@ -255,6 +256,10 @@ const router = createBrowserRouter([
       {
         path: "/admin/locations/:id",
         Component: EditLocationPage,
+      },
+      {
+        path: "/admin/setting/homepage",
+        Component: HomepageSettingsPage,
       },
     ],
   },
