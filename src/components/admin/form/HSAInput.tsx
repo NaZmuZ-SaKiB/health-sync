@@ -51,7 +51,9 @@ const HSAInput = ({
             "grid grid-cols-[1fr_2fr] items-center gap-x-2": vertical,
           })}
         >
-          <FormLabel className={"gap-0.5 text-xs font-medium text-nowrap"}>
+          <FormLabel
+            className={"gap-0.5 text-xs font-medium text-nowrap capitalize"}
+          >
             {label}
             {required && <span className="text-red-500">*</span>}
           </FormLabel>
