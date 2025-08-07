@@ -1,5 +1,6 @@
 import {
   CONFIG_FEATURED_DOCTOR,
+  CONFIG_HERO_IMAGE,
   CONFIG_HERO_REVIEW,
   CONFIG_HERO_SUBTITLE_TEXT,
   CONFIG_HERO_TITLE_TEXT,
@@ -9,6 +10,7 @@ import ABox from "@/components/admin/ui/ABox";
 import AFormH2 from "@/components/admin/ui/AFormH2";
 import DoctorAutocomplete from "./DoctorAutocomplete";
 import ReviewInput from "./ReviewInput";
+import HSImageUpload from "@/components/global/form/HSImageUpload";
 
 const HeroSectionSettings = () => {
   return (
@@ -42,6 +44,14 @@ const HeroSectionSettings = () => {
           name={CONFIG_HERO_REVIEW}
           label={CONFIG_HERO_REVIEW.toLowerCase().split("_").join(" ")}
           required={false}
+        />
+      </div>
+
+      <div className="mb-3">
+        <HSImageUpload
+          name={CONFIG_HERO_IMAGE}
+          label={CONFIG_HERO_IMAGE.toLowerCase().split("_").join(" ")}
+          defaultValue={[]}
         />
       </div>
     </ABox>
