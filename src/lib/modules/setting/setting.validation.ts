@@ -2,8 +2,10 @@ import { z } from "zod";
 import {
   CONFIG_ABOUT_LIST,
   CONFIG_ABOUT_TEXT,
+  CONFIG_FAQ_ITEMS,
   CONFIG_FEATURED_DOCTOR,
-  CONFIG_FOOTER_TEXT,
+  CONFIG_FEATURED_SERVICES,
+  CONFIG_FEATURED_SPECIALTIES,
   CONFIG_HERO_IMAGE,
   CONFIG_HERO_REVIEW,
   CONFIG_HERO_SUBTITLE_TEXT,
@@ -47,6 +49,31 @@ const homepage = z.object({
 
   [CONFIG_ABOUT_TEXT]: z.string().nonempty().optional(),
   [CONFIG_ABOUT_LIST]: z.string().nonempty().optional(),
+
+  [CONFIG_TESTIMONIAL_IMAGE]: z.string().nonempty().optional(),
+
+  [CONFIG_PRESIDENT_NAME]: z.string().nonempty().optional(),
+  [CONFIG_PRESIDENT_POSITION]: z.string().nonempty().optional(),
+  [CONFIG_PRESIDENT_EXPERIENCE]: z.coerce.number().min(0).max(50).optional(),
+  [CONFIG_PRESIDENT_TEXT]: z.string().nonempty().optional(),
+  [CONFIG_PRESIDENT_SKILLS]: z.string().nonempty().optional(),
+  [CONFIG_PRESIDENT_IMAGE]: z.string().nonempty().optional(),
+
+  [CONFIG_FEATURED_SERVICES]: z
+    .array(z.string().nonempty().optional())
+    .optional(),
+  [CONFIG_FEATURED_SPECIALTIES]: z
+    .array(z.string().nonempty().optional())
+    .optional(),
+  [CONFIG_FAQ_ITEMS]: z.array(
+    z.object({
+      question: z.string().nonempty().optional(),
+      answer: z.string().nonempty().optional(),
+    }),
+  ),
+});
+
+const openingHours = z.object({
   [CONFIG_OPENING_HOURS]: z
     .object({
       monday: z.string().nonempty().max(255).optional(),
@@ -58,21 +85,11 @@ const homepage = z.object({
       sunday: z.string().nonempty().max(255).optional(),
     })
     .optional(),
-
-  [CONFIG_TESTIMONIAL_IMAGE]: z.string().nonempty().optional(),
-
-  [CONFIG_PRESIDENT_NAME]: z.string().nonempty().optional(),
-  [CONFIG_PRESIDENT_POSITION]: z.string().nonempty().optional(),
-  [CONFIG_PRESIDENT_EXPERIENCE]: z.coerce.number().min(0).max(50).optional(),
-  [CONFIG_PRESIDENT_TEXT]: z.string().nonempty().optional(),
-  [CONFIG_PRESIDENT_SKILLS]: z.string().nonempty().optional(),
-  [CONFIG_PRESIDENT_IMAGE]: z.string().nonempty().optional(),
-
-  [CONFIG_FOOTER_TEXT]: z.string().nonempty().optional(),
 });
 
 export const SettingValidation = {
   update,
   updateMany,
   homepage,
+  openingHours,
 };
