@@ -82,7 +82,9 @@ const HSImageUpload = ({
       name={name}
       render={() => (
         <FormItem className="flex w-full flex-col gap-1">
-          <FormLabel className="font-medium">{label}</FormLabel>
+          <FormLabel className="text-xs font-medium capitalize">
+            {label}
+          </FormLabel>
           <FormControl>
             <div className="flex flex-col items-start gap-4">
               {images.length > 0 && (
