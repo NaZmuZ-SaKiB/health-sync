@@ -84,6 +84,7 @@ const ImageModal = ({
     }
   };
 
+  // TODO: Loading UI
   if (loading) return null;
 
   const meta: TMeta = imagesData?.getAllImages?.meta;
