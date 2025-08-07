@@ -6,7 +6,6 @@ import {
   CONFIG_FOOTER_TEXT,
   CONFIG_HERO_IMAGE,
   CONFIG_HERO_REVIEW,
-  CONFIG_HERO_SPECIALTY_ICON,
   CONFIG_HERO_SUBTITLE_TEXT,
   CONFIG_HERO_TITLE_TEXT,
   CONFIG_OPENING_HOURS,
@@ -45,7 +44,6 @@ const homepage = z.object({
   [CONFIG_FEATURED_DOCTOR]: z.string().nonempty().optional(),
   [CONFIG_HERO_REVIEW]: z.string().nonempty().optional(),
   [CONFIG_HERO_IMAGE]: z.string().nonempty().optional(),
-  [CONFIG_HERO_SPECIALTY_ICON]: z.string().nonempty().optional(),
 
   [CONFIG_ABOUT_TEXT]: z.string().nonempty().optional(),
   [CONFIG_ABOUT_LIST]: z.string().nonempty().optional(),
