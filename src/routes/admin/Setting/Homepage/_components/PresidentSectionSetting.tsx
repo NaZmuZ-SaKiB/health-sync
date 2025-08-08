@@ -22,6 +22,7 @@ const PresidentSectionSetting = () => {
           name={CONFIG_PRESIDENT_IMAGE}
           label={CONFIG_PRESIDENT_IMAGE.toLowerCase().split("_").join(" ")}
           defaultValue={[]}
+          reset={false}
         />
       </div>
 
