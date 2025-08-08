@@ -52,6 +52,13 @@ const FeaturedServicesSetting = () => {
 
   const { setValue } = useFormContext();
 
+  useEffect(() => {
+    setValue(
+      CONFIG_FEATURED_SERVICES,
+      selected.map((item) => item.id),
+    );
+  }, [selected, setValue]);
+
   const { data: servicesData, loading: isServicesLoading } = useQuery(
     SERVICE_LIST,
     {
@@ -77,20 +84,11 @@ const FeaturedServicesSetting = () => {
 
     if (service) {
       setSelected((prev) => [...prev, service]);
-      setValue(
-        CONFIG_FEATURED_SERVICES,
-        selected.map((item) => item.id),
-      );
     }
   };
 
   const removeService = (id: string) => {
     setSelected((prev) => prev.filter((item) => item.id !== id));
-
-    setValue(
-      CONFIG_FEATURED_SERVICES,
-      selected.map((item) => item.id),
-    );
   };
 
   return (
