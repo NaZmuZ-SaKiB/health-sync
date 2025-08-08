@@ -65,12 +65,16 @@ const homepage = z.object({
   [CONFIG_FEATURED_SPECIALTIES]: z
     .array(z.string().nonempty().optional())
     .optional(),
-  [CONFIG_FAQ_ITEMS]: z.array(
-    z.object({
-      question: z.string().nonempty().optional(),
-      answer: z.string().nonempty().optional(),
-    }),
-  ),
+  [CONFIG_FAQ_ITEMS]: z
+    .array(
+      z
+        .object({
+          question: z.string().nonempty().optional(),
+          answer: z.string().nonempty().optional(),
+        })
+        .optional(),
+    )
+    .optional(),
 });
 
 const openingHours = z.object({
