@@ -78,12 +78,15 @@ const AdminSidebar = () => {
                           </SidebarMenuButton>
                         </AccordionTrigger>
                         <AccordionContent className={cn("pb-2")}>
-                          <SidebarMenuSub className="gap-0">
+                          <SidebarMenuSub className="gap-0 space-y-2">
                             {item.children.map((child) => (
                               <SidebarMenuSubItem
                                 key={`sidebar-${child.route}-${child.label}`}
                               >
-                                <SidebarMenuSubButton className="text-slate-300 hover:bg-transparent hover:text-slate-50">
+                                <SidebarMenuSubButton
+                                  asChild
+                                  className="text-slate-300 hover:bg-transparent hover:text-slate-50"
+                                >
                                   <Link
                                     to={child.route as string}
                                     className="h-full w-full"
