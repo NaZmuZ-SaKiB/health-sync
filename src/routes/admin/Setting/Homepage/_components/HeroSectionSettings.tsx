@@ -43,7 +43,6 @@ const HeroSectionSettings = () => {
         <ReviewInput
           name={CONFIG_HERO_REVIEW}
           label={CONFIG_HERO_REVIEW.toLowerCase().split("_").join(" ")}
-          required={false}
         />
       </div>
 
@@ -52,6 +51,7 @@ const HeroSectionSettings = () => {
           name={CONFIG_HERO_IMAGE}
           label={CONFIG_HERO_IMAGE.toLowerCase().split("_").join(" ")}
           defaultValue={[]}
+          reset={false}
         />
       </div>
     </ABox>
