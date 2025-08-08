@@ -26,7 +26,13 @@ const UPDATE_SETTING = gql`
   }
 `;
 
-const UPDATE_MANY_SETTINGS = gql``;
+const UPDATE_MANY_SETTINGS = gql`
+  mutation UpdateManySetting($settings: [SettingUpdateInput!]!) {
+    updateManySetting(settings: $settings) {
+      success
+    }
+  }
+`;
 
 export const SettingQueries = {
   GET_SETTING_BY_KEY,
