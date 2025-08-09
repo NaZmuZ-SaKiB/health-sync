@@ -3,6 +3,7 @@ import HSATextarea from "@/components/admin/form/HSATextarea";
 import ABox from "@/components/admin/ui/ABox";
 import AFormH2 from "@/components/admin/ui/AFormH2";
 import HSImageUpload from "@/components/global/form/HSImageUpload";
+import { TImage } from "@/lib/modules/image/image.type";
 import {
   CONFIG_PRESIDENT_EXPERIENCE,
   CONFIG_PRESIDENT_IMAGE,
@@ -12,7 +13,7 @@ import {
   CONFIG_PRESIDENT_TEXT,
 } from "@/lib/modules/setting/setting.constant";
 
-const PresidentSectionSetting = () => {
+const PresidentSectionSetting = ({ image }: { image: TImage }) => {
   return (
     <ABox>
       <AFormH2>President Section</AFormH2>
@@ -21,7 +22,7 @@ const PresidentSectionSetting = () => {
         <HSImageUpload
           name={CONFIG_PRESIDENT_IMAGE}
           label={CONFIG_PRESIDENT_IMAGE.toLowerCase().split("_").join(" ")}
-          defaultValue={[]}
+          defaultValue={image ? [image] : []}
           reset={false}
         />
       </div>
