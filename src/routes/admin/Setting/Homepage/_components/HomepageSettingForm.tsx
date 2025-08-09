@@ -91,8 +91,6 @@ const HomepageSettingForm = ({
     [CONFIG_FAQ_ITEMS]: parsedSettings[CONFIG_FAQ_ITEMS] || [],
   };
 
-  console.log(formDefaultValues);
-
   const form = useForm<TForm>({
     resolver: zodResolver(SettingValidation.homepage),
     mode: "onBlur",
