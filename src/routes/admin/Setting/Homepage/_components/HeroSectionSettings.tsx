@@ -11,8 +11,19 @@ import AFormH2 from "@/components/admin/ui/AFormH2";
 import DoctorAutocomplete from "./DoctorAutocomplete";
 import ReviewInput from "./ReviewInput";
 import HSImageUpload from "@/components/global/form/HSImageUpload";
+import { TReview } from "@/lib/modules/review/review.type";
+import { TDoctor } from "@/lib/modules/doctor/doctor.type";
+import { TImage } from "@/lib/modules/image/image.type";
 
-const HeroSectionSettings = () => {
+const HeroSectionSettings = ({
+  doctor,
+  review,
+  heroImage,
+}: {
+  doctor: TDoctor | null;
+  review: TReview | null;
+  heroImage: TImage | null;
+}) => {
   return (
     <ABox>
       <AFormH2>Hero Section</AFormH2>
@@ -35,6 +46,7 @@ const HeroSectionSettings = () => {
         <DoctorAutocomplete
           name={CONFIG_FEATURED_DOCTOR}
           label={CONFIG_FEATURED_DOCTOR.toLowerCase().split("_").join(" ")}
+          defaultDoctor={doctor}
           required={false}
         />
       </div>
@@ -43,6 +55,7 @@ const HeroSectionSettings = () => {
         <ReviewInput
           name={CONFIG_HERO_REVIEW}
           label={CONFIG_HERO_REVIEW.toLowerCase().split("_").join(" ")}
+          defaultReview={review}
         />
       </div>
 
@@ -50,7 +63,7 @@ const HeroSectionSettings = () => {
         <HSImageUpload
           name={CONFIG_HERO_IMAGE}
           label={CONFIG_HERO_IMAGE.toLowerCase().split("_").join(" ")}
-          defaultValue={[]}
+          defaultValue={heroImage ? [heroImage] : []}
           reset={false}
         />
       </div>
