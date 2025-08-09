@@ -33,7 +33,11 @@ const SERVICE_LIST = gql`
   }
 `;
 
-const FeaturedServicesSetting = () => {
+const FeaturedServicesSetting = ({
+  defaultValues,
+}: {
+  defaultValues: TService[];
+}) => {
   const [open, setOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -48,7 +52,7 @@ const FeaturedServicesSetting = () => {
     }
   }, [open]);
 
-  const [selected, setSelected] = useState<TService[]>([]);
+  const [selected, setSelected] = useState<TService[]>(defaultValues);
 
   const { setValue } = useFormContext();
 
