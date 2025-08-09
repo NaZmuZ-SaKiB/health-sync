@@ -27,6 +27,7 @@ import { useFormContext } from "react-hook-form";
 type TProps = {
   name: string;
   label: string;
+  defaultReview: TReview | null;
 };
 
 const REVIEW_LIST = gql`
@@ -56,10 +57,10 @@ const REVIEW_LIST = gql`
   }
 `;
 
-const ReviewInput = ({ name, label }: TProps) => {
+const ReviewInput = ({ name, label, defaultReview }: TProps) => {
   const [open, setOpen] = useState(false);
   const [page, setPage] = useState(1);
-  const [selected, setSelected] = useState<TReview | null>(null);
+  const [selected, setSelected] = useState<TReview | null>(defaultReview);
 
   const [cookies] = useCookies([AUTH_KEY]);
 
