@@ -115,7 +115,7 @@ const ImageModal = ({
             </div>
           )}
 
-          <div className="flex flex-wrap gap-3 max-sm:justify-center">
+          <div className="grid grid-cols-[repeat(auto-fill,minmax(128px,1fr))] gap-3 max-sm:justify-center">
             {imagesData?.getAllImages?.images?.map((image: TImage) => {
               const isActive = !!selectedImages.find(
                 (img) => img.id === image.id,
@@ -124,28 +124,28 @@ const ImageModal = ({
                 <div
                   key={image.id}
                   className={cn("relative border-2 border-transparent", {
-                    "border-primary": isActive,
+                    "border-secondary": isActive,
                   })}
                   onClick={() => handleClick(image)}
                 >
-                  <div className="aspect-square size-32 cursor-pointer overflow-hidden border border-slate-300 bg-slate-100">
+                  <div className="aspect-square cursor-pointer overflow-hidden border-2 border-slate-300 bg-slate-100">
                     <img
                       src={image.secureUrl}
                       width={128}
                       height={128}
                       alt={image.name}
-                      className="size-full object-contain"
+                      className="size-full object-cover"
                     />
                   </div>
                   <div
                     className={cn(
-                      "border-primary absolute -top-2 -right-3 border bg-white p-[1px]",
+                      "border-secondary absolute -top-2 -right-3 border bg-white p-[1px]",
                       {
                         hidden: !isActive,
                       },
                     )}
                   >
-                    <div className="bg-primary p-1 text-white">
+                    <div className="bg-secondary p-1 text-white">
                       <Check strokeWidth="4px" className="size-4" />
                     </div>
                   </div>
