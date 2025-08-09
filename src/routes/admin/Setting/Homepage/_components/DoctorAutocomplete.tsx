@@ -24,6 +24,7 @@ type TProps = {
   name: string;
   label: string;
   required?: boolean;
+  defaultDoctor: TDoctor | null;
 };
 
 const DOCTORS_LIST = gql`
@@ -39,9 +40,16 @@ const DOCTORS_LIST = gql`
   }
 `;
 
-const DoctorAutocomplete = ({ name, label, required = true }: TProps) => {
+const DoctorAutocomplete = ({
+  name,
+  label,
+  required = true,
+  defaultDoctor,
+}: TProps) => {
   const [open, setOpen] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState(
+    defaultDoctor ? defaultDoctor?.user?.email : "",
+  );
 
   const inputRef = useRef<HTMLInputElement | null>(null);
 
