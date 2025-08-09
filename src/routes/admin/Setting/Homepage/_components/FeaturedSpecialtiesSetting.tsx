@@ -33,7 +33,11 @@ const SPECIALTY_LIST = gql`
   }
 `;
 
-const FeaturedSpecialtiesSetting = () => {
+const FeaturedSpecialtiesSetting = ({
+  defaultValues,
+}: {
+  defaultValues: TSpecialty[];
+}) => {
   const [open, setOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -48,7 +52,7 @@ const FeaturedSpecialtiesSetting = () => {
     }
   }, [open]);
 
-  const [selected, setSelected] = useState<TSpecialty[]>([]);
+  const [selected, setSelected] = useState<TSpecialty[]>(defaultValues);
 
   const { setValue } = useFormContext();
 
