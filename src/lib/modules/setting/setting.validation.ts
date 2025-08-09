@@ -41,36 +41,32 @@ const update = z.object({
 const updateMany = z.array(update);
 
 const homepage = z.object({
-  [CONFIG_HERO_TITLE_TEXT]: z.string().nonempty().optional(),
-  [CONFIG_HERO_SUBTITLE_TEXT]: z.string().nonempty().optional(),
-  [CONFIG_FEATURED_DOCTOR]: z.string().nonempty().optional(),
-  [CONFIG_HERO_REVIEW]: z.string().nonempty().optional(),
-  [CONFIG_HERO_IMAGE]: z.string().nonempty().optional(),
+  [CONFIG_HERO_TITLE_TEXT]: z.string().optional(),
+  [CONFIG_HERO_SUBTITLE_TEXT]: z.string().optional(),
+  [CONFIG_FEATURED_DOCTOR]: z.string().optional(),
+  [CONFIG_HERO_REVIEW]: z.string().optional(),
+  [CONFIG_HERO_IMAGE]: z.string().optional(),
 
-  [CONFIG_ABOUT_TEXT]: z.string().nonempty().optional(),
-  [CONFIG_ABOUT_LIST]: z.string().nonempty().optional(),
+  [CONFIG_ABOUT_TEXT]: z.string().optional(),
+  [CONFIG_ABOUT_LIST]: z.string().optional(),
 
-  [CONFIG_TESTIMONIAL_IMAGE]: z.string().nonempty().optional(),
+  [CONFIG_TESTIMONIAL_IMAGE]: z.string().optional(),
 
-  [CONFIG_PRESIDENT_NAME]: z.string().nonempty().optional(),
-  [CONFIG_PRESIDENT_POSITION]: z.string().nonempty().optional(),
+  [CONFIG_PRESIDENT_NAME]: z.string().optional(),
+  [CONFIG_PRESIDENT_POSITION]: z.string().optional(),
   [CONFIG_PRESIDENT_EXPERIENCE]: z.coerce.number().min(0).max(50).optional(),
-  [CONFIG_PRESIDENT_TEXT]: z.string().nonempty().optional(),
-  [CONFIG_PRESIDENT_SKILLS]: z.string().nonempty().optional(),
-  [CONFIG_PRESIDENT_IMAGE]: z.string().nonempty().optional(),
+  [CONFIG_PRESIDENT_TEXT]: z.string().optional(),
+  [CONFIG_PRESIDENT_SKILLS]: z.string().optional(),
+  [CONFIG_PRESIDENT_IMAGE]: z.string().optional(),
 
-  [CONFIG_FEATURED_SERVICES]: z
-    .array(z.string().nonempty().optional())
-    .optional(),
-  [CONFIG_FEATURED_SPECIALTIES]: z
-    .array(z.string().nonempty().optional())
-    .optional(),
+  [CONFIG_FEATURED_SERVICES]: z.array(z.string().optional()).optional(),
+  [CONFIG_FEATURED_SPECIALTIES]: z.array(z.string().optional()).optional(),
   [CONFIG_FAQ_ITEMS]: z
     .array(
       z
         .object({
-          question: z.string().nonempty().optional(),
-          answer: z.string().nonempty().optional(),
+          question: z.string().optional(),
+          answer: z.string().optional(),
         })
         .optional(),
     )
@@ -80,13 +76,13 @@ const homepage = z.object({
 const openingHours = z.object({
   [CONFIG_OPENING_HOURS]: z
     .object({
-      monday: z.string().nonempty().max(255).optional(),
-      tuesday: z.string().nonempty().max(255).optional(),
-      wednesday: z.string().nonempty().max(255).optional(),
-      thursday: z.string().nonempty().max(255).optional(),
-      friday: z.string().nonempty().max(255).optional(),
-      saturday: z.string().nonempty().max(255).optional(),
-      sunday: z.string().nonempty().max(255).optional(),
+      monday: z.string().max(255).optional(),
+      tuesday: z.string().max(255).optional(),
+      wednesday: z.string().max(255).optional(),
+      thursday: z.string().max(255).optional(),
+      friday: z.string().max(255).optional(),
+      saturday: z.string().max(255).optional(),
+      sunday: z.string().max(255).optional(),
     })
     .optional(),
 });
