@@ -13,12 +13,14 @@ type TFAQ = {
   answer: string;
 };
 
-const FAQSetting = () => {
+const FAQSetting = ({ defaultValues }: { defaultValues: TFAQ[] }) => {
   const emptyItem: TFAQ = {
     question: "",
     answer: "",
   };
-  const [items, setItems] = useState<TFAQ[]>([emptyItem]);
+  const [items, setItems] = useState<TFAQ[]>(
+    defaultValues?.length ? defaultValues : [emptyItem],
+  );
 
   const addItem = () => {
     setItems((prev) => [...prev, emptyItem]);
