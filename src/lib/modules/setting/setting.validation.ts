@@ -8,6 +8,7 @@ import {
   CONFIG_FEATURED_DOCTOR,
   CONFIG_FEATURED_SERVICES,
   CONFIG_FEATURED_SPECIALTIES,
+  CONFIG_FOOTER_TEXT,
   CONFIG_HERO_IMAGE,
   CONFIG_HERO_REVIEW,
   CONFIG_HERO_SUBTITLE_TEXT,
@@ -106,10 +107,15 @@ const contact = z.object({
     .optional(),
 });
 
+const footer = z.object({
+  [CONFIG_FOOTER_TEXT]: z.string().optional(),
+});
+
 export const SettingValidation = {
   update,
   updateMany,
   homepage,
   openingHours,
   contact,
+  footer,
 };
