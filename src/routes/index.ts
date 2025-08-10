@@ -17,8 +17,8 @@ import AdminServicesPage from "./admin/Services/Services";
 import PatientsPage from "./admin/Users/Patients/Patients";
 import ReportsPage from "./admin/Services/Reports/Reports";
 import SpecialtiesPage from "./admin/Specialties/Specialties";
-import ReviewsPage from "./admin/Appointments/Reviews/Reviews";
 import ProfilePage from "./dashboard/Account/Profile/Profile";
+import ReviewsPage from "./admin/Appointments/Reviews/Reviews";
 import AppointmentPage from "./global/Appointment/Appointment";
 import AdminProfilePage from "./admin/Account/Profile/Profile";
 import EditServicePage from "./admin/Services/Edit/EditService";
@@ -33,6 +33,7 @@ import CreateAdminPage from "./admin/Users/Admins/Create/CreateAdmin";
 import EditSpecialtyPage from "./admin/Specialties/Edit/EditSpecialty";
 import AllAppointmentsPage from "./admin/Appointments/AllAppointments";
 import ChangePasswordPage from "./auth/Change-Password/ChangePassword";
+import ContactSettingPage from "./admin/Setting/Contact/ContactSetting";
 import ServiceReviewsPage from "./admin/Services/Reviews/ServiceReviews";
 import CreateLocationPage from "./admin/Locations/Create/CreateLocation";
 import HomepageSettingPage from "./admin/Setting/Homepage/HomepageSetting";
@@ -265,6 +266,10 @@ const router = createBrowserRouter([
       {
         path: "/admin/setting/opening-hours",
         Component: OpeningHourSettingPage,
+      },
+      {
+        path: "/admin/setting/contact",
+        Component: ContactSettingPage,
       },
     ],
   },
