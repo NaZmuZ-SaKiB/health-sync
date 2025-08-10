@@ -200,6 +200,10 @@ export const adminSidebarItems: TSidebarItem[] = [
         label: "Contact",
         route: "/admin/setting/contact",
       },
+      {
+        label: "Footer",
+        route: "/admin/setting/footer",
+      },
     ],
   },
 ];
