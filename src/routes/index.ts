@@ -52,6 +52,7 @@ import PatientReportsPage from "./dashboard/(Doctor)/Appointments/Reports/Patien
 import SingleAppointmentPage from "./dashboard/(Doctor)/Appointments/SingleAppointment/SingleAppointmentPage";
 import SingleDoctorApplication from "./admin/Doctor-Applications/Single-Doctor-Application/SingleDoctorApplication";
 import SingleServiceAppointmentPage from "./admin/Services/Appointments/SingleServiceAppointment/SingleServiceAppointment";
+import FooterSettingPage from "./admin/Setting/Footer/FooterSetting";
 
 const router = createBrowserRouter([
   {
@@ -270,6 +271,10 @@ const router = createBrowserRouter([
       {
         path: "/admin/setting/contact",
         Component: ContactSettingPage,
+      },
+      {
+        path: "/admin/setting/footer",
+        Component: FooterSettingPage,
       },
     ],
   },
