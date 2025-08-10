@@ -2,6 +2,8 @@ import { z } from "zod";
 import {
   CONFIG_ABOUT_LIST,
   CONFIG_ABOUT_TEXT,
+  CONFIG_CONTACT_EMAIL,
+  CONFIG_CONTACT_PHONE,
   CONFIG_FAQ_ITEMS,
   CONFIG_FEATURED_DOCTOR,
   CONFIG_FEATURED_SERVICES,
@@ -17,6 +19,8 @@ import {
   CONFIG_PRESIDENT_POSITION,
   CONFIG_PRESIDENT_SKILLS,
   CONFIG_PRESIDENT_TEXT,
+  CONFIG_SOCIAL_LINKS,
+  CONFIG_SUPPORT_EMAIL,
   CONFIG_TESTIMONIAL_IMAGE,
 } from "./setting.constant";
 
@@ -87,9 +91,25 @@ const openingHours = z.object({
     .optional(),
 });
 
+const contact = z.object({
+  [CONFIG_CONTACT_EMAIL]: z.string().email("Invalid Email.").optional(),
+  [CONFIG_SUPPORT_EMAIL]: z.string().email("Invalid Email.").optional(),
+  [CONFIG_CONTACT_PHONE]: z.string().max(14),
+  [CONFIG_SOCIAL_LINKS]: z
+    .object({
+      facebook: z.string().url().optional(),
+      instagram: z.string().url().optional(),
+      twitter: z.string().url().optional(),
+      linkedin: z.string().url().optional(),
+      youtube: z.string().url().optional(),
+    })
+    .optional(),
+});
+
 export const SettingValidation = {
   update,
   updateMany,
   homepage,
   openingHours,
+  contact,
 };
