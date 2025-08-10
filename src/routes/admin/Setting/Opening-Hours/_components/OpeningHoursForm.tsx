@@ -1,6 +1,7 @@
 import HSAInput from "@/components/admin/form/HSAInput";
 import ABox from "@/components/admin/ui/ABox";
 import AFormH2 from "@/components/admin/ui/AFormH2";
+import HSButton from "@/components/global/shared/HSButton";
 import { Form } from "@/components/ui/form";
 import { AUTH_KEY } from "@/constants";
 import { CONFIG_OPENING_HOURS } from "@/lib/modules/setting/setting.constant";
@@ -10,14 +11,17 @@ import { useMutation } from "@apollo/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useCookies } from "react-cookie";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { toast } from "sonner";
 import { z } from "zod";
 
 type TForm = z.infer<typeof SettingValidation.openingHours>;
 
-const OpeningHoursForm = () => {
+const OpeningHoursForm = ({ defaultValue }: { defaultValue: string }) => {
+  const defaultOpeningHours = JSON.parse(defaultValue || "{}");
+
   const [cookies] = useCookies([AUTH_KEY]);
 
-  const [updateSettingFn] = useMutation(SettingQueries.UPDATE_MANY_SETTINGS, {
+  const [updateSettingFn] = useMutation(SettingQueries.UPDATE_SETTING, {
     context: {
       headers: {
         Authorization: cookies[AUTH_KEY] || "",
@@ -29,20 +33,44 @@ const OpeningHoursForm = () => {
     resolver: zodResolver(SettingValidation.openingHours),
     mode: "onBlur",
     defaultValues: {
-      [CONFIG_OPENING_HOURS]: {
-        monday: "",
-        tuesday: "",
-        wednesday: "",
-        thursday: "",
-        friday: "",
-        saturday: "",
-        sunday: "",
-      },
+      [CONFIG_OPENING_HOURS]: defaultOpeningHours,
     },
   });
 
   const saveOpeningHours: SubmitHandler<TForm> = async (data) => {
-    console.log("data", data);
+    const openingHours = data[CONFIG_OPENING_HOURS];
+
+    if (!openingHours) return;
+
+    (Object.keys(openingHours) as (keyof typeof openingHours)[]).forEach(
+      (key) => {
+        if (!openingHours[key]) {
+          delete openingHours[key];
+        }
+      },
+    );
+
+    const updateData = {
+      key: CONFIG_OPENING_HOURS,
+      value: JSON.stringify(openingHours),
+    };
+
+    try {
+      toast.promise(
+        async () => {
+          return await updateSettingFn({ variables: { ...updateData } });
+        },
+        {
+          loading: "Saving Opening Hours...",
+          success: () => {
+            return "Opening Hours Saved.";
+          },
+          error: (error: any) => error?.message,
+        },
+      );
+    } catch {
+      toast.error("A Client error occurred");
+    }
   };
 
   return (
@@ -110,6 +138,13 @@ const OpeningHoursForm = () => {
             vertical
             className="mb-3"
           />
+
+          <HSButton
+            className="rounded-none"
+            disabled={form.formState.isSubmitting}
+          >
+            {form.formState.isSubmitting ? "Saving..." : "Save"}
+          </HSButton>
         </form>
       </Form>
     </ABox>
