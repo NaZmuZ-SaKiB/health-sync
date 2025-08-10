@@ -196,6 +196,10 @@ export const adminSidebarItems: TSidebarItem[] = [
         label: "Opening Hours",
         route: "/admin/setting/opening-hours",
       },
+      {
+        label: "Contact",
+        route: "/admin/setting/contact",
+      },
     ],
   },
 ];
